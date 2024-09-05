@@ -1,0 +1,6 @@
+ .unity-scroll-view__content-container {
+    align-items: center; 
+    justify-content: center;  
+    flex-direction: row;
+    align-self: center
+}

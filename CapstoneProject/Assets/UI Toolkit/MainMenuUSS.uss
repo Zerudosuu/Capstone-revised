@@ -1,0 +1,25 @@
+.DefaultButtonStyle {
+    width: 80%;
+    height: 150px;
+    flex-shrink: 1;
+    margin-bottom: 10px;
+    -unity-font: url("project://database/Assets/GameAssets/Fonts/Grandstander-Bold.ttf?fileID=12800000&guid=b50e399b946cdd44e9425efd32a5c879&type=3#Grandstander-Bold");
+    font-size: 75px;
+    -unity-font-style: bold;
+    -unity-font-definition: initial;
+    background-image: url("project://database/Assets/GameAssets/Sprites/yellow%20Button@2x.png?fileID=21300000&guid=bc9253b6c827cf64e9a57751e97e4dc0&type=3#yellow Button@2x");
+    background-color: rgba(188, 188, 188, 0);
+    -unity-text-outline-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(149, 149, 149, 0);
+    border-right-color: rgba(149, 149, 149, 0);
+    border-top-color: rgba(149, 149, 149, 0);
+    border-bottom-color: rgba(149, 149, 149, 0);
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+.DefaultButtonStyle:hover {
+    scale: 1.2 1.2;
+    transition-property: scale;
+    transition-duration: 0.5s;
+    transition-timing-function: ease-out;
+}
