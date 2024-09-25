@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.UIElements;
@@ -15,19 +16,42 @@ public class UIHandlerLessonArea : MonoBehaviour
     private const float maxX = 1080f;
     private readonly float[] snapPositions = { -1080f, 0f, 1080f };
 
-    private bool isSnapping = false;
-    private float snapDuration = 0.3f; // Duration for the snap animation
-    private float snapStartTime;
-    private float startX;
-    private float targetX;
+    #region ExperimentButtonsContainer
+    VisualElement ExperimentButtonsContainer;
+    Button[] ExperimentButtons;
+    // VisualElement mix;
+    // VisualElement heat;
+    // VisualElement cold;
+    // VisualElement serve;
+    #endregion
+
 
     void OnEnable()
     {
         var root = GameObject.FindObjectOfType<UIDocument>().rootVisualElement;
         LessonContainer = root.Q<VisualElement>("LessonContainer");
         ExperimentContainer = LessonContainer.Q<VisualElement>("ExperimentContainer");
+        ExperimentButtonsContainer = root.Q<VisualElement>("ExperimentButtonsContainer");
 
-        RegisterMouseEvents();
+        if (ExperimentButtonsContainer != null)
+        {
+            print("ExperimentButtonsContainer found");
+
+            ExperimentButtons = ExperimentButtonsContainer.Children().OfType<Button>().ToArray();
+            foreach (Button ExperimentButton in ExperimentButtons)
+            {
+                ExperimentButton.RegisterCallback<ClickEvent>(evt =>
+                {
+                    print(ExperimentButton.name + "Button clicked");
+                });
+            }
+
+            RegisterMouseEvents();
+        }
+        else
+        {
+            print("ExperimentButtonsContainer not found");
+        }
     }
 
     private void RegisterMouseEvents()
