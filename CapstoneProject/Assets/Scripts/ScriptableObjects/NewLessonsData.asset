@@ -13,11 +13,119 @@ MonoBehaviour:
   m_Name: NewLessonsData
   m_EditorClassIdentifier: 
   lessons:
-  - ChapterName: 
-    ChapterNumber: 0
-  - ChapterName: 
-    ChapterNumber: 0
-  - ChapterName: 
-    ChapterNumber: 0
-  - ChapterName: 
-    ChapterNumber: 0
+  - chapterName: Getting to know Gasses
+    chapterNumber: 1
+    chapterSummaryDescription: 'Find out that gasses have the following properties:
+      mass, volume, temperature, and pressure. '
+    fullDescription: 'The relationship between mass, volume, temperature, and pressure
+      is essential in understanding gas behavior, as changes in one property can
+      significantly affect the others. '
+    materials:
+    - materialName: ' Thermometer'
+      isCollected: 0
+    - materialName: Alcohol Lamp
+      isCollected: 0
+    - materialName: Tripod
+      isCollected: 0
+    - materialName: Wire Qauze
+      isCollected: 0
+    - materialName: Match
+      isCollected: 0
+    - materialName: Denured Alcohol
+      isCollected: 0
+    - materialName: Ice
+      isCollected: 0
+    - materialName: 500ml Beaker
+      isCollected: 0
+    isCompleted: 0
+    Coins: 0
+    Experience: 0
+  - chapterName: Gay-Lussac's Law
+    chapterNumber: 2
+    chapterSummaryDescription: Investigating the relationship between temperature
+      and pressure at constant volume.
+    fullDescription: 'Exploring the relationship of temperature and pressure at constant
+      volume demonstrates that raising the temperature increases pressure as a result
+      of greater molecular movement. '
+    materials:
+    - materialName: 110 Degrees Thermometer
+      isCollected: 0
+    - materialName: Erlrnmeyer Flask
+      isCollected: 0
+    - materialName: Cork or Rubber stopper
+      isCollected: 0
+    - materialName: Denatured Alcohol
+      isCollected: 0
+    - materialName: Liquid Dropper
+      isCollected: 0
+    isCompleted: 0
+    Coins: 100
+    Experience: 100
+  - chapterName: Everything has changed
+    chapterNumber: 3
+    chapterSummaryDescription: Chemical reactions; distinguish evidences of chemical
+      reaction
+    fullDescription: ' Chemical reactions can be distinguished by evidence such as
+      color change, temperature change, gas production, and the formation of a precipitate. '
+    materials:
+    - materialName: Mg Ribbon
+      isCollected: 0
+    - materialName: Iron nail
+      isCollected: 0
+    - materialName: 30 Volumes Agua Oxigenada
+      isCollected: 0
+    - materialName: Hydrogen Peroxide
+      isCollected: 0
+    - materialName: Manganese Dioxide
+      isCollected: 0
+    - materialName: '10% Copper Sulfate Solution '
+      isCollected: 0
+    - materialName: Denatured Alcohol
+      isCollected: 0
+    - materialName: Vinegar
+      isCollected: 0
+    - materialName: Baking Soda
+      isCollected: 0
+    - materialName: Matches
+      isCollected: 0
+    - materialName: Alcohol Lamp
+      isCollected: 0
+    - materialName: 'Tripod '
+      isCollected: 0
+    - materialName: Crucible Tong
+      isCollected: 0
+    - materialName: Beaker
+      isCollected: 0
+    - materialName: Test Tubes
+      isCollected: 0
+    - materialName: Test Tube Racks
+      isCollected: 0
+    - materialName: Thermometer
+      isCollected: 0
+    - materialName: Forceps
+      isCollected: 0
+    - materialName: Iron Nail
+      isCollected: 0
+    - materialName: Iron Nail
+      isCollected: 0
+    - materialName: Spatula or small teaspoon
+      isCollected: 0
+    isCompleted: 0
+    Coins: 0
+    Experience: 0
+  - chapterName: 
+    chapterNumber: 0
+    chapterSummaryDescription: 
+    fullDescription: 
+    materials: []
+    isCompleted: 0
+    Coins: 0
+    Experience: 0
+  - chapterName: 
+    chapterNumber: 0
+    chapterSummaryDescription: 
+    fullDescription: 
+    materials: []
+    isCompleted: 0
+    Coins: 0
+    Experience: 0
