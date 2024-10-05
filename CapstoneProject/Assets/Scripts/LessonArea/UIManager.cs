@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class UIManager : MonoBehaviour
 {
@@ -28,6 +29,12 @@ public class UIManager : MonoBehaviour
     [Header("PlayerUI")]
     [SerializeField]
     private GameObject playerUI;
+
+    [SerializeField]
+    private TMP_Text PlayerLevel;
+
+    [SerializeField]
+    private TMP_Text PlayerTitle;
 
     [Header("MainScreenScrollView")]
     [SerializeField]
@@ -71,5 +78,12 @@ public class UIManager : MonoBehaviour
         chemicalContainer.SetActive(true);
         ChemicalAreaItems.SetActive(false);
         EquipmentAreaItems.SetActive(false);
+    }
+
+    //Update UI of player
+    public void PlayerUpdateUI(string level, string title)
+    {
+        PlayerLevel.text = level;
+        PlayerTitle.text = title;
     }
 }
