@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewLessonsData", menuName = "Lesson Data", order = 1)]
-public class LessonsData : ScriptableObject
+public class LessonsDataManager : ScriptableObject
 {
     public List<Lesson> lessons = new List<Lesson>();
 }
@@ -19,6 +19,7 @@ public class MaterialEntry
 [System.Serializable]
 public class Lesson
 {
+    public string LessonID = "";
     public string chapterName;
     public int chapterNumber;
 

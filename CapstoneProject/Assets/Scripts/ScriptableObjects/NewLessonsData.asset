@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: NewLessonsData
   m_EditorClassIdentifier: 
   lessons:
-  - chapterName: Getting to know Gasses
+  - LessonID: 1
+    chapterName: Getting to know Gasses
     chapterNumber: 1
     chapterSummaryDescription: 'Find out that gasses have the following properties:
       mass, volume, temperature, and pressure. '
@@ -38,9 +39,10 @@ MonoBehaviour:
     - materialName: 500ml Beaker
       isCollected: 0
     isCompleted: 0
-    Coins: 0
-    Experience: 0
-  - chapterName: Gay-Lussac's Law
+    Coins: 23
+    Experience: 51
+  - LessonID: 2
+    chapterName: Gay-Lussac's Law
     chapterNumber: 2
     chapterSummaryDescription: Investigating the relationship between temperature
       and pressure at constant volume.
@@ -61,7 +63,8 @@ MonoBehaviour:
     isCompleted: 0
     Coins: 100
     Experience: 100
-  - chapterName: Everything has changed
+  - LessonID: 3
+    chapterName: Everything has changed
     chapterNumber: 3
     chapterSummaryDescription: Chemical reactions; distinguish evidences of chemical
       reaction
@@ -111,21 +114,5 @@ MonoBehaviour:
     - materialName: Spatula or small teaspoon
       isCollected: 0
     isCompleted: 0
-    Coins: 0
-    Experience: 0
-  - chapterName: 
-    chapterNumber: 0
-    chapterSummaryDescription: 
-    fullDescription: 
-    materials: []
-    isCompleted: 0
-    Coins: 0
-    Experience: 0
-  - chapterName: 
-    chapterNumber: 0
-    chapterSummaryDescription: 
-    fullDescription: 
-    materials: []
-    isCompleted: 0
-    Coins: 0
-    Experience: 0
+    Coins: 200
+    Experience: 100

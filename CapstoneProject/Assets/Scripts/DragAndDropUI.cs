@@ -17,6 +17,8 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     private bool isLongPressing = false; // To track long press
     private Vector3 lastMousePosition; // To track mouse movement
 
+    private ItemContainerManager itemContainerManager;
+
     private void Awake()
     {
         // Ensure the CanvasGroup is added
@@ -25,6 +27,9 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
         rectTransform = GetComponent<RectTransform>();
+
+        // Find the ItemContainerManager script
+        itemContainerManager = FindObjectOfType<ItemContainerManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -46,6 +51,8 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         // Make the object semi-transparent and allow it to ignore raycasts
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
+
+        itemContainerManager.PopUpButtons.SetActive(false);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -59,7 +66,8 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         {
             pressTime = 0f; // Reset the long press timer if there's significant movement
             isLongPressing = false;
-            lastMousePosition = Input.mousePosition; // Update the last mouse position
+            lastMousePosition = Input.mousePosition; //
+            itemContainerManager.PopUpButtons.SetActive(false);
         }
     }
 
@@ -101,7 +109,15 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
                 // Long press detected
                 isLongPressing = true;
                 Debug.Log("Long press detected on: " + gameObject.name);
+
+                itemContainerManager.PopUP(transform.position);
             }
         }
+    }
+
+    public Vector3 GetOriginalPosition()
+    {
+        // Return the original position of the object
+        return this.transform.position;
     }
 }

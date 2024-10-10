@@ -1,75 +1,103 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("ChemicalContainer")]
+    [Header("MainMenuButtons")]
     [SerializeField]
-    private GameObject chemicalContainer;
+    private Button ProfileButton;
 
     [SerializeField]
-    private Button ChemicalContainerMoreButton;
+    private Button CurrentLessonQuestButton;
 
     [SerializeField]
-    private GameObject ChemicalAreaItems;
-
-    [Header("EquipmentContainer")]
-    [SerializeField]
-    private GameObject equipmentContainer;
+    private Button Bag;
 
     [SerializeField]
-    private Button EquipmentContainerMoreButton;
+    private Button LessonContainer;
 
     [SerializeField]
-    private GameObject EquipmentAreaItems;
+    private Button Settings;
 
-    [Header("PlayerUI")]
+    [Header("Windows")]
     [SerializeField]
-    private GameObject playerUI;
+    private GameObject ProfileWindow;
 
-    [Header("MainScreenScrollView")]
     [SerializeField]
-    private GameObject mainScreenScrollView;
+    private GameObject CurrentLessonWindow;
+
+    [SerializeField]
+    private GameObject BagWindow;
+
+    [SerializeField]
+    private GameObject LessonContainerWindow;
+
+    [SerializeField]
+    private GameObject SettingsWindow;
+
+    [Header("Others")]
+    [SerializeField]
+    private GameObject PlayerUI;
 
     void Start()
     {
-        playerUI.SetActive(true);
-        mainScreenScrollView.SetActive(true);
-        chemicalContainer.SetActive(true);
-        equipmentContainer.SetActive(true);
-        ChemicalContainerMoreButton.gameObject.SetActive(true);
-        EquipmentContainerMoreButton.gameObject.SetActive(true);
-        ChemicalAreaItems.SetActive(false);
-        EquipmentAreaItems.SetActive(false);
+        BagWindow.SetActive(true);
+        ProfileWindow.SetActive(false);
+
+        LessonContainerWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
     }
 
-    void Update() { }
-
-    public void OnChemicalMoreButtonClick()
+    public void OnBagButtonClick()
     {
-        mainScreenScrollView.SetActive(false);
-        playerUI.SetActive(false);
-        chemicalContainer.SetActive(false);
-        ChemicalAreaItems.SetActive(true);
+        BagWindow.SetActive(true);
+        ProfileWindow.SetActive(false);
+        CurrentLessonWindow.SetActive(false);
+        LessonContainerWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
+        PlayerUI.SetActive(true);
     }
 
-    public void OnEquipmentMoreButtonClick()
+    public void OnProfileButtonClick()
     {
-        mainScreenScrollView.SetActive(false);
-        playerUI.SetActive(false);
-        equipmentContainer.SetActive(false);
-        EquipmentAreaItems.SetActive(true);
+        ProfileWindow.SetActive(true);
+        BagWindow.SetActive(false);
+        CurrentLessonWindow.SetActive(false);
+        LessonContainerWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
+        PlayerUI.SetActive(false);
     }
 
-    public void OnBackButtonClick()
+    public void OnCurrentLessonQuestButtonClick()
     {
-        mainScreenScrollView.SetActive(true);
-        playerUI.SetActive(true);
-        equipmentContainer.SetActive(true);
-        chemicalContainer.SetActive(true);
-        ChemicalAreaItems.SetActive(false);
-        EquipmentAreaItems.SetActive(false);
+        CurrentLessonWindow.SetActive(true);
+        BagWindow.SetActive(false);
+        ProfileWindow.SetActive(false);
+        SettingsWindow.SetActive(false);
+        LessonContainerWindow.SetActive(false);
+        PlayerUI.SetActive(false);
+    }
+
+    public void OnLessonContainerButtonClick()
+    {
+        LessonContainerWindow.SetActive(true);
+        BagWindow.SetActive(false);
+        ProfileWindow.SetActive(false);
+
+        SettingsWindow.SetActive(false);
+        PlayerUI.SetActive(false);
+    }
+
+    public void OnSettingsButtonClick()
+    {
+        SettingsWindow.SetActive(true);
+        BagWindow.SetActive(false);
+        ProfileWindow.SetActive(false);
+        CurrentLessonWindow.SetActive(false);
+        LessonContainerWindow.SetActive(false);
+        PlayerUI.SetActive(false);
     }
 }
