@@ -113,7 +113,6 @@ public class DataManager : MonoBehaviour
     public void NewGame()
     {
         this.gameData = new GameData();
-        this.gameData.SceneName = "RegistrationScene";
     }
 
     public void LoadGame()
@@ -140,8 +139,6 @@ public class DataManager : MonoBehaviour
         {
             dataObj.LoadData(gameData);
         }
-
-        print("Clicked count loaded: " + gameData.clickCount);
     }
 
     public void SaveGame()

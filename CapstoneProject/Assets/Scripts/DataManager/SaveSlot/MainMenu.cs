@@ -24,8 +24,6 @@ public class MainMenu : Menu
     [SerializeField]
     private Button ExitButton;
 
-    public Animator animator;
-
     void Start()
     {
         DisableButtonDependingOnTheData();
@@ -38,25 +36,10 @@ public class MainMenu : Menu
             continueButton.interactable = false;
             loadGameButton.interactable = false;
         }
-        else
-        {
-            // Check if the button is active and play the animation
-            PlayButtonAnimationIfActive(continueButton);
-            PlayButtonAnimationIfActive(loadGameButton);
-        }
     }
 
     // Method to play animation if the button is active
-    private void PlayButtonAnimationIfActive(Button button)
-    {
-        animator = button.GetComponent<Animator>();
 
-        if (button.gameObject.activeSelf && button.interactable)
-        {
-            // Trigger an animation by setting a parameter or using a trigger
-            animator.SetTrigger("Hover");
-        }
-    }
 
     public void OnNewGameClicked()
     {

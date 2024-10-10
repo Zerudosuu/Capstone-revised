@@ -19,14 +19,16 @@ public class Saveslot : MonoBehaviour
     private GameObject hasDataContent;
 
     [SerializeField]
-    private TextMeshProUGUI FullName;
+    private TextMeshProUGUI ChapterTitle;
 
     [SerializeField]
-    private TextMeshProUGUI Title;
+    private TextMeshProUGUI Level;
 
     [SerializeField]
-    private TextMeshProUGUI playerUsername;
+    private TextMeshProUGUI PlayTime;
 
+    [SerializeField]
+    private TextMeshProUGUI Percentage;
     private Button saveSlotButton;
 
     [Header("Clear Data Button")]
@@ -56,11 +58,10 @@ public class Saveslot : MonoBehaviour
             hasDataContent.SetActive(true);
             clearDataButton.gameObject.SetActive(true);
 
-            FullName.text = data.fullName;
-            Title.text = data.currenTitle;
-            playerUsername.text = data.userName;
-
-            string savedAvatarName = data.avatarName;
+            ChapterTitle.text = data.ChapterTitle;
+            Level.text = "Level: " + data.Level;
+            PlayTime.text = "Play Time: " + data.timestamp;
+            Percentage.text = "Completion Percentage: " + data.Percentage + "%";
         }
     }
 

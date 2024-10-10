@@ -7,33 +7,23 @@ using UnityEngine;
 public class GameData
 {
     public long lastUpdate;
-    public int clickCount;
-    public Vector3 playerPosition;
-
-    public string userName;
-    public string fullName;
-    public DateTime birthday;
-    public int age;
 
     public string SceneName;
 
-    public string[] floorsCleared;
+    public string ChapterTitle;
 
-    public string studentID;
-    public string currenTitle;
+    public string Level;
 
-    public string avatarName;
+    public string timestamp;
+
+    public float Percentage;
 
     public GameData()
     {
-        this.clickCount = 0;
-        this.playerPosition = Vector3.zero;
-        this.userName = "";
-        this.fullName = "";
-        this.birthday = DateTime.Now;
-        this.age = 0;
-        this.SceneName = "RegistrationScene";
-        this.currenTitle = "The Noob";
-        this.avatarName = "";
+        this.SceneName = "Lesson";
+        this.ChapterTitle = "Chapter 1";
+        this.Level = "1";
+        this.timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
+        this.Percentage = 0;
     }
 }
