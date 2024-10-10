@@ -18,12 +18,22 @@ public class GameData
 
     public float Percentage;
 
+    public GameMode LessonMode;
+
     public GameData()
     {
-        this.SceneName = "Lesson";
+        this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";
         this.Level = "1";
         this.timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         this.Percentage = 0;
+        this.LessonMode = GameMode.None;
     }
+}
+
+public enum GameMode
+{
+    None,
+    Lesson,
+    Creative,
 }

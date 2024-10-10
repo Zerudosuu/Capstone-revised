@@ -2,16 +2,24 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UIElements;
 
-public class GameModeSelector : MonoBehaviour
+public class GameModeSelector : MonoBehaviour, IData
 {
+    [Header("Game Mode Selector")]
     VisualElement GameModeContainer;
     VisualElement GameModeLessonContainer;
     VisualElement GameModeCreativeContainer; // Corrected variable name
 
     bool isGameModeLessonActive = false;
     bool isGameModeCreativeisActive = false;
+
+    Button LessonPlayButton;
+
+    Button CreativePlayButton;
+
+    public GameModeSelected gameModeSelected;
 
     void OnEnable()
     {
@@ -20,7 +28,33 @@ public class GameModeSelector : MonoBehaviour
         GameModeLessonContainer = GameModeContainer.Q<VisualElement>("LessonContainer");
         GameModeCreativeContainer = GameModeContainer.Q<VisualElement>("CreativeContainer");
 
+        LessonPlayButton = GameModeLessonContainer.Q<Button>("LessonPlayButton");
+        CreativePlayButton = GameModeCreativeContainer.Q<Button>("CreativePlayButton");
+
+        LessonPlayButton.RegisterCallback<ClickEvent>(evt => LessonPlay());
+        CreativePlayButton.RegisterCallback<ClickEvent>(evt => CreativePlay());
+
         RegisterMouseEvents();
+    }
+
+    private void CreativePlay()
+    {
+        print("Creative Play started");
+        gameModeSelected = GameModeSelected.Creative;
+        DataManager.Instance.gameData.SceneName = "Lesson_UI Anim";
+        DataManager.Instance.SaveGame();
+        DataManager.Instance.LoadGame();
+        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+    }
+
+    void LessonPlay()
+    {
+        gameModeSelected = GameModeSelected.Lesson;
+        DataManager.Instance.gameData.SceneName = "Lesson_UI Anim";
+        DataManager.Instance.SaveGame();
+        DataManager.Instance.LoadGame();
+        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+        print("Lesson Play started");
     }
 
     void RegisterMouseEvents()
@@ -78,4 +112,21 @@ public class GameModeSelector : MonoBehaviour
             creativeButtonContainer.style.display = DisplayStyle.Flex; // Show creative details
         }
     }
+
+    public void LoadData(GameData gameData)
+    {
+        this.gameModeSelected = (GameModeSelected)gameData.LessonMode;
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        gameData.LessonMode = (GameMode)this.gameModeSelected;
+    }
+}
+
+public enum GameModeSelected
+{
+    Lesson,
+    Creative,
+    None,
 }
