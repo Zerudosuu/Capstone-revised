@@ -20,7 +20,7 @@ public class GameData
 
     public GameData()
     {
-        this.SceneName = "Lesson";
+        this.SceneName = "Lesson_UI Anim";
         this.ChapterTitle = "Chapter 1";
         this.Level = "1";
         this.timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
