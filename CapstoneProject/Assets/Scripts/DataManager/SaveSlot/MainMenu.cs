@@ -11,6 +11,10 @@ public class MainMenu : Menu
     [SerializeField]
     private SaveSlotMenu saveSlotMenu;
 
+    [SerializeField]
+    private VolumeSettings volSetting;
+
+
     [Header("Menu Buttons")]
     [SerializeField]
     private Button newGameButton;
@@ -20,6 +24,9 @@ public class MainMenu : Menu
 
     [SerializeField]
     private Button loadGameButton;
+
+    [SerializeField]
+    private Button settingButton;
 
     [SerializeField]
     private Button ExitButton;
@@ -39,8 +46,6 @@ public class MainMenu : Menu
     }
 
     // Method to play animation if the button is active
-
-
     public void OnNewGameClicked()
     {
         saveSlotMenu.ActivateMenu(false);
@@ -64,6 +69,12 @@ public class MainMenu : Menu
     {
         saveSlotMenu.ActivateMenu(true);
         this.DeactivateMenu();
+    }
+
+    public void OnSettingClick()
+    {
+        volSetting.DisplaySetting(true);
+        DeactivateMenu();
     }
 
     private void DisbaleMenuButton()

@@ -6,7 +6,6 @@ using UnityEngine.Rendering;
 
 public class CustomMaskUI : Image
 {
-    
     public override Material materialForRendering
     {
         get
