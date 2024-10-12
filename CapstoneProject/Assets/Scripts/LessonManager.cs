@@ -9,6 +9,9 @@ public class LessonManager : MonoBehaviour
     [SerializeField]
     private GameObject CurrentLessonWindow;
 
+    [SerializeField]
+    private GameObject LessonWindow;
+
     // QuestGiver
     public QuestAsLesson questAsLesson;
 
@@ -119,17 +122,19 @@ public class LessonManager : MonoBehaviour
 
     public void OnAcceptButtonClick()
     {
-        CurrentLessonToDisplay currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>();
+        CurrentLessonWindow.SetActive(true);
+
+        print("ButtonWasClicked");
+        questAsLesson.isActive = true;
+
+        CurrentLessonToDisplay currentLessonToDisplay =
+            GetComponentInChildren<CurrentLessonToDisplay>();
+
         if (currentLessonToDisplay != null)
         {
-            print("ButtonWasClicked");
-            questAsLesson.isActive = true;
-
-            currentLessonToDisplay.gameObject.SetActive(true);
             currentLessonToDisplay.SetCurrentLesson(questAsLesson);
 
             currentLessonToDisplay.UpdateLessonDisplay();
-            this.gameObject.SetActive(false);
         }
     }
 
@@ -147,6 +152,7 @@ public class LessonManager : MonoBehaviour
         questAsLesson.chapterNumber = lesson.chapterNumber;
         questAsLesson.fullDescription = lesson.fullDescription;
         questAsLesson.RewardCoins = lesson.Coins;
+        questAsLesson.RewardExperience = lesson.Experience;
 
         questAsLesson.materials = new List<MaterialEntry>();
 

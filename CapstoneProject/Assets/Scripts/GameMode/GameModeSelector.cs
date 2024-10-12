@@ -35,6 +35,8 @@ public class GameModeSelector : MonoBehaviour, IData
         CreativePlayButton.RegisterCallback<ClickEvent>(evt => CreativePlay());
 
         RegisterMouseEvents();
+
+        SelectGameMode(GameModeLessonContainer);
     }
 
     private void CreativePlay()
@@ -126,7 +128,7 @@ public class GameModeSelector : MonoBehaviour, IData
 
 public enum GameModeSelected
 {
+    None,
     Lesson,
     Creative,
-    None,
 }

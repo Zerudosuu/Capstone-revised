@@ -27,10 +27,10 @@ public class UIManager : MonoBehaviour
     private GameObject ProfileWindow;
 
     [SerializeField]
-    private GameObject CurrentLessonWindow;
+    private GameObject Store;
 
     [SerializeField]
-    private GameObject BagWindow;
+    private GameObject Home;
 
     [SerializeField]
     private GameObject LessonContainerWindow;
@@ -39,44 +39,55 @@ public class UIManager : MonoBehaviour
     private GameObject SettingsWindow;
 
     [Header("Navbar")]
-    [SerializeField] private RectTransform navbar_BG;
-    [SerializeField] private bool NavBarAnimationActivate;
+    [SerializeField]
+    private RectTransform navbar_BG;
+
+    [SerializeField]
+    private bool NavBarAnimationActivate;
     private Button previouslySelectedBtn = null;
     private string previousState = null;
-    private float transitionDuration = 0.5f;
-    
+    public float transitionDuration = 0.5f;
+
     [Header("Navbar Button")]
-    [SerializeField] private Button profileBtn;
-    [SerializeField] private Button CurrentQuestBtn;
-    [SerializeField] private Button bagBtn;
-    [SerializeField] private Button LessonsBtn;
-    [SerializeField] private Button SettingsBtn;
+    [SerializeField]
+    private Button profileBtn;
+
+    [SerializeField]
+    private Button CurrentQuestBtn;
+
+    [SerializeField]
+    private Button bagBtn;
+
+    [SerializeField]
+    private Button LessonsBtn;
+
+    [SerializeField]
+    private Button SettingsBtn;
 
     [Header("Animator")]
-    [SerializeField] private Animator navBarAnimator;
+    [SerializeField]
+    private Animator navBarAnimator;
 
     [Header("Others")]
     [SerializeField]
     private GameObject PlayerUI;
 
-   
-
     void Start()
     {
-        BagWindow.SetActive(true);
+        Home.SetActive(true);
         ProfileWindow.SetActive(false);
 
         LessonContainerWindow.SetActive(false);
         SettingsWindow.SetActive(false);
-
+        PlayerUI.SetActive(true);
         StartCoroutine(MoveNavBar(bagBtn, "isBag"));
     }
 
     public void OnBagButtonClick()
     {
-        BagWindow.SetActive(true);
+        Home.SetActive(true);
         ProfileWindow.SetActive(false);
-        CurrentLessonWindow.SetActive(false);
+        Store.SetActive(false);
         LessonContainerWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         PlayerUI.SetActive(true);
@@ -87,8 +98,8 @@ public class UIManager : MonoBehaviour
     public void OnProfileButtonClick()
     {
         ProfileWindow.SetActive(true);
-        BagWindow.SetActive(false);
-        CurrentLessonWindow.SetActive(false);
+        Home.SetActive(false);
+        Store.SetActive(false);
         LessonContainerWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         PlayerUI.SetActive(false);
@@ -98,8 +109,8 @@ public class UIManager : MonoBehaviour
 
     public void OnCurrentLessonQuestButtonClick()
     {
-        CurrentLessonWindow.SetActive(true);
-        BagWindow.SetActive(false);
+        Store.SetActive(true);
+        Home.SetActive(false);
         ProfileWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         LessonContainerWindow.SetActive(false);
@@ -111,7 +122,7 @@ public class UIManager : MonoBehaviour
     public void OnLessonContainerButtonClick()
     {
         LessonContainerWindow.SetActive(true);
-        BagWindow.SetActive(false);
+        Home.SetActive(false);
         ProfileWindow.SetActive(false);
 
         SettingsWindow.SetActive(false);
@@ -123,15 +134,14 @@ public class UIManager : MonoBehaviour
     public void OnSettingsButtonClick()
     {
         SettingsWindow.SetActive(true);
-        BagWindow.SetActive(false);
+        Home.SetActive(false);
         ProfileWindow.SetActive(false);
-        CurrentLessonWindow.SetActive(false);
+        Store.SetActive(false);
         LessonContainerWindow.SetActive(false);
         PlayerUI.SetActive(false);
 
         StartCoroutine(MoveNavBar(SettingsBtn, "isSetting"));
     }
-
 
     #region Navbar Function
 
@@ -140,7 +150,6 @@ public class UIManager : MonoBehaviour
     {
         if (NavBarAnimationActivate)
         {
-
             BtnInteractable(false);
 
             RectTransform clickedRect = clickBtn.GetComponent<RectTransform>();
@@ -171,7 +180,7 @@ public class UIManager : MonoBehaviour
             navbar_BG.anchoredPosition = targetPos;
         }
     }
-    
+
     //This will be daynamic function to turn on and off the interactable of the button
     private void BtnInteractable(bool isInteractable)
     {
@@ -182,11 +191,9 @@ public class UIManager : MonoBehaviour
         Settings.interactable = isInteractable;
     }
 
-
     //This will hide the button when selected and show when diselected
     private void hideBtn(Button btn, string currentState)
     {
-
         if (previouslySelectedBtn != null)
         {
             previouslySelectedBtn.gameObject.SetActive(true);
@@ -195,9 +202,8 @@ public class UIManager : MonoBehaviour
 
         btn.gameObject.SetActive(false);
 
-
         previouslySelectedBtn = btn;
-        previousState = currentState;   
+        previousState = currentState;
     }
 
     #endregion

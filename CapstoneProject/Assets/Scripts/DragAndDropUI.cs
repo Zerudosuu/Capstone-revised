@@ -17,7 +17,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     private bool isLongPressing = false; // To track long press
     private Vector3 lastMousePosition; // To track mouse movement
 
-    private ItemContainerManager itemContainerManager;
+    public ItemContainerManager itemContainerManager;
 
     private void Awake()
     {
@@ -29,7 +29,11 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         rectTransform = GetComponent<RectTransform>();
 
         // Find the ItemContainerManager script
-        itemContainerManager = FindObjectOfType<ItemContainerManager>();
+    }
+
+    void Start()
+    {
+        itemContainerManager = GetComponentInParent<ItemContainerManager>();
     }
 
     public void OnPointerDown(PointerEventData eventData)

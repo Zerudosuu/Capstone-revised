@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class CurrentLessonToDisplay : MonoBehaviour
@@ -51,6 +52,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
     void Start()
     {
         animator = LessonWindow.GetComponent<Animator>();
+        UpdateLessonDisplay();
     }
 
     public void OnclickOpenClose()
@@ -66,8 +68,8 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
         ChapterNumberAndTitle.text = CurrentLesson.chapterNumber + ". " + CurrentLesson.chapterName;
         ChapterDescription.text = CurrentLesson.fullDescription;
-        RewardCoin.text = CurrentLesson.RewardCoins.ToString();
-        RewardExperience.text = CurrentLesson.RewardExperience.ToString();
+        RewardCoin.text = "Coin: " + CurrentLesson.RewardCoins.ToString();
+        RewardExperience.text = "Experience: " + CurrentLesson.RewardExperience.ToString();
 
         // Clear any existing materials before adding new ones
         foreach (Transform child in MaterialContainer.transform)
@@ -95,6 +97,39 @@ public class CurrentLessonToDisplay : MonoBehaviour
         {
             noCurrentWindow.gameObject.SetActive(false);
             hasCurrentLessonWindow.gameObject.SetActive(true);
+        }
+    }
+
+    public void onGotoLessonButtonClick()
+    {
+        // Open Lesson Window
+        this.gameObject.SetActive(false);
+    }
+
+    public void AbandonLesson()
+    {
+        if (CurrentLesson != null && CurrentLesson.isActive)
+        {
+            // Clear current lesson data
+            CurrentLesson.isActive = false;
+            CurrentLesson.isCompleted = false;
+
+            // Clear UI fields
+            ChapterNumberAndTitle.text = "";
+            ChapterDescription.text = "";
+            RewardCoin.text = "0";
+            RewardExperience.text = "0";
+
+            // Clear the materials
+            foreach (Transform child in MaterialContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Update the UI to show no current lesson
+            UpdateLessonDisplay();
+
+            Debug.Log("Current lesson abandoned.");
         }
     }
 }
