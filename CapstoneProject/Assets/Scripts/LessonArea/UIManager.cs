@@ -37,7 +37,7 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     private GameObject BagWindow;
-    
+
     [SerializeField]
     private GameObject SettingsWindow;
 
@@ -52,27 +52,34 @@ public class UIManager : MonoBehaviour
     public float transitionDuration = 0.5f;
 
     [Header("Navbar Button")]
-    [SerializeField] private Button profileBtn;
+    [SerializeField]
+    private Button profileBtn;
 
-    [SerializeField] private Button ShopBtn;
+    [SerializeField]
+    private Button ShopBtn;
 
-    [SerializeField] private Button HomeBtn;
+    [SerializeField]
+    private Button HomeBtn;
 
-    [SerializeField] private Button LessonsBtn;
+    [SerializeField]
+    private Button LessonsBtn;
 
-    [SerializeField] private Button CurrentQuestBtn;
+    [SerializeField]
+    private Button CurrentQuestBtn;
 
-    [SerializeField] private Button bagBtn;
+    [SerializeField]
+    private Button bagBtn;
 
-    [SerializeField] private Button SettingsBtn;
+    [SerializeField]
+    private Button SettingsBtn;
 
-    [SerializeField] private GameObject subCircle;
+    [SerializeField]
+    private GameObject subCircle;
 
-    [SerializeField] private Sprite[] lessonsSprite;
+    [SerializeField]
+    private Sprite[] lessonsSprite;
 
     private string previousLessonState; // this where the state of the lesson will be stored
-
-
 
     [Header("Animator")]
     [SerializeField]
@@ -104,7 +111,7 @@ public class UIManager : MonoBehaviour
     {
         HomeWindow.SetActive(true);
         PlayerUI.SetActive(true);
-        
+
         ProfileWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
@@ -117,7 +124,7 @@ public class UIManager : MonoBehaviour
     public void OnProfileButtonClick()
     {
         ProfileWindow.SetActive(true);
-        
+
         HomeWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
@@ -131,7 +138,7 @@ public class UIManager : MonoBehaviour
     public void OnStoreButtonClick()
     {
         StoreWindow.SetActive(true);
-        
+
         HomeWindow.SetActive(false);
         ProfileWindow.SetActive(false);
         SettingsWindow.SetActive(false);
@@ -141,7 +148,7 @@ public class UIManager : MonoBehaviour
 
         StartCoroutine(MoveNavBar(ShopBtn, "isShop"));
     }
-    
+
     public void OnLessonClick() // this will show the current state of the Lesson
     {
         if (previousLessonState == null)
@@ -160,39 +167,36 @@ public class UIManager : MonoBehaviour
     public void OnSubCircleClick()
     {
         Debug.Log("Button press on State: " + previousLessonState);
-        
+
         if (previousLessonState == "isLessonContainer")
             LessonState("isCurrentLesson");
         else if (previousLessonState == "isCurrentLesson")
             LessonState("isLessonContainer");
-
     }
 
     #region Lesson State
     private void OnCurrentLesson()
     {
         LessonWindow.transform.GetChild(1).gameObject.SetActive(true); // This will show the Current lesson window
-        LessonWindow.transform.GetChild(0).gameObject.SetActive(false);// This will hide the Lesson selection window
-        
+        LessonWindow.transform.GetChild(0).gameObject.SetActive(false); // This will hide the Lesson selection window
+
         ProfileWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         BagWindow.SetActive(false);
         HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
-
     }
 
     private void OnLessonContainer()
     {
         LessonWindow.transform.GetChild(0).gameObject.SetActive(true); // This will show the Lesson selection window
-        LessonWindow.transform.GetChild(1).gameObject.SetActive(false);// This will hide the Current lesson window
+        LessonWindow.transform.GetChild(1).gameObject.SetActive(false); // This will hide the Current lesson window
 
         ProfileWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         BagWindow.SetActive(false);
         HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
-
     }
 
     #endregion
@@ -205,7 +209,6 @@ public class UIManager : MonoBehaviour
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
         PlayerUI.SetActive(false);
-
     }
 
     #region Navbar Function
@@ -245,7 +248,6 @@ public class UIManager : MonoBehaviour
             BtnInteractable(true);
 
             navbar_BG.anchoredPosition = targetPos;
-
         }
     }
 
@@ -265,7 +267,7 @@ public class UIManager : MonoBehaviour
         if (previouslySelectedBtn != null)
         {
             previouslySelectedBtn.gameObject.SetActive(true);
-            navBarAnimator.ResetTrigger(previousState); 
+            navBarAnimator.ResetTrigger(previousState);
         }
 
         btn.gameObject.SetActive(false);
@@ -289,14 +291,12 @@ public class UIManager : MonoBehaviour
                 return;
 
             case "isLessonContainer":
-                OnLessonContainer();// Show the Lesson Selection Window
+                OnLessonContainer(); // Show the Lesson Selection Window
                 LessonsBtn.GetComponent<Image>().sprite = lessonsSprite[1];
                 LessonsBtn.GetComponent<Image>().SetNativeSize();
                 previousLessonState = currentLessonState;
                 return;
         }
-
-        
     }
 
     #endregion

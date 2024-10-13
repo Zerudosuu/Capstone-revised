@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -19,6 +20,10 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
     public ItemContainerManager itemContainerManager;
 
+    public Item item;
+
+    public TextMeshProUGUI itemName;
+
     private void Awake()
     {
         // Ensure the CanvasGroup is added
@@ -34,6 +39,14 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     void Start()
     {
         itemContainerManager = GetComponentInParent<ItemContainerManager>();
+    }
+
+    public void SetItem(Item newItem)
+    {
+        item = newItem;
+
+        if (itemName != null)
+            itemName.text = item.itemName;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -56,6 +69,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
 
+        itemContainerManager.OnItemClick(item);
         itemContainerManager.PopUpButtons.SetActive(false);
     }
 
@@ -89,6 +103,10 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         {
             // Snap the object to the destination
             transform.position = raycastResult.gameObject.transform.position;
+            BagDropArea dropArea = raycastResult.gameObject.GetComponent<BagDropArea>();
+
+            dropArea.AddedToInventory(item);
+            transform.position = originalPosition;
         }
         else
         {
@@ -112,7 +130,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
             {
                 // Long press detected
                 isLongPressing = true;
-                Debug.Log("Long press detected on: " + gameObject.name);
+                Debug.Log("Long press detected on: " + item.itemName);
 
                 itemContainerManager.PopUP(transform.position);
             }

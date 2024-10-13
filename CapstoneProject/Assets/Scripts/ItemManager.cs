@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
@@ -17,6 +18,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField]
     private Items items;
 
+    Item TheirItem;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -26,6 +29,9 @@ public class ItemManager : MonoBehaviour
             // Check the item type and instantiate the prefab in the appropriate area
             GameObject itemObject = Instantiate(PrefabItem);
             itemObject.name = item.itemName;
+
+            DragAndDropUI itemDisplay = itemObject.GetComponent<DragAndDropUI>();
+            itemDisplay.SetItem(item);
 
             if (item.itemType == Item.ItemType.Equipment)
             {

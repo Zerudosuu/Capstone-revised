@@ -6,7 +6,11 @@ using UnityEngine.UIElements;
 public class ItemContainerManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    private DragAndDropUI[] dragAndDropItems;
+    [SerializeField]
+    private Items itemList;
+
+    [SerializeField]
+    private Item CurrentSelectedItem;
 
     [SerializeField]
     public GameObject PopUpButtons;
@@ -14,7 +18,6 @@ public class ItemContainerManager : MonoBehaviour
     void Awake()
     {
         PopUpButtons.SetActive(false);
-        dragAndDropItems = GetComponentsInChildren<DragAndDropUI>();
     }
 
     // Update is called once per frame
@@ -22,5 +25,11 @@ public class ItemContainerManager : MonoBehaviour
     {
         PopUpButtons.SetActive(true);
         PopUpButtons.transform.position = SelectedPosition;
+    }
+
+    public void OnItemClick(Item item)
+    {
+        CurrentSelectedItem = item;
+        Debug.Log(item.itemName + " is selected");
     }
 }
