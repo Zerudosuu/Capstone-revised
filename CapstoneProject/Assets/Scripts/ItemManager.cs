@@ -1,19 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [Header("Container")]
+    [Header("Item Container")]
     [SerializeField]
     private GameObject EquipmentArea;
 
     [SerializeField]
     private GameObject ChemicalArea;
 
+    [Header("Shop Container")]
+    [SerializeField]
+    private GameObject ShopEquipmentArea;
+
+    [SerializeField]
+    private GameObject ShopChemicalArea;
+
     [Header("Prefab")]
-    public GameObject PrefabItem;
+    public GameObject InventoryPrefabItem; // this prefab contains drag and drop
+
+    public GameObject ShopPrefabItem; // this prefab contains shop
 
     [SerializeField]
     private Items items;
@@ -26,26 +36,63 @@ public class ItemManager : MonoBehaviour
         // Iterate through the list of items in the Items ScriptableObject
         foreach (Item item in items.items)
         {
-            // Check the item type and instantiate the prefab in the appropriate area
-            GameObject itemObject = Instantiate(PrefabItem);
-            itemObject.name = item.itemName;
-
-            DragAndDropUI itemDisplay = itemObject.GetComponent<DragAndDropUI>();
-            itemDisplay.SetItem(item);
-
-            if (item.itemType == Item.ItemType.Equipment)
+            if (item.isUnlock)
             {
-                // Place the object in the EquipmentArea
-                itemObject.transform.SetParent(EquipmentArea.transform, false);
+                InstantiateInInventory(item);
             }
-            else if (item.itemType == Item.ItemType.Chemical)
+            else if (item.isUnlock == false)
             {
-                // Place the object in the ChemicalArea
-                itemObject.transform.SetParent(ChemicalArea.transform, false);
+                InstantiateInShop(item);
             }
         }
     }
 
+    // if the item is unlock it will instantiate in the Inventory
+    public void InstantiateInInventory(Item item)
+    {
+        // Check the item type and instantiate the prefab in the appropriate area
+        GameObject itemObject = Instantiate(InventoryPrefabItem);
+        itemObject.name = item.itemName;
+
+        DragAndDropUI itemDisplay = itemObject.GetComponent<DragAndDropUI>();
+        itemDisplay.SetItem(item);
+
+        //add here where if the item is unlock
+        if (item.itemType == Item.ItemType.Equipment)
+        {
+            // Place the object in the EquipmentArea
+            itemObject.transform.SetParent(EquipmentArea.transform, false);
+        }
+        else if (item.itemType == Item.ItemType.Chemical)
+        {
+            // Place the object in the ChemicalArea
+            itemObject.transform.SetParent(ChemicalArea.transform, false);
+        }
+    }
+
+    //if the item in lock it will instantitate in the shop
+    public void InstantiateInShop(Item item)
+    {
+        GameObject itemObject = Instantiate(ShopPrefabItem);
+        itemObject.name = item.itemName;
+
+        itemShop shopItem = itemObject.GetComponent<itemShop>();
+        shopItem.SetItem(item);
+
+        //add here where if the item is unlock
+        if (item.itemType == Item.ItemType.Equipment)
+        {
+            // Place the object in the EquipmentArea
+            itemObject.transform.SetParent(ShopEquipmentArea.transform, false);
+        }
+        else if (item.itemType == Item.ItemType.Chemical)
+        {
+            // Place the object in the ChemicalArea
+            itemObject.transform.SetParent(ShopChemicalArea.transform, false);
+        }
+    }
+
+        
     // Update is called once per frame
-    void Update() { }
+    void Update() { }   
 }
