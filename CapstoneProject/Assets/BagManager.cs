@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BagManager : MonoBehaviour
 {
@@ -29,9 +31,19 @@ public class BagManager : MonoBehaviour
         BagItem bagItem = newItem.GetComponent<BagItem>();
         bagItem.SetBagItem(item);
         bagItems.Add(bagItem);
+
         newItem.GetComponent<BagItem>().SetBagItem(item);
         newItem.transform.SetAsFirstSibling();
         UpdateItemCount();
+
+        Button itemButton = newItem.GetComponent<Button>();
+        itemButton.onClick.AddListener(() => SelectItem(item));
+    }
+
+    private void SelectItem(Item item)
+    {
+        // TODO: Implement functionality for selecting an item
+        Debug.Log("Selected Item: " + item.itemName);
     }
 
     public void UpdateItemCount()
@@ -48,10 +60,12 @@ public class BagManager : MonoBehaviour
         }
     }
 
-    public void RemoveItem(BagItem bagItem)
-    {
-        bagItems.Remove(bagItem); // Remove the item from the list
-        Destroy(bagItem.gameObject);
-        UpdateItemCount();
-    }
+    // public void RemoveItem(BagItem bagItem)
+    // {
+    //     bagItems.Remove(bagItem); // Remove the item from the list
+    //     Destroy(bagItem.gameObject);
+    //     UpdateItemCount();
+    // }
 }
+
+

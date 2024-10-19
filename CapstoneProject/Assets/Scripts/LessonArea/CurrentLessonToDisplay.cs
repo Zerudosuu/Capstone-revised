@@ -104,6 +104,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
     {
         // Open Lesson Window
         this.gameObject.SetActive(false);
+        LessonWindow.SetActive(true);
     }
 
     public void AbandonLesson()

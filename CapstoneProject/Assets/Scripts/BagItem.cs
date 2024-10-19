@@ -1,6 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +8,9 @@ public class BagItem : MonoBehaviour
 
     public Button DeleteButton;
     BagManager bagManager;
+
+    [SerializeField]
+    private TextMeshProUGUI itemNameText;
 
     void Start()
     {
@@ -21,11 +22,13 @@ public class BagItem : MonoBehaviour
     public void SetBagItem(Item item)
     {
         this.item = item;
-        DeleteButton.onClick.AddListener(DeleteItem);
+        // DeleteButton.onClick.AddListener(DeleteItem);
+
+        itemNameText.text = item.itemName;
     }
 
-    public void DeleteItem()
-    {
-        bagManager.RemoveItem(this);
-    }
+    // public void DeleteItem()
+    // {
+    //     bagManager.RemoveItem(this);
+    // }
 }

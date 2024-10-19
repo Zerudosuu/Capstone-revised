@@ -275,6 +275,7 @@ MonoBehaviour:
     itemIcon: {fileID: 0}
     itemType: 0
   DeleteButton: {fileID: 5892800898777379112}
+  itemNameText: {fileID: 2907115043645154790}
 --- !u!1 &5286155139434515326
 GameObject:
   m_ObjectHideFlags: 0
