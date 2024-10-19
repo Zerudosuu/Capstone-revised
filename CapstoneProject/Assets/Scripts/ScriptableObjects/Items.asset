@@ -17,91 +17,113 @@ MonoBehaviour:
     itemDescription: A tool used to measure temperature up to 360 Degrees
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
       combustion.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Tripod
     itemDescription: A three-legged platform used to support flasks and beakers.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
       a heat source.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
       produces fire.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Denatured alcohol
     itemDescription: A solvent and fuel for alcohol burners.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 1
   - itemName: Ice
     itemDescription: Frozen water.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0
   - itemName: 500ml beaker
     itemDescription: ' A glass container used to hold liquids.'
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 0
   - itemName: Thermometer (110  Degrees)
     itemDescription: A tool used to measure up to 110 temperature.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Erlenmeyer flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 0
   - itemName: Cork or rubber stopper
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Denatured alcohol
     itemDescription: ' solvent and fuel for alcohol burners.'
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Liquid dropper
     itemDescription: A tool used to transfer small amounts of liquid.
     itemIcon: {fileID: 0}
     itemType: 0
+    isUnlock: 1
   - itemName: Iron nail
     itemDescription: A silver-white metal.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0
   - itemName: Agua oxigenada
     itemDescription: An antiseptic liquid.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 1
   - itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 1
   - itemName: Manganese dioxide (MnO2)
     itemDescription: An oxide of manganese used in batteries.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 1
   - itemName: Copper Sulfate (CuSO4) solution
     itemDescription: An inorganic compound used as a fungicide, algaecide, and root
       killer.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 1
   - itemName: sodium hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0
   - itemName: Denatured alcohol
     itemDescription: ' solvent and fuel for alcohol burners.'
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0
   - itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0
   - itemName: Baking Soda
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 0}
     itemType: 1
+    isUnlock: 0

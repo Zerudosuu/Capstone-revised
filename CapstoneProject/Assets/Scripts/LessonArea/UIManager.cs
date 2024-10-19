@@ -85,7 +85,7 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Animator navBarAnimator;
 
-    [Header("Others")]
+    [Header("Player stats UI")]
     [SerializeField]
     private GameObject PlayerUI;
 
@@ -117,6 +117,7 @@ public class UIManager : MonoBehaviour
         LessonWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         BagWindow.SetActive(false);
+        PlayerUI.SetActive(false);
 
         StartCoroutine(MoveNavBar(HomeBtn, "isHome"));
     }

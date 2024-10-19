@@ -15,7 +15,7 @@ public class Item
     public string itemDescription = "";
     public Sprite itemIcon; // Add a field for the item icon
     public ItemType itemType;
-
+    public bool isUnlock; // checking if the item is unlock
     public enum ItemType
     {
         Equipment,
