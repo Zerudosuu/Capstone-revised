@@ -7,13 +7,14 @@ using UnityEngine.UI;
 public class itemShop : MonoBehaviour
 {
     [Header("item")]
-    [SerializeField] private Item itemInContainer;
+    [SerializeField]
+    private Item itemInContainer;
 
     private StoreSystem storeSystem;
 
     private void Awake()
     {
-        storeSystem = FindAnyObjectByType<StoreSystem>();
+        storeSystem = FindObjectOfType<StoreSystem>(true);
 
         Button itemButton = GetComponent<Button>();
         itemButton.onClick.AddListener(() => DisplayInShop());
@@ -24,17 +25,20 @@ public class itemShop : MonoBehaviour
         gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = itemInContainer.itemName;
     }
 
-    private void DisplayInShop()    
+    private void DisplayInShop()
     {
-        if ( storeSystem != null )
+        if (storeSystem != null)
         {
             storeSystem.SelectedItem(itemInContainer, this.gameObject);
+        }
+        else
+        {
+            Debug.Log("StoreSystem is not found");
         }
     }
 
     public void SetItem(Item item)
     {
         itemInContainer = item;
-
     }
 }

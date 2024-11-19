@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class BagManager : MonoBehaviour
 {
@@ -18,6 +15,7 @@ public class BagManager : MonoBehaviour
     [SerializeField]
     private GameObject ItemCountText;
 
+    [SerializeField]
     private List<BagItem> bagItems = new List<BagItem>();
 
     void Start()
@@ -27,17 +25,26 @@ public class BagManager : MonoBehaviour
 
     public void AddItemInBag(Item item)
     {
-        GameObject newItem = Instantiate(ItemPrefab, BagContainer.transform);
-        BagItem bagItem = newItem.GetComponent<BagItem>();
-        bagItem.SetBagItem(item);
-        bagItems.Add(bagItem);
+        // Check if the item already exists in the bag
+        BagItem existingBagItem = bagItems.Find(b => b.item.itemName == item.itemName);
 
-        newItem.GetComponent<BagItem>().SetBagItem(item);
-        newItem.transform.SetAsFirstSibling();
+        if (existingBagItem != null)
+        {
+            // If the item exists, increment its count
+            existingBagItem.IncrementCount();
+        }
+        else
+        {
+            // If the item doesn't exist, add a new entry
+            GameObject newItem = Instantiate(ItemPrefab, BagContainer.transform);
+            BagItem bagItem = newItem.GetComponent<BagItem>();
+            bagItem.SetBagItem(item);
+            bagItems.Add(bagItem);
+
+            newItem.transform.SetAsFirstSibling();
+        }
+
         UpdateItemCount();
-
-        Button itemButton = newItem.GetComponent<Button>();
-        itemButton.onClick.AddListener(() => SelectItem(item));
     }
 
     private void SelectItem(Item item)
@@ -60,12 +67,10 @@ public class BagManager : MonoBehaviour
         }
     }
 
-    // public void RemoveItem(BagItem bagItem)
-    // {
-    //     bagItems.Remove(bagItem); // Remove the item from the list
-    //     Destroy(bagItem.gameObject);
-    //     UpdateItemCount();
-    // }
+    public void RemoveItem(BagItem bagItem)
+    {
+        bagItems.Remove(bagItem); // Remove the item from the list
+        Destroy(bagItem.gameObject);
+        UpdateItemCount();
+    }
 }
-
-

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -6,41 +7,51 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [Header("Item Container")]
-    [SerializeField]
+    [Header("Item Container")] [SerializeField]
     private GameObject EquipmentArea;
 
-    [SerializeField]
-    private GameObject ChemicalArea;
+    [SerializeField] private GameObject ChemicalArea;
 
-    [Header("Shop Container")]
-    [SerializeField]
+    [Header("Shop Container")] [SerializeField]
     private GameObject ShopEquipmentArea;
 
-    [SerializeField]
-    private GameObject ShopChemicalArea;
+    [SerializeField] private GameObject ShopChemicalArea;
 
-    [Header("Prefab")]
-    public GameObject InventoryPrefabItem; // this prefab contains drag and drop
+    [Header("Prefab")] public GameObject InventoryPrefabItem; // this prefab contains drag and drop
 
     public GameObject ShopPrefabItem; // this prefab contains shop
 
-    [SerializeField]
-    private Items items;
+    [SerializeField] private Items items;
+    private List<Item> clonedItems = new List<Item>();
 
-    Item TheirItem;
 
     // Start is called before the first frame update
     void Start()
     {
-        // Iterate through the list of items in the Items ScriptableObject
-        foreach (Item item in items.items)
+        CloneItems();
+        InstantiateItems();
+
+        Debug.Log(clonedItems.Count);
+    }
+
+    void CloneItems()
+    {
+        foreach (var item in items.items)
+        {
+            clonedItems.Add(item.Clone());
+        }
+    }
+
+// Instantiate cloned items in Inventory or Shop
+    void InstantiateItems()
+    {
+        foreach (Item item in clonedItems)
         {
             if (item.isUnlock)
             {
                 InstantiateInInventory(item);
             }
-            else if (item.isUnlock == false)
+            else
             {
                 InstantiateInShop(item);
             }
@@ -50,22 +61,25 @@ public class ItemManager : MonoBehaviour
     // if the item is unlock it will instantiate in the Inventory
     public void InstantiateInInventory(Item item)
     {
-        // Check the item type and instantiate the prefab in the appropriate area
         GameObject itemObject = Instantiate(InventoryPrefabItem);
         itemObject.name = item.itemName;
 
         DragAndDropUI itemDisplay = itemObject.GetComponent<DragAndDropUI>();
-        itemDisplay.SetItem(item);
+        if (itemDisplay != null)
+        {
+            itemDisplay.SetItem(item); // Ensure the item is set here
+        }
+        else
+        {
+            Debug.LogError("DragAndDropUI component is missing on the InventoryPrefabItem.");
+        }
 
-        //add here where if the item is unlock
         if (item.itemType == Item.ItemType.Equipment)
         {
-            // Place the object in the EquipmentArea
             itemObject.transform.SetParent(EquipmentArea.transform, false);
         }
         else if (item.itemType == Item.ItemType.Chemical)
         {
-            // Place the object in the ChemicalArea
             itemObject.transform.SetParent(ChemicalArea.transform, false);
         }
     }
@@ -92,7 +106,9 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-        
+
     // Update is called once per frame
-    void Update() { }   
+    void Update()
+    {
+    }
 }

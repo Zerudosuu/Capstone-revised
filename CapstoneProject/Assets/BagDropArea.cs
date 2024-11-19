@@ -1,20 +1,28 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BagDropArea : MonoBehaviour
 {
-    BagManager bagManager;
+    BagManager _bagManager;
 
     void Start()
     {
-        bagManager = FindAnyObjectByType<BagManager>();
+        _bagManager = FindObjectOfType<BagManager>(true);
+
+        if (_bagManager == null)
+            print("bagManager is null");
     }
 
     public void AddedToInventory(Item item)
     {
-        print("Added to inventory: " + item.itemName);
-        bagManager.AddItemInBag(item);
-        bagManager.UpdateItemCount();
+        if (item != null)
+        {
+            print("Added to inventory: " + item);
+            _bagManager.AddItemInBag(item);
+            // bagManager.UpdateItemCount();
+        }
+        else
+        {
+            print("Item was null!");
+        }
     }
 }

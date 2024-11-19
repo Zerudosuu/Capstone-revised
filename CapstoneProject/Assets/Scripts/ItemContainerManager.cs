@@ -5,15 +5,9 @@ using UnityEngine.UIElements;
 
 public class ItemContainerManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    [SerializeField]
-    private Items itemList;
+    [SerializeField] private Item CurrentSelectedItem;
 
-    [SerializeField]
-    private Item CurrentSelectedItem;
-
-    [SerializeField]
-    public GameObject PopUpButtons;
+    [SerializeField] public GameObject PopUpButtons;
 
     void Awake()
     {

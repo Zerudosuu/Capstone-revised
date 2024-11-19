@@ -41,7 +41,7 @@ MonoBehaviour:
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
-  - itemName: Denatured alcohol
+  - itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
     itemIcon: {fileID: 0}
     itemType: 1
@@ -50,37 +50,32 @@ MonoBehaviour:
     itemDescription: Frozen water.
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 0
+    isUnlock: 1
   - itemName: 500ml beaker
     itemDescription: ' A glass container used to hold liquids.'
     itemIcon: {fileID: 0}
     itemType: 0
-    isUnlock: 0
-  - itemName: Thermometer (110  Degrees)
+    isUnlock: 1
+  - itemName: Thermometer 110  Degrees
     itemDescription: A tool used to measure up to 110 temperature.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
-  - itemName: Erlenmeyer flask
+  - itemName: Erlenmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 0}
     itemType: 0
-    isUnlock: 0
-  - itemName: Cork or rubber stopper
+    isUnlock: 1
+  - itemName: Cork or Rubber stopper
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
-  - itemName: Denatured alcohol
-    itemDescription: ' solvent and fuel for alcohol burners.'
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 1
-  - itemName: Liquid dropper
+  - itemName: Liquid Dropper
     itemDescription: A tool used to transfer small amounts of liquid.
     itemIcon: {fileID: 0}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
   - itemName: Iron nail
     itemDescription: A silver-white metal.
     itemIcon: {fileID: 0}
@@ -90,7 +85,7 @@ MonoBehaviour:
     itemDescription: An antiseptic liquid.
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
   - itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 0}
@@ -111,19 +106,19 @@ MonoBehaviour:
     itemDescription: Used in manufacturing various products.
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 0
+    isUnlock: 1
   - itemName: Denatured alcohol
     itemDescription: ' solvent and fuel for alcohol burners.'
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 0
+    isUnlock: 1
   - itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 0
+    isUnlock: 1
   - itemName: Baking Soda
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 0}
     itemType: 1
-    isUnlock: 0
+    isUnlock: 1

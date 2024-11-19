@@ -1437,6 +1437,7 @@ MonoBehaviour:
   ItemPrefab: {fileID: 4509942512325097608, guid: 73a83c98a000726488f0d6b80610ea5b, type: 3}
   ItemCountContainer: {fileID: 1793997345}
   ItemCountText: {fileID: 1000804025}
+  bagItems: []
 --- !u!1 &128438158
 GameObject:
   m_ObjectHideFlags: 0
@@ -3857,7 +3858,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462e6af1a83e68c4198bd3610b458e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: {fileID: 0}
   CurrentSelectedItem:
     itemName: 
     itemDescription: 
@@ -5007,7 +5007,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462e6af1a83e68c4198bd3610b458e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: {fileID: 0}
   CurrentSelectedItem:
     itemName: 
     itemDescription: 
@@ -5317,8 +5316,8 @@ RectTransform:
   - {fileID: 649386078}
   - {fileID: 437471073}
   - {fileID: 712131161}
-  - {fileID: 319693311}
   - {fileID: 123922909}
+  - {fileID: 319693311}
   - {fileID: 1923489760}
   - {fileID: 376985546}
   m_Father: {fileID: 1736368125}
@@ -10501,7 +10500,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462e6af1a83e68c4198bd3610b458e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: {fileID: 0}
   CurrentSelectedItem:
     itemName: 
     itemDescription: 
@@ -14415,7 +14413,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 462e6af1a83e68c4198bd3610b458e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemList: {fileID: 0}
   CurrentSelectedItem:
     itemName: 
     itemDescription: 

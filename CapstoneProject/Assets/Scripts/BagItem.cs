@@ -8,13 +8,16 @@ public class BagItem : MonoBehaviour
 
     public Button DeleteButton;
     BagManager bagManager;
+    public TextMeshProUGUI itemCountText;
 
     [SerializeField]
     private TextMeshProUGUI itemNameText;
 
+    private int count = 1; // Default count is 1
+
     void Start()
     {
-        bagManager = FindAnyObjectByType<BagManager>();
+        bagManager = FindObjectOfType<BagManager>(true);
         if (bagManager != null)
             print("bagManager is found");
     }
@@ -22,13 +25,27 @@ public class BagItem : MonoBehaviour
     public void SetBagItem(Item item)
     {
         this.item = item;
-        // DeleteButton.onClick.AddListener(DeleteItem);
 
         itemNameText.text = item.itemName;
+        UpdateItemCountText();
     }
 
-    // public void DeleteItem()
-    // {
-    //     bagManager.RemoveItem(this);
-    // }
+    public void IncrementCount()
+    {
+        count++;
+        UpdateItemCountText();
+    }
+
+    private void UpdateItemCountText()
+    {
+        if (itemCountText != null)
+        {
+            itemCountText.text = count > 1 ? $"x{count}" : ""; // Show count only if > 1
+        }
+    }
+
+    public void DeleteItem()
+    {
+        bagManager.RemoveItem(this);
+    }
 }

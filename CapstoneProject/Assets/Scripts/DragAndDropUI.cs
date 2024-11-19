@@ -20,7 +20,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
     public ItemContainerManager itemContainerManager;
 
-    public Item item;
+    public Item currenItem;
 
     public TextMeshProUGUI itemName;
 
@@ -43,10 +43,19 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
 
     public void SetItem(Item newItem)
     {
-        item = newItem;
+        currenItem = newItem;
+
+        if (currenItem == null)
+        {
+            Debug.LogError("currenItem is null when calling SetItem.");
+        }
+        else
+        {
+            Debug.Log($"SetItem called with: {currenItem.itemName}");
+        }
 
         if (itemName != null)
-            itemName.text = item.itemName;
+            itemName.text = currenItem.itemName;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -69,24 +78,27 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         canvasGroup.alpha = 0.5f;
         canvasGroup.blocksRaycasts = false;
 
-        itemContainerManager.OnItemClick(item);
+        itemContainerManager.OnItemClick(currenItem);
         itemContainerManager.PopUpButtons.SetActive(false);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        canvasGroup.alpha = 1f;
-        // Update the object's position to follow the mouse, considering the offset
-        transform.position = Input.mousePosition + offset;
+        rectTransform.anchoredPosition += eventData.delta / CanvasScalerFactor();
 
-        // If the mouse moved beyond the threshold, reset long press time
+        // Reset long press tracking on significant movement
         if (Vector3.Distance(lastMousePosition, Input.mousePosition) > movementThreshold)
         {
-            pressTime = 0f; // Reset the long press timer if there's significant movement
+            pressTime = 0f;
             isLongPressing = false;
-            lastMousePosition = Input.mousePosition; //
-            itemContainerManager.PopUpButtons.SetActive(false);
+            lastMousePosition = Input.mousePosition;
         }
+    }
+
+    private float CanvasScalerFactor()
+    {
+        Canvas canvas = GetComponentInParent<Canvas>();
+        return canvas != null ? canvas.scaleFactor : 1f;
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -96,25 +108,26 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         canvasGroup.alpha = 1f;
 
         // Check if the object is dropped on a valid target
-        RaycastResult raycastResult = eventData.pointerCurrentRaycast;
-
-        // If the object was dropped on a valid destination
-        if (raycastResult.gameObject != null && raycastResult.gameObject.CompareTag(destinationTag))
+        if (
+            eventData.pointerCurrentRaycast.gameObject != null
+            && eventData.pointerCurrentRaycast.gameObject.CompareTag(destinationTag)
+        )
         {
-            // Snap the object to the destination
-            transform.position = raycastResult.gameObject.transform.position;
-            BagDropArea dropArea = raycastResult.gameObject.GetComponent<BagDropArea>();
-
-            dropArea.AddedToInventory(item);
-            transform.position = originalPosition;
+            var dropArea = eventData.pointerCurrentRaycast.gameObject.GetComponent<BagDropArea>();
+            if (dropArea != null)
+            {
+                dropArea.AddedToInventory(currenItem);
+            }
+            else
+            {
+                Debug.LogWarning("No BagDropArea found on drop target.");
+            }
         }
         else
         {
-            // If not dropped on the correct area, return to the original position
-            transform.position = originalPosition;
+            transform.position = originalPosition; // Return to original position
         }
-
-        // Reset dragging state
+        transform.position = originalPosition;
         isDragging = false;
     }
 
@@ -130,7 +143,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
             {
                 // Long press detected
                 isLongPressing = true;
-                Debug.Log("Long press detected on: " + item.itemName);
+                Debug.Log("Long press detected on: " + currenItem.itemName);
 
                 itemContainerManager.PopUP(transform.position);
             }
