@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LessonManager : MonoBehaviour
 {
@@ -40,6 +41,7 @@ public class LessonManager : MonoBehaviour
     void Start()
     {
         Populatebuttons();
+        PickFirstAvailableLesson();
     }
 
     void Populatebuttons()
@@ -55,6 +57,11 @@ public class LessonManager : MonoBehaviour
 
             buttonScript.ButtonID = lesson.LessonID;
             buttonScript.ChapterNumber.text = lesson.LessonID;
+
+            if (lesson.isCompleted)
+            {
+                buttonScript.GetComponent<Button>().interactable = false;
+            }
         }
     }
 
@@ -159,6 +166,18 @@ public class LessonManager : MonoBehaviour
         foreach (MaterialEntry material in lesson.materials)
         {
             questAsLesson.materials.Add(material);
+        }
+    }
+
+    public void PickFirstAvailableLesson()
+    {
+        foreach (Lesson lesson in lessonsData.lessons)
+        {
+            if (lesson.isCompleted == false)
+            {
+                UpdateLessonContainer(lesson);
+                break;
+            }
         }
     }
 }

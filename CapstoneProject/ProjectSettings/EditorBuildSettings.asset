@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Musayan/Scene/Lesson_UI Anim.unity
     guid: c2e6b6b5989ecfb42acc7432d72a8597
+  - enabled: 1
+    path: Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity
+    guid: dc372bcf491d92240b7772928cff97d5
   m_configObjects: {}

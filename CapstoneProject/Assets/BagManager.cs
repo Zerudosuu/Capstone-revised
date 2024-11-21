@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BagManager : MonoBehaviour
@@ -18,9 +20,13 @@ public class BagManager : MonoBehaviour
     [SerializeField]
     private List<BagItem> bagItems = new List<BagItem>();
 
+    CurrentLessonToDisplay currentLessonToDisplay;
+
     void Start()
     {
+        currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         ItemCountContainer.gameObject.SetActive(false);
+        DontDestroyOnLoad(gameObject);
     }
 
     public void AddItemInBag(Item item)
@@ -72,5 +78,18 @@ public class BagManager : MonoBehaviour
         bagItems.Remove(bagItem); // Remove the item from the list
         Destroy(bagItem.gameObject);
         UpdateItemCount();
+    }
+
+    public void ClearBag()
+    {
+        // TODO: Implement functionality for clearing the bag
+        bagItems.Clear();
+        UpdateItemCount();
+    }
+
+    public void ProceedToExperiment()
+    {
+        // TODO: Implement functionality for proceeding to the experiment
+        //  currentLessonToDisplay.ProceedToExperiment();
     }
 }

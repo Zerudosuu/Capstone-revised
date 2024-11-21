@@ -89,6 +89,9 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private GameObject PlayerUI;
 
+    [Header("StateManager")]
+    public GameObject PauseWindow;
+
     void Start()
     {
         OnHomeButtonClick(); // it will start at home window

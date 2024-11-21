@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -48,6 +49,9 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
     [SerializeField]
     private GameObject Material;
+
+    [SerializeField]
+    private GameObject ProceedWindow;
 
     void Start()
     {
@@ -131,6 +135,31 @@ public class CurrentLessonToDisplay : MonoBehaviour
             UpdateLessonDisplay();
 
             Debug.Log("Current lesson abandoned.");
+        }
+    }
+
+    public void CheckItem(Item item)
+    {
+        foreach (var currentItemQuest in CurrentLesson.materials)
+        {
+            if (item.itemName == currentItemQuest.materialName)
+            {
+                currentItemQuest.isCollected = true;
+                Debug.Log("Item collected: " + item.itemName);
+
+                MaterialContainer
+                    .GetComponentsInChildren<TextMeshProUGUI>()
+                    .Where(material => material.text == item.itemName)
+                    .ToList()
+                    .ForEach(material => material.fontStyle = FontStyles.Strikethrough);
+
+                if (CurrentLesson.materials.All(m => m.isCollected))
+                {
+                    Debug.Log("Lesson completed: " + CurrentLesson.chapterName);
+                    ProceedWindow.SetActive(true);
+                }
+                // If all items are collected, mark the lesson as completed
+            }
         }
     }
 }

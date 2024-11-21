@@ -14,74 +14,76 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lessons:
   - LessonID: 1
-    chapterName: Getting to know Gasses
+    chapterName: Getting to know gasses
     chapterNumber: 1
     chapterSummaryDescription: 'Find out that gasses have the following properties:
-      mass, volume, temperature, and pressure. '
-    fullDescription: 'The relationship between mass, volume, temperature, and pressure
+      mass, volume, temperature, and pressure'
+    fullDescription: The relationship between mass, volume, temperature, and pressure
       is essential in understanding gas behavior, as changes in one property can
-      significantly affect the others. '
+      significantly affect the others.
     materials:
-    - materialName: ' Thermometer'
+    - materialName: Thermometer (360 Degrees)
       isCollected: 0
     - materialName: Alcohol Lamp
       isCollected: 0
     - materialName: Tripod
       isCollected: 0
-    - materialName: Wire Qauze
+    - materialName: Wire gauze
       isCollected: 0
     - materialName: Match
-      isCollected: 0
-    - materialName: Denured Alcohol
+      isCollected: 1
+    - materialName: Denatured Alcohol
       isCollected: 0
     - materialName: Ice
       isCollected: 0
-    - materialName: 500ml Beaker
+    - materialName: 500ml beaker
       isCollected: 0
     isCompleted: 0
-    Coins: 23
-    Experience: 51
+    Coins: 0
+    Experience: 0
   - LessonID: 2
-    chapterName: Gay-Lussac's Law
+    chapterName: "Gay-Lussac\u2019s Law"
     chapterNumber: 2
     chapterSummaryDescription: Investigating the relationship between temperature
       and pressure at constant volume.
-    fullDescription: 'Exploring the relationship of temperature and pressure at constant
+    fullDescription: Exploring the relationship of temperature and pressure at constant
       volume demonstrates that raising the temperature increases pressure as a result
-      of greater molecular movement. '
+      of greater molecular movement.
     materials:
-    - materialName: 110 Degrees Thermometer
+    - materialName: Thermometer 110 Degrees
       isCollected: 0
     - materialName: Erlrnmeyer Flask
       isCollected: 0
     - materialName: Cork or Rubber stopper
       isCollected: 0
-    - materialName: Denatured Alcohol
-      isCollected: 0
     - materialName: Liquid Dropper
       isCollected: 0
+    - materialName: Denatured Alcohol
+      isCollected: 0
     isCompleted: 0
-    Coins: 100
-    Experience: 100
+    Coins: 0
+    Experience: 0
   - LessonID: 3
-    chapterName: Everything has changed
+    chapterName: 'Everything has changed '
     chapterNumber: 3
-    chapterSummaryDescription: Chemical reactions; distinguish evidences of chemical
+    chapterSummaryDescription: Chemical reactions; distinguish evidence of chemical
       reaction
-    fullDescription: ' Chemical reactions can be distinguished by evidence such as
-      color change, temperature change, gas production, and the formation of a precipitate. '
+    fullDescription: Chemical reactions can be distinguished by evidence such as
+      color change, temperature change, gas production, and the formation of a precipitate.
     materials:
-    - materialName: Mg Ribbon
+    - materialName: Mg Ribbon (mg)
       isCollected: 0
     - materialName: Iron nail
       isCollected: 0
-    - materialName: 30 Volumes Agua Oxigenada
+    - materialName: Agua Oxigenada
       isCollected: 0
-    - materialName: Hydrogen Peroxide
+    - materialName: Hydrogen peroxide (H2O2)
       isCollected: 0
-    - materialName: Manganese Dioxide
+    - materialName: Manganese dioxide (MnO2)
       isCollected: 0
-    - materialName: '10% Copper Sulfate Solution '
+    - materialName: Copper Sulfate (CuSO4) solution
+      isCollected: 0
+    - materialName: Sodium Hydroxide (NaOH) solution
       isCollected: 0
     - materialName: Denatured Alcohol
       isCollected: 0
@@ -89,30 +91,27 @@ MonoBehaviour:
       isCollected: 0
     - materialName: Baking Soda
       isCollected: 0
-    - materialName: Matches
+    - materialName: Match
       isCollected: 0
     - materialName: Alcohol Lamp
       isCollected: 0
-    - materialName: 'Tripod '
+    - materialName: Tripod
       isCollected: 0
     - materialName: Crucible Tong
       isCollected: 0
     - materialName: Beaker
       isCollected: 0
-    - materialName: Test Tubes
-      isCollected: 0
-    - materialName: Test Tube Racks
-      isCollected: 0
-    - materialName: Thermometer
-      isCollected: 0
-    - materialName: Forceps
-      isCollected: 0
-    - materialName: Iron Nail
-      isCollected: 0
-    - materialName: Iron Nail
-      isCollected: 0
-    - materialName: Spatula or small teaspoon
+    isCompleted: 0
+    Coins: 0
+    Experience: 0
+  - LessonID: 4
+    chapterName: Hotdoggy
+    chapterNumber: 4
+    chapterSummaryDescription: heheh
+    fullDescription: ehehe
+    materials:
+    - materialName: Denatured Alcohol
       isCollected: 0
     isCompleted: 0
-    Coins: 200
-    Experience: 100
+    Coins: 0
+    Experience: 0

@@ -56,12 +56,12 @@ MonoBehaviour:
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
-  - itemName: Thermometer 110  Degrees
+  - itemName: Thermometer 110 Degrees
     itemDescription: A tool used to measure up to 110 temperature.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
-  - itemName: Erlenmeyer Flask
+  - itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 0}
     itemType: 0
@@ -102,13 +102,8 @@ MonoBehaviour:
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
-  - itemName: sodium hydroxide (NaOH) solution
+  - itemName: Sodium Hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
-    itemIcon: {fileID: 0}
-    itemType: 1
-    isUnlock: 1
-  - itemName: Denatured alcohol
-    itemDescription: ' solvent and fuel for alcohol burners.'
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
@@ -119,6 +114,26 @@ MonoBehaviour:
     isUnlock: 1
   - itemName: Baking Soda
     itemDescription: A crystalline salt.
+    itemIcon: {fileID: 0}
+    itemType: 1
+    isUnlock: 1
+  - itemName: Mg Ribbon (mg)
+    itemDescription: A crystalline salt.
+    itemIcon: {fileID: 0}
+    itemType: 1
+    isUnlock: 1
+  - itemName: 30 Volumes Agua Oxigenada
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 1
+    isUnlock: 1
+  - itemName: Crucible Tong
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 1
+    isUnlock: 1
+  - itemName: Beaker
+    itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1

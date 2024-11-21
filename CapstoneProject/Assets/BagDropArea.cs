@@ -3,9 +3,14 @@ using UnityEngine;
 public class BagDropArea : MonoBehaviour
 {
     BagManager _bagManager;
+    LessonManager _lessonManager;
+    CurrentLessonToDisplay _currentLessonToDisplay;
+    public GameObject lessonContainer;
 
     void Start()
     {
+        _currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
+        _lessonManager = FindObjectOfType<LessonManager>(true);
         _bagManager = FindObjectOfType<BagManager>(true);
 
         if (_bagManager == null)
@@ -14,15 +19,15 @@ public class BagDropArea : MonoBehaviour
 
     public void AddedToInventory(Item item)
     {
-        if (item != null)
+        if (item != null && _lessonManager != null && _lessonManager.questAsLesson.isActive == true)
         {
             print("Added to inventory: " + item);
             _bagManager.AddItemInBag(item);
-            // bagManager.UpdateItemCount();
+            _currentLessonToDisplay.CheckItem(item);
         }
         else
         {
-            print("Item was null!");
+            lessonContainer.SetActive(true);
         }
     }
 }
