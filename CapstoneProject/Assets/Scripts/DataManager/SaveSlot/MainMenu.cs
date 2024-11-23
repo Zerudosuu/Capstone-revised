@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Loading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -30,6 +31,9 @@ public class MainMenu : Menu
 
     [SerializeField]
     private Button ExitButton;
+
+    [Header("Animator")]
+    [SerializeField] private Animator loadingAnim;
 
     void Start()
     {
@@ -92,5 +96,24 @@ public class MainMenu : Menu
     {
         // quit application
         Application.Quit();
+    }
+
+
+    //FOR DEBUGGING TESTING THE ANIMATION
+    public void nextScne()
+    {
+        StartCoroutine("loadingNextScene");
+    }
+
+    private IEnumerator loadingNextScene()
+    {
+        // Trigger the loading animation
+        loadingAnim.SetTrigger("Load");
+
+        // Wait for the duration of the "Load" animation
+        yield return new WaitForSeconds(loadingAnim.runtimeAnimatorController.animationClips[1].length);
+
+        // Load the next scene
+        SceneManager.LoadSceneAsync("TransitionLoad");
     }
 }
