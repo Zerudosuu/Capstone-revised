@@ -8,7 +8,7 @@ public class QuestAsLesson
     public string LessonID = "";
     public string chapterName;
     public int chapterNumber;
-
+    public bool isRewardCollected;
     public string chapterSummaryDescription;
     public string fullDescription;
 

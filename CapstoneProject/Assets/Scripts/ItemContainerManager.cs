@@ -5,13 +5,27 @@ using UnityEngine.UIElements;
 
 public class ItemContainerManager : MonoBehaviour
 {
-    [SerializeField] private Item CurrentSelectedItem;
+    [SerializeField]
+    private Item CurrentSelectedItem;
 
-    [SerializeField] public GameObject PopUpButtons;
+    [SerializeField]
+    public GameObject PopUpButtons;
+
+    InfoItemManager infoItemManager;
 
     void Awake()
     {
         PopUpButtons.SetActive(false);
+    }
+
+    void Start()
+    {
+        infoItemManager = FindObjectOfType<InfoItemManager>(true);
+
+        if (infoItemManager == null)
+        {
+            Debug.LogError("InfoItemManager is not found in the scene.");
+        }
     }
 
     // Update is called once per frame
@@ -24,6 +38,17 @@ public class ItemContainerManager : MonoBehaviour
     public void OnItemClick(Item item)
     {
         CurrentSelectedItem = item;
-        Debug.Log(item.itemName + " is selected");
+        Debug.Log(item.itemName + " is selected currently.");
+    }
+
+    public void OpenInfoContainer()
+    {
+        infoItemManager.gameObject.SetActive(true);
+        infoItemManager.SetDisplayedItem(CurrentSelectedItem);
+    }
+
+    public void CloseInfoContainer()
+    {
+        infoItemManager.gameObject.SetActive(false);
     }
 }

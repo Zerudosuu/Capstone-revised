@@ -100,8 +100,7 @@ public class UIManager : MonoBehaviour
     public void OnBagButtonClick()
     {
         BagWindow.SetActive(true);
-        PlayerUI.SetActive(true);
-
+        PlayerUI.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
         ProfileWindow.SetActive(false);
@@ -120,7 +119,7 @@ public class UIManager : MonoBehaviour
         LessonWindow.SetActive(false);
         SettingsWindow.SetActive(false);
         BagWindow.SetActive(false);
-        PlayerUI.SetActive(false);
+        PlayerUI.SetActive(true);
 
         StartCoroutine(MoveNavBar(HomeBtn, "isHome"));
     }
@@ -128,7 +127,6 @@ public class UIManager : MonoBehaviour
     public void OnProfileButtonClick()
     {
         ProfileWindow.SetActive(true);
-
         HomeWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);

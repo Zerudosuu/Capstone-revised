@@ -1,9 +1,7 @@
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class BagManager : MonoBehaviour
+public class BagManager : MonoBehaviour, IData
 {
     [SerializeField]
     private GameObject BagContainer;
@@ -26,37 +24,27 @@ public class BagManager : MonoBehaviour
     {
         currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         ItemCountContainer.gameObject.SetActive(false);
-        DontDestroyOnLoad(gameObject);
     }
 
     public void AddItemInBag(Item item)
     {
-        // Check if the item already exists in the bag
         BagItem existingBagItem = bagItems.Find(b => b.item.itemName == item.itemName);
 
         if (existingBagItem != null)
         {
-            // If the item exists, increment its count
             existingBagItem.IncrementCount();
         }
         else
         {
-            // If the item doesn't exist, add a new entry
             GameObject newItem = Instantiate(ItemPrefab, BagContainer.transform);
             BagItem bagItem = newItem.GetComponent<BagItem>();
-            bagItem.SetBagItem(item);
+            bagItem.SetBagItem(item, 1);
             bagItems.Add(bagItem);
 
             newItem.transform.SetAsFirstSibling();
         }
 
         UpdateItemCount();
-    }
-
-    private void SelectItem(Item item)
-    {
-        // TODO: Implement functionality for selecting an item
-        Debug.Log("Selected Item: " + item.itemName);
     }
 
     public void UpdateItemCount()
@@ -75,21 +63,56 @@ public class BagManager : MonoBehaviour
 
     public void RemoveItem(BagItem bagItem)
     {
-        bagItems.Remove(bagItem); // Remove the item from the list
+        bagItems.Remove(bagItem);
         Destroy(bagItem.gameObject);
         UpdateItemCount();
     }
 
     public void ClearBag()
     {
-        // TODO: Implement functionality for clearing the bag
         bagItems.Clear();
         UpdateItemCount();
     }
 
     public void ProceedToExperiment()
     {
-        // TODO: Implement functionality for proceeding to the experiment
-        //  currentLessonToDisplay.ProceedToExperiment();
+        DataManager.Instance.SaveGame(); // Save bag contents before moving to the experiment
+        // Load the next scene
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1Experiment");
+    }
+
+    // IData Implementation
+    public void LoadData(GameData data)
+    {
+        if (data.BagItems == null)
+            return;
+
+        // Clear current items
+        bagItems.Clear();
+        foreach (var savedItem in data.BagItems)
+        {
+            Item item = new Item { itemName = savedItem.itemName }; // Replace with your item initialization logic
+            GameObject newItem = Instantiate(ItemPrefab, BagContainer.transform);
+            BagItem bagItem = newItem.GetComponent<BagItem>();
+            bagItem.SetBagItem(item, savedItem.count); // Assuming `SetBagItem` can handle setting count
+
+            bagItems.Add(bagItem);
+        }
+
+        UpdateItemCount();
+    }
+
+    public void SavedData(GameData data)
+    {
+        data.BagItems = new List<SerializableBagItem>();
+        foreach (BagItem bagItem in bagItems)
+        {
+            SerializableBagItem savedItem = new SerializableBagItem(
+                bagItem.item.itemName,
+                bagItem.count
+            );
+
+            data.BagItems.Add(savedItem);
+        }
     }
 }

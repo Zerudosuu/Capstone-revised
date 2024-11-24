@@ -13,7 +13,7 @@ public class BagItem : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI itemNameText;
 
-    private int count = 1; // Default count is 1
+    public int count = 1; // Default count is 1
 
     void Start()
     {
@@ -22,11 +22,12 @@ public class BagItem : MonoBehaviour
             print("bagManager is found");
     }
 
-    public void SetBagItem(Item item)
+    public void SetBagItem(Item item, int quantity)
     {
         this.item = item;
 
         itemNameText.text = item.itemName;
+        count = quantity;
         UpdateItemCountText();
     }
 

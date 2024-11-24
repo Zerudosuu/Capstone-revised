@@ -1893,7 +1893,7 @@ MonoBehaviour:
   newGameButton: {fileID: 1434211746}
   continueButton: {fileID: 352057384}
   loadGameButton: {fileID: 1513288766}
-  settingButton: {fileID: 0}
+  settingButton: {fileID: 1618032719}
   ExitButton: {fileID: 338682419}
 --- !u!1 &1434211744
 GameObject:
@@ -2517,7 +2517,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 5.2683105, y: 54.440063}
+  m_AnchoredPosition: {x: 5.2683105, y: 54.43994}
   m_SizeDelta: {x: -179.1252, y: -1015.042}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1618329560
@@ -3962,6 +3962,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: fileName
+      value: Anton.game
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: useEncryption
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: initializeDataIfNull
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: diableDataPersistence
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: overrideSelectedProfileId
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4222,8 +4242,8 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 3105955578412935265}
   - {fileID: 1748390026}
   - {fileID: 398539107}
   - {fileID: 2006914310}
-  - {fileID: 3105955578412935265}
   - {fileID: 156398667004948566}

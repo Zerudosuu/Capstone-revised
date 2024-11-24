@@ -8,6 +8,7 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     private Vector3 originalPosition; // Store the original position
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
+    public ItemContainerManager itemContainerManager;
 
     public string destinationTag = "Table"; // Tag of the drop area
     public float longPressThreshold = 1f; // Time before long press is detected (in seconds)
@@ -17,8 +18,6 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     private bool isDragging = false; // To track whether we are currently dragging
     private bool isLongPressing = false; // To track long press
     private Vector3 lastMousePosition; // To track mouse movement
-
-    public ItemContainerManager itemContainerManager;
 
     public Item currenItem;
 
@@ -44,15 +43,6 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     public void SetItem(Item newItem)
     {
         currenItem = newItem;
-
-        if (currenItem == null)
-        {
-            Debug.LogError("currenItem is null when calling SetItem.");
-        }
-        else
-        {
-            Debug.Log($"SetItem called with: {currenItem.itemName}");
-        }
 
         if (itemName != null)
             itemName.text = currenItem.itemName;
@@ -146,6 +136,11 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
                 Debug.Log("Long press detected on: " + currenItem.itemName);
 
                 itemContainerManager.PopUP(transform.position);
+                ButtonPopUpContainer buttonPopUpContainer = FindObjectOfType<ButtonPopUpContainer>(
+                    true
+                );
+
+                buttonPopUpContainer.GetTheCurrentItemToDisaplay(currenItem);
             }
         }
     }

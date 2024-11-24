@@ -7,31 +7,34 @@ using UnityEngine;
 
 public class ItemManager : MonoBehaviour
 {
-    [Header("Item Container")] [SerializeField]
+    [Header("Item Container")]
+    [SerializeField]
     private GameObject EquipmentArea;
 
-    [SerializeField] private GameObject ChemicalArea;
+    [SerializeField]
+    private GameObject ChemicalArea;
 
-    [Header("Shop Container")] [SerializeField]
+    [Header("Shop Container")]
+    [SerializeField]
     private GameObject ShopEquipmentArea;
 
-    [SerializeField] private GameObject ShopChemicalArea;
+    [SerializeField]
+    private GameObject ShopChemicalArea;
 
-    [Header("Prefab")] public GameObject InventoryPrefabItem; // this prefab contains drag and drop
+    [Header("Prefab")]
+    public GameObject InventoryPrefabItem; // this prefab contains drag and drop
 
     public GameObject ShopPrefabItem; // this prefab contains shop
 
-    [SerializeField] private Items items;
+    [SerializeField]
+    private Items items;
     private List<Item> clonedItems = new List<Item>();
-
 
     // Start is called before the first frame update
     void Start()
     {
         CloneItems();
         InstantiateItems();
-
-        Debug.Log(clonedItems.Count);
     }
 
     void CloneItems()
@@ -42,7 +45,7 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-// Instantiate cloned items in Inventory or Shop
+    // Instantiate cloned items in Inventory or Shop
     void InstantiateItems()
     {
         foreach (Item item in clonedItems)
@@ -106,9 +109,6 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-
     // Update is called once per frame
-    void Update()
-    {
-    }
+    void Update() { }
 }

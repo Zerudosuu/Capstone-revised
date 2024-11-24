@@ -1,17 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LessonManager : MonoBehaviour
+public class LessonManager : MonoBehaviour, IData
 {
     //setActive(true) to the CurrentLessonWindow
     [SerializeField]
     private GameObject CurrentLessonWindow;
-
-    [SerializeField]
-    private GameObject LessonWindow;
 
     // QuestGiver
     public QuestAsLesson questAsLesson;
@@ -32,8 +30,14 @@ public class LessonManager : MonoBehaviour
 
     private string CurrentButtonID = "";
 
+    CurrentLessonToDisplay currentLessonToDisplay;
+
+    [SerializeField]
+    private List<Lesson> Clonedlessons = new List<Lesson>();
+
     void Awake()
     {
+        currentLessonToDisplay = CurrentLessonWindow.GetComponent<CurrentLessonToDisplay>();
         lessonComponentButton = GetComponentsInChildren<LessonComponentButton>();
         lessonContainer = FindObjectOfType<LessonContainer>();
     }
@@ -44,9 +48,17 @@ public class LessonManager : MonoBehaviour
         PickFirstAvailableLesson();
     }
 
-    void Populatebuttons()
+    void CloneLessons()
     {
         foreach (Lesson lesson in lessonsData.lessons)
+        {
+            Clonedlessons.Add(lesson.Clone());
+        }
+    }
+
+    void Populatebuttons()
+    {
+        foreach (Lesson lesson in Clonedlessons)
         {
             GameObject lessonButton = Instantiate(
                 LessonButtonPrefab,
@@ -119,11 +131,12 @@ public class LessonManager : MonoBehaviour
                 materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
                     material.materialName;
             }
+
             // Enable or disable the buttons as necessary
             lessonContainer.AcceptButton.interactable = true; // Example
             lessonContainer.CancelButton.interactable = true; // Example
 
-            UpdateQuest(lesson);
+            // Do not update quest here
         }
     }
 
@@ -134,15 +147,21 @@ public class LessonManager : MonoBehaviour
         print("ButtonWasClicked");
         questAsLesson.isActive = true;
 
-        CurrentLessonToDisplay currentLessonToDisplay =
-            GetComponentInChildren<CurrentLessonToDisplay>();
+        // Update the quest based on the currently selected lesson
+        Lesson selectedLesson = FindLessonById(CurrentButtonID);
+        if (selectedLesson != null)
+        {
+            UpdateQuest(selectedLesson);
+        }
 
         if (currentLessonToDisplay != null)
         {
             currentLessonToDisplay.SetCurrentLesson(questAsLesson);
-
             currentLessonToDisplay.UpdateLessonDisplay();
+            DataManager.Instance.gameData.currentQuestIndex = int.Parse(CurrentButtonID);
         }
+
+        DataManager.Instance.gameData.quest = questAsLesson;
     }
 
     public void OnBackButtonClick()
@@ -160,7 +179,6 @@ public class LessonManager : MonoBehaviour
         questAsLesson.fullDescription = lesson.fullDescription;
         questAsLesson.RewardCoins = lesson.Coins;
         questAsLesson.RewardExperience = lesson.Experience;
-
         questAsLesson.materials = new List<MaterialEntry>();
 
         foreach (MaterialEntry material in lesson.materials)
@@ -171,7 +189,7 @@ public class LessonManager : MonoBehaviour
 
     public void PickFirstAvailableLesson()
     {
-        foreach (Lesson lesson in lessonsData.lessons)
+        foreach (Lesson lesson in Clonedlessons)
         {
             if (lesson.isCompleted == false)
             {
@@ -179,5 +197,51 @@ public class LessonManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData.quest == null)
+        {
+            print("No quest data found");
+        }
+
+        if (gameData.quest != null)
+        {
+            questAsLesson = gameData.quest;
+
+            if (gameData.quest.isCompleted == true)
+            {
+                Debug.Log("This lesson is  Completed");
+            }
+        }
+
+        if (gameData.lessons != null && gameData.lessons.Count > 0)
+        {
+            Clonedlessons = gameData.lessons;
+            Debug.Log("Loaded lessons from GameData: " + Clonedlessons.Count);
+        }
+        else
+        {
+            CloneLessons();
+            Debug.Log("No lessons in GameData. Cloning from source.");
+        }
+
+        if (gameData.quest != null)
+        {
+            questAsLesson = gameData.quest;
+        }
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        if (gameData.lessons == null || gameData.lessons.Count == 0)
+        {
+            gameData.lessons = Clonedlessons;
+            Debug.Log("Saved lessons to GameData: " + gameData.lessons.Count);
+        }
+
+        // Always update the quest data
+        gameData.quest = questAsLesson;
     }
 }

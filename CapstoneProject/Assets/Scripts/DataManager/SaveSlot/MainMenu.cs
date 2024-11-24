@@ -14,7 +14,6 @@ public class MainMenu : Menu
     [SerializeField]
     private VolumeSettings volSetting;
 
-
     [Header("Menu Buttons")]
     [SerializeField]
     private Button newGameButton;

@@ -14,6 +14,27 @@ public class MaterialEntry
 {
     public string materialName;
     public bool isCollected = false;
+
+    public int Quantity = 1;
+
+    public bool needToMeasure = false;
+
+    public float measuredValue = 0f;
+
+    // Method to mark material as collected
+    public void CollectMaterial()
+    {
+        isCollected = true;
+    }
+
+    // Method to update measured value
+    public void MeasureMaterial(float value)
+    {
+        if (needToMeasure)
+        {
+            measuredValue = value;
+        }
+    }
 }
 
 [System.Serializable]
@@ -32,4 +53,20 @@ public class Lesson
 
     public int Coins;
     public int Experience;
+
+    public Lesson Clone()
+    {
+        return new Lesson
+        {
+            LessonID = LessonID,
+            chapterName = chapterName,
+            chapterNumber = chapterNumber,
+            chapterSummaryDescription = chapterSummaryDescription,
+            fullDescription = fullDescription,
+            materials = new List<MaterialEntry>(materials),
+            isCompleted = isCompleted,
+            Coins = Coins,
+            Experience = Experience,
+        };
+    }
 }

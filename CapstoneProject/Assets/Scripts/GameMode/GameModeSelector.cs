@@ -43,7 +43,7 @@ public class GameModeSelector : MonoBehaviour, IData
     {
         print("Creative Play started");
         gameModeSelected = GameModeSelected.Creative;
-        DataManager.Instance.gameData.SceneName = "Lesson_UI Anim";
+        DataManager.Instance.gameData.SceneName = "LessonMode";
         DataManager.Instance.SaveGame();
         DataManager.Instance.LoadGame();
         SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
@@ -52,7 +52,7 @@ public class GameModeSelector : MonoBehaviour, IData
     void LessonPlay()
     {
         gameModeSelected = GameModeSelected.Lesson;
-        DataManager.Instance.gameData.SceneName = "Lesson_UI Anim";
+        DataManager.Instance.gameData.SceneName = "LessonMode";
         DataManager.Instance.SaveGame();
         DataManager.Instance.LoadGame();
         SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);

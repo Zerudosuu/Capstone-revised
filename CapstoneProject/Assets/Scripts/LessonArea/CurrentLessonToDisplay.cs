@@ -69,6 +69,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
     public void SetCurrentLesson(QuestAsLesson lesson)
     {
         CurrentLesson = lesson;
+        UpdateLessonDisplay();
 
         ChapterNumberAndTitle.text = CurrentLesson.chapterNumber + ". " + CurrentLesson.chapterName;
         ChapterDescription.text = CurrentLesson.fullDescription;
@@ -92,7 +93,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
     public void UpdateLessonDisplay()
     {
-        if (CurrentLesson.isActive == false)
+        if (CurrentLesson == null)
         {
             noCurrentWindow.gameObject.SetActive(true);
             hasCurrentLessonWindow.gameObject.SetActive(false);
@@ -104,7 +105,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
         }
     }
 
-    public void onGotoLessonButtonClick()
+    public void OnGotoLessonButtonClick()
     {
         // Open Lesson Window
         this.gameObject.SetActive(false);
@@ -160,6 +161,33 @@ public class CurrentLessonToDisplay : MonoBehaviour
                 }
                 // If all items are collected, mark the lesson as completed
             }
+        }
+    }
+
+    public void ClearCurrentLesson()
+    {
+        if (CurrentLesson != null)
+        {
+            CurrentLesson.isActive = false;
+            CurrentLesson.isCompleted = false;
+
+            // Clear UI fields
+            ChapterNumberAndTitle.text = "";
+            ChapterDescription.text = "";
+            RewardCoin.text = "0";
+            RewardExperience.text = "0";
+
+            // Clear materials
+            foreach (Transform child in MaterialContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Clear saved data
+            DataManager.Instance.gameData.quest = null;
+            CurrentLesson = null;
+
+            Debug.Log("Current lesson and quest data cleared.");
         }
     }
 }
