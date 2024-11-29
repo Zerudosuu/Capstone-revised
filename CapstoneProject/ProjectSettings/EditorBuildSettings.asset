@@ -17,4 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity
     guid: dc372bcf491d92240b7772928cff97d5
+    path: Assets/Musayan/Scene/TransitionLoad.unity
+    guid: ae73f13471f87ad4fb9e14165a0356f8
   m_configObjects: {}
