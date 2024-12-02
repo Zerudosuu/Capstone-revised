@@ -35,6 +35,9 @@ public class LessonManager : MonoBehaviour, IData
     [SerializeField]
     private List<Lesson> Clonedlessons = new List<Lesson>();
 
+    [SerializeField]
+    private GameObject RewardContainer;
+
     void Awake()
     {
         currentLessonToDisplay = CurrentLessonWindow.GetComponent<CurrentLessonToDisplay>();
@@ -93,7 +96,7 @@ public class LessonManager : MonoBehaviour, IData
 
     private Lesson FindLessonById(string lessonID)
     {
-        foreach (Lesson lesson in lessonsData.lessons)
+        foreach (Lesson lesson in Clonedlessons)
         {
             if (lesson.LessonID == lessonID)
             {
@@ -199,6 +202,13 @@ public class LessonManager : MonoBehaviour, IData
         }
     }
 
+    public void OnRewardsCollected()
+    {
+        questAsLesson = null;
+        RewardContainer.SetActive(false);
+        DataManager.Instance.SaveGame();
+    }
+
     public void LoadData(GameData gameData)
     {
         if (gameData.quest == null)
@@ -213,6 +223,7 @@ public class LessonManager : MonoBehaviour, IData
             if (gameData.quest.isCompleted == true)
             {
                 Debug.Log("This lesson is  Completed");
+                RewardContainer.SetActive(true);
             }
         }
 

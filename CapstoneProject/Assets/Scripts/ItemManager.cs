@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
@@ -66,6 +67,7 @@ public class ItemManager : MonoBehaviour
     {
         GameObject itemObject = Instantiate(InventoryPrefabItem);
         itemObject.name = item.itemName;
+        itemObject.GetComponent<Image>().sprite = item.itemIcon;
 
         DragAndDropUI itemDisplay = itemObject.GetComponent<DragAndDropUI>();
         if (itemDisplay != null)

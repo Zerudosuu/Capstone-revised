@@ -22,32 +22,7 @@ MonoBehaviour:
       is essential in understanding gas behavior, as changes in one property can
       significantly affect the others.
     materials:
-    - materialName: Thermometer (360 Degrees)
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Alcohol Lamp
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Tripod
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Wire gauze
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Match
-      isCollected: 1
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Denatured Alcohol
+    - materialName: 500ml beaker
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -57,7 +32,32 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: 500ml beaker
+    - materialName: Match
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Wire gauze
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Tripod
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Alcohol Lamp
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Thermometer (360 Degrees)
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Thermometer 110 Degrees
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -74,27 +74,27 @@ MonoBehaviour:
       volume demonstrates that raising the temperature increases pressure as a result
       of greater molecular movement.
     materials:
-    - materialName: Thermometer 110 Degrees
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Erlrnmeyer Flask
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Cork or Rubber stopper
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Liquid Dropper
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Denatured Alcohol
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -110,77 +110,77 @@ MonoBehaviour:
     fullDescription: Chemical reactions can be distinguished by evidence such as
       color change, temperature change, gas production, and the formation of a precipitate.
     materials:
-    - materialName: Mg Ribbon (mg)
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Iron nail
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Agua Oxigenada
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Hydrogen peroxide (H2O2)
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Manganese dioxide (MnO2)
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Copper Sulfate (CuSO4) solution
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Sodium Hydroxide (NaOH) solution
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Denatured Alcohol
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Vinegar
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Baking Soda
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Match
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Alcohol Lamp
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Tripod
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Crucible Tong
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Beaker
+    - materialName: 
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -194,8 +194,8 @@ MonoBehaviour:
     chapterSummaryDescription: heheh
     fullDescription: ehehe
     materials:
-    - materialName: Denatured Alcohol
-      isCollected: 1
+    - materialName: 
+      isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0

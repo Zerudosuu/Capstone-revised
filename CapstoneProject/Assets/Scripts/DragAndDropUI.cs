@@ -44,8 +44,17 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
     {
         currenItem = newItem;
 
-        if (itemName != null)
+        if (currenItem.itemIcon == null)
+        {
+            // Show the item name if there's no icon
             itemName.text = currenItem.itemName;
+            itemName.gameObject.SetActive(true); // Ensure the name is visible
+        }
+        else
+        {
+            // Hide the item name if the icon is present
+            itemName.gameObject.SetActive(false);
+        }
     }
 
     public void OnPointerDown(PointerEventData eventData)

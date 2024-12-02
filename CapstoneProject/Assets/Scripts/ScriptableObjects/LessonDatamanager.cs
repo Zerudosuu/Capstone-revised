@@ -14,11 +14,8 @@ public class MaterialEntry
 {
     public string materialName;
     public bool isCollected = false;
-
     public int Quantity = 1;
-
     public bool needToMeasure = false;
-
     public float measuredValue = 0f;
 
     // Method to mark material as collected
@@ -34,6 +31,19 @@ public class MaterialEntry
         {
             measuredValue = value;
         }
+    }
+
+    // Deep clone method
+    public MaterialEntry Clone()
+    {
+        return new MaterialEntry
+        {
+            materialName = this.materialName,
+            isCollected = this.isCollected,
+            Quantity = this.Quantity,
+            needToMeasure = this.needToMeasure,
+            measuredValue = this.measuredValue,
+        };
     }
 }
 
@@ -56,17 +66,34 @@ public class Lesson
 
     public Lesson Clone()
     {
-        return new Lesson
+        Lesson clonedLesson = new Lesson
         {
-            LessonID = LessonID,
-            chapterName = chapterName,
-            chapterNumber = chapterNumber,
-            chapterSummaryDescription = chapterSummaryDescription,
-            fullDescription = fullDescription,
-            materials = new List<MaterialEntry>(materials),
-            isCompleted = isCompleted,
-            Coins = Coins,
-            Experience = Experience,
+            LessonID = this.LessonID,
+            chapterName = this.chapterName,
+            chapterNumber = this.chapterNumber,
+            chapterSummaryDescription = this.chapterSummaryDescription,
+            fullDescription = this.fullDescription,
+            isCompleted = this.isCompleted,
+            Coins = this.Coins,
+            Experience = this.Experience,
+            materials = new List<MaterialEntry>(), // Create a new list
         };
+
+        // Deep clone each MaterialEntry
+        foreach (MaterialEntry material in this.materials)
+        {
+            clonedLesson.materials.Add(
+                new MaterialEntry
+                {
+                    materialName = material.materialName,
+                    isCollected = material.isCollected,
+                    Quantity = material.Quantity,
+                    needToMeasure = material.needToMeasure,
+                    measuredValue = material.measuredValue,
+                }
+            );
+        }
+
+        return clonedLesson;
     }
 }
