@@ -19,8 +19,10 @@ public class ExperimentObjectManager : MonoBehaviour, IData
     [SerializeField]
     private GameObject itemPrefab;
 
+    public GameObject ItemContainer;
+
     [SerializeField]
-    private GameObject ItemContainer;
+    private GameObject itemSlot;
 
     void Start()
     {
@@ -47,15 +49,15 @@ public class ExperimentObjectManager : MonoBehaviour, IData
         // Populate each cloned item into the scene
         foreach (var clonedItem in clonedItems)
         {
-            // Instantiate a new item prefab as a child of the ItemContainer
-            GameObject newItem = Instantiate(itemPrefab, ItemContainer.transform);
+            GameObject newSlot = Instantiate(itemSlot, ItemContainer.transform);
+            GameObject newItem = Instantiate(clonedItem.itemPrefab, newSlot.transform);
 
-            // Example: Assuming your item prefab has a script to set its properties
-            ExperimentItem itemUI = newItem.GetComponent<ExperimentItem>();
+            newItem.name = clonedItem.itemName; // Set the item name for better debugging
+
+            DragableItem itemUI = newItem.GetComponent<DragableItem>();
 
             if (itemUI != null)
             {
-                // Set the item data to display in the UI
                 itemUI.SetItem(clonedItem);
             }
             else

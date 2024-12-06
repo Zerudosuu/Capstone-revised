@@ -1,114 +1,157 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.EventSystems; // Required for Pointer events
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
-    [SerializeField]
-    private Item ItemToMeasure; // The item to measure (optional)
+    public Item item;
 
     [SerializeField]
-    private GameObject ItemObject; // Visual representation of the item (optional)
+    private Slider Slider; // Reference to the slider
 
     [SerializeField]
-    private float MeasuredValue = 0f; // Current measured value
+    private RectTransform ParentObject; // Parent containing color zones
 
     [SerializeField]
-    private float TargetValue = 60f; // Target value the player needs to hit
+    private RectTransform RedZone; // Red zone object (Top)
 
     [SerializeField]
-    private float Tolerance = 5f; // Allowable range for a correct measurement
+    private RectTransform GreenZone; // Green zone object (Middle)
 
     [SerializeField]
-    private Slider Slider; // The UI Slider representing the meter
+    private RectTransform YellowZone; // Yellow zone object (Bottom)
 
     [SerializeField]
-    private float FillRate = 20f; // Base fill rate for the meter
+    private float FillRate = 20f; // Speed at which the slider fills
 
     [SerializeField]
-    private float MaxFillRate = 100f; // Maximum fill rate when holding longer
+    private float MaxFillValue = 100f; // Maximum slider value
 
-    [SerializeField]
-    private float AccelerationRate = 10f; // Acceleration of the fill rate over time
+    private bool IsMeasuring = false;
+    private float MeasuredValue = 0f;
 
-    private bool IsMeasuring = false; // Flag to determine if the player is measuring
-    private float CurrentFillRate = 0f; // Current rate at which the meter is filling
+    public string getValue;
+
+    ExperimentManager experimentManager;
 
     private void Start()
     {
+        experimentManager = FindObjectOfType<ExperimentManager>();
         ResetMeasurement();
+        RandomizeZoneWidths(); // Randomize zone widths on start
+    }
+
+    public void SetItem(Item item)
+    {
+        this.item = item;
+    }
+
+    public void StartMeasurement()
+    {
+        ResetMeasurement();
+        RandomizeZoneWidths();
     }
 
     private void Update()
     {
         if (IsMeasuring)
         {
-            // Increase the fill rate over time (simulate acceleration)
-            CurrentFillRate = Mathf.Min(
-                CurrentFillRate + AccelerationRate * Time.deltaTime,
-                MaxFillRate
-            );
+            // Increment the slider value based on FillRate
+            MeasuredValue += FillRate * Time.deltaTime;
 
-            // Increase the measured value
-            MeasuredValue += CurrentFillRate * Time.deltaTime;
+            // Clamp the measured value to stay within the slider range (0 to 100)
+            MeasuredValue = Mathf.Clamp(MeasuredValue, 0f, MaxFillValue);
 
-            // Clamp the measured value within bounds (e.g., 0 to 100)
-            MeasuredValue = Mathf.Clamp(MeasuredValue, 0f, 100f);
-
-            // Update the slider to reflect the measured value
-            UpdateSlider();
-        }
-    }
-
-    private void UpdateSlider()
-    {
-        if (Slider != null)
-        {
-            Slider.value = MeasuredValue / 100f; // Normalize value for slider (0 to 1)
+            // Update the slider value (normalized between 0 and 1)
+            Slider.value = MeasuredValue / MaxFillValue;
         }
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        // Start measuring when the button is pressed
-        IsMeasuring = true;
-        CurrentFillRate = FillRate; // Reset fill rate to base value
+        IsMeasuring = true; // Start filling when button is pressed
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // Stop measuring when the button is released
-        IsMeasuring = false;
+        IsMeasuring = false; // Stop filling when button is released
+        CheckMeasurement(); // Check which color zone the slider landed in
+    }
 
-        // Provide feedback based on the measured value
-        CheckMeasurement();
+    public void RandomizeZoneWidths()
+    {
+        float parentWidth = ParentObject.rect.width;
+
+        // Generate random widths (percentage of parent width)
+        float randomYellow = Random.Range(0.2f, 0.5f); // Yellow gets 20% to 50%
+        float randomGreen = Random.Range(0.1f, 0.3f); // Green gets 20% to 30%
+        float remainingForRed = 1f - (randomYellow + randomGreen); // Remaining percentage for Red
+
+        // Normalize to make sure the sum is 100%
+        float total = randomYellow + randomGreen + remainingForRed;
+        randomYellow /= total;
+        randomGreen /= total;
+        remainingForRed /= total;
+
+        // Apply the widths to each zone
+        float yellowWidth = parentWidth * randomYellow;
+        float greenWidth = parentWidth * randomGreen;
+        float redWidth = parentWidth * remainingForRed;
+
+        // Position and size the zones within the parent container
+        YellowZone.anchorMin = new Vector2(0, 0);
+        YellowZone.anchorMax = new Vector2(yellowWidth / parentWidth, 1);
+        YellowZone.offsetMin = Vector2.zero;
+        YellowZone.offsetMax = Vector2.zero;
+
+        GreenZone.anchorMin = new Vector2(yellowWidth / parentWidth, 0);
+        GreenZone.anchorMax = new Vector2((yellowWidth + greenWidth) / parentWidth, 1);
+        GreenZone.offsetMin = Vector2.zero;
+        GreenZone.offsetMax = Vector2.zero;
+
+        RedZone.anchorMin = new Vector2((yellowWidth + greenWidth) / parentWidth, 0);
+        RedZone.anchorMax = new Vector2(1, 1);
+        RedZone.offsetMin = Vector2.zero;
+        RedZone.offsetMax = Vector2.zero;
+
+        Debug.Log(
+            $"Random Widths - Yellow: {randomYellow * 100}%, Green: {randomGreen * 100}%, Red: {remainingForRed * 100}%"
+        );
     }
 
     private void CheckMeasurement()
     {
-        if (Mathf.Abs(MeasuredValue - TargetValue) <= Tolerance)
+        float sliderPositionX = MeasuredValue / MaxFillValue * ParentObject.rect.width;
+
+        if (sliderPositionX <= YellowZone.rect.width)
         {
-            Debug.Log("Perfect measurement!");
-            // Trigger success logic
+            Debug.Log("You landed in the YELLOW zone!");
+
+            getValue = "Yellow";
         }
-        else if (MeasuredValue < TargetValue)
+        else if (
+            sliderPositionX > YellowZone.rect.width
+            && sliderPositionX <= (YellowZone.rect.width + GreenZone.rect.width)
+        )
         {
-            Debug.Log("Too little! Try again.");
+            Debug.Log("You landed in the GREEN zone!");
+
+            getValue = "Green";
         }
         else
         {
-            Debug.Log("Too much! Try again.");
-        }
+            Debug.Log("You landed in the RED zone!");
 
-        // Reset for retry
-        ResetMeasurement();
+            getValue = "Red";
+        }
+        GetComponentInParent<MeterPanelManager>().ShowMeterResult();
+        experimentManager.UpdateScore(getValue);
+        ResetMeasurement(); // Reset slider after checking
     }
 
     private void ResetMeasurement()
     {
         MeasuredValue = 0f;
-        CurrentFillRate = FillRate; // Reset fill rate
-        UpdateSlider();
+        Slider.value = 0f;
     }
 }

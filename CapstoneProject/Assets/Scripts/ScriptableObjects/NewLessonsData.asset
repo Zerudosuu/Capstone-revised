@@ -27,21 +27,6 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Ice
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Match
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Wire gauze
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
     - materialName: Tripod
       isCollected: 0
       Quantity: 1
@@ -52,12 +37,7 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
-    - materialName: Thermometer (360 Degrees)
-      isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Thermometer 110 Degrees
+    - materialName: Water
       isCollected: 0
       Quantity: 1
       needToMeasure: 0

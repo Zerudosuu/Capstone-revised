@@ -6,6 +6,27 @@ TagManager:
   tags:
   - Table
   - Container
+  - DropArea
+  - Liquid
+  - HeatSource
+  - Ignition
+  - Cooling
+  - ReactiveMetal
+  - Chemical
+  - Fuel
+  - Seal
+  - Support
+  - HeatConductor
+  - Measurement
+  - Catalyst
+  - Observation
+  - MixingTool
+  - Placement
+  - Flammable
+  - GasProducer
+  - TemperatureModifier
+  - Mixable
+  - Slot
   layers:
   - Default
   - TransparentFX

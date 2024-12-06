@@ -13,19 +13,21 @@ MonoBehaviour:
   m_Name: Items
   m_EditorClassIdentifier: 
   items:
-  - itemName: Thermometer (360 Degrees)
+  - itemPrefab: {fileID: 0}
+    itemName: Thermometer (360 Degrees)
     itemDescription: A tool used to measure temperature up to 360 Degrees
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Alcohol Lamp
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 5897202751620090658, guid: db012a849ac9d794cb3162049efa4202, type: 3}
+    itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
       combustion.
     itemIcon: {fileID: 21300000, guid: 7a937b2769375b94d943aeea72068716, type: 3}
@@ -33,24 +35,33 @@ MonoBehaviour:
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Tripod
+    needToMeasure: 0
+    tagName: HeatSource
+    compatibleTags:
+    - Ignition
+    - Flammable
+    - Container
+    - Fuel
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 4047271636717327193, guid: 6cdff08c187c10443934dcbac48432dd, type: 3}
+    itemName: Tripod
     itemDescription: A three-legged platform used to support flasks and beakers.
     itemIcon: {fileID: 21300000, guid: 34cba13fc68b09540a91f2352c015530, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Wire gauze
+    needToMeasure: 0
+    tagName: Support
+    compatibleTags:
+    - HeatConductor
+    - Container
+    - Placement
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
       a heat source.
     itemIcon: {fileID: 0}
@@ -58,12 +69,13 @@ MonoBehaviour:
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Match
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
       produces fire.
     itemIcon: {fileID: 21300000, guid: 7d634153089ce264f847d1f4750fe346, type: 3}
@@ -71,150 +83,166 @@ MonoBehaviour:
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates:
-    - stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Denatured Alcohol
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Ice
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Ice
     itemDescription: Frozen water.
     itemIcon: {fileID: 21300000, guid: 3adc0ae9162998a4c9f19bb6d48a5c38, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: 500ml beaker
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
+    itemName: 500ml beaker
     itemDescription: ' A glass container used to hold liquids.'
     itemIcon: {fileID: 21300000, guid: e96e7bd2f620e134dbd3bb923e9485cf, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates:
-    - stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Thermometer 110 Degrees
+    needToMeasure: 0
+    tagName: Container
+    compatibleTags:
+    - Liquid
+    - Measurement
+    - HeatConductor
+    - Placement
+    states:
+    - stateName: Empty
+      statePrefab: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
+      description: 
+    - stateName: BeakerWithWater
+      statePrefab: {fileID: 7338545600669440192, guid: 2e2053cd812bfef40b4c62b519ea663b, type: 3}
+      description: 
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Thermometer 110 Degrees
     itemDescription: A tool used to measure up to 110 temperature.
     itemIcon: {fileID: 21300000, guid: 95825d7726df0834e8d20365819c2e42, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Erlrnmeyer Flask
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Cork or Rubber stopper
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Cork or Rubber stopper
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Liquid Dropper
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Liquid Dropper
     itemDescription: A tool used to transfer small amounts of liquid.
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 0
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Iron nail
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Iron nail
     itemDescription: A silver-white metal.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 0
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Agua oxigenada
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Agua oxigenada
     itemDescription: An antiseptic liquid.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 0
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Hydrogen peroxide (H2O2)
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Manganese dioxide (MnO2)
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Manganese dioxide (MnO2)
     itemDescription: An oxide of manganese used in batteries.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Copper Sulfate (CuSO4) solution
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Copper Sulfate (CuSO4) solution
     itemDescription: An inorganic compound used as a fungicide, algaecide, and root
       killer.
     itemIcon: {fileID: 0}
@@ -222,92 +250,112 @@ MonoBehaviour:
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Sodium Hydroxide (NaOH) solution
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Sodium Hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Vinegar
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Baking Soda
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Baking Soda
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Mg Ribbon (mg)
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Mg Ribbon (mg)
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: 30 Volumes Agua Oxigenada
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: 30 Volumes Agua Oxigenada
     itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Crucible Tong
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Crucible Tong
     itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
-  - itemName: Beaker
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 0}
+    itemName: Beaker
     itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
     measuredValue: 0
-    itemStates: []
-    currentState:
-      stateName: 
-      stateIcon: {fileID: 0}
-      conditions: []
+    needToMeasure: 0
+    tagName: 0
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+  - itemPrefab: {fileID: 2784880874087643898, guid: 6979c975f258b364784acb6cf0702497, type: 3}
+    itemName: Water
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 1
+    isUnlock: 1
+    isCollected: 0
+    measuredValue: 0
+    needToMeasure: 0
+    tagName: Liquid
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
