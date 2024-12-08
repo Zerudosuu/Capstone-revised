@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -21,9 +22,11 @@ public class SaveSlotMenu : Menu
     [SerializeField]
     private ConfirmationPopUpMenu confirmationPopup;
 
+    SceneLoader _loader;
     void Awake()
     {
         saveslots = GetComponentsInChildren<Saveslot>();
+        _loader = FindAnyObjectByType<SceneLoader>();
     }
 
     public void OnSaveClicked(Saveslot saveslot)
@@ -67,10 +70,9 @@ public class SaveSlotMenu : Menu
         DataManager.Instance.SaveGame();
 
         // Load the game scene
-
         print("Loading game scene" + DataManager.Instance.gameData.SceneName);
 
-        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+        StartCoroutine(_loader.loadingNextScene(DataManager.Instance.gameData.SceneName));
     }
 
     public void OnBackClick()

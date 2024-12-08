@@ -19,8 +19,12 @@ public class GameModeSelector : MonoBehaviour, IData
 
     Button CreativePlayButton;
 
+    SceneLoader _loader;
     public GameModeSelected gameModeSelected;
-
+    private void Awake()
+    {
+        _loader = FindAnyObjectByType<SceneLoader>();
+    }
     void OnEnable()
     {
         var root = GameObject.FindObjectOfType<UIDocument>().rootVisualElement;
@@ -46,7 +50,7 @@ public class GameModeSelector : MonoBehaviour, IData
         DataManager.Instance.gameData.SceneName = "LessonMode";
         DataManager.Instance.SaveGame();
         DataManager.Instance.LoadGame();
-        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+        StartCoroutine(_loader.loadingNextScene(DataManager.Instance.gameData.SceneName));
     }
 
     void LessonPlay()
@@ -55,7 +59,7 @@ public class GameModeSelector : MonoBehaviour, IData
         DataManager.Instance.gameData.SceneName = "LessonMode";
         DataManager.Instance.SaveGame();
         DataManager.Instance.LoadGame();
-        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+        StartCoroutine(_loader.loadingNextScene(DataManager.Instance.gameData.SceneName));
         print("Lesson Play started");
     }
 

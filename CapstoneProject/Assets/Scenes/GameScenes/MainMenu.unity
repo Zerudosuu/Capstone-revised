@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eebea303375eff49be6102eaf1144cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 1434211746}
+  firstSelectedButton: {fileID: 0}
   saveSlotMenu: {fileID: 791379582}
   volSetting: {fileID: 361402305}
   newGameButton: {fileID: 1434211746}
@@ -1896,7 +1896,6 @@ MonoBehaviour:
   loadGameButton: {fileID: 1513288766}
   settingButton: {fileID: 1618032719}
   ExitButton: {fileID: 338682419}
-  loadingAnim: {fileID: 1776789720}
 --- !u!1 &1434211744
 GameObject:
   m_ObjectHideFlags: 0
@@ -3059,11 +3058,6 @@ MonoBehaviour:
 --- !u!224 &1776789719 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8177404349910248870, guid: 029ca1d0a2f518d4d9224e16a39614f7, type: 3}
-  m_PrefabInstance: {fileID: 1246805307743700960}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1776789720 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 3121321677756186009, guid: 029ca1d0a2f518d4d9224e16a39614f7, type: 3}
   m_PrefabInstance: {fileID: 1246805307743700960}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1811759251

@@ -27,14 +27,7 @@ public class itemShop : MonoBehaviour
 
     private void DisplayInShop()
     {
-        if (storeSystem != null)
-        {
-            storeSystem.SelectedItem(itemInContainer, this.gameObject);
-        }
-        else
-        {
-            Debug.Log("StoreSystem is not found");
-        }
+        storeSystem.SelectedItem(itemInContainer, this.gameObject);
     }
 
     public void SetItem(Item item)
