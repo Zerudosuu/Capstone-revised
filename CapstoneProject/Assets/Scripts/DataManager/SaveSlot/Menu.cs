@@ -9,6 +9,11 @@ public class Menu : MonoBehaviour
     [SerializeField]
     private Button firstSelectedButton;
 
+    SceneLoader loader;
+    private void Awake()
+    {
+        loader = FindAnyObjectByType<SceneLoader>();
+    }
     protected virtual void OnEnable()
     {
         SetFirstSelected(firstSelectedButton);
@@ -18,4 +23,6 @@ public class Menu : MonoBehaviour
     {
         firsSelectebButton.Select();
     }
+
+
 }

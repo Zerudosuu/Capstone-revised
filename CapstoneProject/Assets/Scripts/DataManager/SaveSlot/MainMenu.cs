@@ -9,31 +9,22 @@ using UnityEngine.UI;
 public class MainMenu : Menu
 {
     [Header("Menu Navigation")]
-    [SerializeField]
-    private SaveSlotMenu saveSlotMenu;
-
-    [SerializeField]
-    private VolumeSettings volSetting;
+    [SerializeField] private SaveSlotMenu saveSlotMenu;
+    [SerializeField] private VolumeSettings volSetting;
 
     [Header("Menu Buttons")]
-    [SerializeField]
-    private Button newGameButton;
+    [SerializeField] private Button newGameButton;
+    [SerializeField] private Button continueButton;
+    [SerializeField] private Button loadGameButton;
+    [SerializeField] private Button settingButton;
+    [SerializeField] private Button ExitButton;
 
-    [SerializeField]
-    private Button continueButton;
+    SceneLoader _loader;
 
-    [SerializeField]
-    private Button loadGameButton;
-
-    [SerializeField]
-    private Button settingButton;
-
-    [SerializeField]
-    private Button ExitButton;
-
-    [Header("Animator")]
-    [SerializeField] private Animator loadingAnim;
-
+    private void Awake()
+    {
+        _loader = FindAnyObjectByType<SceneLoader>();
+    }
     void Start()
     {
         DisableButtonDependingOnTheData();
@@ -65,7 +56,7 @@ public class MainMenu : Menu
     {
         DisbaleMenuButton();
         DataManager.Instance.SaveGame();
-        SceneManager.LoadSceneAsync(DataManager.Instance.gameData.SceneName);
+        StartCoroutine(_loader.loadingNextScene(DataManager.Instance.gameData.SceneName));
     }
 
     public void OnLoadClick()
@@ -97,22 +88,5 @@ public class MainMenu : Menu
         Application.Quit();
     }
 
-
-    //FOR DEBUGGING TESTING THE ANIMATION
-    public void nextScne()
-    {
-        StartCoroutine("loadingNextScene");
-    }
-
-    private IEnumerator loadingNextScene()
-    {
-        // Trigger the loading animation
-        loadingAnim.SetTrigger("Load");
-
-        // Wait for the duration of the "Load" animation
-        yield return new WaitForSeconds(loadingAnim.runtimeAnimatorController.animationClips[1].length);
-
-        // Load the next scene
-        SceneManager.LoadSceneAsync("TransitionLoad");
-    }
+    
 }

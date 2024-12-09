@@ -276,9 +276,17 @@ MonoBehaviour:
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 0
+    isCollected: 0
+    measuredValue: 0
+    itemStates: []
+    currentState:
+      stateName: 
+      stateIcon: {fileID: 0}
+      conditions: []
   DeleteButton: {fileID: 5892800898777379112}
   itemCountText: {fileID: 8951188400017347928}
   itemNameText: {fileID: 2907115043645154790}
+  count: 1
 --- !u!1 &5286155139434515326
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,7 +299,8 @@ GameObject:
   - component: {fileID: 6224287410386022309}
   - component: {fileID: 6585365265915805889}
   - component: {fileID: 5892800898777379112}
-  m_Layer: 0
+  - component: {fileID: 6461290033049052492}
+  m_Layer: 3
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -411,6 +420,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!210 &6461290033049052492
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5286155139434515326}
+  m_Enabled: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 100
+  m_SortAtRoot: 0
 --- !u!1 &8558446411050257536
 GameObject:
   m_ObjectHideFlags: 0

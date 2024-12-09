@@ -7,43 +7,20 @@ using UnityEngine.UI;
 public class UIManager : MonoBehaviour
 {
     [Header("MainMenuButtons")]
-    [SerializeField]
-    private Button ProfileButton;
-
-    [SerializeField]
-    private Button CurrentLessonQuestButton;
-
-    [SerializeField]
-    private Button Bag;
-
-    [SerializeField]
-    private Button LessonContainer;
-
-    [SerializeField]
-    private Button Settings;
+    [SerializeField] private Button bagBtn;
+    [SerializeField] private Button settingsBtn;
 
     [Header("Windows")]
-    [SerializeField]
-    private GameObject ProfileWindow;
-
-    [SerializeField]
-    private GameObject StoreWindow;
-
-    [SerializeField]
-    private GameObject HomeWindow;
-
-    [SerializeField]
-    private GameObject LessonWindow;
-
-    [SerializeField]
-    private GameObject BagWindow;
-
-    [SerializeField]
-    private GameObject SettingsWindow;
+    [SerializeField] private GameObject ProfileWindow;
+    [SerializeField] private GameObject StoreWindow;
+    [SerializeField] private GameObject HomeWindow;
+    [SerializeField] private GameObject LessonWindow;
+    [SerializeField] private GameObject BagWindow;
+    [SerializeField] private GameObject VolumeSettings;
+    [SerializeField] private GameObject informationWindow;
 
     [Header("Navbar")]
-    [SerializeField]
-    private RectTransform navbar_BG;
+    [SerializeField] private RectTransform navbar_BG;
 
     [SerializeField]
     private bool NavBarAnimationActivate;
@@ -52,46 +29,30 @@ public class UIManager : MonoBehaviour
     public float transitionDuration = 0.5f;
 
     [Header("Navbar Button")]
-    [SerializeField]
-    private Button profileBtn;
-
-    [SerializeField]
-    private Button ShopBtn;
-
-    [SerializeField]
-    private Button HomeBtn;
-
-    [SerializeField]
-    private Button LessonsBtn;
-
-    [SerializeField]
-    private Button CurrentQuestBtn;
-
-    [SerializeField]
-    private Button bagBtn;
-
-    [SerializeField]
-    private Button SettingsBtn;
-
-    [SerializeField]
-    private GameObject subCircle;
-
-    [SerializeField]
-    private Sprite[] lessonsSprite;
+    [SerializeField] private Button profileBtn;
+    [SerializeField] private Button ShopBtn;
+    [SerializeField] private Button HomeBtn;
+    [SerializeField] private Button LessonsBtn;
+    [SerializeField] public Button infoBtn;
+    [SerializeField] private GameObject subCircle;
+    [SerializeField] private Sprite[] lessonsSprite;
 
     private string previousLessonState; // this where the state of the lesson will be stored
 
     [Header("Animator")]
-    [SerializeField]
-    private Animator navBarAnimator;
+    [SerializeField] private Animator navBarAnimator;
 
     [Header("Player stats UI")]
-    [SerializeField]
-    private GameObject PlayerUI;
+    [SerializeField] private GameObject PlayerUI;
 
-    [Header("StateManager")]
+    [Header("StateManager")] 
     public GameObject PauseWindow;
 
+    private void Awake()
+    {
+        bagBtn.onClick.AddListener(OnBagButtonClick);   
+    }
+    
     void Start()
     {
         OnHomeButtonClick(); // it will start at home window
@@ -104,9 +65,22 @@ public class UIManager : MonoBehaviour
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
         ProfileWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
 
-        StartCoroutine(MoveNavBar(bagBtn, "isBag"));
+        PlayerUI.SetActive(false);
+    }
+
+    public void OnInfoButtonClikck()
+    {
+        informationWindow.SetActive(true);
+        PlayerUI.SetActive(false);
+        StoreWindow.SetActive(false);
+        LessonWindow.SetActive(false);
+        ProfileWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
+        PlayerUI.SetActive(false);
+
+        StartCoroutine(MoveNavBar(infoBtn, "isInfo"));
     }
 
     public void OnHomeButtonClick()
@@ -117,8 +91,8 @@ public class UIManager : MonoBehaviour
         ProfileWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
-        BagWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
+        informationWindow.SetActive(false);
         PlayerUI.SetActive(true);
 
         StartCoroutine(MoveNavBar(HomeBtn, "isHome"));
@@ -130,8 +104,8 @@ public class UIManager : MonoBehaviour
         HomeWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
-        BagWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
+        informationWindow.SetActive(false);
         PlayerUI.SetActive(false);
 
         StartCoroutine(MoveNavBar(profileBtn, "isProfile"));
@@ -143,9 +117,9 @@ public class UIManager : MonoBehaviour
 
         HomeWindow.SetActive(false);
         ProfileWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
         LessonWindow.SetActive(false);
-        BagWindow.SetActive(false);
+        informationWindow.SetActive(false);
         PlayerUI.SetActive(false);
 
         StartCoroutine(MoveNavBar(ShopBtn, "isShop"));
@@ -153,6 +127,8 @@ public class UIManager : MonoBehaviour
 
     public void OnLessonClick() // this will show the current state of the Lesson
     {
+        PlayerUI.SetActive(false);
+
         if (previousLessonState == null)
         {
             previousLessonState = "isLessonContainer";
@@ -176,6 +152,15 @@ public class UIManager : MonoBehaviour
             LessonState("isLessonContainer");
     }
 
+    public void OnVolumeButtonClick()
+    {
+        VolumeSettings.SetActive(true);
+        
+
+        PauseWindow.SetActive(false);
+    }
+
+
     #region Lesson State
     private void OnCurrentLesson()
     {
@@ -183,8 +168,8 @@ public class UIManager : MonoBehaviour
         LessonWindow.transform.GetChild(0).gameObject.SetActive(false); // This will hide the Lesson selection window
 
         ProfileWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
-        BagWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
+        informationWindow.SetActive(false); 
         HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
     }
@@ -195,23 +180,13 @@ public class UIManager : MonoBehaviour
         LessonWindow.transform.GetChild(1).gameObject.SetActive(false); // This will hide the Current lesson window
 
         ProfileWindow.SetActive(false);
-        SettingsWindow.SetActive(false);
-        BagWindow.SetActive(false);
+        VolumeSettings.SetActive(false);
+        informationWindow.SetActive(false);
         HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
     }
 
     #endregion
-
-    public void OnSettingsButtonClick()
-    {
-        SettingsWindow.SetActive(true);
-        HomeWindow.SetActive(false);
-        ProfileWindow.SetActive(false);
-        StoreWindow.SetActive(false);
-        LessonWindow.SetActive(false);
-        PlayerUI.SetActive(false);
-    }
 
     #region Navbar Function
 
@@ -258,7 +233,7 @@ public class UIManager : MonoBehaviour
     {
         profileBtn.interactable = isInteractable;
         ShopBtn.interactable = isInteractable;
-        bagBtn.interactable = isInteractable;
+        infoBtn.interactable = isInteractable;
         LessonsBtn.interactable = isInteractable;
         HomeBtn.interactable = isInteractable;
     }
@@ -301,5 +276,30 @@ public class UIManager : MonoBehaviour
         }
     }
 
+    #endregion
+
+    #region game state
+
+    public void OnSettingState()
+    {
+        PauseWindow.SetActive(true);
+
+        VolumeSettings.SetActive(false);
+        PlayerUI.SetActive(false);
+        settingsBtn.interactable = false;
+    }
+
+    public void OnResumeState()
+    {
+        PlayerUI.SetActive(true);
+
+        PauseWindow.SetActive(false);
+        settingsBtn.interactable = true;
+    }
+
+    public void OnBackMainMenu()
+    {
+        //TO-DO: This will change the scene back to the main menu...
+    }
     #endregion
 }

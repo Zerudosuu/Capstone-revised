@@ -31,19 +31,12 @@ public class VolumeSettings : MonoBehaviour
         {
             backButton.gameObject.SetActive(false);
         }
+
+        Checker();
     }
     private void Start()
     {
-        if (PlayerPrefs.HasKey("MasterVolume"))
-        {
-            LoadVolume();
-        }
-        else
-        {
-            SetMusicVolume();
-            SetMusicVolume();
-            SetSFXVolume();
-        }
+        
     }
 
     public void SetMasterVolume()
@@ -55,7 +48,7 @@ public class VolumeSettings : MonoBehaviour
 
     public void SetMusicVolume()
     {
-        float volume = musicVolSlider.value;    
+        float volume = musicVolSlider.value;
         audioMix.SetFloat("MusicVolume", Mathf.Log10(volume) * 20);
         PlayerPrefs.SetFloat("MusicVolume", volume);
     }
@@ -75,7 +68,7 @@ public class VolumeSettings : MonoBehaviour
 
         SetMasterVolume();
         SetMusicVolume();
-        SetSFXVolume(); 
+        SetSFXVolume();
     }
 
     public void DisplaySetting(bool active)
@@ -83,7 +76,21 @@ public class VolumeSettings : MonoBehaviour
         Debug.Log("Volume Setting Display: " + active);
         this.gameObject.SetActive(active);
 
-        if(!active)
+        if (!active)
             menu.ActivateMenu();
+    }
+
+    private void Checker()
+    {
+        if (PlayerPrefs.HasKey("MasterVolume"))
+        {
+            LoadVolume();
+        }
+        else
+        {
+            SetMusicVolume();
+            SetMusicVolume();
+            SetSFXVolume();
+        }
     }
 }

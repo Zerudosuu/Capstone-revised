@@ -9,14 +9,16 @@ using UnityEngine.UI;
 public class ConfirmationPopUpMenu : Menu
 {
     [Header("Components")]
-    [SerializeField]
-    private TextMeshProUGUI displayText;
+    [SerializeField] private TextMeshProUGUI displayText;
+    [SerializeField] private Button yesButton;
+    [SerializeField] private Button noButton;
 
-    [SerializeField]
-    private Button yesButton;
+    SceneLoader sceneLoader;
 
-    [SerializeField]
-    private Button noButton;
+    private void Awake()
+    {
+        sceneLoader = FindAnyObjectByType<SceneLoader>();
+    }
 
     public void ActivateMenu(
         string displayText,
