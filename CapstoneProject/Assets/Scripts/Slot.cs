@@ -9,12 +9,13 @@ public class Slot : MonoBehaviour, IDropHandler
     private Image image;
     public bool FixChildSize = false;
     public List<string> compatibleTagsForSlot;
-    public bool forItemSlot = false;
 
-    private List<GameObject> overlappedObjects = new List<GameObject>();
+    public string RequireName;
+    public string ItemAddedName;
 
-    public string requiredTag;
-    public string itemTagAdded;
+    public bool isOccupied = false;
+
+    public Item parentItem; // The item in this slot (e.g., Beaker)
 
     private void Awake()
     {
@@ -39,90 +40,107 @@ public class Slot : MonoBehaviour, IDropHandler
             GameObject dropItem = eventData.pointerDrag;
             DragableItem draggable = dropItem.GetComponent<DragableItem>();
 
-            //! SLOT ONLY WORKS WITH THE COMPATIBLE TAGS
-            if (compatibleTagsForSlot.Contains(draggable.item.tagName) && !forItemSlot)
+            if (compatibleTagsForSlot.Contains(draggable.item.tagName))
             {
                 draggable.parentAfterDrag = transform;
-                Debug.Log("Item placed successfully.");
+                draggable.placeInSlot = true;
 
-                itemTagAdded = draggable.item.itemName;
-            }
-            else if (forItemSlot)
-            {
-                draggable.parentAfterDrag = transform;
-                Debug.Log("Item placed successfully.");
+                isOccupied = true;
+
+                // Update the slot item
+                parentItem = draggable.item;
+
+                Debug.Log($"Item {parentItem.itemName} placed in the slot.");
+
+                // Check for heating recursively
+                // ApplyHeatIfPresent();
             }
             else
             {
                 draggable.transform.position = draggable.originalPosition;
-                return;
+                Debug.LogWarning("Dropped item is not compatible with this slot.");
             }
-
-            // // Update the list of overlapping objects after placing the item
-            // UpdateOverlappingObjects();
-
-            // // Log all overlapping objects
-            // if (overlappedObjects.Count > 0)
-            // {
-            //     Debug.Log($"Overlapping with {overlappedObjects.Count} objects:");
-            //     foreach (GameObject obj in overlappedObjects)
-            //     {
-            //         Debug.Log($"- {obj.name}");
-            //     }
-            // }
-            // else
-            // {
-            //     Debug.Log("No overlapping objects detected.");
-            // }
         }
     }
 
-    /// <summary>
-    /// Updates the list of overlapping UI elements.
-    /// </summary>
-    private void UpdateOverlappingObjects()
+    private void OnTransformChildrenChanged()
     {
-        overlappedObjects.Clear(); // Clear the previous list
-        RectTransform slotRect = GetComponent<RectTransform>();
+        ResizeChild();
 
-        // Iterate over all RectTransforms to find overlaps
-        foreach (RectTransform uiElement in FindObjectsOfType<RectTransform>())
+        if (transform.childCount > 0)
         {
-            if (uiElement != slotRect && uiElement.parent != transform) // Exclude self and its own children
+            isOccupied = true;
+
+            Color currentColor = image.color;
+            currentColor.a = 0;
+            image.color = currentColor; // Apply the change
+
+            // Check heat when child changes
+        }
+        else
+        {
+            isOccupied = false;
+
+            Color currentColor = image.color;
+            currentColor.a = 1; // Full opacity
+            image.color = currentColor; // Apply the change
+        }
+
+        // ApplyHeatIfPresent();
+    }
+
+    public void ResizeChild()
+    {
+        foreach (Transform child in transform)
+        {
+            RectTransform childRect = child.GetComponent<RectTransform>();
+            if (childRect != null)
             {
-                if (IsRectTransformOverlapping(slotRect, uiElement))
-                {
-                    overlappedObjects.Add(uiElement.gameObject); // Add overlapping object to the list
-                }
+                Vector2 parentSize = GetComponent<RectTransform>().rect.size;
+                childRect.sizeDelta = parentSize;
+                childRect.localScale = Vector3.one;
+                childRect.anchoredPosition = Vector2.zero;
             }
         }
     }
 
-    /// <summary>
-    /// Checks if two RectTransforms overlap.
-    /// </summary>
-    private bool IsRectTransformOverlapping(RectTransform rect1, RectTransform rect2)
-    {
-        Rect rect1World = GetWorldRect(rect1);
-        Rect rect2World = GetWorldRect(rect2);
+    // private void ApplyHeatIfPresent()
+    // {
+    //     if (parentItem == null)
+    //         return;
 
-        return rect1World.Overlaps(rect2World);
-    }
+    //     // Check recursively for heat in children
+    //     float cumulativeHeat = CalculateHeatFromDescendants(transform);
 
-    /// <summary>
-    /// Converts a RectTransform's local rectangle to a world rectangle.
-    /// </summary>
-    private Rect GetWorldRect(RectTransform rectTransform)
-    {
-        Vector3[] corners = new Vector3[4];
-        rectTransform.GetWorldCorners(corners);
+    //     if (cumulativeHeat > 0)
+    //     {
+    //         Debug.Log($"Heating {parentItem.itemName} with cumulative heat: {cumulativeHeat}°C.");
+    //         parentItem.HeatItem(cumulativeHeat * Time.deltaTime); // Apply heat
+    //     }
+    // }
 
-        Vector3 position = corners[0]; // Bottom-left corner
-        Vector2 size = new Vector2(
-            corners[2].x - corners[0].x, // Width
-            corners[2].y - corners[0].y // Height
-        );
+    // private float CalculateHeatFromDescendants(Transform parent)
+    // {
+    //     float totalHeat = 0f;
 
-        return new Rect(position, size);
-    }
+    //     foreach (Transform child in parent)
+    //     {
+    //         DragableItem childDragable = child.GetComponent<DragableItem>();
+    //         if (childDragable != null && childDragable.item.hasTemperature)
+    //         {
+    //             if (childDragable.item.CurrentState.stateName == "Heating")
+    //             {
+    //                 Debug.Log(
+    //                     $"Found heating item: {childDragable.item.itemName} with heat rate {childDragable.item.heatingRate}°C."
+    //                 );
+    //                 totalHeat += childDragable.item.heatingRate;
+    //             }
+    //         }
+
+    //         // Recursive call for further descendants
+    //         totalHeat += CalculateHeatFromDescendants(child);
+    //     }
+
+    //     return totalHeat;
+    // }
 }

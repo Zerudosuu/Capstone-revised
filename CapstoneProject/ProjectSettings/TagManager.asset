@@ -27,6 +27,7 @@ TagManager:
   - TemperatureModifier
   - Mixable
   - Slot
+  - ScrollViewSlot
   layers:
   - Default
   - TransparentFX

@@ -32,6 +32,8 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     public string getValue;
 
+    public Image itemImage;
+
     ExperimentManager experimentManager;
 
     private void Start()
@@ -44,6 +46,7 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     public void SetItem(Item item)
     {
         this.item = item;
+        itemImage.sprite = item.itemPrefab.GetComponent<Image>().sprite;
     }
 
     public void StartMeasurement()

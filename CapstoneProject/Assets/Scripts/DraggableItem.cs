@@ -22,6 +22,8 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private GameObject lastOverlappedObject = null;
     public bool placeInSlot = false;
 
+    public GameObject[] transforms;
+
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -33,7 +35,8 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             canvas = GetComponentInParent<Canvas>();
         }
-        originalSize = rectTransform.sizeDelta; // Store the initial size of the item
+        originalSize = rectTransform.sizeDelta;
+        // Store the initial size of the item
     }
 
     private void Start()
@@ -42,6 +45,16 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         if (transform.parent != null && transform.parent.CompareTag("Slot"))
         {
             ResizeToFitContainer(transform.parent.GetComponent<RectTransform>());
+        }
+
+        // Ensure all transforms are disabled initially
+        if (transforms != null)
+        {
+            foreach (var obj in transforms)
+            {
+                if (obj != null)
+                    obj.SetActive(false);
+            }
         }
     }
 
@@ -64,23 +77,15 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         transform.position = eventData.position;
 
-        // GameObject overlappedObject = GetOverlappedGameObject(eventData);
-        // if (overlappedObject != null)
-        // {
-        //     if (overlappedObject != lastOverlappedObject)
-        //     {
-        //         Debug.Log($"Entered new object: {overlappedObject.name}");
-        //         lastOverlappedObject = overlappedObject;
-        //     }
-        // }
-        // else
-        // {
-        //     if (lastOverlappedObject != null)
-        //     {
-        //         Debug.Log($"Exited object: {lastOverlappedObject.name}");
-        //         lastOverlappedObject = null;
-        //     }
-        // }
+        GameObject overlappedObject = GetOverlappedGameObject(eventData);
+        if (overlappedObject != null)
+        {
+            Debug.Log($"Overlapped with: {overlappedObject.name} (has DragableItem script)");
+        }
+        else
+        {
+            Debug.Log("No valid draggable object detected.");
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -91,15 +96,13 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
         if (
             eventData.pointerCurrentRaycast.gameObject != null
-            && eventData.pointerCurrentRaycast.gameObject.CompareTag("Slot")
+            && eventData.pointerCurrentRaycast.gameObject.CompareTag("ScrollViewSlot")
         )
         {
             Transform newSlot = eventData.pointerCurrentRaycast.gameObject.transform;
             transform.SetParent(newSlot);
-            ResizeToFitContainer(newSlot.GetComponent<RectTransform>());
 
-            print("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
-            placeInSlot = true;
+            // print("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
         }
         else
         {
@@ -119,8 +122,28 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             if (result.gameObject != gameObject) // Exclude self
             {
-                return result.gameObject; // Return the first valid overlapped object
+                DragableItem overlappedItem = result.gameObject.GetComponent<DragableItem>();
+
+                if (overlappedItem != null && overlappedItem.item.hasTemperature)
+                {
+                    // Check if the current object has a MeasureScript
+                    MeasureScript measureScript = GetComponent<MeasureScript>();
+                    if (measureScript != null)
+                    {
+                        // Display the temperature of the overlapped item
+                        measureScript.DisplayTemperature(overlappedItem.item.currentTemperature);
+                    }
+
+                    return result.gameObject; // Return the first valid object with DragableItem
+                }
             }
+        }
+
+        // Clear the temperature display if no valid object is found
+        MeasureScript currentMeasureScript = GetComponent<MeasureScript>();
+        if (currentMeasureScript != null)
+        {
+            currentMeasureScript.ClearTemperature();
         }
 
         return null; // No valid object found
@@ -136,5 +159,24 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void SetItem(Item item)
     {
         this.item = item;
+    }
+
+    public void SetTransforms()
+    {
+        if (transforms != null)
+        {
+            foreach (var obj in transforms)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(placeInSlot);
+                }
+            }
+        }
+    }
+
+    private void OnTransformParentChanged()
+    {
+        print("Parent changed" + gameObject.transform.parent);
     }
 }

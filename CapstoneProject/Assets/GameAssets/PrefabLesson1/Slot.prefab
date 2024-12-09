@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 6793627386309678807}
   - component: {fileID: 7661523832820420703}
   - component: {fileID: 4455367165858898327}
-  - component: {fileID: 274487888563500233}
+  - component: {fileID: 4134654622768634054}
   m_Layer: 5
   m_Name: Slot
-  m_TagString: Slot
+  m_TagString: ScrollViewSlot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,7 +27,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2839348364752109333}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.601, y: 1.601, z: 1.601}
   m_ConstrainProportionsScale: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
---- !u!114 &274487888563500233
+--- !u!114 &4134654622768634054
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -110,9 +110,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2839348364752109333}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cedb9069c34d47e4e9f26ea6566c8de7, type: 3}
+  m_Script: {fileID: 11500000, guid: 11103fae8f3ec7347a04bc6fdbc8e832, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FixChildSize: 1
-  compatibleTagsForSlot: []
-  forItemSlot: 1

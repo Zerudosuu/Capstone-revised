@@ -20,8 +20,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -34,15 +40,46 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: HeatSource
     compatibleTags:
     - Ignition
     - Flammable
     - Container
     - Fuel
-    states: []
+    states:
+    - stateName: Empty
+      statePrefab: {fileID: 5897202751620090658, guid: db012a849ac9d794cb3162049efa4202, type: 3}
+      description: 
+      isDefaultState: 1
+      conditions:
+      - conditionName: Denatured Alcohol
+        itemNameRequirements:
+        - Denatured Alcohol
+        DisplayErrorMessage: 
+        typeOfInteraction: pouring
+    - stateName: Lamp with Denatured Alcohol
+      statePrefab: {fileID: 2713080802661349916, guid: d336ceb95fd73ad478c3cc5f78fa67db, type: 3}
+      description: 
+      isDefaultState: 0
+      conditions:
+      - conditionName: Match
+        itemNameRequirements:
+        - Match
+        DisplayErrorMessage: 
+        typeOfInteraction: 
+    - stateName: Lamp with Fire
+      statePrefab: {fileID: 2713080802661349916, guid: d336ceb95fd73ad478c3cc5f78fa67db, type: 3}
+      description: 
+      isDefaultState: 0
+      conditions: []
     currentStateIndex: 0
   - itemPrefab: {fileID: 4047271636717327193, guid: 6cdff08c187c10443934dcbac48432dd, type: 3}
     itemName: Tripod
@@ -51,8 +88,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: Support
     compatibleTags:
     - HeatConductor
@@ -68,13 +111,19 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
     currentStateIndex: 0
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 4783582525948895554, guid: c91395fc596508142a929bb3c508a9f9, type: 3}
     itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
       produces fire.
@@ -82,21 +131,33 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
-    tagName: 0
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: Ignition
     compatibleTags: []
     states: []
     currentStateIndex: 0
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 4994321575584154459, guid: ac38c9e18ca46134e9038097cb6fca22, type: 3}
     itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -108,8 +169,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -121,8 +188,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: Container
     compatibleTags:
     - Liquid
@@ -133,19 +206,34 @@ MonoBehaviour:
     - stateName: Empty
       statePrefab: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
       description: 
+      isDefaultState: 1
+      conditions:
+      - conditionName: Water
+        itemNameRequirements:
+        - Water
+        DisplayErrorMessage: 
+        typeOfInteraction: pouring
     - stateName: BeakerWithWater
       statePrefab: {fileID: 7338545600669440192, guid: 2e2053cd812bfef40b4c62b519ea663b, type: 3}
       description: 
+      isDefaultState: 0
+      conditions: []
     currentStateIndex: 0
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 1174782827702463807, guid: 6af06b9467c5fd14d9248436a6434935, type: 3}
     itemName: Thermometer 110 Degrees
     itemDescription: A tool used to measure up to 110 temperature.
     itemIcon: {fileID: 21300000, guid: 95825d7726df0834e8d20365819c2e42, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -157,8 +245,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -170,8 +264,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -183,8 +283,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -196,8 +302,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -209,8 +321,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -222,8 +340,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -235,8 +359,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -249,8 +379,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -262,8 +398,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -275,8 +417,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -288,8 +436,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -301,8 +455,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -314,8 +474,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -327,8 +493,14 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
@@ -340,21 +512,33 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: 0
     compatibleTags: []
     states: []
     currentStateIndex: 0
-  - itemPrefab: {fileID: 2784880874087643898, guid: 6979c975f258b364784acb6cf0702497, type: 3}
+  - itemPrefab: {fileID: 6624615194705630374, guid: ef81953465a8d39419f67c069fbe69b3, type: 3}
     itemName: Water
     itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 1
+    measurementUnit: 
     tagName: Liquid
     compatibleTags: []
     states: []

@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2554182884780779160}
   - component: {fileID: 1361923046468545120}
   - component: {fileID: 3878049012886499395}
+  - component: {fileID: 8357787810867438233}
   m_Layer: 5
   m_Name: Lamp
   m_TagString: Untagged
@@ -114,15 +115,70 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
-    tagName: 
-    compatibleTags: []
-    states: []
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: HeatSource
+    compatibleTags:
+    - Flammable
+    states:
+    - stateName: Lamp with Denatured Alcohol
+      statePrefab: {fileID: 2713080802661349916, guid: d336ceb95fd73ad478c3cc5f78fa67db, type: 3}
+      description: 
+      isDefaultState: 0
+      conditions:
+      - conditionName: Lamp with Fire
+        itemNameRequirements:
+        - Match
+        DisplayErrorMessage: 
+        typeOfInteraction: HeatSource
+    - stateName: Lamp with fire
+      statePrefab: {fileID: 6449000456392978452, guid: 42892edbe4ba2ad4a918018f70c00bc8, type: 3}
+      description: 
+      isDefaultState: 0
+      conditions: []
     currentStateIndex: 0
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
+  transforms: []
+--- !u!114 &8357787810867438233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5897202751620090658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
+    measuredValue: 0
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
 --- !u!1 &7838932972556641298
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,9 +270,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   FixChildSize: 0
   compatibleTagsForSlot: []
-  forItemSlot: 0
-  requiredTag: 
-  itemTagAdded: 
+  RequireName: Tripod
+  ItemAddedName: 
+  isOccupied: 0
+  parentItem:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
+    measuredValue: 0
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
 --- !u!114 &891465297688649454
 MonoBehaviour:
   m_ObjectHideFlags: 0

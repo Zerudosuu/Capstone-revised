@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,8 @@ public class ExperimentManager : MonoBehaviour
 
     ExperimentObjectManager experimentObjectManager;
 
+    ScrollViewSlot[] slots;
+
     void Start()
     {
         MeterPanel.SetActive(false);
@@ -24,6 +27,9 @@ public class ExperimentManager : MonoBehaviour
         currentScore.value = score; // Initialize slider value
 
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>();
+
+        // Get all slots as children of the item container
+        slots = experimentObjectManager.ItemContainer.GetComponentsInChildren<ScrollViewSlot>();
     }
 
     public void UpdateScore(string zone)
@@ -62,28 +68,78 @@ public class ExperimentManager : MonoBehaviour
 
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
+            GameObject statePrefab = itemReaction.item.CurrentState.statePrefab;
+
+            if (statePrefab == null)
+            {
+                Debug.LogError(
+                    $"State prefab is null for {itemReaction.item.itemName}'s current state."
+                );
+                return;
+            }
+
+            // Find an empty slot or create a new one
+            ScrollViewSlot emptySlot = FindEmptySlot();
+            GameObject newSlot = null;
+
+            if (emptySlot != null)
+            {
+                Debug.Log("Found an empty slot for the new prefab.");
+            }
+            else
+            {
+                Debug.Log("No empty slot found. Creating a new slot.");
+                newSlot = Instantiate(slotPrefab, experimentObjectManager.ItemContainer.transform);
+            }
+
+            // Instantiate the new state prefab
+            GameObject newPrefab = Instantiate(
+                statePrefab,
+                emptySlot != null ? emptySlot.transform : newSlot.transform
+            );
+            newPrefab.name = statePrefab.name;
+
+            // Align the prefab within the slot
+            newPrefab.transform.localPosition = Vector3.zero;
+            newPrefab.transform.localScale = Vector3.one;
+
+            // Destroy the old item
+            Destroy(currentItem);
+
+            Debug.Log(
+                $"Updated item prefab for {itemReaction.item.itemName} and placed in the slot."
+            );
+        }
+        else
+        {
+            Debug.LogError("ItemReaction or CurrentState is null. Cannot update prefab.");
+        }
+    }
+
+    public void UpdateItemPrefabInPlace(GameObject currentItem)
+    {
+        ItemReaction itemReaction = currentItem.GetComponent<ItemReaction>();
+
+        if (itemReaction != null && itemReaction.item.CurrentState != null)
+        {
             // Get the new state prefab
             GameObject statePrefab = itemReaction.item.CurrentState.statePrefab;
 
             if (statePrefab != null)
             {
-                // Instantiate a new slot
-                GameObject newSlot = Instantiate(
-                    slotPrefab,
-                    experimentObjectManager.ItemContainer.transform
-                );
+                // Replace the current item's prefab
+                GameObject parentSlot = currentItem.transform.parent.gameObject;
 
-                // Instantiate the new prefab within the slot
-                GameObject newPrefab = Instantiate(statePrefab, newSlot.transform);
+                GameObject newPrefab = Instantiate(statePrefab, parentSlot.transform);
                 newPrefab.name = statePrefab.name;
+
                 // Align the new prefab within the slot
                 newPrefab.transform.localPosition = Vector3.zero;
                 newPrefab.transform.localScale = Vector3.one;
 
-                // Destroy the old item
                 Destroy(currentItem);
 
-                Debug.Log("Updated item prefab and added to a new slot.");
+                Debug.Log("Updated item prefab in place.");
             }
             else
             {
@@ -94,5 +150,17 @@ public class ExperimentManager : MonoBehaviour
         {
             Debug.LogError("ItemReaction or CurrentState is null.");
         }
+    }
+
+    public ScrollViewSlot FindEmptySlot()
+    {
+        foreach (ScrollViewSlot slot in slots)
+        {
+            if (slot.transform.childCount == 0) // Check if slot is empty
+            {
+                return slot;
+            }
+        }
+        return null; // No empty slots found
     }
 }

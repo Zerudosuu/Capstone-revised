@@ -155,9 +155,9 @@ MonoBehaviour:
   - Support
   - Container
   - Placement
-  forItemSlot: 0
-  requiredTag: Support
-  itemTagAdded: 
+  RequireName: Tripod
+  ItemAddedName: 
+  isOccupied: 0
 --- !u!222 &5327401834454956814
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -253,9 +253,9 @@ MonoBehaviour:
   - Support
   - Container
   - Placement
-  forItemSlot: 0
-  requiredTag: 
-  itemTagAdded: 
+  RequireName: WireGauze
+  ItemAddedName: 
+  isOccupied: 0
 --- !u!114 &6586076918089386206
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -347,7 +347,7 @@ RectTransform:
   m_GameObject: {fileID: 7338545600669440192}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2.7314, y: 2.7314, z: 2.7314}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6149490946880503446}
@@ -415,22 +415,28 @@ MonoBehaviour:
   canvas: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   item:
-    itemPrefab: {fileID: 0}
+    itemPrefab: {fileID: 7338545600669440192}
     itemName: 
     itemDescription: 
     itemIcon: {fileID: 0}
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 1
+    currentTemperature: 25
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
     needToMeasure: 0
-    tagName: 
+    tagName: Container
     compatibleTags: []
     states: []
     currentStateIndex: 0
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
+  transforms: []
 --- !u!225 &8751448026635403536
 CanvasGroup:
   m_ObjectHideFlags: 0
