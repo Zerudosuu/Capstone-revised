@@ -29,7 +29,7 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField]
     private Items items;
-    private List<Item> clonedItems = new List<Item>();
+    public List<Item> clonedItems = new List<Item>();
 
     // Start is called before the first frame update
     void Start()
@@ -55,10 +55,10 @@ public class ItemManager : MonoBehaviour
             {
                 InstantiateInInventory(item);
             }
-            else
-            {
-                InstantiateInShop(item);
-            }
+            // else
+            // {
+            //     InstantiateInShop(item);
+            // }
         }
     }
 

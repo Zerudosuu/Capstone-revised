@@ -75,7 +75,8 @@ public class LessonManager : MonoBehaviour, IData
 
             if (lesson.isCompleted)
             {
-                buttonScript.GetComponent<Button>().interactable = false;
+                lesson.Coins = lesson.SecondCoins;
+                lesson.Experience = lesson.SecondExperience;
             }
         }
     }
@@ -183,10 +184,22 @@ public class LessonManager : MonoBehaviour, IData
         questAsLesson.RewardCoins = lesson.Coins;
         questAsLesson.RewardExperience = lesson.Experience;
         questAsLesson.materials = new List<MaterialEntry>();
+        questAsLesson.steps = new List<LessonSteps>();
+        questAsLesson.itemRewards = new List<MaterialEntry>();
+
+        foreach (MaterialEntry material in lesson.ItemRewards)
+        {
+            questAsLesson.itemRewards.Add(material);
+        }
 
         foreach (MaterialEntry material in lesson.materials)
         {
             questAsLesson.materials.Add(material);
+        }
+
+        foreach (LessonSteps step in lesson.steps)
+        {
+            questAsLesson.steps.Add(step);
         }
     }
 
@@ -204,6 +217,31 @@ public class LessonManager : MonoBehaviour, IData
 
     public void OnRewardsCollected()
     {
+        PlayerStats playerStats = FindObjectOfType<PlayerStats>(true);
+        ItemManager itemManager = FindObjectOfType<ItemManager>(true);
+
+        // Add experience points to the player
+        playerStats.AddExp(questAsLesson.RewardExperience);
+
+        foreach (MaterialEntry itemReward in questAsLesson.itemRewards)
+        {
+            // Find the matching item in the clonedItems list
+            Item matchingItem = itemManager.clonedItems.Find(item =>
+                item.itemName == itemReward.materialName
+            );
+
+            if (matchingItem != null)
+            {
+                // Mark the item as unlocked and instantiate it in the inventory
+                if (!matchingItem.isUnlock)
+                {
+                    matchingItem.isUnlock = true;
+                    itemManager.InstantiateInInventory(matchingItem);
+                }
+            }
+        }
+
+        // Clear quest, hide reward container, and save game
         questAsLesson = null;
         RewardContainer.SetActive(false);
         DataManager.Instance.SaveGame();
@@ -224,6 +262,7 @@ public class LessonManager : MonoBehaviour, IData
             {
                 Debug.Log("This lesson is  Completed");
                 RewardContainer.SetActive(true);
+                RewardContainer.GetComponent<RewardDistributor>().SetRewards(questAsLesson);
             }
         }
 

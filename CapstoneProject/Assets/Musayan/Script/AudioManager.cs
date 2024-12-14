@@ -8,15 +8,17 @@ public class AudioManager : MonoBehaviour
     public static AudioManager audioInstance { get; private set; }
 
     [Header("Audio Background Music")]
-    [SerializeField] private List<AudioClip> bgMusics;
+    [SerializeField]
+    private List<AudioClip> bgMusics;
     private int currentClipIndex = 0;
 
     [Header("Audio Sorce")]
-    [SerializeField] private AudioSource bgAudioSorce;
+    [SerializeField]
+    private AudioSource bgAudioSorce;
 
     private void Awake()
     {
-        if(audioInstance != null)
+        if (audioInstance != null)
         {
             Destroy(this.gameObject);
             return;
@@ -28,9 +30,8 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if(bgAudioSorce != null)
+        if (bgAudioSorce != null)
             StartCoroutine(PlayAudioLoop());
-        
     }
 
     //This will loop the audio continousely...

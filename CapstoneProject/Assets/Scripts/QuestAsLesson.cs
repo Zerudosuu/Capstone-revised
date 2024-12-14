@@ -14,6 +14,8 @@ public class QuestAsLesson
 
     // Use List to mimic Dictionary functionality
     public List<MaterialEntry> materials = new List<MaterialEntry>();
+    public List<MaterialEntry> itemRewards = new List<MaterialEntry>();
+    public List<LessonSteps> steps = new List<LessonSteps>();
     public bool isCompleted;
 
     public int RewardCoins;

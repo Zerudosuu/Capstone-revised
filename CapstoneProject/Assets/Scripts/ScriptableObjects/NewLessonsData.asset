@@ -57,9 +57,49 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
+    steps:
+    - stepDescription: Pour approximately 150ml of water into the beaker
+      isCompleted: 0
+      requiredObjectNames:
+      - 
+      actionRequired: Pour
+    - stepDescription: Measure the initial temperature of the air just above the
+        water level
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: Measure
+    - stepDescription: Assemble the water gauze, tripod, and alcohol lamp. Set aside
+        iced water. Replace the content of the beaker with tap water. Place with
+        water on the wire gauze.
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: Measure
+    - stepDescription: Heat the water until it boils and get the temperature of the
+        air just above the water level
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: Measure
     isCompleted: 0
     Coins: 200
     Experience: 100
+    SecondCoins: 100
+    SecondExperience: 80
+    ItemRewards:
+    - materialName: Erlrnmeyer Flask
+      isCollected: 0
+      Quantity: 0
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Cork or Rubber stopper
+      isCollected: 0
+      Quantity: 0
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Liquid Dropper
+      isCollected: 0
+      Quantity: 0
+      needToMeasure: 0
+      measuredValue: 0
   - LessonID: 2
     chapterName: "Gay-Lussac\u2019s Law"
     chapterNumber: 2
@@ -94,9 +134,13 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
+    steps: []
     isCompleted: 0
     Coins: 0
     Experience: 0
+    SecondCoins: 0
+    SecondExperience: 0
+    ItemRewards: []
   - LessonID: 3
     chapterName: 'Everything has changed '
     chapterNumber: 3
@@ -180,9 +224,13 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
+    steps: []
     isCompleted: 0
     Coins: 0
     Experience: 0
+    SecondCoins: 0
+    SecondExperience: 0
+    ItemRewards: []
   - LessonID: 4
     chapterName: Hotdoggy
     chapterNumber: 4
@@ -194,6 +242,10 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
+    steps: []
     isCompleted: 0
     Coins: 60
     Experience: 80
+    SecondCoins: 0
+    SecondExperience: 0
+    ItemRewards: []

@@ -4,11 +4,7 @@ using UnityEngine;
 
 public class ExperimentObjectManager : MonoBehaviour, IData
 {
-    [SerializeField]
-    private GameObject experimentModal;
-
-    [SerializeField]
-    private QuestAsLesson currentLesson;
+    public QuestAsLesson currentLesson;
 
     [SerializeField]
     private Items items;

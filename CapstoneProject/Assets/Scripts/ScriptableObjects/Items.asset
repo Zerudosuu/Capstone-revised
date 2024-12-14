@@ -243,7 +243,7 @@ MonoBehaviour:
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 0}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     hasTemperature: 0
     currentTemperature: 0
@@ -262,7 +262,7 @@ MonoBehaviour:
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 0}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     hasTemperature: 0
     currentTemperature: 0

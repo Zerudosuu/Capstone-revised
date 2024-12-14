@@ -7,20 +7,34 @@ using UnityEngine.UI;
 public class PlayerStats : MonoBehaviour
 {
     [Header("Player Stats")]
-    [SerializeField] private int playerLvl;
-    [SerializeField] private float playerEXP;
-    [SerializeField] private string playerTitle;
+    [SerializeField]
+    private int playerLvl;
+
+    [SerializeField]
+    private float playerEXP;
+
+    [SerializeField]
+    private string playerTitle;
 
     [Header("Statistic Base")]
-    [SerializeField] private float expGained;
-    [SerializeField] private float maxEXP;
+    [SerializeField]
+    private float expGained;
+
+    [SerializeField]
+    private float maxEXP;
 
     [Header("Display")]
-    [SerializeField] private TMP_Text lvlTxt;
-    [SerializeField] private TMP_Text titleTxt;
-    [SerializeField] private TMP_Text expTxt;
+    [SerializeField]
+    private TMP_Text lvlTxt;
 
-    [SerializeField] private Slider expSlider;
+    [SerializeField]
+    private TMP_Text titleTxt;
+
+    [SerializeField]
+    private TMP_Text expTxt;
+
+    [SerializeField]
+    private Slider expSlider;
 
     private void Start()
     {
@@ -32,9 +46,9 @@ public class PlayerStats : MonoBehaviour
     //              * expGained
 
 
-    public void AddExp()
+    public void AddExp(int exp)
     {
-        expGained += 100;
+        expGained += exp;
 
         if (expGained >= maxEXP)
         {
@@ -45,20 +59,19 @@ public class PlayerStats : MonoBehaviour
         playerUpdateUI();
     }
 
-
     #region Update UI
     private void PlayerStatsUpdate(int level)
     {
-        switch(level)
+        switch (level)
         {
             case 1:
                 playerTitle = "Noob";
-                maxEXP = 150;
+                maxEXP = 100;
                 LevelUpUI();
                 return;
             case 2:
                 playerTitle = "Newbie";
-                maxEXP = 300;
+                maxEXP = 210;
                 expGained = 0;
                 LevelUpUI();
                 return;
@@ -77,7 +90,6 @@ public class PlayerStats : MonoBehaviour
         expSlider.value = expGained;
         expTxt.text = $"{expGained.ToString()} / {maxEXP.ToString()}";
     }
-
 
     private void LevelUpUI()
     {

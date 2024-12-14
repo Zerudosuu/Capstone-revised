@@ -57,12 +57,21 @@ public class Lesson
     public string chapterSummaryDescription;
     public string fullDescription;
 
-    // Use List to mimic Dictionary functionality
     public List<MaterialEntry> materials = new List<MaterialEntry>();
+    public List<LessonSteps> steps = new List<LessonSteps>();
+
     public bool isCompleted;
 
+    [Header("FirstRewards")]
     public int Coins;
     public int Experience;
+
+    [Header("SecondRewards")]
+    public int SecondCoins;
+    public int SecondExperience;
+
+    [Header("Lesson Item Rewards")]
+    public List<MaterialEntry> ItemRewards = new List<MaterialEntry>();
 
     public Lesson Clone()
     {
@@ -76,24 +85,70 @@ public class Lesson
             isCompleted = this.isCompleted,
             Coins = this.Coins,
             Experience = this.Experience,
-            materials = new List<MaterialEntry>(), // Create a new list
+            SecondCoins = this.SecondCoins,
+            SecondExperience = this.SecondExperience,
+            materials = new List<MaterialEntry>(),
+            steps = new List<LessonSteps>(),
+            ItemRewards = new List<MaterialEntry>(),
         };
 
         // Deep clone each MaterialEntry
         foreach (MaterialEntry material in this.materials)
         {
-            clonedLesson.materials.Add(
-                new MaterialEntry
-                {
-                    materialName = material.materialName,
-                    isCollected = material.isCollected,
-                    Quantity = material.Quantity,
-                    needToMeasure = material.needToMeasure,
-                    measuredValue = material.measuredValue,
-                }
-            );
+            clonedLesson.materials.Add(material.Clone());
+        }
+
+        // Deep clone each ItemReward
+        foreach (MaterialEntry itemReward in this.ItemRewards)
+        {
+            clonedLesson.ItemRewards.Add(itemReward.Clone());
+        }
+
+        // Deep clone each LessonSteps
+        foreach (LessonSteps step in this.steps)
+        {
+            clonedLesson.steps.Add(step.Clone());
         }
 
         return clonedLesson;
+    }
+
+    public bool AreAllStepsCompleted()
+    {
+        foreach (LessonSteps step in steps)
+        {
+            if (!step.isCompleted)
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+[System.Serializable]
+public class LessonSteps
+{
+    public string stepDescription; // Text for the step
+    public bool isCompleted = false; // Check if the step is completed
+    public List<string> requiredObjectNames = new List<string>(); // Objects required for this step
+    public string actionRequired; // Specific action (e.g., "Measure", "Heat", "Mix")
+
+    // Method to mark the step as completed
+    public void CompleteStep()
+    {
+        isCompleted = true;
+    }
+
+    // Deep clone method
+    public LessonSteps Clone()
+    {
+        return new LessonSteps
+        {
+            stepDescription = this.stepDescription,
+            isCompleted = this.isCompleted,
+            requiredObjectNames = new List<string>(this.requiredObjectNames), // Properly clone the list
+            actionRequired = this.actionRequired,
+        };
     }
 }
