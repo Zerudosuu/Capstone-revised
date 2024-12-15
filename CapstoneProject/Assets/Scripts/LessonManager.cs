@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn.Unity;
 
 public class LessonManager : MonoBehaviour, IData
 {
@@ -166,6 +167,15 @@ public class LessonManager : MonoBehaviour, IData
         }
 
         DataManager.Instance.gameData.quest = questAsLesson;
+
+        TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
+
+        if (tutorialManager != null && !tutorialManager.isTutorialComplete)
+        {
+            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("currentExperiment");
+        }
     }
 
     public void OnBackButtonClick()

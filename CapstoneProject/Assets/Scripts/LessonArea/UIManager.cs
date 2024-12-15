@@ -129,6 +129,19 @@ public class UIManager : MonoBehaviour
         informationWindow.SetActive(false);
         PlayerUI.SetActive(true);
 
+        TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
+
+        if (
+            tutorialManager != null
+            && !tutorialManager.isTutorialComplete
+            && !HomeWindow.activeSelf
+        )
+        {
+            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("hotdogExperiment");
+        }
+
         StartCoroutine(MoveNavBar(HomeBtn, "isHome"));
     }
 
@@ -176,7 +189,7 @@ public class UIManager : MonoBehaviour
 
         if (tutorialManager != null && !tutorialManager.isTutorialComplete)
         {
-            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>();
+            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
             dialogueRunner.Stop();
             dialogueRunner.StartDialogue("TutorialExperimentTab");
         }

@@ -73,5 +73,15 @@ Chemistry Fairy: This is the details of your current quest. You may review it if
 <<set_highlight "next">>
 Chemistry Fairy: Also, you can abandon it if you wish to have different quest. but for now we will continue with this experiment. so please press continue.
 
+===
+
+title: hotdogExperiment
+tags:
+position: 44,500
+---
+<<hide_highlight>>
+Chemistry Fairy: Now you its time for gathering materials to do the experiment.
+<<set_highlight "next">>
+Chemistry Fairy: Its stated on the materials needed on the experiment that you need a water. To get the water, drag and drop it to the bag
 
 ===

@@ -3,7 +3,7 @@ using DG.Tweening; // Add DOTween namespace
 using UnityEngine;
 using Yarn.Unity;
 
-public class TutorialManager : MonoBehaviour
+public class TutorialManager : MonoBehaviour, IData
 {
     [Header("Tutorial Manager")]
     [SerializeField]
@@ -11,6 +11,8 @@ public class TutorialManager : MonoBehaviour
 
     [SerializeField]
     private GameObject dialogueBoxPosition; // Dialogue box object
+
+    public GameObject HighLightParent;
 
     public List<HighlightAndDialoguePosition> highLightPositions =
         new List<HighlightAndDialoguePosition>();
@@ -89,12 +91,34 @@ public class TutorialManager : MonoBehaviour
             .SetEase(Ease.InQuad)
             .OnComplete(() => highlightObject.SetActive(false));
     }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData.isTutorialCompleted)
+        {
+            isTutorialComplete = gameData.isTutorialCompleted;
+            gameObject.SetActive(false);
+            dialogueBoxPosition.SetActive(false);
+        }
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        gameData.isTutorialCompleted = isTutorialComplete;
+    }
 }
 
 [System.Serializable]
 public class HighlightAndDialoguePosition
 {
     public Vector3 highlightPosition;
+
     public Vector3 dialoguePosition;
     public Vector3 highlightScale;
+
+    [Header("Extra Highlight Position")]
+    public GameObject AnotherHighlightObject;
+
+    public Vector3 extraHighlightPosition;
+    public Vector3 extraHighlightScale;
 }

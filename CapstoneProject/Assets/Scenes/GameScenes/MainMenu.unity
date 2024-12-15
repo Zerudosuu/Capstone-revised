@@ -1888,7 +1888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eebea303375eff49be6102eaf1144cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  firstSelectedButton: {fileID: 0}
+  firstSelectedButton: {fileID: 1434211746}
   saveSlotMenu: {fileID: 791379582}
   volSetting: {fileID: 361402305}
   newGameButton: {fileID: 1434211746}
