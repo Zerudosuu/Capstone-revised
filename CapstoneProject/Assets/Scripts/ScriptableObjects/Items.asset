@@ -36,7 +36,7 @@ MonoBehaviour:
     itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
       combustion.
-    itemIcon: {fileID: 21300000, guid: 7a937b2769375b94d943aeea72068716, type: 3}
+    itemIcon: {fileID: 21300000, guid: 32e25492981ac334a9d810af4e9b8ec1, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -84,7 +84,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 4047271636717327193, guid: 6cdff08c187c10443934dcbac48432dd, type: 3}
     itemName: Tripod
     itemDescription: A three-legged platform used to support flasks and beakers.
-    itemIcon: {fileID: 21300000, guid: 34cba13fc68b09540a91f2352c015530, type: 3}
+    itemIcon: {fileID: 21300000, guid: ec90c7bd68847da43a3dd9809132765a, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -107,7 +107,7 @@ MonoBehaviour:
     itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
       a heat source.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 7b83b9406fcd349409c477ab71721271, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
     itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
       produces fire.
-    itemIcon: {fileID: 21300000, guid: 7d634153089ce264f847d1f4750fe346, type: 3}
+    itemIcon: {fileID: 21300000, guid: d5182459d4ec3e74cbfddf52461c5c59, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -146,7 +146,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 4994321575584154459, guid: ac38c9e18ca46134e9038097cb6fca22, type: 3}
     itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -165,7 +165,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Ice
     itemDescription: Frozen water.
-    itemIcon: {fileID: 21300000, guid: 3adc0ae9162998a4c9f19bb6d48a5c38, type: 3}
+    itemIcon: {fileID: 21300000, guid: a2ab63c60921e8741bfa89edbfc214b7, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -184,7 +184,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
     itemName: 500ml beaker
     itemDescription: ' A glass container used to hold liquids.'
-    itemIcon: {fileID: 21300000, guid: e96e7bd2f620e134dbd3bb923e9485cf, type: 3}
+    itemIcon: {fileID: 21300000, guid: 547c9d97d7b66674394e1d34f92bd22b, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -222,7 +222,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 1174782827702463807, guid: 6af06b9467c5fd14d9248436a6434935, type: 3}
     itemName: Thermometer 110 Degrees
     itemDescription: A tool used to measure up to 110 temperature.
-    itemIcon: {fileID: 21300000, guid: 95825d7726df0834e8d20365819c2e42, type: 3}
+    itemIcon: {fileID: 21300000, guid: 0ea5b3e1b0f871049bde085caa699319, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
