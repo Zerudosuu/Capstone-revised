@@ -19,6 +19,7 @@ public class GameData
 
     public List<Lesson> lessons;
     public int currentQuestIndex;
+    public bool isTutorialCompleted = false;
 
     // Default constructor initializes some default values
     public GameData()
@@ -33,6 +34,7 @@ public class GameData
         this.quest = new QuestAsLesson();
         this.lessons = new List<Lesson>();
         this.currentQuestIndex = 0; // Default to the first quest in the list
+        this.isTutorialCompleted = false;
     }
 }
 
