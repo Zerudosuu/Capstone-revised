@@ -1,0 +1,77 @@
+﻿title: TutorialDialogue
+tags:
+position: 44,403
+---
+Chemistry Fairy: Hello! I'm the Chemistry Fairy. I'm here to help you learn about Chemistry. 
+Chemistry Fairy:  not just we will see the reaction of each but we will experiment!.
+Chemistry Fairy: Let's get started! 
+Chemistry Fairy: First, let me show you around the app.
+<<jump TutorialProfileTab>>
+===
+
+title: TutorialProfileTab
+tags:
+position: 44,500
+---
+Chemistry Fairy: Before we jump into our experiments, let me give you a quick tour of your tools!
+<<set_highlight "next">>
+Chemistry Fairy: These are your main tabs at the bottom of the screen.
+<<set_highlight "next">>
+Chemistry Fairy: The first tab is the Profile tab.
+Chemistry Fairy: Here you can see your progress, your level, and your achievements.
+<<set_highlight "next">>
+Chemistry Fairy: You can browse the shop here.
+Chemistry Fairy: Shop contains all the items you can buy to help you in your experiments.
+<<set_highlight "next">>
+Chemistry Fairy: This is the home tab. Where you can see alll the equipments and chemicals you have.
+<<set_highlight "next">>
+Chemistry Fairy: This is the experiment tab. Here you can see all the experiments, lessons or task you have to do.
+<<set_highlight "next">>
+Chemistry Fairy: This is the info Tab. Here you can see all the information about the chemicals and equipments.
+<<set_highlight "next">>
+Chemistry Fairy: This is your player level, experience, title and coins
+Chemistry Fairy: You can earn experience and coins by completing the tasks and experiments.
+Chemistry Fairy: You can use coins to buy items from the shop.
+<<set_highlight "next">>
+Chemistry Fairy: Lastly, this is your Items unlocked that you can use in your experiments.
+<<set_highlight "next">>
+Chemistry Fairy: Now we will go now on how you get started with your first experiment.
+<<set_highlight "next">>
+Chemistry Fairy: Now let's move on to the Experiment tab. Click the Experiment Tab to see all the experiments you have to do.
+
+
+===
+
+title: TutorialExperimentTab
+tags:
+position: 44,500
+---
+<<set_highlight "next">>
+Chemistry Fairy: Here you can see all the experiments you have to do.
+Chemistry Fairy: You can see the experiment name, the level, the experience you will earn, and the coins you will earn.
+<<set_highlight "next">>
+Chemistry Fairy: These bookmarks represents the different experiment that you can choose. 
+Chemistry Fairy: You can choose any experiment you want to do.
+<<set_highlight "next">>
+Chemistry Fairy: Here you can see the title and description of the experiment.
+<<set_highlight "next">>
+Chemistry Fairy:  the materials you need to do the experiment. Scroll down to see other materials.
+<<set_highlight "next">>
+Chemistry Fairy: Here you can see the rewards
+Chemistry Fairy: You can earn experience and coins by completing the tasks and experiments.
+<<set_highlight "next">>
+Chemistry Fairy: And Lastly, press button to accept the experiment.
+===
+
+title: currentExperiment
+tags:
+position: 44,500
+---
+<<set_highlight "next">>
+Chemistry Fairy: Now you are in the experiment.
+Chemistry Fairy: This is the details of your current quest. You may review it if you are lost.
+<<set_highlight "next">>
+Chemistry Fairy: Also, you can abandon it if you wish to have different quest. but for now we will continue with this experiment. so please press continue.
+
+
+===

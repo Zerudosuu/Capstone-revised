@@ -3,24 +3,43 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Yarn;
+using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
 {
     [Header("MainMenuButtons")]
-    [SerializeField] private Button bagBtn;
-    [SerializeField] private Button settingsBtn;
+    [SerializeField]
+    private Button bagBtn;
+
+    [SerializeField]
+    private Button settingsBtn;
 
     [Header("Windows")]
-    [SerializeField] private GameObject ProfileWindow;
-    [SerializeField] private GameObject StoreWindow;
-    [SerializeField] private GameObject HomeWindow;
-    [SerializeField] private GameObject LessonWindow;
-    [SerializeField] private GameObject BagWindow;
-    [SerializeField] private GameObject VolumeSettings;
-    [SerializeField] private GameObject informationWindow;
+    [SerializeField]
+    private GameObject ProfileWindow;
+
+    [SerializeField]
+    private GameObject StoreWindow;
+
+    [SerializeField]
+    private GameObject HomeWindow;
+
+    [SerializeField]
+    private GameObject LessonWindow;
+
+    [SerializeField]
+    private GameObject BagWindow;
+
+    [SerializeField]
+    private GameObject VolumeSettings;
+
+    [SerializeField]
+    private GameObject informationWindow;
 
     [Header("Navbar")]
-    [SerializeField] private RectTransform navbar_BG;
+    [SerializeField]
+    private RectTransform navbar_BG;
 
     [SerializeField]
     private bool NavBarAnimationActivate;
@@ -29,30 +48,45 @@ public class UIManager : MonoBehaviour
     public float transitionDuration = 0.5f;
 
     [Header("Navbar Button")]
-    [SerializeField] private Button profileBtn;
-    [SerializeField] private Button ShopBtn;
-    [SerializeField] private Button HomeBtn;
-    [SerializeField] private Button LessonsBtn;
-    [SerializeField] public Button infoBtn;
-    [SerializeField] private GameObject subCircle;
-    [SerializeField] private Sprite[] lessonsSprite;
+    [SerializeField]
+    private Button profileBtn;
+
+    [SerializeField]
+    private Button ShopBtn;
+
+    [SerializeField]
+    private Button HomeBtn;
+
+    [SerializeField]
+    private Button LessonsBtn;
+
+    [SerializeField]
+    public Button infoBtn;
+
+    [SerializeField]
+    private GameObject subCircle;
+
+    [SerializeField]
+    private Sprite[] lessonsSprite;
 
     private string previousLessonState; // this where the state of the lesson will be stored
 
     [Header("Animator")]
-    [SerializeField] private Animator navBarAnimator;
+    [SerializeField]
+    private Animator navBarAnimator;
 
     [Header("Player stats UI")]
-    [SerializeField] private GameObject PlayerUI;
+    [SerializeField]
+    private GameObject PlayerUI;
 
-    [Header("StateManager")] 
+    [Header("StateManager")]
     public GameObject PauseWindow;
 
     private void Awake()
     {
-        bagBtn.onClick.AddListener(OnBagButtonClick);   
+        bagBtn.onClick.AddListener(OnBagButtonClick);
     }
-    
+
     void Start()
     {
         OnHomeButtonClick(); // it will start at home window
@@ -138,7 +172,14 @@ public class UIManager : MonoBehaviour
             LessonState(previousLessonState);
 
         LessonWindow.SetActive(true);
+        TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
 
+        if (tutorialManager != null && !tutorialManager.isTutorialComplete)
+        {
+            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>();
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("TutorialExperimentTab");
+        }
         StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
     }
 
@@ -155,11 +196,9 @@ public class UIManager : MonoBehaviour
     public void OnVolumeButtonClick()
     {
         VolumeSettings.SetActive(true);
-        
 
         PauseWindow.SetActive(false);
     }
-
 
     #region Lesson State
     private void OnCurrentLesson()
@@ -169,7 +208,7 @@ public class UIManager : MonoBehaviour
 
         ProfileWindow.SetActive(false);
         VolumeSettings.SetActive(false);
-        informationWindow.SetActive(false); 
+        informationWindow.SetActive(false);
         HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
     }
