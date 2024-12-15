@@ -2891,6 +2891,7 @@ MonoBehaviour:
   InventoryPrefabItem: {fileID: 5582474361328607625, guid: 6b23384855d9ce74fbaf672d25881566, type: 3}
   ShopPrefabItem: {fileID: 5177560654171793980, guid: 161982b8026a0854ba688bbe7cf7e4a8, type: 3}
   items: {fileID: 11400000, guid: 4634064fba401d047916c90666965203, type: 2}
+  clonedItems: []
 --- !u!4 &258487520
 Transform:
   m_ObjectHideFlags: 0
@@ -6623,7 +6624,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &596633933
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11874,7 +11875,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1159552368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14299,7 +14300,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1879860193}
         m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
-        m_MethodName: OnBagButtonClick
+        m_MethodName: OnHomeButtonClick
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
