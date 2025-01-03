@@ -58,6 +58,20 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
+    public void ReceiveHeatFromParent(float heatAmount)
+    {
+        if (item != null && item.hasTemperature)
+        {
+            item.currentTemperature = Mathf.Min(
+                item.currentTemperature + heatAmount,
+                item.maxTemperature
+            );
+            Debug.Log(
+                $"{item.itemName} received {heatAmount}°C from parent. Current Temperature: {item.currentTemperature}°C."
+            );
+        }
+    }
+
     //! DRAG EVENTS
     public void OnBeginDrag(PointerEventData eventData)
     {

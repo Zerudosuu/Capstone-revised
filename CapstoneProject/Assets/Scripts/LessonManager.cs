@@ -173,8 +173,16 @@ public class LessonManager : MonoBehaviour, IData
         if (tutorialManager != null && !tutorialManager.isTutorialComplete)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-            dialogueRunner.Stop();
-            dialogueRunner.StartDialogue("currentExperiment");
+
+            if (dialogueRunner != null)
+            {
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("currentExperiment");
+            }
+            else
+            {
+                return;
+            }
         }
     }
 

@@ -103,8 +103,14 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
     measuredValue: 0
-    needToMeasure: 0
+    needMeasurement: 0
+    measurementUnit: 
     tagName: Support
     compatibleTags: []
     states: []
@@ -112,6 +118,7 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
+  transforms: []
 --- !u!225 &2608881214672218354
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -138,7 +145,7 @@ GameObject:
   - component: {fileID: 6137245998991593997}
   - component: {fileID: 9159603379628701367}
   m_Layer: 5
-  m_Name: ObjectPlaceholder
+  m_Name: Beaker
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,9 +247,29 @@ MonoBehaviour:
   FixChildSize: 0
   compatibleTagsForSlot:
   - Container
-  forItemSlot: 0
-  requiredTag: 
-  itemTagAdded: 
+  RequireName: Beaker
+  ItemAddedName: 
+  isOccupied: 0
+  parentItem:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
+    measuredValue: 0
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
 --- !u!1 &8365568150033352668
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,7 +284,7 @@ GameObject:
   - component: {fileID: 2198536425344325471}
   - component: {fileID: 7014849869973801729}
   m_Layer: 5
-  m_Name: ObjectPlaceholder (1)
+  m_Name: Alcohol Lamp
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -359,6 +386,26 @@ MonoBehaviour:
   FixChildSize: 1
   compatibleTagsForSlot:
   - HeatSource
-  forItemSlot: 0
-  requiredTag: 
-  itemTagAdded: 
+  RequireName: Alcohol Lamp
+  ItemAddedName: 
+  isOccupied: 0
+  parentItem:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    maxTemperature: 100
+    coolingRate: 5
+    heatingRate: 10
+    measuredValue: 0
+    needMeasurement: 0
+    measurementUnit: 
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0

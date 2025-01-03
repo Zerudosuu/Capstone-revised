@@ -184,16 +184,24 @@ public class UIManager : MonoBehaviour
         else
             LessonState(previousLessonState);
 
+        StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
         LessonWindow.SetActive(true);
+
         TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
 
         if (tutorialManager != null && !tutorialManager.isTutorialComplete)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-            dialogueRunner.Stop();
-            dialogueRunner.StartDialogue("TutorialExperimentTab");
+            if (dialogueRunner != null)
+            {
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("TutorialExperimentTab");
+            }
+            else
+            {
+                return;
+            }
         }
-        StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
     }
 
     public void OnSubCircleClick()

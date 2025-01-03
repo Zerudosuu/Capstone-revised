@@ -89,6 +89,10 @@ public class CurrentLessonToDisplay : MonoBehaviour
             materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
                 materialEntry.materialName;
         }
+
+        BagManager bagManager = FindObjectOfType<BagManager>(true);
+
+        bagManager.UpdateLimit(lesson.materials.Count);
     }
 
     public void UpdateLessonDisplay()
@@ -161,6 +165,35 @@ public class CurrentLessonToDisplay : MonoBehaviour
                 }
                 // If all items are collected, mark the lesson as completed
             }
+        }
+    }
+
+    public void UpdateMaterialStates()
+    {
+        if (CurrentLesson == null)
+            return;
+
+        BagManager bagManager = FindObjectOfType<BagManager>(true);
+        if (bagManager == null)
+            return;
+
+        foreach (MaterialEntry materialEntry in CurrentLesson.materials)
+        {
+            // Check if the item exists in the bag
+            bool isInBag = bagManager.bagItems.Any(bagItem =>
+                bagItem.item.itemName == materialEntry.materialName
+            );
+
+            materialEntry.isCollected = isInBag;
+
+            MaterialContainer
+                .GetComponentsInChildren<TextMeshProUGUI>()
+                .Where(material => material.text == materialEntry.materialName)
+                .ToList()
+                .ForEach(material =>
+                {
+                    material.fontStyle = isInBag ? FontStyles.Strikethrough : FontStyles.Normal;
+                });
         }
     }
 

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BagManager : MonoBehaviour, IData
@@ -16,14 +17,22 @@ public class BagManager : MonoBehaviour, IData
     private GameObject ItemCountText;
 
     [SerializeField]
-    private List<BagItem> bagItems = new List<BagItem>();
+    public List<BagItem> bagItems = new List<BagItem>();
 
-    CurrentLessonToDisplay currentLessonToDisplay;
+    public CurrentLessonToDisplay currentLessonToDisplay;
+
+    public int itemLimit; // Limit the number of items in the bag
+    public TextMeshProUGUI itemLimitText;
 
     void Start()
     {
         currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         ItemCountContainer.gameObject.SetActive(false);
+
+        if (currentLessonToDisplay == null)
+        {
+            Debug.Log("CurrentLessonToDisplay is null");
+        }
     }
 
     public void AddItemInBag(Item item)
@@ -36,20 +45,37 @@ public class BagManager : MonoBehaviour, IData
         }
         else
         {
+            // Check if bag limit is enforced
+            if (currentLessonToDisplay.CurrentLesson != null)
+            {
+                // Enforce bag limit
+                if (bagItems.Count >= itemLimit)
+                {
+                    Debug.Log("Bag is full");
+                    return;
+                }
+            }
+
             GameObject newItem = Instantiate(ItemPrefab, BagContainer.transform);
             BagItem bagItem = newItem.GetComponent<BagItem>();
             bagItem.SetBagItem(item, 1);
             bagItems.Add(bagItem);
-
             newItem.transform.SetAsFirstSibling();
         }
 
         UpdateItemCount();
     }
 
+    public void UpdateLimit(int limit)
+    {
+        itemLimit = limit;
+        itemLimitText.text = bagItems.Count.ToString() + "/" + itemLimit.ToString();
+    }
+
     public void UpdateItemCount()
     {
         ItemCountText.GetComponent<TMPro.TextMeshProUGUI>().text = bagItems.Count.ToString();
+        itemLimitText.text = bagItems.Count.ToString() + "/" + itemLimit.ToString();
 
         if (bagItems.Count > 0)
         {
@@ -64,13 +90,21 @@ public class BagManager : MonoBehaviour, IData
     public void RemoveItem(BagItem bagItem)
     {
         bagItems.Remove(bagItem);
+
         Destroy(bagItem.gameObject);
         UpdateItemCount();
+
+        // Update lesson display when an item is removed
+        if (currentLessonToDisplay != null)
+        {
+            currentLessonToDisplay.UpdateMaterialStates();
+        }
     }
 
     public void ClearBag()
     {
         bagItems.Clear();
+        itemLimit = 0;
         UpdateItemCount();
     }
 

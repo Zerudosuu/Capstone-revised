@@ -104,43 +104,19 @@ public class Slot : MonoBehaviour, IDropHandler
         }
     }
 
-    // private void ApplyHeatIfPresent()
-    // {
-    //     if (parentItem == null)
-    //         return;
-
-    //     // Check recursively for heat in children
-    //     float cumulativeHeat = CalculateHeatFromDescendants(transform);
-
-    //     if (cumulativeHeat > 0)
-    //     {
-    //         Debug.Log($"Heating {parentItem.itemName} with cumulative heat: {cumulativeHeat}°C.");
-    //         parentItem.HeatItem(cumulativeHeat * Time.deltaTime); // Apply heat
-    //     }
-    // }
-
-    // private float CalculateHeatFromDescendants(Transform parent)
-    // {
-    //     float totalHeat = 0f;
-
-    //     foreach (Transform child in parent)
-    //     {
-    //         DragableItem childDragable = child.GetComponent<DragableItem>();
-    //         if (childDragable != null && childDragable.item.hasTemperature)
-    //         {
-    //             if (childDragable.item.CurrentState.stateName == "Heating")
-    //             {
-    //                 Debug.Log(
-    //                     $"Found heating item: {childDragable.item.itemName} with heat rate {childDragable.item.heatingRate}°C."
-    //                 );
-    //                 totalHeat += childDragable.item.heatingRate;
-    //             }
-    //         }
-
-    //         // Recursive call for further descendants
-    //         totalHeat += CalculateHeatFromDescendants(child);
-    //     }
-
-    //     return totalHeat;
-    // }
+    public void PropagateHeat(float heatAmount)
+    {
+        foreach (Transform child in transform)
+        {
+            DragableItem childDraggable = child.GetComponent<DragableItem>();
+            if (
+                childDraggable != null
+                && childDraggable.item != null
+                && childDraggable.item.hasTemperature
+            )
+            {
+                childDraggable.ReceiveHeatFromParent(heatAmount * 0.8f); // Example: 80% efficiency
+            }
+        }
+    }
 }

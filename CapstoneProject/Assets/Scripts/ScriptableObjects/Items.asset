@@ -158,7 +158,7 @@ MonoBehaviour:
     measuredValue: 0
     needMeasurement: 0
     measurementUnit: 
-    tagName: 0
+    tagName: Flammable
     compatibleTags: []
     states: []
     currentStateIndex: 0
