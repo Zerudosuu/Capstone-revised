@@ -1,7 +1,5 @@
 using System.Collections.Generic;
-using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class SaveSlotMenu : Menu
@@ -23,6 +21,7 @@ public class SaveSlotMenu : Menu
     private ConfirmationPopUpMenu confirmationPopup;
 
     SceneLoader _loader;
+
     void Awake()
     {
         saveslots = GetComponentsInChildren<Saveslot>();

@@ -10,7 +10,7 @@ public class MeasureScript : MonoBehaviour
     {
         if (temperatureDisplay != null)
         {
-            temperatureDisplay.text = $"Temperature: {temperature}°C";
+            temperatureDisplay.text = $"{temperature}°C";
         }
     }
 

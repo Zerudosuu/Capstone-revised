@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6433001258475646007}
   - component: {fileID: 5598148493777050257}
   - component: {fileID: 9094841970740060208}
-  - component: {fileID: 3732510661997212369}
   - component: {fileID: 2608881214672218354}
   m_Layer: 5
   m_Name: Tripod
@@ -79,46 +78,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &3732510661997212369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4047271636717327193}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057750cb65090eb40998003999a6522c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 2608881214672218354}
-  raycaster: {fileID: 0}
-  canvas: {fileID: 0}
-  parentAfterDrag: {fileID: 0}
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: Tripod
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    maxTemperature: 100
-    coolingRate: 5
-    heatingRate: 10
-    measuredValue: 0
-    needMeasurement: 0
-    measurementUnit: 
-    tagName: Support
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalSize: {x: 0, y: 0}
-  placeInSlot: 0
-  transforms: []
 --- !u!225 &2608881214672218354
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -145,7 +104,7 @@ GameObject:
   - component: {fileID: 6137245998991593997}
   - component: {fileID: 9159603379628701367}
   m_Layer: 5
-  m_Name: Beaker
+  m_Name: BeakerPlaceHolder
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,14 +119,14 @@ RectTransform:
   m_GameObject: {fileID: 4212112756669445785}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.73753, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6433001258475646007}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 100.5}
+  m_AnchoredPosition: {x: 0, y: 97.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7068669078296387447
@@ -247,7 +206,7 @@ MonoBehaviour:
   FixChildSize: 0
   compatibleTagsForSlot:
   - Container
-  RequireName: Beaker
+  RequireName: 
   ItemAddedName: 
   isOccupied: 0
   parentItem:
@@ -258,14 +217,6 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    maxTemperature: 100
-    coolingRate: 5
-    heatingRate: 10
-    measuredValue: 0
-    needMeasurement: 0
-    measurementUnit: 
     tagName: 
     compatibleTags: []
     states: []
@@ -284,7 +235,7 @@ GameObject:
   - component: {fileID: 2198536425344325471}
   - component: {fileID: 7014849869973801729}
   m_Layer: 5
-  m_Name: Alcohol Lamp
+  m_Name: LampPlaceHolder
   m_TagString: Slot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -306,8 +257,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -14.7, y: -10.8}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 0.7918, y: -0.5124998}
+  m_SizeDelta: {x: 60.8577, y: 117.13}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6419763645847898204
 CanvasRenderer:
@@ -386,7 +337,7 @@ MonoBehaviour:
   FixChildSize: 1
   compatibleTagsForSlot:
   - HeatSource
-  RequireName: Alcohol Lamp
+  RequireName: Lamp
   ItemAddedName: 
   isOccupied: 0
   parentItem:
@@ -397,14 +348,6 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    maxTemperature: 100
-    coolingRate: 5
-    heatingRate: 10
-    measuredValue: 0
-    needMeasurement: 0
-    measurementUnit: 
     tagName: 
     compatibleTags: []
     states: []

@@ -61,6 +61,8 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             if (isConditionMet)
             {
                 Debug.Log($"Condition met! Transitioning {item.itemName} to the next state.");
+                StepManager stepManager = FindObjectOfType<StepManager>();
+                stepManager.ValidateAndCompleteSubStep(draggable.item.itemName);
 
                 // TODO: Check if the type of interaction is Pouring then to this if not do others
 
@@ -79,19 +81,6 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             Debug.LogWarning("Dropped item is not compatible with this slot.");
             draggable.transform.position = draggable.originalPosition; // Reset item position
         }
-        // if (draggable.name == "Water" && item.CurrentState.stateName == "Empty")
-        // {
-
-        // }
-        // else if (
-        //     item.compatibleTags.Contains(draggable.item.tagName)
-        //     && gameObject.GetComponent<DragableItem>().placeInSlot
-        // )
-        // {
-        //     print("Set to fire");
-        // }
-
-        // Debug.Log(eventData.pointerDrag.name + " was dropped on " + gameObject.name);
     }
 
     public void SwitchStateAfterMeasurement(DragableItem draggable)
@@ -99,7 +88,6 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         item.SwitchToNextState();
         experimentManager.UpdateItemPrefab(this.gameObject);
         Debug.Log("Switched to the next state after measurement.");
-        Destroy(draggable.gameObject);
     }
 
     private void HandleInteraction(string interactionType, DragableItem draggable)
@@ -109,18 +97,6 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             case "ignition":
                 // Switch state first
                 item.SwitchToNextState();
-
-                // Ensure the new state's prefab is valid
-                if (item.CurrentState.statePrefab == null)
-                {
-                    Debug.LogError($"State prefab is null for {item.itemName}'s next state.");
-                    break;
-                }
-
-                // Update the prefab in place
-                experimentManager.UpdateItemPrefabInPlace(gameObject);
-
-                // Clean up the draggable object
                 Destroy(draggable.gameObject);
 
                 Debug.Log(
@@ -153,11 +129,11 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                 experimentManager.MeterPanel.SetActive(true);
                 break;
 
-            case "measuring":
-                Debug.Log(message: $"Measuring {item.itemName}.");
-                item.measuredValue = draggable.item.measuredValue; // Apply measurement
-                SwitchStateAfterMeasurement(draggable);
-                break;
+            // case "measuring":
+            //     Debug.Log(message: $"Measuring {item.itemName}.");
+            //     item.measuredValue = draggable.item.measuredValue; // Apply measurement
+            //     SwitchStateAfterMeasurement(draggable);
+            //     break;
 
             case "cold":
                 Debug.Log($"Cooling {item.itemName}.");

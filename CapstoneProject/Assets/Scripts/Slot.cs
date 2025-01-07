@@ -15,8 +15,6 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public bool isOccupied = false;
 
-    public Item parentItem; // The item in this slot (e.g., Beaker)
-
     private void Awake()
     {
         gridLayout = GetComponent<GridLayoutGroup>();
@@ -44,16 +42,12 @@ public class Slot : MonoBehaviour, IDropHandler
             {
                 draggable.parentAfterDrag = transform;
                 draggable.placeInSlot = true;
-
+                ItemAddedName = draggable.gameObject.name;
                 isOccupied = true;
 
-                // Update the slot item
-                parentItem = draggable.item;
-
-                Debug.Log($"Item {parentItem.itemName} placed in the slot.");
-
-                // Check for heating recursively
-                // ApplyHeatIfPresent();
+                // Notify the StepManager of the completed sub-step
+                StepManager stepManager = FindObjectOfType<StepManager>();
+                stepManager.ValidateAndCompleteSubStep(ItemAddedName);
             }
             else
             {
@@ -66,27 +60,6 @@ public class Slot : MonoBehaviour, IDropHandler
     private void OnTransformChildrenChanged()
     {
         ResizeChild();
-
-        if (transform.childCount > 0)
-        {
-            isOccupied = true;
-
-            Color currentColor = image.color;
-            currentColor.a = 0;
-            image.color = currentColor; // Apply the change
-
-            // Check heat when child changes
-        }
-        else
-        {
-            isOccupied = false;
-
-            Color currentColor = image.color;
-            currentColor.a = 1; // Full opacity
-            image.color = currentColor; // Apply the change
-        }
-
-        // ApplyHeatIfPresent();
     }
 
     public void ResizeChild()
@@ -100,22 +73,6 @@ public class Slot : MonoBehaviour, IDropHandler
                 childRect.sizeDelta = parentSize;
                 childRect.localScale = Vector3.one;
                 childRect.anchoredPosition = Vector2.zero;
-            }
-        }
-    }
-
-    public void PropagateHeat(float heatAmount)
-    {
-        foreach (Transform child in transform)
-        {
-            DragableItem childDraggable = child.GetComponent<DragableItem>();
-            if (
-                childDraggable != null
-                && childDraggable.item != null
-                && childDraggable.item.hasTemperature
-            )
-            {
-                childDraggable.ReceiveHeatFromParent(heatAmount * 0.8f); // Example: 80% efficiency
             }
         }
     }

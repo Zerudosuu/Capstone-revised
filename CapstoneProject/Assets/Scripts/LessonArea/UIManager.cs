@@ -184,24 +184,16 @@ public class UIManager : MonoBehaviour
         else
             LessonState(previousLessonState);
 
-        StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
         LessonWindow.SetActive(true);
-
         TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
 
         if (tutorialManager != null && !tutorialManager.isTutorialComplete)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-            if (dialogueRunner != null)
-            {
-                dialogueRunner.Stop();
-                dialogueRunner.StartDialogue("TutorialExperimentTab");
-            }
-            else
-            {
-                return;
-            }
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("TutorialExperimentTab");
         }
+        StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
     }
 
     public void OnSubCircleClick()
@@ -224,9 +216,28 @@ public class UIManager : MonoBehaviour
     #region Lesson State
     private void OnCurrentLesson()
     {
-        LessonWindow.transform.GetChild(1).gameObject.SetActive(true); // This will show the Current lesson window
+        LessonWindow.transform.GetChild(1).gameObject.SetActive(true); // This will show the Current Lesson window
         LessonWindow.transform.GetChild(0).gameObject.SetActive(false); // This will hide the Lesson selection window
 
+        // Check if there is a current lesson
+        var currentLessonDisplay = LessonWindow
+            .transform.GetChild(1)
+            .GetComponent<CurrentLessonToDisplay>();
+
+        if (currentLessonDisplay != null && currentLessonDisplay.CurrentLesson != null)
+        {
+            // Show the current lesson content if there's an active lesson
+            LessonWindow.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
+            LessonWindow.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+        }
+        else
+        {
+            // No active lesson; show the default or placeholder content
+            LessonWindow.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
+            LessonWindow.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+        }
+
+        // Ensure other windows are hidden and states are updated
         ProfileWindow.SetActive(false);
         VolumeSettings.SetActive(false);
         informationWindow.SetActive(false);
@@ -239,6 +250,7 @@ public class UIManager : MonoBehaviour
         LessonWindow.transform.GetChild(0).gameObject.SetActive(true); // This will show the Lesson selection window
         LessonWindow.transform.GetChild(1).gameObject.SetActive(false); // This will hide the Current lesson window
 
+        print("Hotdog2");
         ProfileWindow.SetActive(false);
         VolumeSettings.SetActive(false);
         informationWindow.SetActive(false);
@@ -325,6 +337,7 @@ public class UIManager : MonoBehaviour
                 LessonsBtn.GetComponent<Image>().sprite = lessonsSprite[0];
                 LessonsBtn.GetComponent<Image>().SetNativeSize();
                 previousLessonState = currentLessonState;
+                print("baby q");
                 return;
 
             case "isLessonContainer":
@@ -332,6 +345,7 @@ public class UIManager : MonoBehaviour
                 LessonsBtn.GetComponent<Image>().sprite = lessonsSprite[1];
                 LessonsBtn.GetComponent<Image>().SetNativeSize();
                 previousLessonState = currentLessonState;
+
                 return;
         }
     }

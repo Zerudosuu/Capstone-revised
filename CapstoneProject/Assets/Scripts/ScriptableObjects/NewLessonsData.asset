@@ -23,36 +23,37 @@ MonoBehaviour:
       significantly affect the others.
     materials:
     - materialName: 500ml beaker
+      ItemIcon: {fileID: 21300000, guid: 547c9d97d7b66674394e1d34f92bd22b, type: 3}
       isCollected: 0
-      Quantity: 1
-      needToMeasure: 0
-      measuredValue: 0
-    - materialName: Tripod
-      isCollected: 0
-      Quantity: 1
+      Quantity: 2
       needToMeasure: 0
       measuredValue: 0
     - materialName: Alcohol Lamp
+      ItemIcon: {fileID: 21300000, guid: 32e25492981ac334a9d810af4e9b8ec1, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Water
+      ItemIcon: {fileID: 0}
       isCollected: 0
-      Quantity: 1
+      Quantity: 2
       needToMeasure: 0
       measuredValue: 0
     - materialName: Thermometer 110 Degrees
+      ItemIcon: {fileID: 21300000, guid: 0ea5b3e1b0f871049bde085caa699319, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Denatured Alcohol
+      ItemIcon: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Match
+      ItemIcon: {fileID: 21300000, guid: d5182459d4ec3e74cbfddf52461c5c59, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -61,7 +62,7 @@ MonoBehaviour:
     - stepDescription: Pour approximately 150ml of water into the beaker
       isCompleted: 0
       requiredObjectNames:
-      - 
+      - ' BeakerWithwater'
       actionRequired: Pour
     - stepDescription: Measure the initial temperature of the air just above the
         water level
@@ -73,9 +74,12 @@ MonoBehaviour:
         water on the wire gauze.
       isCompleted: 0
       requiredObjectNames: []
+      actionRequired: Assemble
+    - stepDescription: 'Heat the water until it boils '
+      isCompleted: 0
+      requiredObjectNames: []
       actionRequired: Measure
-    - stepDescription: Heat the water until it boils and get the temperature of the
-        air just above the water level
+    - stepDescription: Get the temperature of the air just above the water level
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: Measure
@@ -86,16 +90,19 @@ MonoBehaviour:
     SecondExperience: 80
     ItemRewards:
     - materialName: Erlrnmeyer Flask
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Cork or Rubber stopper
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Liquid Dropper
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
@@ -110,26 +117,31 @@ MonoBehaviour:
       of greater molecular movement.
     materials:
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -150,76 +162,91 @@ MonoBehaviour:
       color change, temperature change, gas production, and the formation of a precipitate.
     materials:
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -238,6 +265,7 @@ MonoBehaviour:
     fullDescription: ehehe
     materials:
     - materialName: 
+      ItemIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0

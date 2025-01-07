@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
+public class MixingComponent : MonoBehaviour, IPointerClickHandler
 {
     public Item item;
 
@@ -22,13 +22,14 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
     private RectTransform YellowZone; // Yellow zone object (Bottom)
 
     [SerializeField]
-    private float FillRate = 20f; // Speed at which the slider fills
+    private float MinSpeed = 10f; // Minimum oscillation speed
 
     [SerializeField]
-    private float MaxFillValue = 100f; // Maximum slider value
+    private float MaxSpeed = 30f; // Maximum oscillation speed
 
     private bool IsMeasuring = false;
-    private float MeasuredValue = 0f;
+    private bool IsMovingUp = true; // Direction of slider movement
+    private float CurrentSpeed; // Current oscillation speed
 
     public string getValue;
 
@@ -41,6 +42,7 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         experimentManager = FindObjectOfType<ExperimentManager>();
         ResetMeasurement();
         RandomizeZoneWidths(); // Randomize zone widths on start
+        RandomizeSpeed(); // Set initial random speed
     }
 
     public void SetItem(Item item)
@@ -49,36 +51,43 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         itemImage.sprite = item.itemPrefab.GetComponent<Image>().sprite;
     }
 
-    public void StartMeasurement()
-    {
-        ResetMeasurement();
-        RandomizeZoneWidths();
-    }
-
     private void Update()
     {
         if (IsMeasuring)
         {
-            // Increment the slider value based on FillRate
-            MeasuredValue += FillRate * Time.deltaTime;
+            // Oscillate the slider back and forth
+            float movement = CurrentSpeed * Time.deltaTime * (IsMovingUp ? 1 : -1);
+            Slider.value += movement / ParentObject.rect.width;
 
-            // Clamp the measured value to stay within the slider range (0 to 100)
-            MeasuredValue = Mathf.Clamp(MeasuredValue, 0f, MaxFillValue);
-
-            // Update the slider value (normalized between 0 and 1)
-            Slider.value = MeasuredValue / MaxFillValue;
+            // Reverse direction if the slider reaches the edges
+            if (Slider.value >= 1f)
+            {
+                Slider.value = 1f;
+                IsMovingUp = false;
+                RandomizeSpeed(); // Change speed on direction reversal
+            }
+            else if (Slider.value <= 0f)
+            {
+                Slider.value = 0f;
+                IsMovingUp = true;
+                RandomizeSpeed(); // Change speed on direction reversal
+            }
         }
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public void OnPointerClick(PointerEventData eventData)
     {
-        IsMeasuring = true; // Start filling when button is pressed
-    }
-
-    public void OnPointerUp(PointerEventData eventData)
-    {
-        IsMeasuring = false; // Stop filling when button is released
-        CheckMeasurement(); // Check which color zone the slider landed in
+        if (!IsMeasuring)
+        {
+            Debug.Log("Started measuring.");
+            IsMeasuring = true; // Start moving when the button is clicked
+        }
+        else
+        {
+            Debug.Log($"Stopped measuring at value: {Slider.value}");
+            IsMeasuring = false; // Stop moving when the button is clicked again
+            CheckMeasurement(); // Check which color zone the slider landed in
+        }
     }
 
     public void RandomizeZoneWidths()
@@ -87,7 +96,7 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
         // Generate random widths (percentage of parent width)
         float randomYellow = Random.Range(0.2f, 0.5f); // Yellow gets 20% to 50%
-        float randomGreen = Random.Range(0.1f, 0.3f); // Green gets 20% to 30%
+        float randomGreen = Random.Range(0.1f, 0.3f); // Green gets 10% to 30%
         float remainingForRed = 1f - (randomYellow + randomGreen); // Remaining percentage for Red
 
         // Normalize to make sure the sum is 100%
@@ -124,12 +133,11 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     private void CheckMeasurement()
     {
-        float sliderPositionX = MeasuredValue / MaxFillValue * ParentObject.rect.width;
+        float sliderPositionX = Slider.value * ParentObject.rect.width;
 
         if (sliderPositionX <= YellowZone.rect.width)
         {
             Debug.Log("You landed in the YELLOW zone!");
-
             getValue = "Yellow";
         }
         else if (
@@ -138,15 +146,14 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
         )
         {
             Debug.Log("You landed in the GREEN zone!");
-
             getValue = "Green";
         }
         else
         {
             Debug.Log("You landed in the RED zone!");
-
             getValue = "Red";
         }
+
         GetComponentInParent<MeterPanelManager>().ShowMeterResult();
         experimentManager.UpdateScore(getValue);
         ResetMeasurement(); // Reset slider after checking
@@ -154,7 +161,21 @@ public class MixingComponent : MonoBehaviour, IPointerDownHandler, IPointerUpHan
 
     private void ResetMeasurement()
     {
-        MeasuredValue = 0f;
         Slider.value = 0f;
+        IsMeasuring = false;
+        IsMovingUp = true;
+    }
+
+    private void RandomizeSpeed()
+    {
+        CurrentSpeed = Random.Range(MinSpeed, MaxSpeed);
+        Debug.Log($"Randomized speed: {CurrentSpeed}");
+    }
+
+    public void StartMeasurement()
+    {
+        ResetMeasurement();
+        RandomizeZoneWidths();
+        RandomizeSpeed();
     }
 }

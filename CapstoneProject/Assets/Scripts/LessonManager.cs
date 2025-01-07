@@ -39,6 +39,8 @@ public class LessonManager : MonoBehaviour, IData
     [SerializeField]
     private GameObject RewardContainer;
 
+    private bool HasActiveQuest => questAsLesson != null && questAsLesson.isActive;
+
     void Awake()
     {
         currentLessonToDisplay = CurrentLessonWindow.GetComponent<CurrentLessonToDisplay>();
@@ -70,7 +72,6 @@ public class LessonManager : MonoBehaviour, IData
             );
 
             LessonComponentButton buttonScript = lessonButton.GetComponent<LessonComponentButton>();
-
             buttonScript.ButtonID = lesson.LessonID;
             buttonScript.ChapterNumber.text = lesson.LessonID;
 
@@ -79,21 +80,28 @@ public class LessonManager : MonoBehaviour, IData
                 lesson.Coins = lesson.SecondCoins;
                 lesson.Experience = lesson.SecondExperience;
             }
+
+            // Disable the button if there's an active quest
+            buttonScript.GetComponent<Button>().interactable = !HasActiveQuest;
         }
     }
 
     public void OnButtonClick(LessonComponentButton lessonComponentButton)
     {
-        Debug.Log("Button clicked: " + lessonComponentButton.GetButtonID());
-
         // Find the corresponding lesson based on the button ID
         Lesson selectedLesson = FindLessonById(lessonComponentButton.GetButtonID());
 
         // If the lesson is found, update the LessonContainer
         if (selectedLesson != null)
         {
-            UpdateLessonContainer(selectedLesson);
+            SelectedLesson(selectedLesson);
         }
+    }
+
+    public void SelectedLesson(Lesson lesson)
+    {
+        // Update the lesson container based on the selected lesson
+        UpdateLessonContainer(lesson);
     }
 
     private Lesson FindLessonById(string lessonID)
@@ -125,6 +133,10 @@ public class LessonManager : MonoBehaviour, IData
                 Destroy(child.gameObject);
             }
 
+            foreach (Transform child in lessonContainer.ItemsToUnlockContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
             // Loop through lesson materials and add them to the container
             foreach (MaterialEntry material in lesson.materials)
             {
@@ -133,8 +145,37 @@ public class LessonManager : MonoBehaviour, IData
                     lessonContainer.MaterialContainer.transform
                 );
 
-                materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
-                    material.materialName;
+                TextMeshProUGUI title = materialObject
+                    .transform.Find("ItemName")
+                    .GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI quantity = materialObject
+                    .transform.Find("ItemQuantity")
+                    .GetComponent<TextMeshProUGUI>();
+                Image itemIcon = materialObject.GetComponentInChildren<Image>();
+
+                itemIcon.sprite = material.ItemIcon;
+                title.text = material.materialName;
+                quantity.text = material.Quantity.ToString();
+            }
+
+            foreach (MaterialEntry itemReward in lesson.ItemRewards)
+            {
+                GameObject itemRewardObject = Instantiate(
+                    lessonContainer.Material,
+                    lessonContainer.ItemsToUnlockContainer.transform
+                );
+
+                TextMeshProUGUI title = itemRewardObject
+                    .transform.Find("ItemName")
+                    .GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI quantity = itemRewardObject
+                    .transform.Find("ItemQuantity")
+                    .GetComponent<TextMeshProUGUI>();
+                Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
+
+                itemIcon.sprite = itemReward.ItemIcon;
+                title.text = itemReward.materialName;
+                quantity.text = "";
             }
 
             // Enable or disable the buttons as necessary
@@ -147,16 +188,25 @@ public class LessonManager : MonoBehaviour, IData
 
     public void OnAcceptButtonClick()
     {
-        CurrentLessonWindow.SetActive(true);
+        if (HasActiveQuest)
+        {
+            Debug.LogError("Cannot start a new lesson while another quest is active.");
+            return;
+        }
 
-        print("ButtonWasClicked");
+        CurrentLessonWindow.SetActive(true);
+        print("Button was clicked");
         questAsLesson.isActive = true;
 
-        // Update the quest based on the currently selected lesson
         Lesson selectedLesson = FindLessonById(CurrentButtonID);
         if (selectedLesson != null)
         {
             UpdateQuest(selectedLesson);
+        }
+        else
+        {
+            Debug.LogError("No lesson selected. Make sure a lesson is picked first.");
+            return;
         }
 
         if (currentLessonToDisplay != null)
@@ -169,20 +219,11 @@ public class LessonManager : MonoBehaviour, IData
         DataManager.Instance.gameData.quest = questAsLesson;
 
         TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
-
         if (tutorialManager != null && !tutorialManager.isTutorialComplete)
         {
             DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-
-            if (dialogueRunner != null)
-            {
-                dialogueRunner.Stop();
-                dialogueRunner.StartDialogue("currentExperiment");
-            }
-            else
-            {
-                return;
-            }
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("currentExperiment");
         }
     }
 
@@ -225,9 +266,11 @@ public class LessonManager : MonoBehaviour, IData
     {
         foreach (Lesson lesson in Clonedlessons)
         {
-            if (lesson.isCompleted == false)
+            if (!lesson.isCompleted) // Check for the first incomplete lesson
             {
-                UpdateLessonContainer(lesson);
+                CurrentButtonID = lesson.LessonID; // Set the CurrentButtonID
+                SelectedLesson(lesson); // Pass the lesson to the selection method
+                UpdateLessonContainer(lesson); // Update the display
                 break;
             }
         }

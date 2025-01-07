@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -68,87 +69,15 @@ public class ExperimentManager : MonoBehaviour
 
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
-            GameObject statePrefab = itemReaction.item.CurrentState.statePrefab;
-
-            if (statePrefab == null)
-            {
-                Debug.LogError(
-                    $"State prefab is null for {itemReaction.item.itemName}'s current state."
-                );
-                return;
-            }
+            itemReaction.GetComponent<Image>().sprite = itemReaction.item.CurrentState.sprite;
 
             // Find an empty slot or create a new one
             ScrollViewSlot emptySlot = FindEmptySlot();
             GameObject newSlot = null;
-
-            if (emptySlot != null)
-            {
-                Debug.Log("Found an empty slot for the new prefab.");
-            }
-            else
-            {
-                Debug.Log("No empty slot found. Creating a new slot.");
-                newSlot = Instantiate(slotPrefab, experimentObjectManager.ItemContainer.transform);
-            }
-
-            // Instantiate the new state prefab
-            GameObject newPrefab = Instantiate(
-                statePrefab,
-                emptySlot != null ? emptySlot.transform : newSlot.transform
-            );
-            newPrefab.name = statePrefab.name;
-
-            // Align the prefab within the slot
-            newPrefab.transform.localPosition = Vector3.zero;
-            newPrefab.transform.localScale = Vector3.one;
-
-            // Destroy the old item
-            Destroy(currentItem);
-
-            Debug.Log(
-                $"Updated item prefab for {itemReaction.item.itemName} and placed in the slot."
-            );
         }
         else
         {
             Debug.LogError("ItemReaction or CurrentState is null. Cannot update prefab.");
-        }
-    }
-
-    public void UpdateItemPrefabInPlace(GameObject currentItem)
-    {
-        ItemReaction itemReaction = currentItem.GetComponent<ItemReaction>();
-
-        if (itemReaction != null && itemReaction.item.CurrentState != null)
-        {
-            // Get the new state prefab
-            GameObject statePrefab = itemReaction.item.CurrentState.statePrefab;
-
-            if (statePrefab != null)
-            {
-                // Replace the current item's prefab
-                GameObject parentSlot = currentItem.transform.parent.gameObject;
-
-                GameObject newPrefab = Instantiate(statePrefab, parentSlot.transform);
-                newPrefab.name = statePrefab.name;
-
-                // Align the new prefab within the slot
-                newPrefab.transform.localPosition = Vector3.zero;
-                newPrefab.transform.localScale = Vector3.one;
-
-                Destroy(currentItem);
-
-                Debug.Log("Updated item prefab in place.");
-            }
-            else
-            {
-                Debug.LogError("State prefab is null for the current item.");
-            }
-        }
-        else
-        {
-            Debug.LogError("ItemReaction or CurrentState is null.");
         }
     }
 
@@ -163,4 +92,9 @@ public class ExperimentManager : MonoBehaviour
         }
         return null; // No empty slots found
     }
+
+    // public void TriggerAction()
+    // {
+    //     ReactionManager.Instance.TriggerHeat();
+    // }
 }

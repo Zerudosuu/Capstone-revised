@@ -53,6 +53,11 @@ public class CurrentLessonToDisplay : MonoBehaviour
     [SerializeField]
     private GameObject ProceedWindow;
 
+    [SerializeField]
+    private GameObject ItemRewardContainer;
+
+    private bool HasActiveQuest => CurrentLesson != null;
+
     void Start()
     {
         animator = LessonWindow.GetComponent<Animator>();
@@ -82,31 +87,62 @@ public class CurrentLessonToDisplay : MonoBehaviour
             Destroy(child.gameObject);
         }
 
+        foreach (Transform child in ItemRewardContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         foreach (MaterialEntry materialEntry in lesson.materials)
         {
             GameObject materialObject = Instantiate(Material, MaterialContainer.transform);
 
-            materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
-                materialEntry.materialName;
+            TextMeshProUGUI title = materialObject
+                .transform.Find("ItemName")
+                .GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI quantity = materialObject
+                .transform.Find("ItemQuantity")
+                .GetComponent<TextMeshProUGUI>();
+
+            Image itemIcon = materialObject.GetComponentInChildren<Image>();
+
+            itemIcon.sprite = materialEntry.ItemIcon;
+            title.text = materialEntry.materialName;
+            quantity.text = materialEntry.Quantity.ToString();
         }
 
-        BagManager bagManager = FindObjectOfType<BagManager>(true);
+        foreach (MaterialEntry itemReward in lesson.itemRewards)
+        {
+            GameObject itemRewardObject = Instantiate(Material, ItemRewardContainer.transform);
 
-        bagManager.UpdateLimit(lesson.materials.Count);
+            TextMeshProUGUI title = itemRewardObject
+                .transform.Find("ItemName")
+                .GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI quantity = itemRewardObject
+                .transform.Find("ItemQuantity")
+                .GetComponent<TextMeshProUGUI>();
+            Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
+
+            itemIcon.sprite = itemReward.ItemIcon;
+            title.text = itemReward.materialName;
+            quantity.text = "";
+        }
+
+        // Update the BagManager's item limit
+        BagManager bagManager = FindObjectOfType<BagManager>(true);
+        if (bagManager != null)
+        {
+            bagManager.itemLimit = lesson.materials.Count; // Set item limit to the number of required materials
+            bagManager.UpdateItemCount(); // Update the UI for item count and limit
+        }
     }
 
     public void UpdateLessonDisplay()
     {
-        if (CurrentLesson == null)
-        {
-            noCurrentWindow.gameObject.SetActive(true);
-            hasCurrentLessonWindow.gameObject.SetActive(false);
-        }
-        else
-        {
-            noCurrentWindow.gameObject.SetActive(false);
-            hasCurrentLessonWindow.gameObject.SetActive(true);
-        }
+        bool hasLesson = CurrentLesson != null;
+
+        // Set panels active or inactive based on whether a lesson is active
+        noCurrentWindow.SetActive(!hasLesson);
+        hasCurrentLessonWindow.SetActive(hasLesson);
     }
 
     public void OnGotoLessonButtonClick()
@@ -120,26 +156,31 @@ public class CurrentLessonToDisplay : MonoBehaviour
     {
         if (CurrentLesson != null && CurrentLesson.isActive)
         {
-            // Clear current lesson data
             CurrentLesson.isActive = false;
             CurrentLesson.isCompleted = false;
 
-            // Clear UI fields
             ChapterNumberAndTitle.text = "";
             ChapterDescription.text = "";
             RewardCoin.text = "0";
             RewardExperience.text = "0";
 
-            // Clear the materials
             foreach (Transform child in MaterialContainer.transform)
             {
                 Destroy(child.gameObject);
             }
 
-            // Update the UI to show no current lesson
             UpdateLessonDisplay();
 
+            DataManager.Instance.gameData.quest = null;
             Debug.Log("Current lesson abandoned.");
+
+            // Reset the BagManager's item limit
+            BagManager bagManager = FindObjectOfType<BagManager>();
+            if (bagManager != null)
+            {
+                bagManager.itemLimit = 0;
+                bagManager.UpdateItemCount();
+            }
         }
     }
 
@@ -149,22 +190,81 @@ public class CurrentLessonToDisplay : MonoBehaviour
         {
             if (item.itemName == currentItemQuest.materialName)
             {
-                currentItemQuest.isCollected = true;
-                Debug.Log("Item collected: " + item.itemName);
+                // Reduce quantity if it's greater than 1
+                if (currentItemQuest.Quantity > 1)
+                {
+                    currentItemQuest.Quantity--;
+                    Debug.Log(
+                        $"Reduced quantity for {item.itemName}: {currentItemQuest.Quantity} remaining."
+                    );
+                }
+                else
+                {
+                    // Mark as collected if quantity reaches 0
+                    currentItemQuest.Quantity = 0;
+                    currentItemQuest.isCollected = true;
+                    Debug.Log($"Item fully collected: {item.itemName}");
+                }
 
-                MaterialContainer
-                    .GetComponentsInChildren<TextMeshProUGUI>()
-                    .Where(material => material.text == item.itemName)
-                    .ToList()
-                    .ForEach(material => material.fontStyle = FontStyles.Strikethrough);
+                // Update the MaterialContainer UI
+                foreach (Transform child in MaterialContainer.transform)
+                {
+                    TextMeshProUGUI title = child.Find("ItemName").GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI quantity = child
+                        .Find("ItemQuantity")
+                        .GetComponent<TextMeshProUGUI>();
 
+                    if (title.text == item.itemName)
+                    {
+                        quantity.text = currentItemQuest.Quantity.ToString();
+
+                        // Apply strikethrough if fully collected
+                        if (currentItemQuest.isCollected)
+                        {
+                            title.fontStyle = FontStyles.Strikethrough;
+                            quantity.fontStyle = FontStyles.Strikethrough;
+                        }
+                    }
+                }
+
+                // Check if all items are collected
                 if (CurrentLesson.materials.All(m => m.isCollected))
                 {
-                    Debug.Log("Lesson completed: " + CurrentLesson.chapterName);
+                    Debug.Log(
+                        "All items collected! Lesson completed: " + CurrentLesson.chapterName
+                    );
                     ProceedWindow.SetActive(true);
                 }
-                // If all items are collected, mark the lesson as completed
+
+                return; // Exit loop after finding and processing the item
             }
+        }
+    }
+
+    public void ClearCurrentLesson()
+    {
+        if (CurrentLesson != null)
+        {
+            CurrentLesson.isActive = false;
+            CurrentLesson.isCompleted = false;
+
+            // Clear UI fields
+            ChapterNumberAndTitle.text = "";
+            ChapterDescription.text = "";
+            RewardCoin.text = "0";
+            RewardExperience.text = "0";
+
+            // Clear materials
+            foreach (Transform child in MaterialContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            // Clear saved data
+            DataManager.Instance.gameData.quest = null;
+            CurrentLesson = null;
+
+            Debug.Log("Current lesson and quest data cleared.");
         }
     }
 
@@ -194,33 +294,6 @@ public class CurrentLessonToDisplay : MonoBehaviour
                 {
                     material.fontStyle = isInBag ? FontStyles.Strikethrough : FontStyles.Normal;
                 });
-        }
-    }
-
-    public void ClearCurrentLesson()
-    {
-        if (CurrentLesson != null)
-        {
-            CurrentLesson.isActive = false;
-            CurrentLesson.isCompleted = false;
-
-            // Clear UI fields
-            ChapterNumberAndTitle.text = "";
-            ChapterDescription.text = "";
-            RewardCoin.text = "0";
-            RewardExperience.text = "0";
-
-            // Clear materials
-            foreach (Transform child in MaterialContainer.transform)
-            {
-                Destroy(child.gameObject);
-            }
-
-            // Clear saved data
-            DataManager.Instance.gameData.quest = null;
-            CurrentLesson = null;
-
-            Debug.Log("Current lesson and quest data cleared.");
         }
     }
 }

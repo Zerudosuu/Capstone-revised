@@ -16,9 +16,7 @@ public class BagManager : MonoBehaviour, IData
     [SerializeField]
     private GameObject ItemCountText;
 
-    [SerializeField]
     public List<BagItem> bagItems = new List<BagItem>();
-
     public CurrentLessonToDisplay currentLessonToDisplay;
 
     public int itemLimit; // Limit the number of items in the bag
@@ -26,13 +24,8 @@ public class BagManager : MonoBehaviour, IData
 
     void Start()
     {
-        currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         ItemCountContainer.gameObject.SetActive(false);
-
-        if (currentLessonToDisplay == null)
-        {
-            Debug.Log("CurrentLessonToDisplay is null");
-        }
+        UpdateItemCount();
     }
 
     public void AddItemInBag(Item item)
@@ -60,16 +53,11 @@ public class BagManager : MonoBehaviour, IData
             BagItem bagItem = newItem.GetComponent<BagItem>();
             bagItem.SetBagItem(item, 1);
             bagItems.Add(bagItem);
+
             newItem.transform.SetAsFirstSibling();
         }
 
         UpdateItemCount();
-    }
-
-    public void UpdateLimit(int limit)
-    {
-        itemLimit = limit;
-        itemLimitText.text = bagItems.Count.ToString() + "/" + itemLimit.ToString();
     }
 
     public void UpdateItemCount()

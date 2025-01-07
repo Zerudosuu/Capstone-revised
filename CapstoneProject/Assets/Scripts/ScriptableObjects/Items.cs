@@ -21,19 +21,6 @@ public class Item
     public bool isUnlock;
     public bool isCollected;
 
-    // Temperature properties
-    [Header("Temperature Properties")]
-    public bool hasTemperature;
-    public float currentTemperature;
-    public float maxTemperature = 100f;
-    public float coolingRate = 5f;
-    public float heatingRate = 10f;
-
-    [Header("Measurement Properties")]
-    public float measuredValue = 0;
-    public bool needMeasurement = false;
-    public string measurementUnit = ""; // e.g., "ml", "g"
-
     [Header("Compatibility and Conditions")]
     public string tagName;
     public List<string> compatibleTags;
@@ -43,6 +30,12 @@ public class Item
     public List<ItemState> states = new List<ItemState>();
     public int currentStateIndex = 0;
     public ItemState CurrentState => states[currentStateIndex];
+
+    [Header("Temperature")]
+    public float temperature;
+    public bool hasTemperature;
+
+    public float currentTemperature;
 
     public enum ItemType
     {
@@ -78,18 +71,13 @@ public class Item
             itemType = this.itemType,
             isUnlock = this.isUnlock,
             isCollected = this.isCollected,
-            measuredValue = this.measuredValue,
-            needMeasurement = this.needMeasurement,
-            measurementUnit = this.measurementUnit,
+            temperature = this.temperature,
+            hasTemperature = this.hasTemperature,
+            currentTemperature = this.currentTemperature,
             tagName = this.tagName,
             compatibleTags = new List<string>(this.compatibleTags),
             states = new List<ItemState>(this.states),
             currentStateIndex = this.currentStateIndex,
-            hasTemperature = this.hasTemperature,
-            currentTemperature = this.currentTemperature,
-            maxTemperature = this.maxTemperature,
-            coolingRate = this.coolingRate,
-            heatingRate = this.heatingRate,
         };
     }
 }
@@ -98,7 +86,7 @@ public class Item
 public class ItemState
 {
     public string stateName; // Name of the state (e.g., "Empty", "Filled", "Measured")
-    public GameObject statePrefab; // Prefab associated with this state
+    public Sprite sprite;
     public string description; // Description or additional behavior for the state
     public bool isDefaultState; // Is this the default state for the item?
     public List<Conditions> conditions; // Conditions required to switch to this state

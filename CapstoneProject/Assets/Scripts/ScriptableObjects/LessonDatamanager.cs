@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "NewLessonsData", menuName = "Lesson Data", order = 1)]
 public class LessonsDataManager : ScriptableObject
@@ -13,6 +14,7 @@ public class LessonsDataManager : ScriptableObject
 public class MaterialEntry
 {
     public string materialName;
+    public Sprite ItemIcon;
     public bool isCollected = false;
     public int Quantity = 1;
     public bool needToMeasure = false;
@@ -38,6 +40,7 @@ public class MaterialEntry
     {
         return new MaterialEntry
         {
+            ItemIcon = this.ItemIcon,
             materialName = this.materialName,
             isCollected = this.isCollected,
             Quantity = this.Quantity,

@@ -58,18 +58,34 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
-    public void ReceiveHeatFromParent(float heatAmount)
+    // private void OnEnable()
+    // {
+    //     if (ReactionManager.Instance != null)
+    //     {
+    //         ReactionManager.Instance.OnCool += CoolReaction;
+    //         ReactionManager.Instance.OnHeat += HeatReaction;
+    //     }
+    // }
+
+    // private void OnDisable()
+    // {
+    //     if (ReactionManager.Instance != null)
+    //     {
+    //         ReactionManager.Instance.OnCool -= CoolReaction;
+    //         ReactionManager.Instance.OnHeat -= HeatReaction;
+    //     }
+    // }
+
+    private void CoolReaction()
     {
-        if (item != null && item.hasTemperature)
-        {
-            item.currentTemperature = Mathf.Min(
-                item.currentTemperature + heatAmount,
-                item.maxTemperature
-            );
-            Debug.Log(
-                $"{item.itemName} received {heatAmount}°C from parent. Current Temperature: {item.currentTemperature}°C."
-            );
-        }
+        // item.currentTemperature -= 5.0f; // Example logic: Decrease temperature
+        Debug.Log($"{gameObject.name} temperature decreased to °C");
+    }
+
+    private void HeatReaction()
+    {
+        // item.currentTemperature += 10.0f; // Example logic: Increase temperature
+        Debug.Log($"{gameObject.name} temperature increased to °C");
     }
 
     //! DRAG EVENTS
@@ -81,14 +97,11 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         transform.SetAsLastSibling();
         canvasGroup.alpha = 0.5f; // Make the item semi-transparent
         canvasGroup.blocksRaycasts = false; // Allow raycasts to pass through
-        rectTransform.sizeDelta = originalSize; // Reset to original size during drag
         isDragging = true;
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
-
         transform.position = eventData.position;
 
         GameObject overlappedObject = GetOverlappedGameObject(eventData);
@@ -137,15 +150,18 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             if (result.gameObject != gameObject) // Exclude self
             {
                 DragableItem overlappedItem = result.gameObject.GetComponent<DragableItem>();
-
                 if (overlappedItem != null && overlappedItem.item.hasTemperature)
                 {
+                    Debug.Log(overlappedItem.gameObject.name);
                     // Check if the current object has a MeasureScript
                     MeasureScript measureScript = GetComponent<MeasureScript>();
                     if (measureScript != null)
                     {
                         // Display the temperature of the overlapped item
                         measureScript.DisplayTemperature(overlappedItem.item.currentTemperature);
+
+                        StepManager stepManager = FindObjectOfType<StepManager>();
+                        stepManager.ValidateAndCompleteSubStep(overlappedItem.gameObject.name);
                     }
 
                     return result.gameObject; // Return the first valid object with DragableItem
