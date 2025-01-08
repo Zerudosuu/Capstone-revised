@@ -38,6 +38,7 @@ public class LessonManager : MonoBehaviour, IData
     [SerializeField]
     private GameObject RewardContainer;
 
+
     void Awake()
     {
         currentLessonToDisplay = CurrentLessonWindow.GetComponent<CurrentLessonToDisplay>();
@@ -132,15 +133,17 @@ public class LessonManager : MonoBehaviour, IData
                     lessonContainer.MaterialContainer.transform
                 );
 
-                materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
-                    material.materialName;
+                materialObject.GetComponentInChildren<TextMeshProUGUI>().text = material.materialName;
+                //TO DO - Insert image to the item
+
+                materialObject.GetComponentInChildren<Image>().sprite = material.materialIcon;
+
             }
+                // Enable or disable the buttons as necessary
+                lessonContainer.AcceptButton.interactable = true; // Example
 
-            // Enable or disable the buttons as necessary
-            lessonContainer.AcceptButton.interactable = true; // Example
-            lessonContainer.CancelButton.interactable = true; // Example
 
-            // Do not update quest here
+                // Do not update quest here
         }
     }
 
