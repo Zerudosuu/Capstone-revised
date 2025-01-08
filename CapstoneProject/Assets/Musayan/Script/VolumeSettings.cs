@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.Rendering;
@@ -20,9 +21,15 @@ public class VolumeSettings : MonoBehaviour
 
     [Header("Button")]
     [SerializeField] private Button backButton;
+    [SerializeField] private Button nextMusic;
+
+    [Header("Music Component")]
+    [SerializeField] private TMP_Text musicTitle;
+
 
     private void Awake()
     {
+        nextMusic.onClick.AddListener(NextAudio);
         if (menu != null)
         {
             backButton.onClick.AddListener(() => DisplaySetting(false));
@@ -33,10 +40,11 @@ public class VolumeSettings : MonoBehaviour
         }
 
         Checker();
+        ShowAudioTitle();
     }
     private void Start()
     {
-        
+      
     }
 
     public void SetMasterVolume()
@@ -73,11 +81,24 @@ public class VolumeSettings : MonoBehaviour
 
     public void DisplaySetting(bool active)
     {
-        Debug.Log("Volume Setting Display: " + active);
         this.gameObject.SetActive(active);
 
         if (!active)
             menu.ActivateMenu();
+    }
+
+    private void NextAudio()
+    {
+        AudioManager.audioInstance.nextAudio();
+        ShowAudioTitle();
+    }
+
+    private void ShowAudioTitle()
+    {
+        StartCoroutine(AudioManager.audioInstance.ShowMusicTItle(result =>
+        {
+            musicTitle.text = result;
+        }));
     }
 
     private void Checker()
