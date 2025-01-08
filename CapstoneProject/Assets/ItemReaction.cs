@@ -17,23 +17,16 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         dragableItem = GetComponent<DragableItem>();
 
         experimentObjectManagerManager = FindObjectOfType<ExperimentObjectManager>();
-        item = dragableItem.item;
     }
 
     public void OnDrop(PointerEventData eventData)
     {
-        GameObject dropItem = eventData.pointerDrag; // The item being dropped
+        GameObject dropItem = eventData.pointerDrag;
         DragableItem draggable = dropItem.GetComponent<DragableItem>();
-
-        if (draggable == null || draggable.item == null || item == null)
-        {
-            Debug.LogWarning("Invalid draggable item or target item.");
-            return;
-        }
 
         // Check if the dropped item is compatible with the slot
         if (
-            item.compatibleTags.Contains(draggable.item.tagName)
+            item.compatibleTags.Contains(draggable.name)
             && gameObject.GetComponent<DragableItem>().placeInSlot
         )
         {
@@ -48,7 +41,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             {
                 foreach (Conditions condition in conditions)
                 {
-                    if (condition.itemNameRequirements.Contains(draggable.item.itemName))
+                    if (condition.itemNameRequirements.Contains(draggable.name))
                     {
                         isConditionMet = true;
                         interactionType = condition.typeOfInteraction;
@@ -62,7 +55,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             {
                 Debug.Log($"Condition met! Transitioning {item.itemName} to the next state.");
                 StepManager stepManager = FindObjectOfType<StepManager>();
-                stepManager.ValidateAndCompleteSubStep(draggable.item.itemName);
+                stepManager.ValidateAndCompleteSubStep(draggable.name);
 
                 // TODO: Check if the type of interaction is Pouring then to this if not do others
 
@@ -71,15 +64,21 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             else
             {
                 Debug.LogWarning(
-                    $"{draggable.item.itemName} does not meet the conditions for {item.itemName}."
+                    $"{draggable.name} does not meet the conditions for {item.itemName}."
                 );
                 draggable.transform.position = draggable.originalPosition; // Reset item position
             }
         }
         else
         {
-            Debug.LogWarning("Dropped item is not compatible with this slot.");
-            draggable.transform.position = draggable.originalPosition; // Reset item position
+            // Debug.LogWarning("Dropped item is not compatible with this slot.");
+            // draggable.transform.position = draggable.originalPosition; // Reset item position
+
+            if (transform.parent.GetComponent<ScrollViewSlot>())
+            {
+                ScrollViewSlot scrollViewSlot = transform.parent.GetComponent<ScrollViewSlot>();
+                scrollViewSlot.OnDrop(eventData);
+            }
         }
     }
 
@@ -125,7 +124,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                 break;
 
             case "mixing":
-                Debug.Log($"Mixing {draggable.item.itemName} with {item.itemName}.");
+                Debug.Log($"Mixing {draggable.name} with {item.itemName}.");
                 experimentManager.MeterPanel.SetActive(true);
                 break;
 
@@ -144,5 +143,10 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                 Debug.LogWarning($"Unhandled interaction type: {interactionType}.");
                 break;
         }
+    }
+
+    public void SetItem(Item item)
+    {
+        this.item = item;
     }
 }

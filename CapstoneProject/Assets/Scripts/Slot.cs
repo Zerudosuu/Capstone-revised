@@ -8,7 +8,7 @@ public class Slot : MonoBehaviour, IDropHandler
     private GridLayoutGroup gridLayout;
     private Image image;
     public bool FixChildSize = false;
-    public List<string> compatibleTagsForSlot;
+    public List<string> CompatibleNames;
 
     public string RequireName;
     public string ItemAddedName;
@@ -38,7 +38,7 @@ public class Slot : MonoBehaviour, IDropHandler
             GameObject dropItem = eventData.pointerDrag;
             DragableItem draggable = dropItem.GetComponent<DragableItem>();
 
-            if (compatibleTagsForSlot.Contains(draggable.item.tagName))
+            if (CompatibleNames.Contains(draggable.name))
             {
                 draggable.parentAfterDrag = transform;
                 draggable.placeInSlot = true;

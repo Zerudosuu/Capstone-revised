@@ -1,32 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class ScrollViewSlot : MonoBehaviour, IDropHandler
 {
+    public TextMeshProUGUI itemQuantitytext;
+
     public void OnDrop(PointerEventData eventData)
     {
         GameObject droppedItem = eventData.pointerDrag;
         DragableItem draggable = droppedItem.GetComponent<DragableItem>();
-
         draggable.parentAfterDrag = transform;
-    }
-
-    public void checkSlot()
-    {
-        if (transform.childCount == 0)
-        {
-            Debug.Log("Slot is empty.");
-            GetComponent<Image>().color = Color.green; // Indicates an empty slot
-        }
-        else
-        {
-            GetComponent<Image>().color = Color.red; // Indicates an occupied slot
-            Debug.Log("Slot is not empty.");
-        }
     }
 
     public void ResizeChild()
@@ -46,6 +31,26 @@ public class ScrollViewSlot : MonoBehaviour, IDropHandler
 
     private void OnTransformChildrenChanged()
     {
+        // Resize all child elements to fit the slot
         ResizeChild();
+
+        // Check if the slot has any children
+        if (transform.childCount > 0)
+        {
+            // Update the quantity text to reflect the number of children
+            itemQuantitytext.text = transform.childCount.ToString();
+
+            // Iterate through all children
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                // Set the first child as active and the rest as inactive
+                transform.GetChild(i).gameObject.SetActive(i == 0);
+            }
+        }
+        else
+        {
+            // Clear the quantity text if no children are present
+            itemQuantitytext.text = "";
+        }
     }
 }

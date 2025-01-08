@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class ExperimentObjectManager : MonoBehaviour, IData
@@ -42,24 +43,36 @@ public class ExperimentObjectManager : MonoBehaviour, IData
             Destroy(child.gameObject);
         }
 
-        // Populate each cloned item into the scene
+        // Loop through cloned items
         foreach (var clonedItem in clonedItems)
         {
-            GameObject newSlot = Instantiate(itemSlot, ItemContainer.transform);
-            GameObject newItem = Instantiate(clonedItem.itemPrefab, newSlot.transform);
+            int quantity = 0;
 
-            // Set the item for the item UI
-            newItem.name = clonedItem.itemName; // Set the item name for better debugging
-
-            DragableItem itemUI = newItem.GetComponent<DragableItem>();
-
-            if (itemUI != null)
+            foreach (MaterialEntry material in currentLesson.materials)
             {
-                itemUI.SetItem(clonedItem);
+                if (clonedItem.itemName == material.materialName)
+                {
+                    quantity = material.Quantity;
+                }
             }
-            else
+
+            GameObject newSlot = Instantiate(itemSlot, ItemContainer.transform);
+            GameObject newSlotContainer = newSlot.transform.GetChild(0).gameObject;
+
+            for (int i = 0; i < quantity; i++)
             {
-                Debug.LogError("Item prefab does not have an ItemUI component.");
+                GameObject newItem = Instantiate(clonedItem.itemPrefab, newSlotContainer.transform);
+                newItem.name = clonedItem.itemName; // Name for debugging
+                ItemReaction itemUI = newItem.GetComponent<ItemReaction>();
+
+                if (itemUI != null)
+                {
+                    itemUI.SetItem(clonedItem);
+                }
+                else
+                {
+                    Debug.LogError("Item prefab does not have a DragableItem component.");
+                }
             }
         }
     }
@@ -131,41 +144,41 @@ public class ExperimentObjectManager : MonoBehaviour, IData
         }
     }
 
-    public bool CheckTags(List<string> tags)
-    {
-        // // Check if the dropped item is compatible with the slot
-        // if (
-        //     item.compatibleTags.Contains(draggable.item.tagName)
-        //     && gameObject.GetComponent<DragableItem>().placeInSlot
-        // )
-        // {
-        //     // Check if the dropped item satisfies the current state's conditions
-        //     List<Conditions> conditions = item.CurrentState.conditions;
-
-        //     bool isConditionMet = false;
-
-        //     string interactionType = "";
-
-        //     if (conditions.Count > 0)
-        //     {
-        //         foreach (Conditions condition in conditions)
-        //         {
-        //             if (condition.itemNameRequirements.Contains(draggable.item.itemName))
-        //             {
-        //                 isConditionMet = true;
-        //                 interactionType = condition.typeOfInteraction;
-
-        //                 break; // Condition met, no need to check further
-        //             }
-        //         }
-        //     }
-
-        //     if (isConditionMet)
-        //     {
-        //         Debug.Log($"Condition met! Transitioning {item.itemName} to the next state.");
-        //     }
-        // }
-
-        return true;
-    }
+    // }
 }
+// public bool CheckTags(List<string> tags)
+// {
+//     // // Check if the dropped item is compatible with the slot
+//     // if (
+//     //     item.compatibleTags.Contains(draggable.item.tagName)
+//     //     && gameObject.GetComponent<DragableItem>().placeInSlot
+//     // )
+//     // {
+//     //     // Check if the dropped item satisfies the current state's conditions
+//     //     List<Conditions> conditions = item.CurrentState.conditions;
+
+//     //     bool isConditionMet = false;
+
+//     //     string interactionType = "";
+
+//     //     if (conditions.Count > 0)
+//     //     {
+//     //         foreach (Conditions condition in conditions)
+//     //         {
+//     //             if (condition.itemNameRequirements.Contains(draggable.item.itemName))
+//     //             {
+//     //                 isConditionMet = true;
+//     //                 interactionType = condition.typeOfInteraction;
+
+//     //                 break; // Condition met, no need to check further
+//     //             }
+//     //         }
+//     //     }
+
+//     //     if (isConditionMet)
+//     //     {
+//     //         Debug.Log($"Condition met! Transitioning {item.itemName} to the next state.");
+//     //     }
+//     // }
+
+//     return true;

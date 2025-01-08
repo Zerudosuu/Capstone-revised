@@ -136,6 +136,7 @@ GameObject:
   - component: {fileID: 83674763}
   - component: {fileID: 83674762}
   - component: {fileID: 83674764}
+  - component: {fileID: 83674765}
   m_Layer: 5
   m_Name: Content
   m_TagString: Container
@@ -292,6 +293,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 2
   m_SpriteSortPoint: 0
+--- !u!114 &83674765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 83674758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85a0bcfb3e4eb5948997e47163dc50c4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &125603232
 GameObject:
   m_ObjectHideFlags: 0
@@ -2592,7 +2605,7 @@ MonoBehaviour:
   clonedItems: []
   itemPrefab: {fileID: 570950269348828227, guid: 88ef190b446f32a49a36911ac9a3dbbf, type: 3}
   ItemContainer: {fileID: 83674758}
-  itemSlot: {fileID: 5049402395011756681, guid: 09e10a09cd6815e42bbd8de5f736266c, type: 3}
+  itemSlot: {fileID: 8211378436804619817, guid: b36361c8d85552040a86b1b23a9abc2c, type: 3}
 --- !u!4 &1154070058
 Transform:
   m_ObjectHideFlags: 0
@@ -3568,7 +3581,7 @@ MonoBehaviour:
   yellowPenalty: 10
   redPenalty: 20
   greenBonus: 5
-  slotPrefab: {fileID: 5049402395011756681, guid: 09e10a09cd6815e42bbd8de5f736266c, type: 3}
+  slotPrefab: {fileID: 8211378436804619817, guid: b36361c8d85552040a86b1b23a9abc2c, type: 3}
   MeterPanel: {fileID: 1166476561}
 --- !u!4 &1662801860
 Transform:

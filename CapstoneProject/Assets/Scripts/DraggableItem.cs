@@ -14,7 +14,6 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     [SerializeField]
     private Canvas canvas;
     public Transform parentAfterDrag;
-    public Item item;
     public Vector3 originalPosition;
     public Vector2 originalSize; // Store the original size
     private RectTransform rectTransform;
@@ -129,7 +128,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             Transform newSlot = eventData.pointerCurrentRaycast.gameObject.transform;
             transform.SetParent(newSlot);
 
-            // print("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
+            print("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
         }
         else
         {
@@ -149,7 +148,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             if (result.gameObject != gameObject) // Exclude self
             {
-                DragableItem overlappedItem = result.gameObject.GetComponent<DragableItem>();
+                ItemReaction overlappedItem = result.gameObject.GetComponent<ItemReaction>();
                 if (overlappedItem != null && overlappedItem.item.hasTemperature)
                 {
                     Debug.Log(overlappedItem.gameObject.name);
@@ -184,11 +183,6 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         Vector2 containerSize = container.rect.size;
         rectTransform.sizeDelta = containerSize; // Match the size of the slot
         rectTransform.localScale = Vector3.one; // Reset scale to avoid distortions
-    }
-
-    public void SetItem(Item item)
-    {
-        this.item = item;
     }
 
     public void SetTransforms()

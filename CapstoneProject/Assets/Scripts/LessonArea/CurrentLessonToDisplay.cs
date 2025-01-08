@@ -8,6 +8,7 @@ using UnityEngine.UI;
 
 public class CurrentLessonToDisplay : MonoBehaviour
 {
+    #region VARIABLES
     public QuestAsLesson CurrentLesson;
 
     // Current Lesson
@@ -57,6 +58,10 @@ public class CurrentLessonToDisplay : MonoBehaviour
     private GameObject ItemRewardContainer;
 
     private bool HasActiveQuest => CurrentLesson != null;
+
+    private Dictionary<string, int> tempCollectedItems = new Dictionary<string, int>();
+
+    #endregion
 
     void Start()
     {
@@ -190,20 +195,26 @@ public class CurrentLessonToDisplay : MonoBehaviour
         {
             if (item.itemName == currentItemQuest.materialName)
             {
-                // Reduce quantity if it's greater than 1
-                if (currentItemQuest.Quantity > 1)
+                // Initialize the temporary collected count for the item if not already set
+                if (!tempCollectedItems.ContainsKey(item.itemName))
                 {
-                    currentItemQuest.Quantity--;
+                    tempCollectedItems[item.itemName] = 0;
+                }
+
+                // Check if they can collect more
+                if (tempCollectedItems[item.itemName] < currentItemQuest.Quantity)
+                {
+                    tempCollectedItems[item.itemName]++;
                     Debug.Log(
-                        $"Reduced quantity for {item.itemName}: {currentItemQuest.Quantity} remaining."
+                        $"Collected {tempCollectedItems[item.itemName]} of {currentItemQuest.Quantity} for {item.itemName}."
                     );
                 }
-                else
+
+                // Check if the item is fully collected
+                if (tempCollectedItems[item.itemName] == currentItemQuest.Quantity)
                 {
-                    // Mark as collected if quantity reaches 0
-                    currentItemQuest.Quantity = 0;
-                    currentItemQuest.isCollected = true;
                     Debug.Log($"Item fully collected: {item.itemName}");
+                    currentItemQuest.isCollected = true;
                 }
 
                 // Update the MaterialContainer UI
@@ -216,7 +227,8 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
                     if (title.text == item.itemName)
                     {
-                        quantity.text = currentItemQuest.Quantity.ToString();
+                        quantity.text =
+                            $"{tempCollectedItems[item.itemName]}/{currentItemQuest.Quantity}";
 
                         // Apply strikethrough if fully collected
                         if (currentItemQuest.isCollected)
