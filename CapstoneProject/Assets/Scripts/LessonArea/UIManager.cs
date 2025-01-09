@@ -82,6 +82,8 @@ public class UIManager : MonoBehaviour
     [Header("StateManager")]
     public GameObject PauseWindow;
 
+    SceneLoader _loader;
+
     private void Awake()
     {
         bagBtn.onClick.AddListener(OnBagButtonClick);
@@ -89,6 +91,7 @@ public class UIManager : MonoBehaviour
 
     void Start()
     {
+        _loader = FindAnyObjectByType<SceneLoader>();
         OnHomeButtonClick(); // it will start at home window
     }
 
@@ -373,7 +376,8 @@ public class UIManager : MonoBehaviour
 
     public void OnBackMainMenu()
     {
-        //TO-DO: This will change the scene back to the main menu...
+        StartCoroutine(_loader.loadingNextScene("MainMenu"));
+        VolumeSettings.SetActive(false);
     }
     #endregion
 }
