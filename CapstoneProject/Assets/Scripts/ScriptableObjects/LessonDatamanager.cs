@@ -13,7 +13,6 @@ public class LessonsDataManager : ScriptableObject
 public class MaterialEntry
 {
     public string materialName;
-    public Sprite materialIcon;
     public bool isCollected = false;
     public int Quantity = 1;
     public bool needToMeasure = false;
@@ -40,7 +39,6 @@ public class MaterialEntry
         return new MaterialEntry
         {
             materialName = this.materialName,
-            materialIcon = this.materialIcon,   
             isCollected = this.isCollected,
             Quantity = this.Quantity,
             needToMeasure = this.needToMeasure,

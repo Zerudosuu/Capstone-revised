@@ -21,9 +21,6 @@ public class InfoItemManager : MonoBehaviour
 
     [Header("Displaying Information")]
     [SerializeField]
-    private Image itemImage;
-
-    [SerializeField]
     private TextMeshProUGUI itemNameText;
 
     [SerializeField]
@@ -37,12 +34,6 @@ public class InfoItemManager : MonoBehaviour
     [SerializeField]
     private Button AddToInvetoryButton;
 
-    private BagManager bag;
-    private void Awake()
-    {
-        bag = FindAnyObjectByType<BagManager>();    
-    }
-
     void Start()
     {
         itemButtons = GetComponentsInChildren<Button>();
@@ -55,8 +46,10 @@ public class InfoItemManager : MonoBehaviour
         {
             GameObject itemInfo = Instantiate(InfoItem, InfoItemContainer.gameObject.transform);
 
+            TextMeshProUGUI itemText = itemInfo.GetComponentInChildren<TextMeshProUGUI>(); // Use TextMeshProUGUI for UI elements
+            itemText.text = item.itemName;
+
             Button itemButton = itemInfo.GetComponent<Button>();
-            itemButton.image.sprite = item.itemIcon;
             itemButton.onClick.AddListener(() => SelectItem(item));
         }
     }
@@ -70,7 +63,6 @@ public class InfoItemManager : MonoBehaviour
 
     public void SetDisplayedItem(Item CurrentSelectedItem)
     {
-        itemImage.sprite = CurrentSelectedItem.itemIcon;
         itemNameText.text = CurrentSelectedItem.itemName;
         itemDescriptionText.text = CurrentSelectedItem.itemDescription;
         itemClassification.text = CurrentSelectedItem.itemType.ToString();
@@ -78,7 +70,6 @@ public class InfoItemManager : MonoBehaviour
 
     public void AddToInventory()
     {
-        //TO DO - Add item to inventory
-        //bag.AddItemInBag(CurrentSelectedItem);
+        Debug.Log("AddToInventory: " + CurrentSelectedItem.itemName);
     }
 }

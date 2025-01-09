@@ -55,10 +55,10 @@ public class ItemManager : MonoBehaviour
             {
                 InstantiateInInventory(item);
             }
-            else
-            {
-                InstantiateInShop(item);
-            }
+            // else
+            // {
+            //     InstantiateInShop(item);
+            // }
         }
     }
 
@@ -94,7 +94,6 @@ public class ItemManager : MonoBehaviour
     {
         GameObject itemObject = Instantiate(ShopPrefabItem);
         itemObject.name = item.itemName;
-        itemObject.GetComponent <Image>().sprite = item.itemIcon;
 
         itemShop shopItem = itemObject.GetComponent<itemShop>();
         shopItem.SetItem(item);

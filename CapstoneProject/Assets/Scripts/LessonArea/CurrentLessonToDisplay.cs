@@ -53,13 +53,10 @@ public class CurrentLessonToDisplay : MonoBehaviour
     [SerializeField]
     private GameObject ProceedWindow;
 
-    private void Awake()
-    {
-        UpdateLessonDisplay();
-    }
     void Start()
     {
         animator = LessonWindow.GetComponent<Animator>();
+        UpdateLessonDisplay();
     }
 
     public void OnclickOpenClose()
@@ -91,8 +88,6 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
             materialObject.GetComponentInChildren<TextMeshProUGUI>().text =
                 materialEntry.materialName;
-
-            materialObject.GetComponentInChildren<Image>().sprite = materialEntry.materialIcon;
         }
     }
 
@@ -100,7 +95,6 @@ public class CurrentLessonToDisplay : MonoBehaviour
     {
         if (CurrentLesson == null)
         {
-            Debug.Log("No Lesson");
             noCurrentWindow.gameObject.SetActive(true);
             hasCurrentLessonWindow.gameObject.SetActive(false);
         }

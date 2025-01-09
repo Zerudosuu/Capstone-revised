@@ -23,43 +23,36 @@ MonoBehaviour:
       significantly affect the others.
     materials:
     - materialName: 500ml beaker
-      materialIcon: {fileID: 21300000, guid: 547c9d97d7b66674394e1d34f92bd22b, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Tripod
-      materialIcon: {fileID: 21300000, guid: ec90c7bd68847da43a3dd9809132765a, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Alcohol Lamp
-      materialIcon: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Water
-      materialIcon: {fileID: 21300000, guid: 81dec73997a74af4d91b9d07a6cf6d5d, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Thermometer 110 Degrees
-      materialIcon: {fileID: 21300000, guid: 0ea5b3e1b0f871049bde085caa699319, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Denatured Alcohol
-      materialIcon: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: Match
-      materialIcon: {fileID: 21300000, guid: d5182459d4ec3e74cbfddf52461c5c59, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -93,19 +86,16 @@ MonoBehaviour:
     SecondExperience: 80
     ItemRewards:
     - materialName: Erlrnmeyer Flask
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Cork or Rubber stopper
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Liquid Dropper
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
@@ -120,31 +110,26 @@ MonoBehaviour:
       of greater molecular movement.
     materials:
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -165,91 +150,76 @@ MonoBehaviour:
       color change, temperature change, gas production, and the formation of a precipitate.
     materials:
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -268,7 +238,6 @@ MonoBehaviour:
     fullDescription: ehehe
     materials:
     - materialName: 
-      materialIcon: {fileID: 0}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
