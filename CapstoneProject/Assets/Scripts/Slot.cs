@@ -15,10 +15,17 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public bool isOccupied = false;
 
+    private MainHolderManager mainSlotManager;
+
     private void Awake()
     {
         gridLayout = GetComponent<GridLayoutGroup>();
         image = GetComponent<Image>();
+    }
+
+    private void Start()
+    {
+        mainSlotManager = FindObjectOfType<MainHolderManager>();
     }
 
     private void OnEnable()
@@ -38,14 +45,14 @@ public class Slot : MonoBehaviour, IDropHandler
             GameObject dropItem = eventData.pointerDrag;
             DragableItem draggable = dropItem.GetComponent<DragableItem>();
 
-            if (CompatibleNames.Contains(draggable.name))
+            if (CompatibleNames.Contains(draggable.TagName))
             {
                 draggable.parentAfterDrag = transform;
                 draggable.placeInSlot = true;
                 ItemAddedName = draggable.gameObject.name;
                 isOccupied = true;
 
-                // Notify the StepManager of the completed sub-step
+                // Notify StepManager
                 StepManager stepManager = FindObjectOfType<StepManager>();
                 stepManager.ValidateAndCompleteSubStep(ItemAddedName);
             }
@@ -60,6 +67,19 @@ public class Slot : MonoBehaviour, IDropHandler
     private void OnTransformChildrenChanged()
     {
         ResizeChild();
+
+        if (transform.childCount > 0)
+        {
+            var item = GetComponentInChildren<ItemReaction>();
+            if (item != null)
+            {
+                mainSlotManager.RegisterSlot(this, item);
+            }
+        }
+        else
+        {
+            mainSlotManager.UnregisterSlot(this);
+        }
     }
 
     public void ResizeChild()

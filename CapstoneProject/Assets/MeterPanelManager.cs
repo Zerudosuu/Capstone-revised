@@ -57,10 +57,10 @@ public class MeterPanelManager : MonoBehaviour
         messageText.gameObject.SetActive(false);
         gameObject.SetActive(false);
 
-        // Switch state after coroutine
-        if (itemReaction != null && draggableItem != null)
-        {
-            itemReaction.SwitchStateAfterMeasurement(draggableItem);
-        }
+        // // Switch state after coroutine
+        // if (itemReaction != null && draggableItem != null)
+        // {
+        //     itemReaction.?SwitchStateAfterMeasurement(draggableItem);
+        // }
     }
 }

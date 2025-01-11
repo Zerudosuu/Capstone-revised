@@ -26,8 +26,8 @@ MonoBehaviour:
     - stateName: 
       sprite: {fileID: 0}
       description: 
-      isDefaultState: 0
-      conditions: []
+      conditions:
+        itemNameRequirement: 
     currentStateIndex: 0
     temperature: 0
     hasTemperature: 0
@@ -36,7 +36,7 @@ MonoBehaviour:
     itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
       combustion.
-    itemIcon: {fileID: 21300000, guid: 32e25492981ac334a9d810af4e9b8ec1, type: 3}
+    itemIcon: {fileID: 21300000, guid: 066708ca828cdb442b786c00a30e70e9, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -50,28 +50,13 @@ MonoBehaviour:
     - stateName: Empty
       sprite: {fileID: 0}
       description: 
-      isDefaultState: 1
       conditions:
-      - conditionName: Denatured Alcohol
-        itemNameRequirements:
-        - Denatured Alcohol
-        DisplayErrorMessage: 
-        typeOfInteraction: pouring
+        itemNameRequirement: 
     - stateName: Lamp with Denatured Alcohol
-      sprite: {fileID: 21300000, guid: 7b83b9406fcd349409c477ab71721271, type: 3}
+      sprite: {fileID: 21300000, guid: 8414a1cd3b607424c9773ac5502bef49, type: 3}
       description: 
-      isDefaultState: 0
       conditions:
-      - conditionName: Match
-        itemNameRequirements:
-        - Match
-        DisplayErrorMessage: 
-        typeOfInteraction: 
-    - stateName: Lamp with Fire
-      sprite: {fileID: 21300000, guid: ec90c7bd68847da43a3dd9809132765a, type: 3}
-      description: 
-      isDefaultState: 0
-      conditions: []
+        itemNameRequirement: Denatured Alcohol
     currentStateIndex: 0
     temperature: 0
     hasTemperature: 0
@@ -93,11 +78,11 @@ MonoBehaviour:
     temperature: 0
     hasTemperature: 0
     currentTemperature: 0
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 5267098033096978716, guid: 615dca61312a1cc49a139838a34b43b7, type: 3}
     itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
       a heat source.
-    itemIcon: {fileID: 21300000, guid: 7b83b9406fcd349409c477ab71721271, type: 3}
+    itemIcon: {fileID: 21300000, guid: 7620cd79e73c3dd46947cafe47b4c4cf, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -137,7 +122,7 @@ MonoBehaviour:
     temperature: 0
     hasTemperature: 0
     currentTemperature: 0
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 8085120018151178405, guid: d073d923a0519504d8b6e9a7ac28a08c, type: 3}
     itemName: Ice
     itemDescription: Frozen water.
     itemIcon: {fileID: 21300000, guid: a2ab63c60921e8741bfa89edbfc214b7, type: 3}
@@ -163,23 +148,18 @@ MonoBehaviour:
     - Liquid
     - Measurement
     - HeatConductor
-    - Placement
+    - CoolComponent
     states:
     - stateName: Empty
       sprite: {fileID: 0}
       description: 
-      isDefaultState: 1
       conditions:
-      - conditionName: Water
-        itemNameRequirements:
-        - Water
-        DisplayErrorMessage: 
-        typeOfInteraction: pouring
+        itemNameRequirement: 
     - stateName: BeakerWithWater
-      sprite: {fileID: 21300000, guid: 0846f34c6d1bace4cbf25a0858d52135, type: 3}
+      sprite: {fileID: 21300000, guid: 6e1398d7136ebd4409cb501ba7c2b83c, type: 3}
       description: 
-      isDefaultState: 0
-      conditions: []
+      conditions:
+        itemNameRequirement: Water
     currentStateIndex: 0
     temperature: 0
     hasTemperature: 1
@@ -201,7 +181,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 313b9c9ac6a44594a8399db36e2a8b2b, type: 3}
     itemType: 0
     isUnlock: 0
     isCollected: 0
@@ -215,7 +195,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Cork or Rubber stopper
     itemDescription: Used to seal openings of glassware.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 1c59e8bc9064f564bb4125611f3fc922, type: 3}
     itemType: 0
     isUnlock: 0
     isCollected: 0
@@ -229,7 +209,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Liquid Dropper
     itemDescription: A tool used to transfer small amounts of liquid.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 5446c933a7d625f479158c19edf4e243, type: 3}
     itemType: 0
     isUnlock: 0
     isCollected: 0
@@ -243,7 +223,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Iron nail
     itemDescription: A silver-white metal.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 41db7d396ce29d24f91b584990ad3abf, type: 3}
     itemType: 1
     isUnlock: 0
     isCollected: 0
@@ -257,7 +237,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Agua oxigenada
     itemDescription: An antiseptic liquid.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 41c22dc1f15c6a643807a6d6410c14db, type: 3}
     itemType: 1
     isUnlock: 0
     isCollected: 0
@@ -271,7 +251,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 7ad7de367d5e866449ea5b31be9d1fa9, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -285,7 +265,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Manganese dioxide (MnO2)
     itemDescription: An oxide of manganese used in batteries.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: fbf7b9a603982954e8e62fff19a6c263, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -300,7 +280,7 @@ MonoBehaviour:
     itemName: Copper Sulfate (CuSO4) solution
     itemDescription: An inorganic compound used as a fungicide, algaecide, and root
       killer.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 553cbdb52574c4a4990a8765125db880, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -314,7 +294,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Sodium Hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 47a1dc65840a54642bbfd2963b371943, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -328,7 +308,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 458e10a479fe9fc4b80acdf9973d44b2, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -342,7 +322,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Baking Soda
     itemDescription: A crystalline salt.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 869f18d60a064744cb2b7419ba6ae71d, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -356,7 +336,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Mg Ribbon (mg)
     itemDescription: A crystalline salt.
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 58c54ecc18defa6459569347841115f7, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -370,7 +350,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: 30 Volumes Agua Oxigenada
     itemDescription: 
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 41c22dc1f15c6a643807a6d6410c14db, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -384,21 +364,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 0}
     itemName: Crucible Tong
     itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 1
-    isUnlock: 1
-    isCollected: 0
-    tagName: 0
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    temperature: 0
-    hasTemperature: 0
-    currentTemperature: 0
-  - itemPrefab: {fileID: 0}
-    itemName: Beaker
-    itemDescription: 
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 60778b93ebb234f448e6473b244abed8, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -412,7 +378,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 6624615194705630374, guid: ef81953465a8d39419f67c069fbe69b3, type: 3}
     itemName: Water
     itemDescription: 
-    itemIcon: {fileID: 0}
+    itemIcon: {fileID: 21300000, guid: 81dec73997a74af4d91b9d07a6cf6d5d, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0

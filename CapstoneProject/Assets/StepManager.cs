@@ -1,97 +1,169 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class StepManager : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI stepText;
-
-    [SerializeField]
-    private GameObject experimentModal;
-
-    public List<ExperimentStep> experimentSteps = new List<ExperimentStep>();
+    public TextMeshProUGUI lessonStepText; // UI to display current lesson and step
     private ExperimentObjectManager experimentObjectManager;
 
-    private int currentLessonStepIndex = 0; // Current lesson step index
-    private int currentSubStepIndex = 0; // Current sub-step index
-    private bool allStepsCompleted = false;
+    public List<LessonSteps> MainLessonSteps;
 
-    void Start()
+    private int mainCurrentLessonIndex = 0;
+    public int currentLessonIndex = 0;
+    public List<LessonStepsExample> lessonSteps;
+
+    private void Start()
     {
+        // Get the experiment object manager and populate lesson steps
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
-
-        // Display the first step when the script starts
-        if (experimentObjectManager.currentLesson.steps.Count > 0)
-        {
-            DisplayCurrentStep();
-        }
-        else
-        {
-            Debug.LogError("No steps available in the current lesson.");
-        }
+        MainLessonSteps = experimentObjectManager.currentLesson.steps;
+        DisplayCurrentStep();
     }
 
-    public void ValidateAndCompleteSubStep(string completedSubStep)
+    public void ValidateAndCompleteSubStep(string itemName)
     {
-        if (allStepsCompleted)
-        {
-            Debug.Log("All steps and sub-steps are already completed.");
+        if (currentLessonIndex >= lessonSteps.Count)
             return;
-        }
 
-        var currentLessonStep = experimentObjectManager.currentLesson.steps[currentLessonStepIndex];
-        var currentExperimentStep = experimentSteps[currentLessonStepIndex];
+        var currentLesson = lessonSteps[currentLessonIndex];
 
-        // Validate the sub-step
-        currentExperimentStep.ValidateSubStep(completedSubStep);
+        // Validate and complete the substep
+        currentLesson.ValidateAndCompleteSubStep(itemName);
 
-        // If all sub-steps for the current step are completed, move to the next step
-        if (currentExperimentStep.AreAllRequiredStepsCompleted())
+        // Check if the current lesson is completeda
+        if (currentLesson.IsTaskCompleted())
         {
-            currentLessonStep.CompleteStep(); // Mark lesson step complete
-            currentLessonStepIndex++;
+            Debug.Log($"Lesson {currentLessonIndex + 1} completed!");
+            currentLessonIndex++;
 
-            if (currentLessonStepIndex < experimentObjectManager.currentLesson.steps.Count)
+            if (currentLessonIndex < lessonSteps.Count)
             {
-                currentExperimentStep.CompleteStep();
                 DisplayCurrentStep();
             }
             else
             {
-                allStepsCompleted = true;
-                stepText.text = "All steps completed!";
-                Debug.Log("All steps and sub-steps are completed!");
-
-                // Show the experiment modal
-                experimentModal.SetActive(true);
+                Debug.Log("All lessons completed!");
+                lessonStepText.text = "All tasks completed!";
             }
         }
         else
         {
-            Debug.Log("Sub-steps remain to be completed.");
+            DisplayCurrentStep();
         }
     }
 
     private void DisplayCurrentStep()
     {
-        if (
-            currentLessonStepIndex >= 0
-            && currentLessonStepIndex < experimentObjectManager.currentLesson.steps.Count
-        )
+        if (currentLessonIndex < lessonSteps.Count)
         {
-            var currentLessonStep = experimentObjectManager.currentLesson.steps[
-                currentLessonStepIndex
-            ];
-            stepText.text = currentLessonStep.stepDescription;
-            Debug.Log(
-                $"Displaying Step {currentLessonStepIndex + 1}: {currentLessonStep.stepDescription}"
-            );
+            var currentLesson = lessonSteps[currentLessonIndex];
+            var currentSubstep = currentLesson.GetCurrentSubstep();
+
+            if (currentSubstep != null)
+            {
+                lessonStepText.text = MainLessonSteps[currentLessonIndex].stepDescription;
+            }
         }
-        else
+    }
+}
+
+[System.Serializable]
+public class LessonStepsExample
+{
+    public List<Step> substeps; // Steps for the task
+    private int currentSubstepIndex = 0;
+
+    public void ValidateAndCompleteSubStep(string itemName, string targetObject = null)
+    {
+        if (currentSubstepIndex >= substeps.Count)
+            return;
+
+        Step currentStep = substeps[currentSubstepIndex];
+        string requiredAction = currentStep.requiredAction; // Get the required action for this step
+
+        switch (requiredAction)
         {
-            Debug.LogError("Invalid step index!");
+            case "drop":
+                if (currentStep.requiredItemName == itemName)
+                {
+                    Debug.Log($"Step {currentStep.stepName} completed with drag-and-drop!");
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                }
+                else
+                {
+                    Debug.LogWarning("Incorrect item for drag-and-drop.");
+                }
+                break;
+
+            case "drag":
+                if (currentStep.requiredItemName == itemName)
+                {
+                    Debug.Log($"Step {currentStep.stepName} completed with drag!");
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                }
+                else
+                {
+                    Debug.LogWarning("Incorrect item for drag.");
+                }
+                break;
+
+            case "assemble":
+                foreach (var substep in currentStep.substeps)
+                {
+                    if (!substep.isCompleted && substep.targetObject == itemName)
+                    {
+                        substep.isCompleted = true;
+                        Debug.Log($"Substep completed: {itemName} on {targetObject}");
+
+                        if (currentStep.substeps.TrueForAll(s => s.isCompleted))
+                        {
+                            Debug.Log($"Step {currentStep.stepName} fully assembled!");
+                            currentStep.isCompleted = true;
+                            currentSubstepIndex++;
+                        }
+                        return;
+                    }
+                }
+                Debug.LogWarning("Incorrect assembly action or target object.");
+                break;
+
+            case "wait":
+                Debug.Log($"Step {currentStep.stepName} is waiting...");
+                currentStep.isCompleted = true;
+                currentSubstepIndex++;
+                break;
+
+            default:
+                if (currentStep.requiredItemName == itemName)
+                {
+                    Debug.Log(
+                        $"Step {currentStep.stepName} completed with action {requiredAction}!"
+                    );
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                }
+                else
+                {
+                    Debug.LogWarning("Incorrect item or action.");
+                }
+                break;
         }
+    }
+
+    public bool IsTaskCompleted()
+    {
+        return currentSubstepIndex >= substeps.Count;
+    }
+
+    public Step GetCurrentSubstep()
+    {
+        if (currentSubstepIndex < substeps.Count)
+        {
+            return substeps[currentSubstepIndex];
+        }
+        return null;
     }
 }

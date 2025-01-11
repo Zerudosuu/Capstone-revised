@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 [CreateAssetMenu(fileName = "Items", menuName = "Items", order = 0)]
 public class Items : ScriptableObject
@@ -25,7 +26,6 @@ public class Item
     public string tagName;
     public List<string> compatibleTags;
 
-    // State management
     [Header("State Management")]
     public List<ItemState> states = new List<ItemState>();
     public int currentStateIndex = 0;
@@ -34,7 +34,6 @@ public class Item
     [Header("Temperature")]
     public float temperature;
     public bool hasTemperature;
-
     public float currentTemperature;
 
     public enum ItemType
@@ -43,21 +42,85 @@ public class Item
         Chemical,
     }
 
-    public void SwitchToNextState()
-    {
-        currentStateIndex = (currentStateIndex + 1) % states.Count;
-    }
+    // [Header("Reactions")]
+    // public UnityEvent OnReact; // Triggered when the item reacts to external stimuli
 
-    public void SwitchToState(int index)
+    // public void ApplyReaction(float temperatureChange)
+    // {
+    //     if (hasTemperature)
+    //     {
+    //         currentTemperature += temperatureChange;
+    //         OnReact?.Invoke();
+    //     }
+    // }
+
+    // public void TriggerReaction(Item otherItem, Transform parentTransform)
+    // {
+    //     foreach (Reaction reaction in reactions)
+    //     {
+    //         if (reaction.triggers.Contains(otherItem.itemName))
+    //         {
+    //             // Apply temperature change
+    //             currentTemperature += reaction.temperatureChange;
+
+    //             // Instantiate resulting item if applicable
+    //             if (reaction.resultingItemPrefab != null)
+    //             {
+    //                 UnityEngine.Object.Instantiate(
+    //                     reaction.resultingItemPrefab,
+    //                     parentTransform.position,
+    //                     Quaternion.identity
+    //                 );
+    //             }
+
+    //             // Trigger visual effects
+    //             if (reaction.visualEffectPrefab != null)
+    //             {
+    //                 UnityEngine.Object.Instantiate(
+    //                     reaction.visualEffectPrefab,
+    //                     parentTransform.position,
+    //                     Quaternion.identity
+    //                 );
+    //             }
+
+    //             // Play animation
+    //             if (reaction.animationClip != null)
+    //             {
+    //                 Animator animator = parentTransform.GetComponent<Animator>();
+    //                 if (animator != null)
+    //                 {
+    //                     animator.Play(reaction.animationClip.name);
+    //                 }
+    //             }
+
+    //             OnReact?.Invoke(); // Broadcast reaction event
+    //             Debug.Log(
+    //                 $"{itemName} reacted with {otherItem.itemName} via {reaction.reactionName}"
+    //             );
+    //             return; // Stop after first matching reaction
+    //         }
+    //     }
+
+    //     Debug.LogWarning($"No matching reaction for {otherItem.itemName} with {itemName}");
+    // }
+
+    public void SwitchToState(string itemRequirement)
     {
-        if (index >= 0 && index < states.Count)
+        for (int i = 0; i < states.Count; i++)
         {
-            currentStateIndex = index;
+            if (states[i].conditions.itemNameRequirement == itemRequirement)
+            {
+                currentStateIndex = i;
+                Debug.Log("Condition met! Transitioning to the next state.");
+                return;
+            }
+
+            Debug.LogWarning("Condition not met." + states[i].conditions.itemNameRequirement);
         }
-        else
-        {
-            Debug.LogWarning($"{itemName}: Invalid state index {index}. Keeping current state.");
-        }
+
+        Debug.LogWarning(
+            $"{this.itemName}: No matching state found for item requirement: {itemRequirement}"
+        );
     }
 
     public Item Clone()
@@ -85,23 +148,14 @@ public class Item
 [System.Serializable]
 public class ItemState
 {
-    public string stateName; // Name of the state (e.g., "Empty", "Filled", "Measured")
+    public string stateName; // Name of the state (e.g., "Lamp with Alcohol")
     public Sprite sprite;
-    public string description; // Description or additional behavior for the state
-    public bool isDefaultState; // Is this the default state for the item?
-    public List<Conditions> conditions; // Conditions required to switch to this state
+    public string description; // Description of the state
+    public Conditions conditions; // Conditions to transition to this state
 }
 
 [System.Serializable]
 public class Conditions
 {
-    public string conditionName;
-    public List<string> itemNameRequirements;
-    public string DisplayErrorMessage;
-    public string typeOfInteraction;
-
-    public bool CheckConditions(List<string> tags)
-    {
-        return itemNameRequirements.TrueForAll(tag => tags.Contains(tag));
-    }
+    public string itemNameRequirement; // Item required to trigger this condition
 }

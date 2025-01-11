@@ -6,6 +6,11 @@ public class MeasureScript : MonoBehaviour
     [SerializeField]
     private TextMeshProUGUI temperatureDisplay; // Reference to the TextMeshProUGUI for temperature
 
+    public void Start()
+    {
+        temperatureDisplay.text = "";
+    }
+
     public void DisplayTemperature(float temperature)
     {
         if (temperatureDisplay != null)

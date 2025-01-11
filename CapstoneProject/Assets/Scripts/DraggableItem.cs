@@ -20,8 +20,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private bool isDragging = false;
     private GameObject lastOverlappedObject = null;
     public bool placeInSlot = false;
-
-    public GameObject[] transforms;
+    public string TagName;
 
     private void Awake()
     {
@@ -36,55 +35,6 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
         originalSize = rectTransform.sizeDelta;
         // Store the initial size of the item
-    }
-
-    private void Start()
-    {
-        // Check if the parent is a slot on start and resize if necessary
-        if (transform.parent != null && transform.parent.CompareTag("Slot"))
-        {
-            ResizeToFitContainer(transform.parent.GetComponent<RectTransform>());
-        }
-
-        // Ensure all transforms are disabled initially
-        if (transforms != null)
-        {
-            foreach (var obj in transforms)
-            {
-                if (obj != null)
-                    obj.SetActive(false);
-            }
-        }
-    }
-
-    // private void OnEnable()
-    // {
-    //     if (ReactionManager.Instance != null)
-    //     {
-    //         ReactionManager.Instance.OnCool += CoolReaction;
-    //         ReactionManager.Instance.OnHeat += HeatReaction;
-    //     }
-    // }
-
-    // private void OnDisable()
-    // {
-    //     if (ReactionManager.Instance != null)
-    //     {
-    //         ReactionManager.Instance.OnCool -= CoolReaction;
-    //         ReactionManager.Instance.OnHeat -= HeatReaction;
-    //     }
-    // }
-
-    private void CoolReaction()
-    {
-        // item.currentTemperature -= 5.0f; // Example logic: Decrease temperature
-        Debug.Log($"{gameObject.name} temperature decreased to °C");
-    }
-
-    private void HeatReaction()
-    {
-        // item.currentTemperature += 10.0f; // Example logic: Increase temperature
-        Debug.Log($"{gameObject.name} temperature increased to °C");
     }
 
     //! DRAG EVENTS
@@ -158,9 +108,11 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
                     {
                         // Display the temperature of the overlapped item
                         measureScript.DisplayTemperature(overlappedItem.item.currentTemperature);
-
                         StepManager stepManager = FindObjectOfType<StepManager>();
-                        stepManager.ValidateAndCompleteSubStep(overlappedItem.gameObject.name);
+                        if (stepManager != null)
+                        {
+                            stepManager.ValidateAndCompleteSubStep(overlappedItem.gameObject.name);
+                        }
                     }
 
                     return result.gameObject; // Return the first valid object with DragableItem
@@ -183,20 +135,6 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         Vector2 containerSize = container.rect.size;
         rectTransform.sizeDelta = containerSize; // Match the size of the slot
         rectTransform.localScale = Vector3.one; // Reset scale to avoid distortions
-    }
-
-    public void SetTransforms()
-    {
-        if (transforms != null)
-        {
-            foreach (var obj in transforms)
-            {
-                if (obj != null)
-                {
-                    obj.SetActive(placeInSlot);
-                }
-            }
-        }
     }
 
     private void OnTransformParentChanged()

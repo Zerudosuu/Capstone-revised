@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5172749339908944933
+--- !u!1 &5267098033096978716
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,53 +8,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5950072141373055121}
-  - component: {fileID: 8888201297330729262}
-  - component: {fileID: 4503479905720817131}
-  - component: {fileID: 1381774951828952757}
-  - component: {fileID: 3020094261320530273}
-  - component: {fileID: 7913196925316324896}
+  - component: {fileID: 6031123575376505138}
+  - component: {fileID: 626117856511100228}
+  - component: {fileID: 5620399931557629441}
+  - component: {fileID: 2590184755655044048}
+  - component: {fileID: 7486058765106472819}
   m_Layer: 5
-  m_Name: BeakerPreFab
+  m_Name: WireGauze
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &5950072141373055121
+--- !u!224 &6031123575376505138
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
+  m_GameObject: {fileID: 5267098033096978716}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3.3775606, y: 3.3775606, z: 3.3775606}
+  m_LocalScale: {x: 3.3775606, y: 0.21109754, z: 3.3775606}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 61}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &8888201297330729262
+--- !u!222 &626117856511100228
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
+  m_GameObject: {fileID: 5267098033096978716}
   m_CullTransparentMesh: 1
---- !u!114 &4503479905720817131
+--- !u!114 &5620399931557629441
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
+  m_GameObject: {fileID: 5267098033096978716}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
@@ -68,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: e96e7bd2f620e134dbd3bb923e9485cf, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7620cd79e73c3dd46947cafe47b4c4cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -78,71 +77,35 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1381774951828952757
+--- !u!114 &2590184755655044048
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
+  m_GameObject: {fileID: 5267098033096978716}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 057750cb65090eb40998003999a6522c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 3020094261320530273}
+  canvasGroup: {fileID: 7486058765106472819}
   raycaster: {fileID: 0}
   canvas: {fileID: 0}
   parentAfterDrag: {fileID: 0}
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  TagName: 
---- !u!225 &3020094261320530273
+  TagName: HeatConductor
+--- !u!225 &7486058765106472819
 CanvasGroup:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
+  m_GameObject: {fileID: 5267098033096978716}
   m_Enabled: 1
   m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7913196925316324896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: 
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    temperature: 0
-    hasTemperature: 0
-    currentTemperature: 0
-  reactions:
-  - needStateName: BeakerWithWater
-    reactionName: BEAKERWITHWATERANDICE
-    triggers:
-    - Ice
-    resultingItemPrefab: {fileID: 0}
-    temperatureChange: 0
-    visualEffectPrefab: {fileID: 0}
-    animationClip: {fileID: 0}

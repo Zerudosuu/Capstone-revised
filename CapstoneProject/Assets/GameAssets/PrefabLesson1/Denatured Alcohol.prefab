@@ -67,7 +67,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -93,30 +93,10 @@ MonoBehaviour:
   raycaster: {fileID: 0}
   canvas: {fileID: 0}
   parentAfterDrag: {fileID: 0}
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: Denatured Alcohol
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    maxTemperature: 100
-    coolingRate: 5
-    heatingRate: 10
-    measuredValue: 0
-    needMeasurement: 0
-    tagName: Flammable
-    compatibleTags:
-    - HeatSource
-    states: []
-    currentStateIndex: 0
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  transforms: []
+  TagName: Flammable
 --- !u!225 &5366082551876768972
 CanvasGroup:
   m_ObjectHideFlags: 0

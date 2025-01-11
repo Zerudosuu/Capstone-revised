@@ -12,6 +12,10 @@ public class ScrollViewSlot : MonoBehaviour, IDropHandler
         GameObject droppedItem = eventData.pointerDrag;
         DragableItem draggable = droppedItem.GetComponent<DragableItem>();
         draggable.parentAfterDrag = transform;
+
+        // Check if the dropped item is compatible with the slot
+
+        Debug.Log("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
     }
 
     public void ResizeChild()

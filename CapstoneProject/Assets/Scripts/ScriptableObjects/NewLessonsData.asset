@@ -35,7 +35,7 @@ MonoBehaviour:
       needToMeasure: 0
       measuredValue: 0
     - materialName: Water
-      ItemIcon: {fileID: 0}
+      ItemIcon: {fileID: 21300000, guid: 81dec73997a74af4d91b9d07a6cf6d5d, type: 3}
       isCollected: 0
       Quantity: 2
       needToMeasure: 0
@@ -58,6 +58,18 @@ MonoBehaviour:
       Quantity: 1
       needToMeasure: 0
       measuredValue: 0
+    - materialName: Wire gauze
+      ItemIcon: {fileID: 21300000, guid: 7620cd79e73c3dd46947cafe47b4c4cf, type: 3}
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
+    - materialName: Ice
+      ItemIcon: {fileID: 21300000, guid: a2ab63c60921e8741bfa89edbfc214b7, type: 3}
+      isCollected: 0
+      Quantity: 1
+      needToMeasure: 0
+      measuredValue: 0
     steps:
     - stepDescription: Pour approximately 150ml of water into the beaker
       isCompleted: 0
@@ -69,9 +81,9 @@ MonoBehaviour:
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: Measure
-    - stepDescription: Assemble the water gauze, tripod, and alcohol lamp. Set aside
-        iced water. Replace the content of the beaker with tap water. Place with
-        water on the wire gauze.
+    - stepDescription: Assemble the wire gauze, tripod, and alcohol lamp, then set
+        aside the iced water. Replace the beaker's contents with tap water and place
+        it on the wire gauze.
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: Assemble
@@ -90,19 +102,19 @@ MonoBehaviour:
     SecondExperience: 80
     ItemRewards:
     - materialName: Erlrnmeyer Flask
-      ItemIcon: {fileID: 0}
+      ItemIcon: {fileID: 21300000, guid: 4be318f23c4893e4baae904686f8d507, type: 3}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Cork or Rubber stopper
-      ItemIcon: {fileID: 0}
+      ItemIcon: {fileID: 21300000, guid: 1c59e8bc9064f564bb4125611f3fc922, type: 3}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
     - materialName: Liquid Dropper
-      ItemIcon: {fileID: 0}
+      ItemIcon: {fileID: 21300000, guid: 5446c933a7d625f479158c19edf4e243, type: 3}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0

@@ -63,17 +63,43 @@ public class ExperimentManager : MonoBehaviour
         currentScore.value = score; // Update the score slider
     }
 
-    public void UpdateItemPrefab(GameObject currentItem)
+    public void UpdateItemPrefab(GameObject currentItem, string ItemInteracted)
     {
         ItemReaction itemReaction = currentItem.GetComponent<ItemReaction>();
 
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
-            itemReaction.GetComponent<Image>().sprite = itemReaction.item.CurrentState.sprite;
+            bool conditionMet = false;
 
-            // Find an empty slot or create a new one
-            ScrollViewSlot emptySlot = FindEmptySlot();
-            GameObject newSlot = null;
+            // Iterate through all states of the item
+            foreach (var state in itemReaction.item.states)
+            {
+                if (state.conditions.itemNameRequirement == ItemInteracted)
+                {
+                    // Condition met, switch to this state
+                    itemReaction.item.currentStateIndex = itemReaction.item.states.IndexOf(state);
+                    itemReaction.GetComponent<Image>().sprite = state.sprite;
+                    itemReaction.transform.name = state.stateName;
+                    conditionMet = true;
+
+                    // // Find an empty slot or create a new one if necessary
+                    // ScrollViewSlot emptySlot = FindEmptySlot();
+                    // if (emptySlot != null)
+                    // {
+                    //     currentItem.transform.SetParent(emptySlot.transform);
+                    // }
+
+                    Debug.Log($"Item updated to state: {state.stateName}");
+                    break;
+                }
+            }
+
+            if (!conditionMet)
+            {
+                Debug.LogWarning(
+                    $"Item {ItemInteracted} not compatible with any state conditions."
+                );
+            }
         }
         else
         {

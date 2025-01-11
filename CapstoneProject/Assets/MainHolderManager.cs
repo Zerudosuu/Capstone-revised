@@ -1,25 +1,39 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class MainHolderManager : MonoBehaviour
 {
-    public void ValidatePlacement(string itemName)
+    private Dictionary<Slot, ItemReaction> registeredItems = new Dictionary<Slot, ItemReaction>();
+
+    public void RegisterSlot(Slot slot, ItemReaction item)
     {
-        StepManager stepManager = FindObjectOfType<StepManager>();
-
-        if (stepManager == null)
+        if (!registeredItems.ContainsKey(slot))
         {
-            Debug.LogError("StepManager is not found in the scene.");
-            return;
+            registeredItems.Add(slot, item);
+            Debug.Log($"Registered {item.name} in {slot.name}");
         }
+    }
 
-        // var currentStep = stepManager.steps[stepManager.currentStepIndex];
-        // if (currentStep.requiredObjects.Contains(itemName))
-        // {
-        //     stepManager.CompleteCurrentStep();
-        // }
-        // else
-        // {
-        //     Debug.LogWarning($"Item '{itemName}' is not valid for this step.");
-        // }
+    public void UnregisterSlot(Slot slot)
+    {
+        if (registeredItems.ContainsKey(slot))
+        {
+            registeredItems.Remove(slot);
+            Debug.Log($"Unregistered slot {slot.name}");
+        }
+    }
+
+    public void OnHeatSourceActivated(ItemReaction heatSource)
+    {
+        foreach (var pair in registeredItems)
+        {
+            var item = pair.Value;
+
+            if (item != null && item != heatSource && item.item.hasTemperature)
+            {
+                // heatSource.item.EmitHeat(item.item, Time.deltaTime);
+                Debug.Log($"{heatSource.item.itemName} is heating {item.item.itemName}");
+            }
+        }
     }
 }

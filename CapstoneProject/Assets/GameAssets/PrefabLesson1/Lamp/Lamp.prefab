@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 32e25492981ac334a9d810af4e9b8ec1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 066708ca828cdb442b786c00a30e70e9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -106,38 +106,10 @@ MonoBehaviour:
   raycaster: {fileID: 0}
   canvas: {fileID: 0}
   parentAfterDrag: {fileID: 0}
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: HeatSource
-    compatibleTags:
-    - Flammable
-    states:
-    - stateName: Lamp with Denatured Alcohol
-      sprite: {fileID: 0}
-      description: 
-      isDefaultState: 0
-      conditions:
-      - conditionName: Lamp with Fire
-        itemNameRequirements:
-        - Match
-        DisplayErrorMessage: 
-        typeOfInteraction: HeatSource
-    - stateName: Lamp with fire
-      sprite: {fileID: 0}
-      description: 
-      isDefaultState: 0
-      conditions: []
-    currentStateIndex: 0
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  transforms: []
+  TagName: HeatComponent
 --- !u!114 &4474080894118508689
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +134,6 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
+    temperature: 0
+    hasTemperature: 0
+    currentTemperature: 0

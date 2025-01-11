@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5598148493777050257}
   - component: {fileID: 9094841970740060208}
   - component: {fileID: 2608881214672218354}
+  - component: {fileID: 5184281948017240662}
   m_Layer: 5
   m_Name: Tripod
   m_TagString: Untagged
@@ -31,6 +32,7 @@ RectTransform:
   m_LocalScale: {x: 4.04236, y: 3.1302, z: 3.1302}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 8372298368173783812}
   - {fileID: 5171588555038024145}
   - {fileID: 8292060407649474586}
   m_Father: {fileID: 0}
@@ -90,6 +92,19 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &5184281948017240662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4047271636717327193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea806c341119ed948af8e109c2c6f64a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slots: []
 --- !u!1 &4212112756669445785
 GameObject:
   m_ObjectHideFlags: 0
@@ -126,7 +141,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 97.7}
+  m_AnchoredPosition: {x: 0, y: 101.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7068669078296387447
@@ -204,23 +219,130 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FixChildSize: 0
-  compatibleTagsForSlot:
+  CompatibleNames:
   - Container
   RequireName: 
   ItemAddedName: 
   isOccupied: 0
-  parentItem:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: 
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
+--- !u!1 &8186945257087377633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8372298368173783812}
+  - component: {fileID: 8317223498992178192}
+  - component: {fileID: 6465639260111199246}
+  - component: {fileID: 464013404028637233}
+  - component: {fileID: 799142591196200371}
+  m_Layer: 5
+  m_Name: WireGauzeHolder
+  m_TagString: Slot
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8372298368173783812
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186945257087377633}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.73753, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6433001258475646007}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 52.876}
+  m_SizeDelta: {x: 100, y: 10.352}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &8317223498992178192
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186945257087377633}
+  m_CullTransparentMesh: 1
+--- !u!114 &6465639260111199246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186945257087377633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!114 &464013404028637233
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186945257087377633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 0
+  m_StartCorner: 0
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 13}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &799142591196200371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8186945257087377633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cedb9069c34d47e4e9f26ea6566c8de7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FixChildSize: 0
+  CompatibleNames:
+  - HeatConductor
+  RequireName: WireGauze
+  ItemAddedName: 
+  isOccupied: 0
 --- !u!1 &8365568150033352668
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,20 +457,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   FixChildSize: 1
-  compatibleTagsForSlot:
-  - HeatSource
+  CompatibleNames:
+  - HeatComponent
   RequireName: Lamp
   ItemAddedName: 
   isOccupied: 0
-  parentItem:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: 
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
