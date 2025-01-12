@@ -3071,6 +3071,10 @@ PrefabInstance:
       propertyPath: diableDataPersistence
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3135936184676165030, guid: b487ecfa5dc82ca4cb5ae87a4b93777b, type: 3}
+      propertyPath: overrideSelectedProfileId
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

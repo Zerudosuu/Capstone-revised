@@ -2,41 +2,74 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEditor.Search;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class ButtomSheetHolder : MonoBehaviour
 {
-    [Header("Placeholder")]
-    [SerializeField] private TMP_Text questionHolder;
+    [Header("Q and A Holder")]
+    [SerializeField] private GameObject QuestionHolder;
 
     [Header("Question")]
     [TextArea(3,5)]
     [SerializeField] private List<string> questions;
-    private int _questionIndex;
-   
-    [Header("Input")]
-    [SerializeField] private TMP_InputField answerInput;
-    private List<string> _asnwers;
 
 
-    private bool _canSubmit = false;
+    [Header("reference")]
+    [SerializeField] private Transform contentHolder;
+    [HideInInspector] public List<string> answers;
+    private List<GameObject> questionInstiate;
     
-    public void ShowQuestion(int questionId)
+    private bool _canSubmit = false;
+
+    private void Start()
     {
-        questionHolder.text = questions[questionId];
+        questionInstiate = new List<GameObject>();  
+        answers = new List<string>();
+        ShowQeuestion();
     }
 
-    private void SubmitAnswer()
+    private void ShowQeuestion()
     {
-        if (_canSubmit)
+        foreach(string question in questions)
         {
-            _asnwers[_questionIndex] = answerInput.text;
+            GameObject newQuestion = Instantiate(QuestionHolder, contentHolder);
+            questionInstiate.Add(newQuestion); // this where the instatiate question will be store and where to access the answer per question
+            TMP_Text questionTxt = newQuestion.transform.GetChild(0).GetComponent<TMP_Text>();
+            questionTxt.text = question;
         }
     }
 
-    private void ShowAnswer()
+    public void GetAnswer()
     {
+        // this will get all the answer from the input from each question
+        foreach (GameObject answerQuestion in questionInstiate)
+        {
+            // This will get  the Input from the instatiated gameobject for each question
+            TMP_InputField answer = answerQuestion.transform.GetChild(1).GetComponent<TMP_InputField>();
+            
+            //Store the answer per index question
+            answers.Add(answer.text);
+            Debug.Log($"{answer.text}");
+        }
+    }
 
+
+    public bool canSubmit()
+    {
+        foreach (GameObject answerQuestion in questionInstiate)
+        {
+            // Get the InputField component from the instantiated gameobject for each question
+            TMP_InputField answer = answerQuestion.transform.GetChild(1).GetComponent<TMP_InputField>();
+
+            // If any question does not have an answer or is null, return false
+            if (answer == null || string.IsNullOrWhiteSpace(answer.text))
+            {
+                return false;
+            }
+        }
+        // All questions have answers
+        return true;
     }
 }

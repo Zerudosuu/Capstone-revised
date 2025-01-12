@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -10,46 +9,59 @@ public class ButtomSheetFuinction : MonoBehaviour
 {
     [Header("Reference")]
     [SerializeField] private RectTransform btmSheet;
-    [SerializeField] private float slideDuration = 0.5f;
 
-    [Header("Positions")]
-    [SerializeField] private Vector2 hiddenPosition;
-    [SerializeField] private Vector2 visiblePosition;
-
-    [Header("Buton")]
+    [Header("Button")]
     [SerializeField] private Button btnSheetBtn;
+    [SerializeField] private Button SubmitBtn;
+
+    [Header("Reference")]
+    private ButtomSheetHolder bottomSheet;
+
+    private Animator btmSheetAnim;
 
     private bool isVisible;
+
 
     private void Awake()
     {
         btnSheetBtn.onClick.AddListener(OnPress);
+        SubmitBtn.onClick.AddListener(OnSubmit);
     }
+
     private void Start()
     {
-        HideSheet();
+        btmSheetAnim = GetComponent<Animator>();
+        bottomSheet = FindAnyObjectByType<ButtomSheetHolder>();
+
     }
 
-
-    private void HideSheet()
+    private void Update()
     {
-        isVisible = false;
-        btmSheet.anchoredPosition = hiddenPosition;
+        if (bottomSheet.canSubmit())
+            SubmitBtn.interactable = true;
+        else
+            SubmitBtn.interactable = false;
     }
-
     private void OnPress()
     {
         if (isVisible)
         {
-            btmSheet.DOAnchorPos(hiddenPosition, slideDuration).SetEase(Ease.InOutSine);
+            Debug.Log("Show");
+            btmSheetAnim.SetBool("isVisible", false);
             isVisible = false;
         }
-        else if (!isVisible)
+        else
         {
-            btmSheet.DOAnchorPos(visiblePosition, slideDuration).SetEase(Ease.InOutSine);
-            isVisible = true;
+            Debug.Log("Hide");
+            btmSheetAnim.SetBool("isVisible", true);
+            isVisible = true ;
         }
     }
 
-    
+    private void OnSubmit()
+    {
+        Debug.Log("Submit Answer");
+
+        bottomSheet.GetAnswer();
+    }
 }
