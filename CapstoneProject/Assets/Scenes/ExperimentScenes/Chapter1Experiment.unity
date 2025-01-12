@@ -1679,9 +1679,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   Slider: {fileID: 643363532}
   ParentObject: {fileID: 1151400639}
   RedZone: {fileID: 125603233}
@@ -2397,7 +2398,7 @@ GameObject:
   m_Layer: 5
   m_Name: Panel
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1

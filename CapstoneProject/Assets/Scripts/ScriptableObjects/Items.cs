@@ -32,77 +32,17 @@ public class Item
     public ItemState CurrentState => states[currentStateIndex];
 
     [Header("Temperature")]
-    public float temperature;
     public bool hasTemperature;
     public float currentTemperature;
+
+    public float minTemperature = 0;
+    public float maxTemperature = 100;
 
     public enum ItemType
     {
         Equipment,
         Chemical,
     }
-
-    // [Header("Reactions")]
-    // public UnityEvent OnReact; // Triggered when the item reacts to external stimuli
-
-    // public void ApplyReaction(float temperatureChange)
-    // {
-    //     if (hasTemperature)
-    //     {
-    //         currentTemperature += temperatureChange;
-    //         OnReact?.Invoke();
-    //     }
-    // }
-
-    // public void TriggerReaction(Item otherItem, Transform parentTransform)
-    // {
-    //     foreach (Reaction reaction in reactions)
-    //     {
-    //         if (reaction.triggers.Contains(otherItem.itemName))
-    //         {
-    //             // Apply temperature change
-    //             currentTemperature += reaction.temperatureChange;
-
-    //             // Instantiate resulting item if applicable
-    //             if (reaction.resultingItemPrefab != null)
-    //             {
-    //                 UnityEngine.Object.Instantiate(
-    //                     reaction.resultingItemPrefab,
-    //                     parentTransform.position,
-    //                     Quaternion.identity
-    //                 );
-    //             }
-
-    //             // Trigger visual effects
-    //             if (reaction.visualEffectPrefab != null)
-    //             {
-    //                 UnityEngine.Object.Instantiate(
-    //                     reaction.visualEffectPrefab,
-    //                     parentTransform.position,
-    //                     Quaternion.identity
-    //                 );
-    //             }
-
-    //             // Play animation
-    //             if (reaction.animationClip != null)
-    //             {
-    //                 Animator animator = parentTransform.GetComponent<Animator>();
-    //                 if (animator != null)
-    //                 {
-    //                     animator.Play(reaction.animationClip.name);
-    //                 }
-    //             }
-
-    //             OnReact?.Invoke(); // Broadcast reaction event
-    //             Debug.Log(
-    //                 $"{itemName} reacted with {otherItem.itemName} via {reaction.reactionName}"
-    //             );
-    //             return; // Stop after first matching reaction
-    //         }
-    //     }
-
-    //     Debug.LogWarning($"No matching reaction for {otherItem.itemName} with {itemName}");
-    // }
 
     public void SwitchToState(string itemRequirement)
     {
@@ -134,9 +74,10 @@ public class Item
             itemType = this.itemType,
             isUnlock = this.isUnlock,
             isCollected = this.isCollected,
-            temperature = this.temperature,
             hasTemperature = this.hasTemperature,
             currentTemperature = this.currentTemperature,
+            minTemperature = this.minTemperature,
+            maxTemperature = this.maxTemperature,
             tagName = this.tagName,
             compatibleTags = new List<string>(this.compatibleTags),
             states = new List<ItemState>(this.states),
@@ -148,10 +89,11 @@ public class Item
 [System.Serializable]
 public class ItemState
 {
-    public string stateName; // Name of the state (e.g., "Lamp with Alcohol")
+    public string stateName;
     public Sprite sprite;
-    public string description; // Description of the state
-    public Conditions conditions; // Conditions to transition to this state
+    public string description;
+    public Conditions conditions;
+    public float Temperature;
 }
 
 [System.Serializable]

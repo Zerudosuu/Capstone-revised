@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7711341971219185794}
   - component: {fileID: 3140470674881196436}
   - component: {fileID: 5879663874758953221}
+  - component: {fileID: 6343397991269278592}
   m_Layer: 5
   m_Name: Match
   m_TagString: Untagged
@@ -109,3 +110,15 @@ MonoBehaviour:
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
   TagName: Ignition
+--- !u!114 &6343397991269278592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4783582525948895554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11b210c0e1ff8114fb9e3232d81c5f08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

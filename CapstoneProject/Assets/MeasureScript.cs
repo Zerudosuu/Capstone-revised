@@ -1,29 +1,61 @@
+using System;
 using TMPro;
 using UnityEngine;
 
 public class MeasureScript : MonoBehaviour
 {
-    [SerializeField]
-    private TextMeshProUGUI temperatureDisplay; // Reference to the TextMeshProUGUI for temperature
+    [SerializeField] private TextMeshProUGUI temperatureDisplay; // Reference to the TextMeshProUGUI for temperature
+    private ItemReaction currentItemReaction;
 
-    public void Start()
+    private void Start()
     {
-        temperatureDisplay.text = "";
+        temperatureDisplay.gameObject.SetActive(false);
     }
 
-    public void DisplayTemperature(float temperature)
+    private void DisplayTemperature(float temperature)
     {
         if (temperatureDisplay != null)
         {
+            temperatureDisplay.gameObject.SetActive(true);
             temperatureDisplay.text = $"{temperature}°C";
         }
     }
 
-    public void ClearTemperature()
+    private void ClearTemperature()
     {
         if (temperatureDisplay != null)
         {
+            temperatureDisplay.gameObject.SetActive(false);
             temperatureDisplay.text = "";
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        currentItemReaction = other.GetComponent<ItemReaction>();
+        if (currentItemReaction != null && currentItemReaction.item.hasTemperature)
+        {
+            currentItemReaction.OnTemperatureChanged += DisplayTemperature;
+            DisplayTemperature(currentItemReaction.item.currentTemperature);
+
+
+            // Step validation
+            StepManager stepManager = FindObjectOfType<StepManager>();
+            if (stepManager != null)
+            {
+                stepManager.ValidateAndCompleteSubStep(other.gameObject.name);
+            }
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (currentItemReaction != null && other.gameObject == currentItemReaction.gameObject)
+        {
+            currentItemReaction.OnTemperatureChanged -= DisplayTemperature;
+            ClearTemperature();
+            currentItemReaction = null;
         }
     }
 }

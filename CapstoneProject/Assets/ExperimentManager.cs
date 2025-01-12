@@ -81,13 +81,7 @@ public class ExperimentManager : MonoBehaviour
                     itemReaction.GetComponent<Image>().sprite = state.sprite;
                     itemReaction.transform.name = state.stateName;
                     conditionMet = true;
-
-                    // // Find an empty slot or create a new one if necessary
-                    // ScrollViewSlot emptySlot = FindEmptySlot();
-                    // if (emptySlot != null)
-                    // {
-                    //     currentItem.transform.SetParent(emptySlot.transform);
-                    // }
+                    itemReaction.item.currentTemperature = state.Temperature;
 
                     Debug.Log($"Item updated to state: {state.stateName}");
                     break;

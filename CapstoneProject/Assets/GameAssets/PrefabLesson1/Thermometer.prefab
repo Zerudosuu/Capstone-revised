@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 3743542260595694852}
   - component: {fileID: 8265237916693151548}
   - component: {fileID: 3933606889166885236}
+  - component: {fileID: 248072239766588947}
+  - component: {fileID: 5654255137656094000}
   m_Layer: 5
   m_Name: Thermometer
   m_TagString: Measurement
@@ -95,25 +97,10 @@ MonoBehaviour:
   raycaster: {fileID: 0}
   canvas: {fileID: 0}
   parentAfterDrag: {fileID: 0}
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: Measurement
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    temperature: 0
-    hasTemperature: 0
-    currentTemperature: 0
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  transforms: []
+  TagName: 
 --- !u!225 &8265237916693151548
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -139,6 +126,68 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   temperatureDisplay: {fileID: 9188775904391557257}
+--- !u!50 &248072239766588947
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174782827702463807}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!58 &5654255137656094000
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174782827702463807}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -87.1, y: -42.8}
+  serializedVersion: 2
+  m_Radius: 36.18228
 --- !u!1 &3495936736450394755
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,14 +215,14 @@ RectTransform:
   m_GameObject: {fileID: 3495936736450394755}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.3747, y: 1, z: 1}
+  m_LocalScale: {x: 5.3338137, y: 2.2461, z: 2.2461}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1852615082689239321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: 60.9}
+  m_AnchoredPosition: {x: 107, y: 68.1}
   m_SizeDelta: {x: 106.7701, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7231857729763614560
@@ -204,7 +253,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Temperature: 0\xB0C"
+  m_text: "0\xB0C"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

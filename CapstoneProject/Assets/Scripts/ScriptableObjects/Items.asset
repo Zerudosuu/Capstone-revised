@@ -28,10 +28,12 @@ MonoBehaviour:
       description: 
       conditions:
         itemNameRequirement: 
+      Temperature: 0
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 331965834459403351, guid: db012a849ac9d794cb3162049efa4202, type: 3}
     itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
@@ -52,15 +54,18 @@ MonoBehaviour:
       description: 
       conditions:
         itemNameRequirement: 
+      Temperature: 0
     - stateName: Lamp with Denatured Alcohol
       sprite: {fileID: 21300000, guid: 8414a1cd3b607424c9773ac5502bef49, type: 3}
       description: 
       conditions:
         itemNameRequirement: Denatured Alcohol
+      Temperature: 0
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 4047271636717327193, guid: 6cdff08c187c10443934dcbac48432dd, type: 3}
     itemName: Tripod
     itemDescription: A three-legged platform used to support flasks and beakers.
@@ -75,9 +80,10 @@ MonoBehaviour:
     - Placement
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 5267098033096978716, guid: 615dca61312a1cc49a139838a34b43b7, type: 3}
     itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
@@ -90,9 +96,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 4783582525948895554, guid: c91395fc596508142a929bb3c508a9f9, type: 3}
     itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
@@ -105,9 +112,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 4994321575584154459, guid: ac38c9e18ca46134e9038097cb6fca22, type: 3}
     itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
@@ -119,9 +127,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 8085120018151178405, guid: d073d923a0519504d8b6e9a7ac28a08c, type: 3}
     itemName: Ice
     itemDescription: Frozen water.
@@ -133,9 +142,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
     itemName: 500ml beaker
     itemDescription: ' A glass container used to hold liquids.'
@@ -155,15 +165,18 @@ MonoBehaviour:
       description: 
       conditions:
         itemNameRequirement: 
+      Temperature: 0
     - stateName: BeakerWithWater
       sprite: {fileID: 21300000, guid: 6e1398d7136ebd4409cb501ba7c2b83c, type: 3}
       description: 
       conditions:
         itemNameRequirement: Water
+      Temperature: 25
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 1
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 1174782827702463807, guid: 6af06b9467c5fd14d9248436a6434935, type: 3}
     itemName: Thermometer 110 Degrees
     itemDescription: A tool used to measure up to 110 temperature.
@@ -175,9 +188,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
@@ -189,9 +203,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Cork or Rubber stopper
     itemDescription: Used to seal openings of glassware.
@@ -203,9 +218,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Liquid Dropper
     itemDescription: A tool used to transfer small amounts of liquid.
@@ -217,9 +233,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Iron nail
     itemDescription: A silver-white metal.
@@ -231,9 +248,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Agua oxigenada
     itemDescription: An antiseptic liquid.
@@ -245,9 +263,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
@@ -259,9 +278,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Manganese dioxide (MnO2)
     itemDescription: An oxide of manganese used in batteries.
@@ -273,9 +293,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Copper Sulfate (CuSO4) solution
     itemDescription: An inorganic compound used as a fungicide, algaecide, and root
@@ -288,9 +309,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Sodium Hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
@@ -302,9 +324,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
@@ -316,9 +339,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Baking Soda
     itemDescription: A crystalline salt.
@@ -330,9 +354,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Mg Ribbon (mg)
     itemDescription: A crystalline salt.
@@ -344,9 +369,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: 30 Volumes Agua Oxigenada
     itemDescription: 
@@ -358,9 +384,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 0}
     itemName: Crucible Tong
     itemDescription: 
@@ -372,9 +399,10 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
   - itemPrefab: {fileID: 6624615194705630374, guid: ef81953465a8d39419f67c069fbe69b3, type: 3}
     itemName: Water
     itemDescription: 
@@ -386,6 +414,7 @@ MonoBehaviour:
     compatibleTags: []
     states: []
     currentStateIndex: 0
-    temperature: 0
     hasTemperature: 0
     currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100

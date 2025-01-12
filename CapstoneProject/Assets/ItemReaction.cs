@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,8 +11,22 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     ExperimentManager experimentManager;
     ExperimentObjectManager experimentObjectManagerManager;
 
+
     public List<Reaction> reactions; // List of reactions for the item
-    public UnityItemReaction OnItemReaction;
+
+    public delegate void TemperatureChanged(float newTemperature);
+
+    public event TemperatureChanged OnTemperatureChanged;
+
+
+    public void SetTemperature(float newTemp)
+    {
+        if (Mathf.Abs(item.currentTemperature - newTemp) > 0.01f) // Avoid frequent tiny updates
+        {
+            item.currentTemperature = newTemp;
+            OnTemperatureChanged?.Invoke(newTemp);
+        }
+    }
 
     void Start()
     {
@@ -61,7 +76,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             {
                 Debug.Log($"Reaction triggered: {reaction.reactionName}");
 
-                // TriggerReaction(reaction, draggable);
+                TriggerReaction(reaction, draggable);
                 return; // Reaction triggered, exit the loop
             }
         }
@@ -75,37 +90,14 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     {
         Debug.Log($"Reaction triggered: {reaction.reactionName}");
 
-        // Apply temperature change
-        if (reaction.temperatureChange != 0)
+        if (draggable.GetComponent<Igniter>())
         {
-            item.currentTemperature += reaction.temperatureChange;
-            Debug.Log($"Temperature changed to: {item.currentTemperature}");
-        }
-
-        // Instantiate resulting item prefab
-        if (reaction.resultingItemPrefab != null && reaction.changePrefab)
-        {
-            Instantiate(reaction.resultingItemPrefab, transform.position, Quaternion.identity);
-        }
-
-        // Instantiate visual effect
-        if (reaction.visualEffectPrefab != null)
-        {
-            Instantiate(reaction.visualEffectPrefab, transform.position, Quaternion.identity);
-        }
-
-        // Play reaction animation
-        if (reaction.animationClip != null)
-        {
-            Animator animator = GetComponent<Animator>();
-            if (animator != null)
+            if (transform.GetComponent<HeatSource>())
             {
-                animator.Play(reaction.animationClip.name);
+                HeatSource heatSource = transform.GetComponent<HeatSource>();
+                heatSource.Ignite();
             }
         }
-
-        // Trigger UnityEvent
-        OnItemReaction?.Invoke(item);
     }
 
     public void SetItem(Item item)
@@ -114,7 +106,9 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     }
 }
 
-public class UnityItemReaction : UnityEvent<Item> { }
+public class UnityItemReaction : UnityEvent<Item>
+{
+}
 
 [System.Serializable]
 public class Reaction
@@ -127,6 +121,12 @@ public class Reaction
     public float temperatureChange; // Change in temperature
     public GameObject visualEffectPrefab; // Optional visual effect (e.g., steam, frost)
     public AnimationClip animationClip; // Optional animation for the reaction
+    public float ReactionDuration; //
+
+    public bool increaseTemperature;
+
+    public bool
+        willGoBackToPreviousTemperature; // If true, the item will go back to its previous temperature after the reaction slowly
 
     public bool CheckStateName(string stateName)
     {
@@ -140,7 +140,6 @@ public class Reaction
 }
 
 // TODO: TEST THE SCRIPT
-
 
 
 #region RESERVE
@@ -264,4 +263,5 @@ public class Reaction
 //             break;
 //     }
 // }
+
 #endregion
