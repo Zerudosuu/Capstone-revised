@@ -1,9 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
-using Unity.VisualScripting;
-using UnityEditor.Search;
-using UnityEditor.VersionControl;
 using UnityEngine;
 
 public class ButtomSheetHolder : MonoBehaviour
@@ -58,6 +54,8 @@ public class ButtomSheetHolder : MonoBehaviour
         }
 
         summaryPanel.SetActive(true);
+        BottomSheetFunction bottomSheetFunction = FindObjectOfType<BottomSheetFunction>(true);
+        bottomSheetFunction.MoveToPosition(bottomSheetFunction.fullscreenY);
     }
 
 

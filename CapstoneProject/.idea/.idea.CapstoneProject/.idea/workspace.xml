@@ -6,31 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Ice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Ice.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/HeatReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HeatReceiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Bottom Sheet Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Bottom Sheet Animation.controller" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Sheet Not Visible.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Sheet Not Visible.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/start.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/start.anim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Prefab/Q&amp;A Portion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Prefab/Q&amp;A Portion.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/MainMenu.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/bottomsheet.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/bottomsheet.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +119,7 @@
       <workItem from="1736647253596" duration="22272000" />
       <workItem from="1736759139079" duration="1669000" />
       <workItem from="1736761737020" duration="9590000" />
-      <workItem from="1736813915920" duration="10503000" />
+      <workItem from="1736813915920" duration="12454000" />
     </task>
     <servers />
   </component>

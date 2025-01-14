@@ -13,7 +13,7 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     private float initialY; // Bottom edge of the screen
     private float middleY; // Middle position
-    private float fullscreenY = 0f; // Fully visible position
+    public float fullscreenY = 0f; // Fully visible position
     private Vector2 dragStartPosition;
     private Vector2 sheetStartPosition;
     private ButtomSheetHolder bottomSheet;
@@ -53,7 +53,7 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
         }
     }
 
-    private void MoveToPosition(float targetY)
+    public void MoveToPosition(float targetY)
     {
         btmSheet.DOAnchorPosY(targetY, 0.3f);
     }
