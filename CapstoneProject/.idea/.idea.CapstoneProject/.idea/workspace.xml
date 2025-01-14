@@ -6,18 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/settings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Ice.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Ice.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Match.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Match.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeatReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HeatReceiver.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MeasureScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeasureScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Bottom Sheet Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Bottom Sheet Animation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Sheet Not Visible.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/Sheet Not Visible.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/start.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/Bottom Sheet/start.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Prefab/Q&amp;A Portion.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Prefab/Q&amp;A Portion.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ImageAnimationExample.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ImageAnimationExample.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/MainMenu.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/MainMenu.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/bottomsheet.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/bottomsheet.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +41,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/AddphotoScript.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/CoolComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/sampleDrag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventInterfaces.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -53,7 +68,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat Code&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -121,7 +136,10 @@
       <workItem from="1732188076006" duration="9000" />
       <workItem from="1732277181780" duration="16000" />
       <workItem from="1736605280614" duration="256000" />
-      <workItem from="1736647253596" duration="13909000" />
+      <workItem from="1736647253596" duration="22272000" />
+      <workItem from="1736759139079" duration="1669000" />
+      <workItem from="1736761737020" duration="9590000" />
+      <workItem from="1736813915920" duration="10503000" />
     </task>
     <servers />
   </component>

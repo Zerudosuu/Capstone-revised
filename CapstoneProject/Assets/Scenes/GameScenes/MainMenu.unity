@@ -4123,6 +4123,12 @@ MonoBehaviour:
   - {fileID: 8300000, guid: e204178e5e60d1d4aa196710556336d7, type: 3}
   - {fileID: 8300000, guid: a1a17789fa120804eb9a2bc649dda2be, type: 3}
   bgAudioSorce: {fileID: 5565890504488167372}
+  audioClipSorce: {fileID: 0}
+  clipBag: {fileID: 0}
+  clipPickUp: {fileID: 0}
+  clipMixGlass: {fileID: 0}
+  clipBubble: {fileID: 0}
+  audioTitle: 
 --- !u!1 &5456565192853638720
 GameObject:
   m_ObjectHideFlags: 0
@@ -4140,7 +4146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &5565890504488167372
 AudioSource:
   m_ObjectHideFlags: 0
@@ -4148,10 +4154,10 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5456565192853638720}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2206145406727491132, guid: 24b31ded1a769b346980615d7c0b5703, type: 2}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 87ef3aa5590a44846a90145125a814ad, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

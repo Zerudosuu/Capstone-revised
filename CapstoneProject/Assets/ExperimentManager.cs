@@ -55,6 +55,7 @@ public class ExperimentManager : MonoBehaviour
                 {
                     Debug.Log("Green Zone! No penalty");
                 }
+
                 break;
         }
 
@@ -84,6 +85,8 @@ public class ExperimentManager : MonoBehaviour
                     itemReaction.item.currentTemperature = state.Temperature;
 
                     Debug.Log($"Item updated to state: {state.stateName}");
+
+                    itemReaction.PlayShake();
                     break;
                 }
             }
@@ -93,11 +96,14 @@ public class ExperimentManager : MonoBehaviour
                 Debug.LogWarning(
                     $"Item {ItemInteracted} not compatible with any state conditions."
                 );
+
+
+                itemReaction.PlayPopUp();
             }
         }
         else
         {
-            Debug.LogError("ItemReaction or CurrentState is null. Cannot update prefab.");
+            Debug.Log("ItemReaction or CurrentState is null. Cannot update prefab.");
         }
     }
 
@@ -110,6 +116,7 @@ public class ExperimentManager : MonoBehaviour
                 return slot;
             }
         }
+
         return null; // No empty slots found
     }
 

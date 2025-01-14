@@ -76,5 +76,6 @@
     "titleBar.inactiveBackground": "#3a322d99",
     "titleBar.inactiveForeground": "#e7e7e799"
   },
-  "peacock.color": "#3a322d"
+  "peacock.color": "#3a322d",
+  "dotnet.preferCSharpExtension": true
 }

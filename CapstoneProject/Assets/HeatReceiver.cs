@@ -15,12 +15,12 @@ public class HeatReceiver : MonoBehaviour
 
     public void ReceiveHeat(float heatAmount)
     {
+        float oldTemperature = itemReaction.item.currentTemperature;
         itemReaction.item.currentTemperature = Mathf.Min(itemReaction.item.currentTemperature + heatAmount,
             itemReaction.item.maxTemperature);
-        Debug.Log($"{gameObject.name} current temperature: {itemReaction.item.currentTemperature}°C");
 
         // Trigger event if boiling point is reached
-        if (itemReaction.item.currentTemperature >= 100f)
+        if (itemReaction.item.currentTemperature >= 100f && oldTemperature < 100f)
         {
             OnBoilingPointReached?.Invoke();
             Debug.Log($"{gameObject.name} has reached boiling point!");

@@ -13,11 +13,15 @@ public class StepManager : MonoBehaviour
     public int currentLessonIndex = 0;
     public List<LessonStepsExample> lessonSteps;
 
+
+    public Animator anim;
+
     private void Start()
     {
         // Get the experiment object manager and populate lesson steps
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
         MainLessonSteps = experimentObjectManager.currentLesson.steps;
+
         DisplayCurrentStep();
     }
 
@@ -36,6 +40,7 @@ public class StepManager : MonoBehaviour
         {
             Debug.Log($"Lesson {currentLessonIndex + 1} completed!");
             currentLessonIndex++;
+            anim.Play("DoneStep");
 
             if (currentLessonIndex < lessonSteps.Count)
             {
@@ -55,6 +60,7 @@ public class StepManager : MonoBehaviour
 
     private void DisplayCurrentStep()
     {
+        anim.Play("SpawnSteps");
         if (currentLessonIndex < lessonSteps.Count)
         {
             var currentLesson = lessonSteps[currentLessonIndex];
@@ -95,6 +101,7 @@ public class LessonStepsExample
                 {
                     Debug.LogWarning("Incorrect item for drag-and-drop.");
                 }
+
                 break;
 
             case "drag":
@@ -108,6 +115,7 @@ public class LessonStepsExample
                 {
                     Debug.LogWarning("Incorrect item for drag.");
                 }
+
                 break;
 
             case "assemble":
@@ -124,9 +132,11 @@ public class LessonStepsExample
                             currentStep.isCompleted = true;
                             currentSubstepIndex++;
                         }
+
                         return;
                     }
                 }
+
                 Debug.LogWarning("Incorrect assembly action or target object.");
                 break;
 
@@ -149,6 +159,7 @@ public class LessonStepsExample
                 {
                     Debug.LogWarning("Incorrect item or action.");
                 }
+
                 break;
         }
     }
@@ -164,6 +175,7 @@ public class LessonStepsExample
         {
             return substeps[currentSubstepIndex];
         }
+
         return null;
     }
 }

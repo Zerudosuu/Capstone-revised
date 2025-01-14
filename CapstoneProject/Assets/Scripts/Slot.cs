@@ -45,21 +45,28 @@ public class Slot : MonoBehaviour, IDropHandler
             GameObject dropItem = eventData.pointerDrag;
             DragableItem draggable = dropItem.GetComponent<DragableItem>();
 
-            if (CompatibleNames.Contains(draggable.TagName))
+            if (draggable != null)
             {
-                draggable.parentAfterDrag = transform;
-                draggable.placeInSlot = true;
-                ItemAddedName = draggable.gameObject.name;
-                isOccupied = true;
+                if (CompatibleNames.Contains(draggable.TagName))
+                {
+                    draggable.parentAfterDrag = transform;
+                    draggable.placeInSlot = true;
+                    ItemAddedName = draggable.gameObject.name;
+                    isOccupied = true;
 
-                // Notify StepManager
-                StepManager stepManager = FindObjectOfType<StepManager>();
-                stepManager.ValidateAndCompleteSubStep(ItemAddedName);
+                    // Notify StepManager
+                    StepManager stepManager = FindObjectOfType<StepManager>();
+                    stepManager.ValidateAndCompleteSubStep(ItemAddedName);
+                }
+                else
+                {
+                    draggable.transform.position = draggable.originalPosition;
+                    Debug.Log("Dropped item is not compatible with this slot.");
+                }
             }
             else
             {
                 draggable.transform.position = draggable.originalPosition;
-                Debug.LogWarning("Dropped item is not compatible with this slot.");
             }
         }
     }

@@ -185,7 +185,7 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -87.1, y: -42.8}
+  m_Offset: {x: -38.18, y: -44.04}
   serializedVersion: 2
   m_Radius: 36.18228
 --- !u!1 &3495936736450394755
@@ -220,10 +220,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1852615082689239321}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 107, y: 68.1}
-  m_SizeDelta: {x: 106.7701, y: 50}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 25.699997, y: 11.400002}
+  m_SizeDelta: {x: 43.940002, y: 44.520996}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7231857729763614560
 CanvasRenderer:
@@ -262,8 +262,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

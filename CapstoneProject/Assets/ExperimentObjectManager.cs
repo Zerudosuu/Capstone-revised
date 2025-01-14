@@ -7,19 +7,15 @@ public class ExperimentObjectManager : MonoBehaviour, IData
 {
     public QuestAsLesson currentLesson;
 
-    [SerializeField]
-    private Items items;
+    [SerializeField] private Items items;
 
-    [SerializeField]
-    private List<Item> clonedItems = new List<Item>();
+    [SerializeField] private List<Item> clonedItems = new List<Item>();
 
-    [SerializeField]
-    private GameObject itemPrefab;
+    [SerializeField] private GameObject itemPrefab;
 
     public GameObject ItemContainer;
 
-    [SerializeField]
-    private GameObject itemSlot;
+    [SerializeField] private GameObject itemSlot;
 
     void Start()
     {
@@ -68,10 +64,6 @@ public class ExperimentObjectManager : MonoBehaviour, IData
                 if (itemUI != null)
                 {
                     itemUI.SetItem(clonedItem);
-                }
-                else
-                {
-                    Debug.LogError("Item prefab does not have a DragableItem component.");
                 }
             }
         }

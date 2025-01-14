@@ -1,67 +1,112 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using UnityEngine.EventSystems;
 
-public class ButtomSheetFuinction : MonoBehaviour
+public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
-    [Header("Reference")]
-    [SerializeField] private RectTransform btmSheet;
+    [Header("References")] [SerializeField]
+    private RectTransform btmSheet;
 
-    [Header("Button")]
-    [SerializeField] private Button btnSheetBtn;
-    [SerializeField] private Button SubmitBtn;
+    [Header("Buttons")] [SerializeField] private Button btnSheetBtn;
+    [SerializeField] private Button submitBtn;
 
-    [Header("Reference")]
+    private float initialY; // Bottom edge of the screen
+    private float middleY; // Middle position
+    private float fullscreenY = 0f; // Fully visible position
+    private Vector2 dragStartPosition;
+    private Vector2 sheetStartPosition;
     private ButtomSheetHolder bottomSheet;
-
-    private Animator btmSheetAnim;
-
-    private bool isVisible;
-
-
-    private void Awake()
-    {
-        btnSheetBtn.onClick.AddListener(OnPress);
-        SubmitBtn.onClick.AddListener(OnSubmit);
-    }
 
     private void Start()
     {
-        btmSheetAnim = GetComponent<Animator>();
-        bottomSheet = FindAnyObjectByType<ButtomSheetHolder>();
+        // Calculate dynamic positions
+        float screenHeight = Screen.height;
+        float sheetHeight = btmSheet.rect.height;
 
+        initialY = -sheetHeight + 130f; // Off-screen position
+        middleY = -sheetHeight / 2; // Halfway visible (adjust as needed)
+
+        // Set the initial position of the bottom sheet
+        btmSheet.anchoredPosition = new Vector2(0, initialY);
+
+        // Attach button listeners
+        btnSheetBtn.onClick.AddListener(ToggleVisibility);
+        submitBtn.onClick.AddListener(OnSubmit);
+
+        bottomSheet = FindObjectOfType<ButtomSheetHolder>();
     }
 
-    private void Update()
+    private void ToggleVisibility()
     {
-        if (bottomSheet.canSubmit())
-            SubmitBtn.interactable = true;
-        else
-            SubmitBtn.interactable = false;
-    }
-    private void OnPress()
-    {
-        if (isVisible)
+        if (Mathf.Approximately(btmSheet.anchoredPosition.y, fullscreenY))
         {
-            Debug.Log("Show");
-            btmSheetAnim.SetBool("isVisible", false);
-            isVisible = false;
+            MoveToPosition(initialY);
+        }
+        else if (Mathf.Approximately(btmSheet.anchoredPosition.y, middleY))
+        {
+            MoveToPosition(initialY);
         }
         else
         {
-            Debug.Log("Hide");
-            btmSheetAnim.SetBool("isVisible", true);
-            isVisible = true ;
+            MoveToPosition(middleY);
         }
+    }
+
+    private void MoveToPosition(float targetY)
+    {
+        btmSheet.DOAnchorPosY(targetY, 0.3f);
     }
 
     private void OnSubmit()
     {
-        Debug.Log("Submit Answer");
+        if (bottomSheet.canSubmit())
+        {
+            bottomSheet.GetAnswer();
+        }
+        else
+        {
+            print("not yet");
+        }
 
-        bottomSheet.GetAnswer();
+        Debug.Log("Submit Answer");
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        dragStartPosition = eventData.position;
+        sheetStartPosition = btmSheet.anchoredPosition;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        // Calculate the new Y position during drag
+        float dragDeltaY = eventData.position.y - dragStartPosition.y;
+        float newY = Mathf.Clamp(sheetStartPosition.y + dragDeltaY, initialY, fullscreenY);
+
+        // Update the bottom sheet's position
+        btmSheet.anchoredPosition = new Vector2(0, newY);
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        float dragEndY = btmSheet.anchoredPosition.y;
+
+        // Snap to the nearest position
+        if (dragEndY > middleY + (fullscreenY - middleY) / 2)
+        {
+            // Snap to fullscreen
+            MoveToPosition(fullscreenY);
+        }
+        else if (dragEndY > initialY + (middleY - initialY) / 2)
+        {
+            // Snap to middle
+            MoveToPosition(middleY);
+        }
+        else
+        {
+            // Snap to initial
+            MoveToPosition(initialY);
+        }
     }
 }

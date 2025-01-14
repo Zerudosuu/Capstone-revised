@@ -7,29 +7,31 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager audioInstance { get; private set; }
 
-    [Header("Audio Background Music")]
-    [SerializeField] private List<AudioClip> bgMusics;
+    [Header("Audio Background Music")] [SerializeField]
+    private List<AudioClip> bgMusics;
+
     private int currentClipIndex = 0;
 
-    [Header("Audio Sorce")]
-    [SerializeField] private AudioSource bgAudioSorce;
+    [Header("Audio Sorce")] [SerializeField]
+    private AudioSource bgAudioSorce;
+
     [SerializeField] private AudioSource audioClipSorce;
 
-    [Header("Audio Sorce")]
-    [SerializeField] private AudioClip clipBag;
+    [Header("Audio Sorce")] [SerializeField]
+    private AudioClip clipBag;
+
     [SerializeField] private AudioClip clipPickUp;
     [SerializeField] private AudioClip clipMixGlass;
     [SerializeField] private AudioClip clipBubble;
 
     [HideInInspector] public string audioTitle;
 
- 
+
     private bool skipRequested = false;
     private bool showTitle = false;
 
     private void Awake()
     {
-
         if (audioInstance != null)
         {
             Destroy(this.gameObject);
@@ -44,13 +46,15 @@ public class AudioManager : MonoBehaviour
     {
         if (bgAudioSorce != null)
             StartCoroutine(PlayAudioLoop());
+        else
+            Debug.Log("No audio source found for background music.");
     }
 
     //This will loop the audio continousely...
     private IEnumerator PlayAudioLoop()
     {
         while (true)
-        {   
+        {
             bgAudioSorce.clip = bgMusics[currentClipIndex];
             bgAudioSorce.Play();
 
@@ -60,8 +64,6 @@ public class AudioManager : MonoBehaviour
             float elapsedTime = 0f;
             while (elapsedTime < bgAudioSorce.clip.length)
             {
-                
-
                 if (skipRequested)
                 {
                     skipRequested = false;

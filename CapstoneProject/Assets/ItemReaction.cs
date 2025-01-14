@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class ItemReaction : MonoBehaviour, IDropHandler
 {
@@ -11,13 +12,13 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     ExperimentManager experimentManager;
     ExperimentObjectManager experimentObjectManagerManager;
 
+    private DragableItem ownDraggableItem;
 
     public List<Reaction> reactions; // List of reactions for the item
 
     public delegate void TemperatureChanged(float newTemperature);
 
     public event TemperatureChanged OnTemperatureChanged;
-
 
     public void SetTemperature(float newTemp)
     {
@@ -33,6 +34,10 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         experimentManager = FindObjectOfType<ExperimentManager>();
         dragableItem = GetComponent<DragableItem>();
         experimentObjectManagerManager = FindObjectOfType<ExperimentObjectManager>();
+        if (ownDraggableItem != null)
+        {
+            ownDraggableItem = GetComponent<DragableItem>();
+        }
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -86,17 +91,48 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         );
     }
 
+    public void PlayPopUp()
+    {
+        if (ownDraggableItem != null)
+        {
+            ownDraggableItem.PopUp.SetActive(true);
+            ownDraggableItem.PopUpAnimator.Play("Pop");
+        }
+    }
+
+    public void PlayShake()
+    {
+        if (ownDraggableItem != null)
+            ownDraggableItem.anim.Play("Shake");
+    }
+
+
     private void TriggerReaction(Reaction reaction, DragableItem draggable)
     {
         Debug.Log($"Reaction triggered: {reaction.reactionName}");
 
-        if (draggable.GetComponent<Igniter>())
+        if (draggable.GetComponent<CoolComponent>())
         {
-            if (transform.GetComponent<HeatSource>())
+            CoolComponent coolComponent = draggable.GetComponent<CoolComponent>();
+            coolComponent.CoolObject(this);
+        }
+        else if (draggable.GetComponent<Igniter>())
+        {
+            HeatSource heatSource = transform.GetComponent<HeatSource>();
+            if (heatSource)
             {
-                HeatSource heatSource = transform.GetComponent<HeatSource>();
                 heatSource.Ignite();
+                if (!reaction.changePrefab && reaction.ReactionSprite != null)
+                {
+                    gameObject.GetComponent<Image>().sprite = reaction.ReactionSprite;
+                }
             }
+        }
+
+        // Optional: Apply visual effects or animations
+        if (reaction.visualEffectPrefab)
+        {
+            Instantiate(reaction.visualEffectPrefab, transform.position, Quaternion.identity);
         }
     }
 
@@ -117,6 +153,7 @@ public class Reaction
     public string reactionName;
     public List<string> triggers; // Items or tags that trigger this reaction
     public bool changePrefab;
+    public Sprite ReactionSprite;
     public GameObject resultingItemPrefab; // Resulting item (if applicable)
     public float temperatureChange; // Change in temperature
     public GameObject visualEffectPrefab; // Optional visual effect (e.g., steam, frost)
