@@ -172,6 +172,12 @@ MonoBehaviour:
       conditions:
         itemNameRequirement: Water
       Temperature: 25
+    - stateName: Beaker with Ice
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: Ice
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 1
     currentTemperature: 0
