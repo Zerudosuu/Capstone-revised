@@ -56,6 +56,7 @@ public class HeatSource : MonoBehaviour
             foreach (Collider2D col in nearbyObjects)
             {
                 HeatReceiver receiver = col.GetComponent<HeatReceiver>();
+                
                 if (receiver != null)
                 {
                     receiver.ReceiveHeat(heatEmissionRate * Time.deltaTime);
