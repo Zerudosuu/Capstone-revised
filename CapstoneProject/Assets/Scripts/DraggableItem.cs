@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler, IPointerClickHandler
 {
     [SerializeField] private CanvasGroup canvasGroup;
 
@@ -60,7 +60,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root); // Move item to root canvas while dragging
         transform.SetAsLastSibling();
-        canvasGroup.alpha = 0.5f; // Make the item semi-transparent
+
         canvasGroup.blocksRaycasts = false; // Allow raycasts to pass through
         isDragging = true;
     }
@@ -68,13 +68,12 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position;
-        
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         // Restore the item to its original parent or slot
-        canvasGroup.alpha = 1f; // Restore full opacity
+
         canvasGroup.blocksRaycasts = true; // Block raycasts again
 
         if (
@@ -96,7 +95,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
- 
+
     private void ResizeToFitContainer(RectTransform container)
     {
         Vector2 containerSize = container.rect.size;
@@ -107,5 +106,10 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private void OnTransformParentChanged()
     {
         print("Parent changed" + gameObject.transform.parent);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        print("Clicked" + this.name);
     }
 }

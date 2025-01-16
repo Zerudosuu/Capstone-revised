@@ -100,7 +100,10 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  TagName: 
+  TagName: TempMeasurement
+  anim: {fileID: 0}
+  PopUpAnimator: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!225 &8265237916693151548
 CanvasGroup:
   m_ObjectHideFlags: 0

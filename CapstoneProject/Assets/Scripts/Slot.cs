@@ -74,19 +74,6 @@ public class Slot : MonoBehaviour, IDropHandler
     private void OnTransformChildrenChanged()
     {
         ResizeChild();
-
-        if (transform.childCount > 0)
-        {
-            var item = GetComponentInChildren<ItemReaction>();
-            if (item != null)
-            {
-                mainSlotManager.RegisterSlot(this, item);
-            }
-        }
-        else
-        {
-            mainSlotManager.UnregisterSlot(this);
-        }
     }
 
     public void ResizeChild()

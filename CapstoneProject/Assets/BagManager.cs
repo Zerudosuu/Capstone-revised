@@ -4,23 +4,28 @@ using UnityEngine;
 
 public class BagManager : MonoBehaviour, IData
 {
-    [SerializeField]
-    private GameObject BagContainer;
+    [SerializeField] private GameObject BagContainer;
 
-    [SerializeField]
-    private GameObject ItemPrefab;
+    [SerializeField] private GameObject ItemPrefab;
 
-    [SerializeField]
-    private GameObject ItemCountContainer;
+    [SerializeField] private GameObject ItemCountContainer;
 
-    [SerializeField]
-    private GameObject ItemCountText;
+    [SerializeField] private GameObject ItemCountText;
 
     public List<BagItem> bagItems = new List<BagItem>();
     public CurrentLessonToDisplay currentLessonToDisplay;
 
     public int itemLimit; // Limit the number of items in the bag
     public TextMeshProUGUI itemLimitText;
+
+
+    private List<string> sceneList = new List<string>()
+    {
+        "Chapter1Experiment",
+        "Chapter2Experiment",
+        "Chapter3Experiment"
+    };
+
 
     void Start()
     {
@@ -100,7 +105,9 @@ public class BagManager : MonoBehaviour, IData
     {
         DataManager.Instance.SaveGame(); // Save bag contents before moving to the experiment
         // Load the next scene
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Chapter1Experiment");
+        UnityEngine.SceneManagement.SceneManager.LoadScene(
+            sceneList[DataManager.Instance.gameData.currentQuestIndex - 1]);
+        ;
     }
 
     // IData Implementation

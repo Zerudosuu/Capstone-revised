@@ -6,11 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BagManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Denatured Alcohol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Denatured Alcohol.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/ExperimentMode.unity" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/ExperimentMode.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/UIManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestScipt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestScipt.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,7 +131,9 @@
       <workItem from="1736647253596" duration="22272000" />
       <workItem from="1736759139079" duration="1669000" />
       <workItem from="1736761737020" duration="9590000" />
-      <workItem from="1736813915920" duration="12454000" />
+      <workItem from="1736813915920" duration="16722000" />
+      <workItem from="1736901378189" duration="20768000" />
+      <workItem from="1736952801529" duration="3767000" />
     </task>
     <servers />
   </component>
