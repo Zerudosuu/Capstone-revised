@@ -45,7 +45,7 @@ MonoBehaviour:
     tagName: HeatSource
     compatibleTags:
     - Ignition
-    - Flammable
+    - FlammableLiquid
     - Container
     - Fuel
     states:
@@ -192,12 +192,12 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 6717997691732066227, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
     itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 21300000, guid: 313b9c9ac6a44594a8399db36e2a8b2b, type: 3}
     itemType: 0
-    isUnlock: 0
+    isUnlock: 1
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -207,7 +207,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 3772085824824026752, guid: 50b0e8814611afa40b5570b76507f912, type: 3}
     itemName: Cork or Rubber stopper
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 21300000, guid: 1c59e8bc9064f564bb4125611f3fc922, type: 3}
@@ -215,14 +215,21 @@ MonoBehaviour:
     isUnlock: 0
     isCollected: 0
     tagName: 0
-    compatibleTags: []
-    states: []
+    compatibleTags:
+    - TempMeasurement
+    states:
+    - stateName: Cork or Rubber stopper with Thermometer
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: Thermometer 110 Degrees
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 1807974501351921893, guid: ef821c16291e7be4aa6e1c0b5e527af0, type: 3}
     itemName: Liquid Dropper
     itemDescription: A tool used to transfer small amounts of liquid.
     itemIcon: {fileID: 21300000, guid: 5446c933a7d625f479158c19edf4e243, type: 3}
@@ -230,15 +237,22 @@ MonoBehaviour:
     isUnlock: 0
     isCollected: 0
     tagName: 0
-    compatibleTags: []
-    states: []
+    compatibleTags:
+    - FlammableLiquid
+    states:
+    - stateName: Liquid Dropper with Denatured Alcohol
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: Denatured Alcohol
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
   - itemPrefab: {fileID: 0}
-    itemName: Iron nail
+    itemName: Iron Nail
     itemDescription: A silver-white metal.
     itemIcon: {fileID: 21300000, guid: 41db7d396ce29d24f91b584990ad3abf, type: 3}
     itemType: 1
@@ -272,7 +286,7 @@ MonoBehaviour:
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 21300000, guid: 7ad7de367d5e866449ea5b31be9d1fa9, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -287,7 +301,7 @@ MonoBehaviour:
     itemDescription: An oxide of manganese used in batteries.
     itemIcon: {fileID: 21300000, guid: fbf7b9a603982954e8e62fff19a6c263, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -303,7 +317,7 @@ MonoBehaviour:
       killer.
     itemIcon: {fileID: 21300000, guid: 553cbdb52574c4a4990a8765125db880, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -318,7 +332,7 @@ MonoBehaviour:
     itemDescription: Used in manufacturing various products.
     itemIcon: {fileID: 21300000, guid: 47a1dc65840a54642bbfd2963b371943, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -333,7 +347,7 @@ MonoBehaviour:
     itemDescription: n aqueous solution of acetic acid.
     itemIcon: {fileID: 21300000, guid: 458e10a479fe9fc4b80acdf9973d44b2, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -348,7 +362,7 @@ MonoBehaviour:
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 21300000, guid: 869f18d60a064744cb2b7419ba6ae71d, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -363,7 +377,7 @@ MonoBehaviour:
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 21300000, guid: 58c54ecc18defa6459569347841115f7, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -378,7 +392,7 @@ MonoBehaviour:
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: 41c22dc1f15c6a643807a6d6410c14db, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []
@@ -393,7 +407,7 @@ MonoBehaviour:
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: 60778b93ebb234f448e6473b244abed8, type: 3}
     itemType: 1
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []

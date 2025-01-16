@@ -44,30 +44,45 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     {
         GameObject dropItem = eventData.pointerDrag;
         DragableItem draggable = dropItem.GetComponent<DragableItem>();
+        ItemReaction droppedItem = dropItem.GetComponent<ItemReaction>();
 
-        // Check compatibility
+        // Check if the current item is compatible with the dropped item
         if (
-            item.compatibleTags.Contains(draggable.TagName)
-            && gameObject.GetComponent<DragableItem>().placeInSlot
+            item.compatibleTags.Contains(draggable.TagName) &&
+            gameObject.GetComponent<DragableItem>().placeInSlot
         )
         {
-            print($"Dropped item tag: {draggable.TagName}");
-
-            // Switch state
+            // Change the state of the current item
             item.SwitchToState(draggable.name);
             experimentManager.UpdateItemPrefab(this.gameObject, draggable.name);
 
-            // Check for reactions
+            // Trigger reactions for the current item
             CheckReactions(item.CurrentState.stateName, draggable);
 
-            // Step validation
+            // Validate sub-step
             StepManager stepManager = FindObjectOfType<StepManager>();
             if (stepManager != null)
             {
                 stepManager.ValidateAndCompleteSubStep(draggable.name);
             }
         }
+        // Check if the dropped item is compatible with the current object
+        else if (droppedItem != null &&
+                 droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName))
+        {
+            // Change the state of the dropped item
+            droppedItem.item.SwitchToState(this.gameObject.name);
+            experimentManager.UpdateItemPrefab(droppedItem.gameObject, this.gameObject.name);
+
+            // Optional: Trigger reactions for the dropped item
+            CheckReactions(droppedItem.item.CurrentState.stateName, draggable);
+        }
+        else
+        {
+            Debug.LogWarning("No valid interaction found for the dropped item.");
+        }
     }
+
 
     private void CheckReactions(string currentStateName, DragableItem draggable)
     {

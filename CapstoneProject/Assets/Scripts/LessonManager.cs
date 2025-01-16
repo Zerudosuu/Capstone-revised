@@ -9,37 +9,30 @@ using Yarn.Unity;
 public class LessonManager : MonoBehaviour, IData
 {
     //setActive(true) to the CurrentLessonWindow
-    [SerializeField]
-    private GameObject CurrentLessonWindow;
+    [SerializeField] private GameObject CurrentLessonWindow;
 
     // QuestGiver
     public QuestAsLesson questAsLesson;
 
-    [Header("LessonManager")]
-    [SerializeField]
+    [Header("LessonManager")] [SerializeField]
     private LessonsDataManager lessonsData;
 
-    [SerializeField]
-    private LessonComponentButton[] lessonComponentButton;
+    [SerializeField] private LessonComponentButton[] lessonComponentButton;
 
-    [SerializeField]
-    private GameObject LessonButtonPrefab;
+    [SerializeField] private GameObject LessonButtonPrefab;
 
-    [SerializeField]
-    private GameObject LessonButtonContainer;
+    [SerializeField] private GameObject LessonButtonContainer;
     private LessonContainer lessonContainer;
 
     private string CurrentButtonID = "";
 
     CurrentLessonToDisplay currentLessonToDisplay;
 
-    [SerializeField]
-    private List<Lesson> Clonedlessons = new List<Lesson>();
+    [SerializeField] private List<Lesson> Clonedlessons = new List<Lesson>();
 
-    [SerializeField]
-    private GameObject RewardContainer;
+    [SerializeField] private GameObject RewardContainer;
 
-    private bool HasActiveQuest => questAsLesson != null && questAsLesson.isActive;
+    private bool HasActiveQuest => questAsLesson is { isActive: true };
 
     void Awake()
     {
@@ -114,6 +107,7 @@ public class LessonManager : MonoBehaviour, IData
                 return lesson;
             }
         }
+
         return null; // Return null if not found
     }
 
@@ -137,6 +131,7 @@ public class LessonManager : MonoBehaviour, IData
             {
                 Destroy(child.gameObject);
             }
+
             // Loop through lesson materials and add them to the container
             foreach (MaterialEntry material in lesson.materials)
             {
@@ -180,7 +175,6 @@ public class LessonManager : MonoBehaviour, IData
 
             // Enable or disable the buttons as necessary
             lessonContainer.AcceptButton.interactable = true; // Example
-            lessonContainer.CancelButton.interactable = true; // Example
 
             // Do not update quest here
         }
@@ -227,11 +221,6 @@ public class LessonManager : MonoBehaviour, IData
         }
     }
 
-    public void OnBackButtonClick()
-    {
-        // Handle back button click
-        Debug.Log("Back button clicked");
-    }
 
     public void UpdateQuest(Lesson lesson)
     {

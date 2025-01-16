@@ -8,79 +8,55 @@ using Yarn.Unity;
 
 public class UIManager : MonoBehaviour
 {
-    [Header("MainMenuButtons")]
-    [SerializeField]
+    [Header("MainMenuButtons")] [SerializeField]
     private Button bagBtn;
 
-    [SerializeField]
-    private Button settingsBtn;
+    [SerializeField] private Button settingsBtn;
 
-    [Header("Windows")]
-    [SerializeField]
-    private GameObject ProfileWindow;
+    [Header("Windows")] [SerializeField] private GameObject ProfileWindow;
 
-    [SerializeField]
-    private GameObject StoreWindow;
+    [SerializeField] private GameObject StoreWindow;
 
-    [SerializeField]
-    private GameObject HomeWindow;
+    [SerializeField] private GameObject HomeWindow;
 
-    [SerializeField]
-    private GameObject LessonWindow;
+    [SerializeField] private GameObject LessonWindow;
 
-    [SerializeField]
-    private GameObject BagWindow;
+    [SerializeField] private GameObject BagWindow;
 
-    [SerializeField]
-    private GameObject VolumeSettings;
+    [SerializeField] private GameObject VolumeSettings;
 
-    [SerializeField]
-    private GameObject informationWindow;
+    [SerializeField] private GameObject informationWindow;
 
-    [Header("Navbar")]
-    [SerializeField]
-    private RectTransform navbar_BG;
+    [Header("Navbar")] [SerializeField] private RectTransform navbar_BG;
 
-    [SerializeField]
-    private bool NavBarAnimationActivate;
+    [SerializeField] private bool NavBarAnimationActivate;
     private Button previouslySelectedBtn = null;
     private string previousState = null;
     public float transitionDuration = 0.5f;
 
-    [Header("Navbar Button")]
-    [SerializeField]
+    [Header("Navbar Button")] [SerializeField]
     private Button profileBtn;
 
-    [SerializeField]
-    private Button ShopBtn;
+    [SerializeField] private Button ShopBtn;
 
-    [SerializeField]
-    private Button HomeBtn;
+    [SerializeField] private Button HomeBtn;
 
-    [SerializeField]
-    private Button LessonsBtn;
+    [SerializeField] private Button LessonsBtn;
 
-    [SerializeField]
-    public Button infoBtn;
+    [SerializeField] public Button infoBtn;
 
-    [SerializeField]
-    private GameObject subCircle;
+    [SerializeField] private GameObject subCircle;
 
-    [SerializeField]
-    private Sprite[] lessonsSprite;
+    [SerializeField] private Sprite[] lessonsSprite;
 
     private string previousLessonState; // this where the state of the lesson will be stored
 
-    [Header("Animator")]
-    [SerializeField]
-    private Animator navBarAnimator;
+    [Header("Animator")] [SerializeField] private Animator navBarAnimator;
 
-    [Header("Player stats UI")]
-    [SerializeField]
+    [Header("Player stats UI")] [SerializeField]
     private GameObject PlayerUI;
 
-    [Header("StateManager")]
-    public GameObject PauseWindow;
+    [Header("StateManager")] public GameObject PauseWindow;
 
     SceneLoader _loader;
 
@@ -196,6 +172,7 @@ public class UIManager : MonoBehaviour
             dialogueRunner.Stop();
             dialogueRunner.StartDialogue("TutorialExperimentTab");
         }
+
         StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));
     }
 
@@ -217,30 +194,38 @@ public class UIManager : MonoBehaviour
     }
 
     #region Lesson State
-    private void OnCurrentLesson()
+
+    public void OnCurrentLesson()
     {
         LessonWindow.transform.GetChild(1).gameObject.SetActive(true); // This will show the Current Lesson window
         LessonWindow.transform.GetChild(0).gameObject.SetActive(false); // This will hide the Lesson selection window
 
-        // Check if there is a current lesson
-        var currentLessonDisplay = LessonWindow
-            .transform.GetChild(1)
-            .GetComponent<CurrentLessonToDisplay>();
 
-        if (currentLessonDisplay != null && currentLessonDisplay.CurrentLesson != null)
+        var currenLessonWindow = LessonWindow.transform.GetChild(1).gameObject;
+        var hasCurrentLessonWindow = currenLessonWindow.transform.GetChild(0).gameObject;
+        var noCurrentLessonWindow = currenLessonWindow.transform.GetChild(1).gameObject;
+
+        noCurrentLessonWindow.SetActive(true);
+        hasCurrentLessonWindow.SetActive(false);
+
+        print("this is hascurrentLessonWindow " + hasCurrentLessonWindow);
+        print("this is noCurrentLessonWindow " + noCurrentLessonWindow);
+
+        if (!LessonWindow.GetComponent<LessonManager>().questAsLesson.isActive)
         {
-            // Show the current lesson content if there's an active lesson
-            LessonWindow.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(true);
-            LessonWindow.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(false);
+            noCurrentLessonWindow.SetActive(true);
+            hasCurrentLessonWindow.SetActive(false);
+
+            print("No active quest");
         }
         else
         {
-            // No active lesson; show the default or placeholder content
-            LessonWindow.transform.GetChild(1).transform.GetChild(1).gameObject.SetActive(false);
-            LessonWindow.transform.GetChild(1).transform.GetChild(0).gameObject.SetActive(true);
+            noCurrentLessonWindow.SetActive(false);
+            hasCurrentLessonWindow.SetActive(true);
+
+            print("Active quest");
         }
 
-        // Ensure other windows are hidden and states are updated
         ProfileWindow.SetActive(false);
         VolumeSettings.SetActive(false);
         informationWindow.SetActive(false);
@@ -248,12 +233,12 @@ public class UIManager : MonoBehaviour
         PlayerUI.SetActive(false);
     }
 
-    private void OnLessonContainer()
+    public void OnLessonContainer()
     {
         LessonWindow.transform.GetChild(0).gameObject.SetActive(true); // This will show the Lesson selection window
         LessonWindow.transform.GetChild(1).gameObject.SetActive(false); // This will hide the Current lesson window
 
-        print("Hotdog2");
+
         ProfileWindow.SetActive(false);
         VolumeSettings.SetActive(false);
         informationWindow.SetActive(false);
@@ -340,7 +325,6 @@ public class UIManager : MonoBehaviour
                 LessonsBtn.GetComponent<Image>().sprite = lessonsSprite[0];
                 LessonsBtn.GetComponent<Image>().SetNativeSize();
                 previousLessonState = currentLessonState;
-                print("baby q");
                 return;
 
             case "isLessonContainer":
@@ -379,5 +363,6 @@ public class UIManager : MonoBehaviour
         StartCoroutine(_loader.loadingNextScene("MainMenu"));
         VolumeSettings.SetActive(false);
     }
+
     #endregion
 }

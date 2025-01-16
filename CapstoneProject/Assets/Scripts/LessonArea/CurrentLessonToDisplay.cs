@@ -9,53 +9,40 @@ using UnityEngine.UI;
 public class CurrentLessonToDisplay : MonoBehaviour
 {
     #region VARIABLES
+
     public QuestAsLesson CurrentLesson;
 
     // Current Lesson
-    [Header("Lesson Window")]
-    public GameObject LessonWindow;
+    [Header("Lesson Window")] public GameObject LessonWindow;
     public bool isLessonCurrentWindowActive = false;
 
-    [SerializeField]
-    private Animator animator;
+    [SerializeField] private Animator animator;
 
-    [Header("No Current Window")]
-    [SerializeField]
+    [Header("No Current Window")] [SerializeField]
     private GameObject noCurrentWindow;
 
-    [Header("HasCurrentLessonWindow")]
-    [SerializeField]
+    [Header("HasCurrentLessonWindow")] [SerializeField]
     private GameObject hasCurrentLessonWindow;
 
-    [SerializeField]
-    private TextMeshProUGUI ChapterNumberAndTitle;
+    [SerializeField] private TextMeshProUGUI ChapterNumberAndTitle;
 
-    [SerializeField]
-    private TextMeshProUGUI ChapterDescription;
+    [SerializeField] private TextMeshProUGUI ChapterDescription;
 
-    [SerializeField]
-    private TextMeshProUGUI RewardCoin;
+    [SerializeField] private TextMeshProUGUI RewardCoin;
 
-    [SerializeField]
-    private TextMeshProUGUI RewardExperience;
+    [SerializeField] private TextMeshProUGUI RewardExperience;
 
-    [SerializeField]
-    private GameObject MaterialContainer;
+    [SerializeField] private GameObject MaterialContainer;
 
-    [SerializeField]
-    private Button Continue;
+    [SerializeField] private Button Continue;
 
-    [SerializeField]
-    private Button Abandon;
+    [SerializeField] private Button Abandon;
 
-    [SerializeField]
-    private GameObject Material;
+    [SerializeField] private GameObject Material;
 
-    [SerializeField]
-    private GameObject ProceedWindow;
+    [SerializeField] private GameObject ProceedWindow;
 
-    [SerializeField]
-    private GameObject ItemRewardContainer;
+    [SerializeField] private GameObject ItemRewardContainer;
 
     private bool HasActiveQuest => CurrentLesson != null;
 
@@ -67,6 +54,18 @@ public class CurrentLessonToDisplay : MonoBehaviour
     {
         animator = LessonWindow.GetComponent<Animator>();
         UpdateLessonDisplay();
+
+        if (HasActiveQuest)
+        {
+            hasCurrentLessonWindow.SetActive(true);
+            noCurrentWindow.SetActive(false);
+        }
+
+        else
+        {
+            noCurrentWindow.SetActive(true);
+            hasCurrentLessonWindow.SetActive(false);
+        }
     }
 
     public void OnclickOpenClose()
@@ -163,13 +162,18 @@ public class CurrentLessonToDisplay : MonoBehaviour
         {
             CurrentLesson.isActive = false;
             CurrentLesson.isCompleted = false;
-
             ChapterNumberAndTitle.text = "";
             ChapterDescription.text = "";
             RewardCoin.text = "0";
             RewardExperience.text = "0";
+            CurrentLesson = null;
 
             foreach (Transform child in MaterialContainer.transform)
+            {
+                Destroy(child.gameObject);
+            }
+
+            foreach (Transform child in ItemRewardContainer.transform)
             {
                 Destroy(child.gameObject);
             }
@@ -185,6 +189,12 @@ public class CurrentLessonToDisplay : MonoBehaviour
             {
                 bagManager.itemLimit = 0;
                 bagManager.UpdateItemCount();
+            }
+
+            UIManager uiManager = FindObjectOfType<UIManager>(true);
+            if (uiManager != null)
+            {
+                uiManager.OnLessonClick();
             }
         }
     }
@@ -302,10 +312,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
                 .GetComponentsInChildren<TextMeshProUGUI>()
                 .Where(material => material.text == materialEntry.materialName)
                 .ToList()
-                .ForEach(material =>
-                {
-                    material.fontStyle = isInBag ? FontStyles.Strikethrough : FontStyles.Normal;
-                });
+                .ForEach(material => { material.fontStyle = isInBag ? FontStyles.Strikethrough : FontStyles.Normal; });
         }
     }
 }
