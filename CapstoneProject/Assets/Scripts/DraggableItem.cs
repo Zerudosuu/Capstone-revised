@@ -96,8 +96,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         }
     }
 
-  
-
+ 
     private void ResizeToFitContainer(RectTransform container)
     {
         Vector2 containerSize = container.rect.size;

@@ -8,13 +8,19 @@ public class HeatReceiver : MonoBehaviour
     public UnityEvent OnBoilingPointReached;
     private ItemReaction itemReaction;
 
+    [Header("Particle System")]
+    [SerializeField] private GameObject boilParticle;
+
     public void Start()
     {
+        boilParticle.SetActive(false);  
         itemReaction = GetComponent<ItemReaction>();
     }
 
     public void ReceiveHeat(float heatAmount)
     {
+        boilParticle.SetActive(true);
+
         float oldTemperature = itemReaction.item.currentTemperature;
         itemReaction.item.currentTemperature = Mathf.Min(itemReaction.item.currentTemperature + heatAmount,
             itemReaction.item.maxTemperature);
