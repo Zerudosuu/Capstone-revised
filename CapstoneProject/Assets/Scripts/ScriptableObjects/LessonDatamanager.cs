@@ -65,15 +65,13 @@ public class Lesson
 
     public bool isCompleted;
 
-    [Header("FirstRewards")]
-    public int Coins;
+    [Header("FirstRewards")] public int Coins;
     public int Experience;
 
-    [Header("SecondRewards")]
-    public int SecondCoins;
+    [Header("SecondRewards")] public int SecondCoins;
     public int SecondExperience;
 
-    [Header("Lesson Item Rewards")]
+    [Header("Lesson Item Rewards")] public bool isItemRewardCollected;
     public List<MaterialEntry> ItemRewards = new List<MaterialEntry>();
 
     public Lesson Clone()
@@ -92,6 +90,7 @@ public class Lesson
             SecondExperience = this.SecondExperience,
             materials = new List<MaterialEntry>(),
             steps = new List<LessonSteps>(),
+            isItemRewardCollected = this.isItemRewardCollected,
             ItemRewards = new List<MaterialEntry>(),
         };
 
@@ -125,6 +124,7 @@ public class Lesson
                 return false;
             }
         }
+
         return true;
     }
 }

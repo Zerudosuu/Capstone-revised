@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
@@ -17,6 +18,7 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
     private Vector2 dragStartPosition;
     private Vector2 sheetStartPosition;
     private ButtomSheetHolder bottomSheet;
+    public bool canDrag = true;
 
     private void Start()
     {
@@ -74,18 +76,24 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
 
     public void OnBeginDrag(PointerEventData eventData)
     {
-        dragStartPosition = eventData.position;
-        sheetStartPosition = btmSheet.anchoredPosition;
+        if (canDrag)
+        {
+            dragStartPosition = eventData.position;
+            sheetStartPosition = btmSheet.anchoredPosition;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        // Calculate the new Y position during drag
-        float dragDeltaY = eventData.position.y - dragStartPosition.y;
-        float newY = Mathf.Clamp(sheetStartPosition.y + dragDeltaY, initialY, fullscreenY);
+        if (canDrag)
+        {
+            // Calculate the new Y position during drag
+            float dragDeltaY = eventData.position.y - dragStartPosition.y;
+            float newY = Mathf.Clamp(sheetStartPosition.y + dragDeltaY, initialY, fullscreenY);
 
-        // Update the bottom sheet's position
-        btmSheet.anchoredPosition = new Vector2(0, newY);
+            // Update the bottom sheet's position
+            btmSheet.anchoredPosition = new Vector2(0, newY);
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -108,5 +116,12 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
             // Snap to initial
             MoveToPosition(initialY);
         }
+    }
+
+
+    public void onExperimentCompleteSummary()
+    {
+        DataManager.Instance.SaveGame();
+        SceneManager.LoadSceneAsync("LessonMode");
     }
 }

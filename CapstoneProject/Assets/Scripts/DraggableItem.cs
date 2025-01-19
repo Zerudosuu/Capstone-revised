@@ -67,7 +67,13 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvas.transform as RectTransform,
+            eventData.position,
+            canvas.worldCamera,
+            out var globalMousePos
+        );
+        transform.position = globalMousePos;
     }
 
     public void OnEndDrag(PointerEventData eventData)

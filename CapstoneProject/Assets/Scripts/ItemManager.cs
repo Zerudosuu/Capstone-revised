@@ -8,33 +8,28 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
-    [Header("Item Container")]
-    [SerializeField]
+    [Header("Item Container")] [SerializeField]
     private GameObject EquipmentArea;
 
-    [SerializeField]
-    private GameObject ChemicalArea;
+    [SerializeField] private GameObject ChemicalArea;
 
-    [Header("Shop Container")]
-    [SerializeField]
+    [Header("Shop Container")] [SerializeField]
     private GameObject ShopEquipmentArea;
 
-    [SerializeField]
-    private GameObject ShopChemicalArea;
+    [SerializeField] private GameObject ShopChemicalArea;
 
-    [Header("Prefab")]
-    public GameObject InventoryPrefabItem; // this prefab contains drag and drop
+    [Header("Prefab")] public GameObject InventoryPrefabItem; // this prefab contains drag and drop
 
     public GameObject ShopPrefabItem; // this prefab contains shop
 
-    [SerializeField]
-    private Items items;
+    [SerializeField] private Items items;
     public List<Item> clonedItems = new List<Item>();
 
     // Start is called before the first frame update
     void Start()
     {
         CloneItems();
+        UncheckMaterials();
         InstantiateItems();
     }
 
@@ -43,6 +38,14 @@ public class ItemManager : MonoBehaviour
         foreach (var item in items.items)
         {
             clonedItems.Add(item.Clone());
+        }
+    }
+
+    void UncheckMaterials()
+    {
+        foreach (var item in clonedItems)
+        {
+            item.isCollected = false;
         }
     }
 
@@ -110,7 +113,4 @@ public class ItemManager : MonoBehaviour
             itemObject.transform.SetParent(ShopChemicalArea.transform, false);
         }
     }
-
-    // Update is called once per frame
-    void Update() { }
 }

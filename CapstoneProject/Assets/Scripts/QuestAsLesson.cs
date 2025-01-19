@@ -21,5 +21,6 @@ public class QuestAsLesson
     public int RewardCoins;
     public int RewardExperience;
 
+    public bool isItemRewardCollected;
     public bool isActive;
 }

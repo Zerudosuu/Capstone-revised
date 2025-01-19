@@ -201,9 +201,9 @@ MonoBehaviour:
   - itemPrefab: {fileID: 6717997691732066227, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
     itemName: Erlrnmeyer Flask
     itemDescription: A flask used for containing liquids and various laboratory processes.
-    itemIcon: {fileID: 21300000, guid: 313b9c9ac6a44594a8399db36e2a8b2b, type: 3}
+    itemIcon: {fileID: 21300000, guid: 4be318f23c4893e4baae904686f8d507, type: 3}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
     tagName: 0
     compatibleTags: []

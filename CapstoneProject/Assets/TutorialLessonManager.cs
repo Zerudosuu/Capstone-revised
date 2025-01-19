@@ -18,27 +18,39 @@ public class TutorialLessonManager : MonoBehaviour, IData
 
     private void Start()
     {
-        // Get the RectTransform of the PanelTutorial
-        panelRectTransform = PanelTutorial.GetComponent<RectTransform>();
+        InitializeTutorial();
+    }
 
-        // Get all child elements of PanelTutorial
-        int childCount = PanelTutorial.transform.childCount;
-        tutorialSteps = new Transform[childCount];
-        for (int i = 0; i < childCount; i++)
+    private void InitializeTutorial()
+    {
+        if (!tutorialComplete)
         {
-            tutorialSteps[i] = PanelTutorial.transform.GetChild(i);
-            tutorialSteps[i].gameObject.SetActive(false); // Deactivate all steps initially
-        }
+            // Get the RectTransform of the PanelTutorial
+            panelRectTransform = PanelTutorial.GetComponent<RectTransform>();
 
-        // Activate the first tutorial step
-        if (tutorialSteps.Length > 0)
+            // Get all child elements of PanelTutorial
+            int childCount = PanelTutorial.transform.childCount;
+            tutorialSteps = new Transform[childCount];
+            for (int i = 0; i < childCount; i++)
+            {
+                tutorialSteps[i] = PanelTutorial.transform.GetChild(i);
+                tutorialSteps[i].gameObject.SetActive(false); // Deactivate all steps initially
+            }
+
+            // Activate the first tutorial step
+            if (tutorialSteps.Length > 0)
+            {
+                tutorialSteps[0].gameObject.SetActive(true);
+            }
+
+            // Update button states
+            UpdateButtonStates();
+            SmoothRebuildLayout();
+        }
+        else
         {
-            tutorialSteps[0].gameObject.SetActive(true);
+            gameObject.SetActive(false);
         }
-
-        // Update button states
-        UpdateButtonStates();
-        SmoothRebuildLayout();
     }
 
     // Display the next tutorial step
@@ -105,11 +117,11 @@ public class TutorialLessonManager : MonoBehaviour, IData
 
     public void LoadData(GameData gameData)
     {
-        tutorialComplete = gameData.isTutorialCompleted;
+        tutorialComplete = gameData.isLessonTutorialCompleted;
     }
 
     public void SavedData(GameData gameData)
     {
-        gameData.isTutorialCompleted = tutorialComplete;
+        gameData.isLessonTutorialCompleted = tutorialComplete;
     }
 }

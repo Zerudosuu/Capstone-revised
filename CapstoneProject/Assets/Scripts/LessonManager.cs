@@ -32,6 +32,8 @@ public class LessonManager : MonoBehaviour, IData
 
     [SerializeField] private GameObject RewardContainer;
 
+    [SerializeField] private GameObject ItemRewardContainer;
+    [SerializeField] private GameObject ItemRewardInfo;
     private bool HasActiveQuest => questAsLesson is { isActive: true };
 
     void Awake()
@@ -54,6 +56,7 @@ public class LessonManager : MonoBehaviour, IData
             Clonedlessons.Add(lesson.Clone());
         }
     }
+
 
     void Populatebuttons()
     {
@@ -93,9 +96,30 @@ public class LessonManager : MonoBehaviour, IData
 
     public void SelectedLesson(Lesson lesson)
     {
-        // Update the lesson container based on the selected lesson
+        if (lesson == null)
+        {
+            Debug.LogError("Selected lesson is null.");
+            return;
+        }
+
+        questAsLesson = new QuestAsLesson
+        {
+            LessonID = lesson.LessonID,
+            chapterName = lesson.chapterName,
+            fullDescription = lesson.fullDescription,
+            RewardCoins = lesson.Coins,
+            RewardExperience = lesson.Experience,
+            materials = new List<MaterialEntry>(lesson.materials),
+            itemRewards = new List<MaterialEntry>(lesson.ItemRewards),
+            steps = new List<LessonSteps>(lesson.steps),
+            isCompleted = lesson.isCompleted,
+            isRewardCollected = lesson.isItemRewardCollected,
+            isActive = false
+        };
+
         UpdateLessonContainer(lesson);
     }
+
 
     private Lesson FindLessonById(string lessonID)
     {
@@ -103,13 +127,16 @@ public class LessonManager : MonoBehaviour, IData
         {
             if (lesson.LessonID == lessonID)
             {
+                Debug.Log("Found lesson: " + lessonID);
                 CurrentButtonID = lessonID;
                 return lesson;
             }
         }
 
-        return null; // Return null if not found
+        Debug.LogWarning("Lesson not found: " + lessonID);
+        return null;
     }
+
 
     private void UpdateLessonContainer(Lesson lesson)
     {
@@ -153,24 +180,34 @@ public class LessonManager : MonoBehaviour, IData
                 quantity.text = material.Quantity.ToString();
             }
 
-            foreach (MaterialEntry itemReward in lesson.ItemRewards)
+            if (lesson.isItemRewardCollected)
             {
-                GameObject itemRewardObject = Instantiate(
-                    lessonContainer.Material,
-                    lessonContainer.ItemsToUnlockContainer.transform
-                );
+                ItemRewardContainer.SetActive(false);
+                ItemRewardInfo.SetActive(true);
+            }
+            else
+            {
+                ItemRewardContainer.SetActive(true);
+                ItemRewardInfo.SetActive(false);
+                foreach (MaterialEntry itemReward in lesson.ItemRewards)
+                {
+                    GameObject itemRewardObject = Instantiate(
+                        lessonContainer.Material,
+                        lessonContainer.ItemsToUnlockContainer.transform
+                    );
 
-                TextMeshProUGUI title = itemRewardObject
-                    .transform.Find("ItemName")
-                    .GetComponent<TextMeshProUGUI>();
-                TextMeshProUGUI quantity = itemRewardObject
-                    .transform.Find("ItemQuantity")
-                    .GetComponent<TextMeshProUGUI>();
-                Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
+                    TextMeshProUGUI title = itemRewardObject
+                        .transform.Find("ItemName")
+                        .GetComponent<TextMeshProUGUI>();
+                    TextMeshProUGUI quantity = itemRewardObject
+                        .transform.Find("ItemQuantity")
+                        .GetComponent<TextMeshProUGUI>();
+                    Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
 
-                itemIcon.sprite = itemReward.ItemIcon;
-                title.text = itemReward.materialName;
-                quantity.text = "";
+                    itemIcon.sprite = itemReward.ItemIcon;
+                    title.text = itemReward.materialName;
+                    quantity.text = "";
+                }
             }
 
             // Enable or disable the buttons as necessary
@@ -188,8 +225,13 @@ public class LessonManager : MonoBehaviour, IData
             return;
         }
 
+        if (questAsLesson == null)
+        {
+            Debug.LogError("No lesson is currently selected. Please select a lesson before starting.");
+            return;
+        }
+
         CurrentLessonWindow.SetActive(true);
-        print("Button was clicked");
         questAsLesson.isActive = true;
 
         Lesson selectedLesson = FindLessonById(CurrentButtonID);
@@ -199,7 +241,7 @@ public class LessonManager : MonoBehaviour, IData
         }
         else
         {
-            Debug.LogError("No lesson selected. Make sure a lesson is picked first.");
+            Debug.LogError("No lesson found for the current button ID. Make sure the lesson exists.");
             return;
         }
 
@@ -234,6 +276,7 @@ public class LessonManager : MonoBehaviour, IData
         questAsLesson.materials = new List<MaterialEntry>();
         questAsLesson.steps = new List<LessonSteps>();
         questAsLesson.itemRewards = new List<MaterialEntry>();
+
 
         foreach (MaterialEntry material in lesson.ItemRewards)
         {
@@ -288,13 +331,50 @@ public class LessonManager : MonoBehaviour, IData
                     matchingItem.isUnlock = true;
                     itemManager.InstantiateInInventory(matchingItem);
                 }
+                else
+                {
+                    Debug.Log("Item already unlocked.");
+                }
+            }
+
+            itemReward.isCollected = true;
+        }
+
+        // Flag the current lesson as completed
+        questAsLesson.isCompleted = true;
+        questAsLesson.isRewardCollected = true;
+
+
+        // Find the lesson in Clonedlessons and update its state
+        Lesson lessonToUpdate = Clonedlessons.Find(lesson => lesson.LessonID == questAsLesson.LessonID);
+        if (lessonToUpdate != null)
+        {
+            lessonToUpdate.isCompleted = true;
+            lessonToUpdate.isItemRewardCollected = true;
+
+            foreach (var material in lessonToUpdate.ItemRewards)
+            {
+                material.isCollected = true;
             }
         }
 
-        // Clear quest, hide reward container, and save game
+
         questAsLesson = null;
+        RefreshLesson();
         RewardContainer.SetActive(false);
         DataManager.Instance.SaveGame();
+        Debug.Log("Rewards collected, lesson and items flagged as completed.");
+    }
+
+    public void RefreshLesson()
+    {
+        foreach (Lesson lesson in Clonedlessons)
+        {
+            foreach (MaterialEntry material in lesson.materials)
+            {
+                material.isCollected = false;
+            }
+        }
     }
 
     public void LoadData(GameData gameData)
@@ -310,7 +390,6 @@ public class LessonManager : MonoBehaviour, IData
 
             if (gameData.quest.isCompleted == true)
             {
-                Debug.Log("This lesson is  Completed");
                 RewardContainer.SetActive(true);
                 RewardContainer.GetComponent<RewardDistributor>().SetRewards(questAsLesson);
             }
@@ -325,11 +404,6 @@ public class LessonManager : MonoBehaviour, IData
         {
             CloneLessons();
             Debug.Log("No lessons in GameData. Cloning from source.");
-        }
-
-        if (gameData.quest != null)
-        {
-            questAsLesson = gameData.quest;
         }
     }
 

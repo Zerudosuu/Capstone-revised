@@ -50,12 +50,12 @@ public class ButtomSheetHolder : MonoBehaviour
 
             //Store the answer per index question
             answers.Add(answer.text);
-            Debug.Log($"{answer.text}");
         }
 
         summaryPanel.SetActive(true);
         BottomSheetFunction bottomSheetFunction = FindObjectOfType<BottomSheetFunction>(true);
         bottomSheetFunction.MoveToPosition(bottomSheetFunction.fullscreenY);
+        bottomSheetFunction.canDrag = false;
     }
 
 
@@ -71,6 +71,13 @@ public class ButtomSheetHolder : MonoBehaviour
             {
                 return false;
             }
+        }
+
+        ExperimentObjectManager experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
+
+        if (experimentObjectManager != null && !experimentObjectManager.currentLesson.isCompleted)
+        {
+            return false;
         }
 
         // All questions have answers

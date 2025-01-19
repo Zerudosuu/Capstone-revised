@@ -50,6 +50,7 @@ public class StepManager : MonoBehaviour
             {
                 Debug.Log("All lessons completed!");
                 lessonStepText.text = "All tasks completed!";
+                experimentObjectManager.currentLesson.isCompleted = true;
             }
         }
         else

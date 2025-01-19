@@ -135,42 +135,4 @@ public class ExperimentObjectManager : MonoBehaviour, IData
             data.currentQuestIndex = 0;
         }
     }
-
-    // }
 }
-// public bool CheckTags(List<string> tags)
-// {
-//     // // Check if the dropped item is compatible with the slot
-//     // if (
-//     //     item.compatibleTags.Contains(draggable.item.tagName)
-//     //     && gameObject.GetComponent<DragableItem>().placeInSlot
-//     // )
-//     // {
-//     //     // Check if the dropped item satisfies the current state's conditions
-//     //     List<Conditions> conditions = item.CurrentState.conditions;
-
-//     //     bool isConditionMet = false;
-
-//     //     string interactionType = "";
-
-//     //     if (conditions.Count > 0)
-//     //     {
-//     //         foreach (Conditions condition in conditions)
-//     //         {
-//     //             if (condition.itemNameRequirements.Contains(draggable.item.itemName))
-//     //             {
-//     //                 isConditionMet = true;
-//     //                 interactionType = condition.typeOfInteraction;
-
-//     //                 break; // Condition met, no need to check further
-//     //             }
-//     //         }
-//     //     }
-
-//     //     if (isConditionMet)
-//     //     {
-//     //         Debug.Log($"Condition met! Transitioning {item.itemName} to the next state.");
-//     //     }
-//     // }
-
-//     return true;
