@@ -18,9 +18,9 @@ public class Achievement
     public string description; // Achievement description
     public int target; // Target value to unlock
     public bool isUnlocked; // Status of the achievement
+    public Sprite AchivementIcon;
     public UnityEvent onUnlock; // Optional: Events triggered upon unlocking
-
-    [NonSerialized] public int progress; // Current progress (not saved directly in GameData)
+    public int progress; // Current progress (not saved directly in GameData)
 
     public bool CheckCondition()
     {

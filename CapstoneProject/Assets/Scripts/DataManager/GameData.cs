@@ -6,6 +6,8 @@ using UnityEngine;
 [System.Serializable]
 public class GameData
 {
+    public string playerName; // Player name
+    public string playerLRN;
     public long lastUpdate; // Timestamp of the last save
     public string SceneName; // Current scene name
     public string ChapterTitle; // Current chapter title
@@ -14,16 +16,25 @@ public class GameData
     public float Percentage; // Progress percentage
     public GameMode LessonMode; // Game mode (Lesson, Creative, etc.)
     public List<SerializableBagItem> BagItems; // Inventory data
-
+    public List<Achievement> Achievements; // List of achievements
     public QuestAsLesson quest;
-
     public List<Lesson> lessons;
     public int currentQuestIndex;
     public bool isTutorialCompleted = false;
+    public bool isLessonTutorialCompleted = false;
+
+
+    public int currentExperience;
+    public int currentMaxExperience;
 
     // Default constructor initializes some default values
     public GameData()
     {
+        this.playerName = "Ronald Salvador";
+        this.playerLRN = "123456789";
+        this.currentExperience = 0;
+        this.currentMaxExperience = 100;
+        this.Achievements = new List<Achievement>();
         this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";
         this.Level = "1";
@@ -35,6 +46,7 @@ public class GameData
         this.lessons = new List<Lesson>();
         this.currentQuestIndex = 0; // Default to the first quest in the list
         this.isTutorialCompleted = false;
+        this.isLessonTutorialCompleted = false;
     }
 }
 

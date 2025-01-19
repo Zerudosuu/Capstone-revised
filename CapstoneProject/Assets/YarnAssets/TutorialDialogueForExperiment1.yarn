@@ -1,0 +1,40 @@
+﻿title: TutorialDialogueForExperiment1
+tags:
+---
+Chemistry Fairy: Woooooooo! You made it to the lab! I'm so excited to see what you can do!
+Chemsisty Fairy: I'm the Chemistry Fairy, and I'm here to help you with your experiments. I'll be guiding you through the process of making. Are you ready to get started?
+Chemistry Fairy: Let me show you how to navigate things here in laboratory. 
+<<jump ScrollViewForContainer>>
+===
+
+title: ScrollViewForContainer
+tags:
+--- 
+<<set_highlight "next">>
+Chemistry Fairy: This is the scroll view. You can use it to scroll through the list of items that you will be using on the experiment.
+Chemistry Fairy: You can drag the scroll bar or drag the container to scroll through the list of items. 
+<<jump StepContainer>>
+===
+
+title: StepContainer
+tags:
+---
+<<set_highlight "next">>
+Chemistry Fairy: This is the step container. You can use it to see the steps that you need to follow to complete the experiment.
+Chemistry Fairy: However, remember that the steps might be vague and you have to figure it out on your own! 
+<<jump AnswerContainer>>
+===
+
+title: AnswerContainer
+tags:
+---
+Chemistry Fairy: You can drag this bottomsheet up to see the questions and observations that you need to answer to complete the experiment.
+Chemistry Fairy: Therefore, you need to pay attention to the details of the experiment to answer the questions correctly.
+===
+
+title: DragAndDrop
+tags:
+---
+Chemistry Fairy: You can drag and drop the items from the scroll view to the container to use them in the experiment.
+Chemistry Fairy: You can also drag and drop the items back to the empty slot on the scroll view. 
+===

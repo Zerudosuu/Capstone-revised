@@ -6,23 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/BagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BagManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Denatured Alcohol.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Denatured Alcohol.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/ExperimentMode.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/ExperimentMode.unity.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/UIManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/TestScipt.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/TestScipt.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataManager/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataManager/GameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +22,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/AddphotoScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoolComponent.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ProfileAchievement.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/sampleDrag.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/EventSystem/EventInterfaces.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -60,7 +48,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
     &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat Code&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -134,6 +122,9 @@
       <workItem from="1736813915920" duration="16722000" />
       <workItem from="1736901378189" duration="20768000" />
       <workItem from="1736952801529" duration="3767000" />
+      <workItem from="1737035304077" duration="1016000" />
+      <workItem from="1737181433860" duration="11037000" />
+      <workItem from="1737251021375" duration="1783000" />
     </task>
     <servers />
   </component>
