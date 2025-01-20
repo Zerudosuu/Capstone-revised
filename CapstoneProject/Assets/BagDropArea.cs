@@ -5,6 +5,7 @@ public class BagDropArea : MonoBehaviour
     BagManager _bagManager;
     LessonManager _lessonManager;
     CurrentLessonToDisplay _currentLessonToDisplay;
+    UIManager _UIManager;
     public GameObject lessonContainer;
 
     void Start()
@@ -12,6 +13,7 @@ public class BagDropArea : MonoBehaviour
         _currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         _lessonManager = FindObjectOfType<LessonManager>(true);
         _bagManager = FindObjectOfType<BagManager>(true);
+        _UIManager = FindObjectOfType<UIManager>(true); 
 
         if (_bagManager == null)
             print("bagManager is null");
@@ -27,7 +29,8 @@ public class BagDropArea : MonoBehaviour
         }
         else
         {
-            lessonContainer.SetActive(true);
+            _UIManager.LessonState("isLessonContainer");
+            _UIManager.OnLessonClick();
         }
     }
 }

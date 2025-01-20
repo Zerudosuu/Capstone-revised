@@ -34,8 +34,9 @@ public class UIManager : MonoBehaviour
     private string previousState = null;
     public float transitionDuration = 0.5f;
 
-    [Header("Navbar Button")] [SerializeField]
-    private Button profileBtn;
+    [Header("Navbar Button")]
+  
+    [SerializeField] private Button profileBtn;
 
     [SerializeField] private Button ShopBtn;
 
@@ -86,6 +87,7 @@ public class UIManager : MonoBehaviour
     public void OnInfoButtonClikck()
     {
         informationWindow.SetActive(true);
+        HomeWindow.SetActive(false);
         PlayerUI.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
@@ -100,7 +102,6 @@ public class UIManager : MonoBehaviour
     {
         HomeWindow.SetActive(true);
         PlayerUI.SetActive(true);
-
         ProfileWindow.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
@@ -314,7 +315,7 @@ public class UIManager : MonoBehaviour
     }
 
     //This will show the window of lesson if the last state was in the current Lesson or in the Lesson Selection
-    private void LessonState(string currentLessonState)
+    public void LessonState(string currentLessonState)
     {
         navBarAnimator.SetTrigger(currentLessonState);
 
