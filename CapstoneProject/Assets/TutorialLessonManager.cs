@@ -14,7 +14,7 @@ public class TutorialLessonManager : MonoBehaviour, IData
 
     private int tutorialIndex = 0; // Current tutorial index
     private Transform[] tutorialSteps; // Array to store the tutorial steps
-    private RectTransform panelRectTransform; // RectTransform of PanelTutorial
+    public RectTransform panelRectTransform; // RectTransform of PanelTutorial
     private bool TutorialButtonWasPressed = false;
 
     private void Start()

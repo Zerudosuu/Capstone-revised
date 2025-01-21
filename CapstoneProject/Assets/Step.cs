@@ -8,6 +8,8 @@ public class Step
     public string requiredAction; // For other actions (e.g., "click", "stir")
     public bool isCompleted;
 
+    public bool WillBroadCastChange;
+
     // Substeps for assemble actions
     public List<SubStep> substeps;
 

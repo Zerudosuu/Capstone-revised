@@ -153,7 +153,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
 
         if (reaction.Animator)
         {
-            reaction.Animator.SetTrigger(reaction.TriggerAnimationName);
+            reaction.Animator?.SetTrigger(reaction.TriggerAnimationName);
         }
     }
 

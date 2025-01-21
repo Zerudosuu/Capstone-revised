@@ -117,6 +117,7 @@ MonoBehaviour:
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
   TagName: HeatComponent
+  itemVariantID: 0
   anim: {fileID: 6836672992881740926}
   PopUpAnimator: {fileID: 0}
   PopUp: {fileID: 905024082536883615}
@@ -156,12 +157,13 @@ MonoBehaviour:
     changePrefab: 0
     ReactionSprite: {fileID: 0}
     resultingItemPrefab: {fileID: 0}
-    temperatureChange: 30
     visualEffectPrefab: {fileID: 0}
-    animationClip: {fileID: 0}
-    ReactionDuration: 0
+    temperatureChange: 30
     increaseTemperature: 0
     willGoBackToPreviousTemperature: 0
+    ReactionDuration: 0
+    Animator: {fileID: 1992527055893550893}
+    TriggerAnimationName: Lit
 --- !u!114 &7182740043526589938
 MonoBehaviour:
   m_ObjectHideFlags: 0

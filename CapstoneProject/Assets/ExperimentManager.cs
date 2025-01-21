@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
@@ -5,13 +6,7 @@ using UnityEngine.UI;
 
 public class ExperimentManager : MonoBehaviour
 {
-    public Slider currentScore; // The slider displaying the current score
-    public float score = 100f; // Initial score
-
-    public float yellowPenalty = 10f; // Score reduction for Yellow
-    public float redPenalty = 20f; // Score reduction for Red
-    public float greenBonus = 5f; // Score bonus for Green if score is 100
-
+    
     public GameObject slotPrefab; // Prefab for the item slot
 
     public GameObject MeterPanel;
@@ -19,6 +14,8 @@ public class ExperimentManager : MonoBehaviour
     ExperimentObjectManager experimentObjectManager;
 
     ScrollViewSlot[] slots;
+
+    public static event Action OnGameStart; 
 
     void Start()
     {
@@ -62,6 +59,11 @@ public class ExperimentManager : MonoBehaviour
         // Clamp score to a minimum of 0 and maximum of 100
         score = Mathf.Clamp(score, 0, 100);
         currentScore.value = score; // Update the score slider
+    }
+    
+    public void StartGame()
+    {
+        OnGameStart?.Invoke();
     }
 
     public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)

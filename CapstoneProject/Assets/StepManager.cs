@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -15,6 +16,7 @@ public class StepManager : MonoBehaviour
 
 
     public string requiredAction;
+    public static event Action OnStepBroadcasted; // Event for step broadcast
 
     private void Start()
     {
@@ -35,7 +37,7 @@ public class StepManager : MonoBehaviour
         // Validate and complete the substep
         currentLesson.ValidateAndCompleteSubStep(itemName);
 
-        // Check if the current lesson is completeda
+        // Check if the current lesson is completed
         if (currentLesson.IsTaskCompleted())
         {
             Debug.Log($"Lesson {currentLessonIndex + 1} completed!");
@@ -67,6 +69,7 @@ public class StepManager : MonoBehaviour
             var currentLesson = lessonSteps[currentLessonIndex];
             var currentSubstep = currentLesson.GetCurrentSubstep();
 
+
             if (currentSubstep != null)
             {
                 requiredAction = currentSubstep.requiredAction; // Get the required action of the current substep
@@ -82,6 +85,12 @@ public class StepManager : MonoBehaviour
                 }
 
                 lessonStepText.text = MainLessonSteps[currentLessonIndex].stepDescription;
+            }
+
+            if (currentSubstep != null && currentSubstep.WillBroadCastChange)
+            {
+                OnStepBroadcasted?.Invoke();
+                print("Broadcasted");
             }
         }
     }
