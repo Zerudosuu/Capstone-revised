@@ -8,6 +8,7 @@ public class BagItem : MonoBehaviour
 
     public Button DeleteButton;
     BagManager bagManager;
+    public Image itemImage;
     public TextMeshProUGUI itemCountText;
 
     [SerializeField]
@@ -26,7 +27,7 @@ public class BagItem : MonoBehaviour
     {
         this.item = item;
 
-        itemNameText.text = item.itemName;
+        itemImage.sprite = item.itemIcon;
         count = quantity;
         UpdateItemCountText();
     }

@@ -35,6 +35,8 @@ public class UIManager : MonoBehaviour
     public float transitionDuration = 0.5f;
 
     [Header("Navbar Button")]
+
+    [SerializeField] private GameObject navbar;
   
     [SerializeField] private Button profileBtn;
 
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
     public void OnBagButtonClick()
     {
         BagWindow.SetActive(true);
+        navbar.SetActive(false);    
         PlayerUI.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
