@@ -24,6 +24,7 @@ MonoBehaviour:
     compatibleTags: []
     states:
     - stateName: 
+      willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:
@@ -50,12 +51,14 @@ MonoBehaviour:
     - Fuel
     states:
     - stateName: Empty
+      willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:
         itemNameRequirement: 
       Temperature: 0
     - stateName: Lamp with Denatured Alcohol
+      willChangeSprite: 0
       sprite: {fileID: 21300000, guid: 8414a1cd3b607424c9773ac5502bef49, type: 3}
       description: 
       conditions:
@@ -88,7 +91,7 @@ MonoBehaviour:
     itemName: Wire gauze
     itemDescription: A piece of laboratory equipment used to support containers over
       a heat source.
-    itemIcon: {fileID: 21300000, guid: 7620cd79e73c3dd46947cafe47b4c4cf, type: 3}
+    itemIcon: {fileID: 21300000, guid: 1ca106209c0479845bb513584d221c9e, type: 3}
     itemType: 0
     isUnlock: 1
     isCollected: 0
@@ -134,7 +137,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 8085120018151178405, guid: d073d923a0519504d8b6e9a7ac28a08c, type: 3}
     itemName: Ice
     itemDescription: Frozen water.
-    itemIcon: {fileID: 21300000, guid: a2ab63c60921e8741bfa89edbfc214b7, type: 3}
+    itemIcon: {fileID: 21300000, guid: a41a850be446afe4c9d64d03154a8ef4, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -161,23 +164,19 @@ MonoBehaviour:
     - CoolComponent
     states:
     - stateName: Empty
+      willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:
         itemNameRequirement: 
       Temperature: 0
     - stateName: BeakerWithWater
+      willChangeSprite: 1
       sprite: {fileID: 21300000, guid: 6e1398d7136ebd4409cb501ba7c2b83c, type: 3}
       description: 
       conditions:
         itemNameRequirement: Water
       Temperature: 25
-    - stateName: Beaker with Ice
-      sprite: {fileID: 0}
-      description: 
-      conditions:
-        itemNameRequirement: Ice
-      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 1
     currentTemperature: 0
@@ -225,6 +224,7 @@ MonoBehaviour:
     - TempMeasurement
     states:
     - stateName: Cork or Rubber stopper with Thermometer
+      willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:
@@ -247,6 +247,7 @@ MonoBehaviour:
     - FlammableLiquid
     states:
     - stateName: Liquid Dropper with Denatured Alcohol
+      willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:

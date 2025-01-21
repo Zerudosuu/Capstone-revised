@@ -10,6 +10,8 @@ public class Step
 
     // Substeps for assemble actions
     public List<SubStep> substeps;
+
+    public float waitTime;
 }
 
 [System.Serializable]

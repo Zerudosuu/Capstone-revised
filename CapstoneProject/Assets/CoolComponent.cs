@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class CoolComponent : MonoBehaviour
 {
-    public float coolingRate = 1f; // Degrees per second
+    public float coolingRate = 0.5f; // Degrees per second
 
     public void CoolObject(ItemReaction itemReaction)
     {
+        int variant = itemReaction.gameObject.GetComponent<DragableItem>().itemVariantID;
+
         if (itemReaction == null) return;
 
-        // Start a coroutine to gradually reduce the temperature
         itemReaction.StartCoroutine(CoolingProcess(itemReaction));
     }
 

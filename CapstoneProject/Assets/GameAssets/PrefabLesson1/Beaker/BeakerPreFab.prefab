@@ -29,8 +29,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0.3}
   m_LocalScale: {x: 1, y: 1, z: 0.31247}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 918941624469402589}
+  m_Children: []
   m_Father: {fileID: 5950072141373055121}
   m_LocalEulerAnglesHint: {x: -90.606, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -55,7 +54,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5064,13 +5063,13 @@ GameObject:
   - component: {fileID: 5950072141373055121}
   - component: {fileID: 8888201297330729262}
   - component: {fileID: 4503479905720817131}
-  - component: {fileID: 1381774951828952757}
   - component: {fileID: 3020094261320530273}
-  - component: {fileID: 7913196925316324896}
-  - component: {fileID: 6889693856321019479}
   - component: {fileID: 4388573543902743104}
   - component: {fileID: 1167632764373479841}
   - component: {fileID: 7567641553352058004}
+  - component: {fileID: 1381774951828952757}
+  - component: {fileID: 7913196925316324896}
+  - component: {fileID: 6889693856321019479}
   m_Layer: 5
   m_Name: BeakerPreFab
   m_TagString: Untagged
@@ -5092,6 +5091,7 @@ RectTransform:
   m_Children:
   - {fileID: 599598061118184088}
   - {fileID: 2571766603530373203}
+  - {fileID: 918941624469402589}
   - {fileID: 7915942696184147421}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5138,29 +5138,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &1381774951828952757
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 057750cb65090eb40998003999a6522c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvasGroup: {fileID: 3020094261320530273}
-  raycaster: {fileID: 0}
-  canvas: {fileID: 0}
-  parentAfterDrag: {fileID: 0}
-  originalPosition: {x: 0, y: 0, z: 0}
-  originalSize: {x: 0, y: 0}
-  placeInSlot: 0
-  TagName: Container
-  anim: {fileID: 7567641553352058004}
-  PopUpAnimator: {fileID: 0}
-  PopUp: {fileID: 4919517387509522877}
 --- !u!225 &3020094261320530273
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -5173,64 +5150,6 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
---- !u!114 &7913196925316324896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: 
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
-  reactions:
-  - needStateName: BeakerWithWater
-    reactionName: BEAKERWITHWATERANDICE
-    triggers:
-    - Ice
-    changePrefab: 0
-    ReactionSprite: {fileID: 0}
-    resultingItemPrefab: {fileID: 0}
-    temperatureChange: -5
-    visualEffectPrefab: {fileID: 0}
-    animationClip: {fileID: 0}
-    ReactionDuration: 300
-    increaseTemperature: 0
-    willGoBackToPreviousTemperature: 1
---- !u!114 &6889693856321019479
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5172749339908944933}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4465a7d50537bf48bec21983a086722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  OnBoilingPointReached:
-    m_PersistentCalls:
-      m_Calls: []
-  boilParticle: {fileID: 1538396649732160648}
 --- !u!61 &4388573543902743104
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5324,6 +5243,116 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1381774951828952757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172749339908944933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 057750cb65090eb40998003999a6522c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvasGroup: {fileID: 3020094261320530273}
+  raycaster: {fileID: 0}
+  canvas: {fileID: 0}
+  parentAfterDrag: {fileID: 0}
+  originalPosition: {x: 0, y: 0, z: 0}
+  originalSize: {x: 0, y: 0}
+  placeInSlot: 0
+  TagName: Container
+  itemVariantID: 0
+  anim: {fileID: 7567641553352058004}
+  PopUpAnimator: {fileID: 0}
+  PopUp: {fileID: 4919517387509522877}
+--- !u!114 &7913196925316324896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172749339908944933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  reactions:
+  - needStateName: BeakerWithWater
+    reactionName: BeakerWithIceAndWater
+    triggers:
+    - Ice
+    changePrefab: 0
+    ReactionSprite: {fileID: 0}
+    resultingItemPrefab: {fileID: 0}
+    visualEffectPrefab: {fileID: 0}
+    temperatureChange: -5
+    increaseTemperature: 0
+    willGoBackToPreviousTemperature: 1
+    ReactionDuration: 300
+    Animator: {fileID: 407258002825509505}
+    TriggerAnimationName: AddIce
+  - needStateName: 500ml beaker
+    reactionName: Beaker with Ice
+    triggers:
+    - Ice
+    changePrefab: 0
+    ReactionSprite: {fileID: 0}
+    resultingItemPrefab: {fileID: 0}
+    visualEffectPrefab: {fileID: 0}
+    temperatureChange: -5
+    increaseTemperature: 0
+    willGoBackToPreviousTemperature: 1
+    ReactionDuration: 300
+    Animator: {fileID: 407258002825509505}
+    TriggerAnimationName: AddIce
+--- !u!114 &6889693856321019479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5172749339908944933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4465a7d50537bf48bec21983a086722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnBoilingPointReached:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  boilParticle: {fileID: 1538396649732160648}
+  steamParticle: {fileID: 5588715884019872563}
 --- !u!1 &5588715884019872563
 GameObject:
   m_ObjectHideFlags: 0
@@ -5349,16 +5378,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5588715884019872563}
-  m_LocalRotation: {x: 0.0052899714, y: -0, z: -0, w: 0.999986}
-  m_LocalPosition: {x: 0, y: 0, z: 137.08768}
-  m_LocalScale: {x: 0.65569276, y: 0.65574324, z: 2.097902}
+  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.6556927, y: 0.6556928, z: 0.65569293}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 2571766603530373203}
+  m_Father: {fileID: 5950072141373055121}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -2.900004, y: -0.15320587}
+  m_AnchoredPosition: {x: -0, y: 12.435007}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &5922234199753223742
@@ -5378,7 +5407,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:

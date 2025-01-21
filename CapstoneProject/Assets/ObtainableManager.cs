@@ -10,43 +10,41 @@ using static Yarn.Compiler.BasicBlock;
 
 public class ObtainableManager : MonoBehaviour
 {
-    [Header("Coin Reward")]
-    [SerializeField] private GameObject coinPref;
+    [Header("Coin Reward")] [SerializeField]
+    private GameObject coinPref;
+
     [SerializeField] private Transform coinSpawnPos;
     [SerializeField] private Transform coinTargetPos;
     [SerializeField] private int coinQuan;
-    
 
-    [Header("EXP Reward")]
-    [SerializeField] private GameObject expPref;
+
+    [Header("EXP Reward")] [SerializeField]
+    private GameObject expPref;
+
     [SerializeField] private Transform expSpawnPos;
     [SerializeField] private Transform expTargetPos;
     [SerializeField] private int expQuan;
 
-    [Header("Reference")]
-    [SerializeField] private float randomPos;
+    [Header("Reference")] [SerializeField] private float randomPos;
 
-    [Header("Button")] // Only for debugging
-    [SerializeField] private Button coinSpawn;
-    
 
     private int coinDestroy;
     private int expDestroy;
 
-    private void Start()
+
+    public void StartDistributingReward()
     {
-        coinSpawn.onClick.AddListener(() => StartCoroutine(GiveReward(300, 100)));
+        StartCoroutine(GiveReward(300, 100));
     }
 
-    
     //This function will handle the sequence of giving Reward
     public IEnumerator GiveReward(int coinQuant, int expQuant)
     {
-        StartCoroutine(SpawnReward(coinPref, coinSpawnPos, coinTargetPos, coinQuant));
-        yield return new WaitUntil(() => coinDestroy >= coinQuant/10);
-        StartCoroutine(SpawnReward(expPref, expSpawnPos, expTargetPos, expQuant));
-        yield return new WaitUntil(() => expDestroy >= expQuant / 10);
-        Debug.Log("You can proceed");
+        Coroutine coinCoroutine = StartCoroutine(SpawnReward(coinPref, coinSpawnPos, coinTargetPos, coinQuant));
+        Coroutine expCoroutine = StartCoroutine(SpawnReward(expPref, expSpawnPos, expTargetPos, expQuant));
+
+        yield return coinCoroutine;
+        yield return expCoroutine;
     }
 
 
@@ -60,7 +58,6 @@ public class ObtainableManager : MonoBehaviour
 
         for (int i = 0; i < quantity; i++)
         {
-
             GameObject _spawnReward = Instantiate(type, spawn.position, Quaternion.identity, gameObject.transform);
 
             Vector3 randomOffset = spawn.position + new Vector3(
@@ -84,7 +81,7 @@ public class ObtainableManager : MonoBehaviour
                 });
 
             coinSequence.PrependInterval(delay);
-            
+
             delay += 0.05f;
         }
 

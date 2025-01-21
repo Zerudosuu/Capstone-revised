@@ -18,7 +18,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     private GameObject lastOverlappedObject = null;
     public bool placeInSlot = false;
     public string TagName;
-
+    public int itemVariantID;
 
     public Animator anim;
     public Animator PopUpAnimator;

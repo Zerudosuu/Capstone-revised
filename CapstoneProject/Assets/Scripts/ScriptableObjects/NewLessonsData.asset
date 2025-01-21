@@ -59,7 +59,7 @@ MonoBehaviour:
       needToMeasure: 0
       measuredValue: 0
     - materialName: Wire gauze
-      ItemIcon: {fileID: 21300000, guid: 7620cd79e73c3dd46947cafe47b4c4cf, type: 3}
+      ItemIcon: {fileID: 21300000, guid: 1ca106209c0479845bb513584d221c9e, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -78,6 +78,15 @@ MonoBehaviour:
       actionRequired: Pour
     - stepDescription: Measure the initial temperature of the air just above the
         water level
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: Measure
+    - stepDescription: Fill the beaker with 5 crushed ice up to the water level.
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: Measure
+    - stepDescription: 'After 5 minutes measure the temperature of the air just above
+        the water level. '
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: Measure
@@ -100,6 +109,7 @@ MonoBehaviour:
     Experience: 100
     SecondCoins: 100
     SecondExperience: 80
+    isItemRewardCollected: 0
     ItemRewards:
     - materialName: Erlrnmeyer Flask
       ItemIcon: {fileID: 21300000, guid: 4be318f23c4893e4baae904686f8d507, type: 3}
@@ -185,6 +195,7 @@ MonoBehaviour:
     Experience: 400
     SecondCoins: 100
     SecondExperience: 200
+    isItemRewardCollected: 0
     ItemRewards: []
   - LessonID: 3
     chapterName: 'Everything has changed '
@@ -290,6 +301,7 @@ MonoBehaviour:
     Experience: 0
     SecondCoins: 0
     SecondExperience: 0
+    isItemRewardCollected: 0
     ItemRewards: []
   - LessonID: 4
     chapterName: Hotdoggy
@@ -309,4 +321,5 @@ MonoBehaviour:
     Experience: 80
     SecondCoins: 0
     SecondExperience: 0
+    isItemRewardCollected: 0
     ItemRewards: []

@@ -44,6 +44,12 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
     [SerializeField] private GameObject ItemRewardContainer;
 
+
+    [Header("RewarContainer")] [SerializeField]
+    private GameObject ItemRewardInfo;
+
+    [SerializeField] private GameObject ScrollViewItemReward;
+
     private bool HasActiveQuest => CurrentLesson != null;
 
     private Dictionary<string, int> tempCollectedItems = new Dictionary<string, int>();
@@ -114,22 +120,33 @@ public class CurrentLessonToDisplay : MonoBehaviour
             quantity.text = materialEntry.Quantity.ToString();
         }
 
-        foreach (MaterialEntry itemReward in lesson.itemRewards)
+        if (lesson.isItemRewardCollected)
         {
-            GameObject itemRewardObject = Instantiate(Material, ItemRewardContainer.transform);
-
-            TextMeshProUGUI title = itemRewardObject
-                .transform.Find("ItemName")
-                .GetComponent<TextMeshProUGUI>();
-            TextMeshProUGUI quantity = itemRewardObject
-                .transform.Find("ItemQuantity")
-                .GetComponent<TextMeshProUGUI>();
-            Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
-
-            itemIcon.sprite = itemReward.ItemIcon;
-            title.text = itemReward.materialName;
-            quantity.text = "";
+            ScrollViewItemReward.SetActive(false);
+            ItemRewardInfo.SetActive(true);
         }
+        else
+        {
+            ScrollViewItemReward.SetActive(true);
+            ItemRewardInfo.SetActive(false);
+            foreach (MaterialEntry itemReward in lesson.itemRewards)
+            {
+                GameObject itemRewardObject = Instantiate(Material, ItemRewardContainer.transform);
+
+                TextMeshProUGUI title = itemRewardObject
+                    .transform.Find("ItemName")
+                    .GetComponent<TextMeshProUGUI>();
+                TextMeshProUGUI quantity = itemRewardObject
+                    .transform.Find("ItemQuantity")
+                    .GetComponent<TextMeshProUGUI>();
+                Image itemIcon = itemRewardObject.GetComponentInChildren<Image>();
+
+                itemIcon.sprite = itemReward.ItemIcon;
+                title.text = itemReward.materialName;
+                quantity.text = "";
+            }
+        }
+
 
         // Update the BagManager's item limit
         BagManager bagManager = FindObjectOfType<BagManager>(true);

@@ -13,8 +13,7 @@ public class Items : ScriptableObject
 [System.Serializable]
 public class Item
 {
-    [Header("Item Properties")]
-    public GameObject itemPrefab;
+    [Header("Item Properties")] public GameObject itemPrefab;
     public string itemName = "";
     public string itemDescription = "";
     public Sprite itemIcon;
@@ -24,17 +23,15 @@ public class Item
 
     [Header("Compatibility and Conditions")]
     public string tagName;
+
     public List<string> compatibleTags;
 
-    [Header("State Management")]
-    public List<ItemState> states = new List<ItemState>();
+    [Header("State Management")] public List<ItemState> states = new List<ItemState>();
     public int currentStateIndex = 0;
     public ItemState CurrentState => states[currentStateIndex];
 
-    [Header("Temperature")]
-    public bool hasTemperature;
+    [Header("Temperature")] public bool hasTemperature;
     public float currentTemperature;
-
     public float minTemperature = 0;
     public float maxTemperature = 100;
 
@@ -65,7 +62,7 @@ public class Item
 
     public Item Clone()
     {
-        return new Item
+        Item clonedItem = new Item
         {
             itemPrefab = this.itemPrefab,
             itemName = this.itemName,
@@ -80,9 +77,29 @@ public class Item
             maxTemperature = this.maxTemperature,
             tagName = this.tagName,
             compatibleTags = new List<string>(this.compatibleTags),
-            states = new List<ItemState>(this.states),
-            currentStateIndex = this.currentStateIndex,
+            states = new List<ItemState>(), // Create a new list for states
+            currentStateIndex = this.currentStateIndex
         };
+
+        // Deep clone the states
+        foreach (var state in this.states)
+        {
+            ItemState clonedState = new ItemState
+            {
+                stateName = state.stateName,
+                willChangeSprite = state.willChangeSprite,
+                sprite = state.sprite,
+                description = state.description,
+                conditions = new Conditions
+                {
+                    itemNameRequirement = state.conditions.itemNameRequirement
+                },
+                Temperature = state.Temperature
+            };
+            clonedItem.states.Add(clonedState);
+        }
+
+        return clonedItem;
     }
 }
 
@@ -90,6 +107,7 @@ public class Item
 public class ItemState
 {
     public string stateName;
+    public bool willChangeSprite;
     public Sprite sprite;
     public string description;
     public Conditions conditions;

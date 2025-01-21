@@ -8,13 +8,12 @@ using UnityEngine.UI;
 public class ItemReaction : MonoBehaviour, IDropHandler
 {
     DragableItem dragableItem;
-    public Item item; // Current item (state-based)
+    public Item item = new Item(); // Current item (state-based)
     ExperimentManager experimentManager;
     ExperimentObjectManager experimentObjectManagerManager;
-
     private DragableItem ownDraggableItem;
-
     public List<Reaction> reactions; // List of reactions for the item
+
 
     public delegate void TemperatureChanged(float newTemperature);
 
@@ -40,6 +39,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         }
     }
 
+
     public void OnDrop(PointerEventData eventData)
     {
         GameObject dropItem = eventData.pointerDrag;
@@ -52,9 +52,10 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             gameObject.GetComponent<DragableItem>().placeInSlot
         )
         {
+            Debug.LogWarning(draggable.itemVariantID + " is the drop item itemVariant");
             // Change the state of the current item
-            item.SwitchToState(draggable.name);
-            experimentManager.UpdateItemPrefab(this.gameObject, draggable.name);
+
+            experimentManager.UpdateItemPrefab(this, draggable.name);
 
             // Trigger reactions for the current item
             CheckReactions(item.CurrentState.stateName, draggable);
@@ -72,7 +73,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         {
             // Change the state of the dropped item
             droppedItem.item.SwitchToState(this.gameObject.name);
-            experimentManager.UpdateItemPrefab(droppedItem.gameObject, this.gameObject.name);
+            experimentManager.UpdateItemPrefab(droppedItem, this.gameObject.name);
 
             // Optional: Trigger reactions for the dropped item
             CheckReactions(droppedItem.item.CurrentState.stateName, draggable);
@@ -149,11 +150,16 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         {
             Instantiate(reaction.visualEffectPrefab, transform.position, Quaternion.identity);
         }
+
+        if (reaction.Animator)
+        {
+            reaction.Animator.SetTrigger(reaction.TriggerAnimationName);
+        }
     }
 
     public void SetItem(Item item)
     {
-        this.item = item;
+        this.item = item.Clone();
     }
 }
 
@@ -164,21 +170,31 @@ public class UnityItemReaction : UnityEvent<Item>
 [System.Serializable]
 public class Reaction
 {
-    public string needStateName;
+    // Basic Information
+    [Header("Basic Information")] public string needStateName;
     public string reactionName;
     public List<string> triggers; // Items or tags that trigger this reaction
-    public bool changePrefab;
+
+
+    [Header("Prefab and Visuals")] public bool changePrefab;
     public Sprite ReactionSprite;
     public GameObject resultingItemPrefab; // Resulting item (if applicable)
-    public float temperatureChange; // Change in temperature
     public GameObject visualEffectPrefab; // Optional visual effect (e.g., steam, frost)
-    public AnimationClip animationClip; // Optional animation for the reaction
-    public float ReactionDuration; //
 
+    [Header("Temperature Change")] public float temperatureChange; // Change in temperature
     public bool increaseTemperature;
 
     public bool
         willGoBackToPreviousTemperature; // If true, the item will go back to its previous temperature after the reaction slowly
+
+    public float ReactionDuration;
+
+    [Header("Animation")]
+    // Animation
+    public Animator Animator; // Optional animation for the reaction
+
+    public string TriggerAnimationName;
+
 
     public bool CheckStateName(string stateName)
     {

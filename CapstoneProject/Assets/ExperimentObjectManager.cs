@@ -60,11 +60,11 @@ public class ExperimentObjectManager : MonoBehaviour, IData
                 GameObject newItem = Instantiate(clonedItem.itemPrefab, newSlotContainer.transform);
                 newItem.name = clonedItem.itemName; // Name for debugging
                 ItemReaction itemUI = newItem.GetComponent<ItemReaction>();
+                DragableItem draggable = newItem.GetComponent<DragableItem>();
 
-                if (itemUI != null)
-                {
-                    itemUI.SetItem(clonedItem);
-                }
+
+                if (itemUI != null) itemUI.SetItem(clonedItem);
+                if (draggable != null) draggable.itemVariantID = i;
             }
         }
     }

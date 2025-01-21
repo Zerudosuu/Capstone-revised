@@ -64,9 +64,9 @@ public class ExperimentManager : MonoBehaviour
         currentScore.value = score; // Update the score slider
     }
 
-    public void UpdateItemPrefab(GameObject currentItem, string ItemInteracted)
+    public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)
     {
-        ItemReaction itemReaction = currentItem.GetComponent<ItemReaction>();
+        Debug.LogWarning(itemReaction.GetInstanceID());
 
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
@@ -83,6 +83,7 @@ public class ExperimentManager : MonoBehaviour
                     itemReaction.transform.name = state.stateName;
                     conditionMet = true;
                     itemReaction.item.currentTemperature = state.Temperature;
+
 
                     Debug.Log($"Item updated to state: {state.stateName}");
 

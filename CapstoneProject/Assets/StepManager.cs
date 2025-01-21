@@ -6,22 +6,22 @@ public class StepManager : MonoBehaviour
 {
     public TextMeshProUGUI lessonStepText; // UI to display current lesson and step
     private ExperimentObjectManager experimentObjectManager;
-
     public List<LessonSteps> MainLessonSteps;
-
     private int mainCurrentLessonIndex = 0;
     public int currentLessonIndex = 0;
     public List<LessonStepsExample> lessonSteps;
-
-
+    public GameObject Timer;
     public Animator anim;
+
+
+    public string requiredAction;
 
     private void Start()
     {
         // Get the experiment object manager and populate lesson steps
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
         MainLessonSteps = experimentObjectManager.currentLesson.steps;
-
+        Timer.SetActive(false);
         DisplayCurrentStep();
     }
 
@@ -69,6 +69,18 @@ public class StepManager : MonoBehaviour
 
             if (currentSubstep != null)
             {
+                requiredAction = currentSubstep.requiredAction; // Get the required action of the current substep
+                if (requiredAction == "wait")
+                {
+                    Timer.SetActive(true);
+                    ExperimentCountDown countdown = Timer.GetComponent<ExperimentCountDown>();
+                    countdown.SetTime(currentSubstep.waitTime);
+                }
+                else
+                {
+                    Timer.SetActive(false);
+                }
+
                 lessonStepText.text = MainLessonSteps[currentLessonIndex].stepDescription;
             }
         }
@@ -142,11 +154,20 @@ public class LessonStepsExample
                 break;
 
             case "wait":
-                Debug.Log($"Step {currentStep.stepName} is waiting...");
-                currentStep.isCompleted = true;
-                currentSubstepIndex++;
-                break;
+                Debug.Log($"Step {currentStep.stepName} is waiting... Before: {currentStep.isCompleted}");
 
+                if (!currentStep.isCompleted) // Prevent duplicate completion
+                {
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                    Debug.Log($"Step {currentStep.stepName} marked complete. New index: {currentSubstepIndex}");
+                }
+                else
+                {
+                    Debug.LogWarning("Step was already completed.");
+                }
+
+                break;
             default:
                 if (currentStep.requiredItemName == itemName)
                 {

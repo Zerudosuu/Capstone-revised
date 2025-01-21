@@ -15,6 +15,7 @@ public class TutorialLessonManager : MonoBehaviour, IData
     private int tutorialIndex = 0; // Current tutorial index
     private Transform[] tutorialSteps; // Array to store the tutorial steps
     private RectTransform panelRectTransform; // RectTransform of PanelTutorial
+    private bool TutorialButtonWasPressed = false;
 
     private void Start()
     {
@@ -23,7 +24,7 @@ public class TutorialLessonManager : MonoBehaviour, IData
 
     private void InitializeTutorial()
     {
-        if (!tutorialComplete)
+        if (!tutorialComplete || TutorialButtonWasPressed)
         {
             // Get the RectTransform of the PanelTutorial
             panelRectTransform = PanelTutorial.GetComponent<RectTransform>();
@@ -98,6 +99,7 @@ public class TutorialLessonManager : MonoBehaviour, IData
     public void CloseTutorial()
     {
         tutorialComplete = true;
+        TutorialButtonWasPressed = false;
         gameObject.SetActive(false);
     }
 
@@ -113,6 +115,12 @@ public class TutorialLessonManager : MonoBehaviour, IData
         // Animate the height of the panel
         panelRectTransform.DOSizeDelta(new Vector2(panelRectTransform.sizeDelta.x, targetHeight), 0.3f)
             .SetEase(Ease.InOutQuad);
+    }
+
+    public void TutorialButtonPressed()
+    {
+        this.gameObject.SetActive(true);
+        TutorialButtonWasPressed = true;
     }
 
     public void LoadData(GameData gameData)

@@ -36,6 +36,7 @@ public class LessonManager : MonoBehaviour, IData
     [SerializeField] private GameObject ItemRewardInfo;
     private bool HasActiveQuest => questAsLesson is { isActive: true };
 
+
     void Awake()
     {
         currentLessonToDisplay = CurrentLessonWindow.GetComponent<CurrentLessonToDisplay>();
@@ -364,6 +365,9 @@ public class LessonManager : MonoBehaviour, IData
         RewardContainer.SetActive(false);
         DataManager.Instance.SaveGame();
         Debug.Log("Rewards collected, lesson and items flagged as completed.");
+
+        ObtainableManager obtainableManager = FindObjectOfType<ObtainableManager>(true);
+        obtainableManager.StartDistributingReward();
     }
 
     public void RefreshLesson()
