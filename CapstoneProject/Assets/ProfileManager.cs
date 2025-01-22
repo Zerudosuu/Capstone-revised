@@ -6,11 +6,14 @@ using TMPro;
 
 public class ProfileManager : MonoBehaviour
 {
-    [Header("Player Profile")]
-    [SerializeField] private Image playerBadge;
+    [Header("Player Profile")] [SerializeField]
+    private Image playerBadge;
+
     [SerializeField] private TMP_Text playerLevel;
     [SerializeField] private TMP_Text playerTitle;
     [SerializeField] private TMP_Text EXPgain;
+
+    Achievements achievementData;
 
     //private achivement[] achivementObtain;
     //private GameObject achiveDisplay;
@@ -24,7 +27,7 @@ public class ProfileManager : MonoBehaviour
         foreach(achivement achive in achivementObtain)
         {
             GameObject achive = Instantiate(achiveDisplay, achivementHolder)
-            
+
             Image achiveImage = achive.transform.getChild(0).GetComponent<Image>();
             TMP_Text AchiveTitle = achive.transform.GetChild(1).GetComponent<TMP_Text>();
             TMP_Text AchiveDescrip = achive.transform.GetChild(2).GetComponent<TMP_Text>();

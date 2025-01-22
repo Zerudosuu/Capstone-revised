@@ -91,9 +91,6 @@ public class ExperimentObjectManager : MonoBehaviour, IData
     {
         if (currentLesson != null)
         {
-            currentLesson.isCompleted = true; // Mark the lesson as completed
-            DataManager.Instance.SaveGame(); // Save the updated state
-
             UnityEngine.SceneManagement.SceneManager.LoadScene("LessonMode"); // Load lesson scene
         }
         else

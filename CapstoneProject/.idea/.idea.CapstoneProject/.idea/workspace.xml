@@ -6,16 +6,31 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/SeeWhatsHappeningButton.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/SeeWhatsHappeningButton.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BagManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BagManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentObjectManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Match.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Match.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/WireGauze.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/WireGauze.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/AchievementItem.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/AchievementItem.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/Material.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/Material.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MixingComponent.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MixingComponent.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/ItemAnimation/Lamp/Lamp Fire Animation.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/ItemAnimation/Lamp/Lamp Fire Animation.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetHolder.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ObtainableManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ObtainableManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProfileAchievement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileAchievement.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/RewardDistributor.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/RewardDistributor.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Step.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Step.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/LessonDatamanager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/LessonDatamanager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TabContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TabContainerManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TutorialLessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialLessonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -27,6 +42,7 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/cd/70b1f19d/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b18a8b3398e74bca86895881dd02956c573648/43/58af28ba/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/AddphotoScript.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/CoolComponent.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ProfileAchievement.cs" root0="FORCE_HIGHLIGHTING" />
@@ -134,7 +150,8 @@
       <workItem from="1737181433860" duration="11037000" />
       <workItem from="1737251021375" duration="1783000" />
       <workItem from="1737335161644" duration="37710000" />
-      <workItem from="1737423155228" duration="23550000" />
+      <workItem from="1737423155228" duration="25897000" />
+      <workItem from="1737506197677" duration="29300000" />
     </task>
     <servers />
   </component>

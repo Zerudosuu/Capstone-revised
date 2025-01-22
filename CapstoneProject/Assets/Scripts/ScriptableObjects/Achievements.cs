@@ -14,17 +14,40 @@ public class Achievements : ScriptableObject
 public class Achievement
 {
     public string id; // Unique ID for the achievement
-    public string title; // Achievement title
     public string description; // Achievement description
     public int target; // Target value to unlock
     public bool isUnlocked; // Status of the achievement
     public Sprite AchivementIcon;
-    public UnityEvent onUnlock; // Optional: Events triggered upon unlocking
+    public string InGameMessage;
+    public static event Action OnAchievementReached; // Optional: Events triggered upon unlocking
     public int progress; // Current progress (not saved directly in GameData)
+    public string QuestIdRequirement;
+
+
+    public Achievement Clone()
+    {
+        Achievement clone = new Achievement
+        {
+            id = this.id,
+            description = this.description,
+            target = this.target,
+            isUnlocked = this.isUnlocked,
+            AchivementIcon = this.AchivementIcon,
+            InGameMessage = this.InGameMessage,
+            QuestIdRequirement = this.QuestIdRequirement,
+            progress = this.progress
+        };
+        return clone;
+    }
 
     public bool CheckCondition()
     {
         return progress >= target;
+    }
+
+    public void ResetProgress()
+    {
+        progress = 0;
     }
 
     public void AddProgress(int value)
@@ -42,7 +65,6 @@ public class Achievement
     private void Unlock()
     {
         isUnlocked = true;
-        Debug.Log($"Achievement Unlocked: {title}");
-        onUnlock?.Invoke(); // Trigger any additional events
+        OnAchievementReached?.Invoke(); // Trigger any additional events
     }
 }

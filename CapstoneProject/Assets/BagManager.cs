@@ -97,6 +97,12 @@ public class BagManager : MonoBehaviour, IData
     public void ClearBag()
     {
         bagItems.Clear();
+
+        foreach (Transform child in BagContainer.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
         itemLimit = 0;
         UpdateItemCount();
     }
@@ -118,6 +124,7 @@ public class BagManager : MonoBehaviour, IData
 
         // Clear current items
         bagItems.Clear();
+
         foreach (var savedItem in data.BagItems)
         {
             Item item = new Item { itemName = savedItem.itemName }; // Replace with your item initialization logic

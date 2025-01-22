@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9179356514181233010
 RectTransform:
   m_ObjectHideFlags: 0
@@ -136,7 +136,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 68, y: 293}
+  m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1960491769165106165
 CanvasRenderer:
@@ -166,7 +166,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 7c552bd1150944c4c9e07c1b92a112b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d5182459d4ec3e74cbfddf52461c5c59, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -208,6 +208,7 @@ MonoBehaviour:
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
   TagName: Ignition
+  itemVariantID: 0
   anim: {fileID: 0}
   PopUpAnimator: {fileID: 0}
   PopUp: {fileID: 0}

@@ -11,10 +11,28 @@ public class TabContainerManager : MonoBehaviour
     public GameObject achivementsContainer;
     public List<ProfileAchievement> profileAchievements;
 
+    Achievements achievementData;
+    public GameObject AchievementPrefab;
+
     public void Start()
     {
         GetAllProfileAchievements();
         filterAchievements(0);
+
+        AchieveManager achieveManager = FindObjectOfType<AchieveManager>(true);
+        achievementData = achieveManager.achievementData;
+
+        PopulateAchievements();
+    }
+
+    void PopulateAchievements()
+    {
+        foreach (Achievement achievement in achievementData.achievements)
+        {
+            GameObject newAchievement = Instantiate(AchievementPrefab, achivementsContainer.transform);
+            ProfileAchievement profileAchievement = newAchievement.GetComponent<ProfileAchievement>();
+            profileAchievement.SetAchievement(achievement);
+        }
     }
 
     public void GetValueOnDropDown()
@@ -39,7 +57,7 @@ public class TabContainerManager : MonoBehaviour
         {
             foreach (ProfileAchievement profileAchievement in profileAchievements)
             {
-                if (!profileAchievement.isCompleted)
+                if (!profileAchievement.Achievement.isUnlocked)
                     profileAchievement.gameObject.SetActive(true);
                 else
                     profileAchievement.gameObject.SetActive(false);
@@ -49,7 +67,7 @@ public class TabContainerManager : MonoBehaviour
         {
             foreach (ProfileAchievement profileAchievement in profileAchievements)
             {
-                if (profileAchievement.isCompleted)
+                if (profileAchievement.Achievement.isUnlocked)
                     profileAchievement.gameObject.SetActive(true);
                 else
                     profileAchievement.gameObject.SetActive(false);

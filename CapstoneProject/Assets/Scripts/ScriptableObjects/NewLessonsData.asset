@@ -29,7 +29,7 @@ MonoBehaviour:
       needToMeasure: 0
       measuredValue: 0
     - materialName: Alcohol Lamp
-      ItemIcon: {fileID: 21300000, guid: 32e25492981ac334a9d810af4e9b8ec1, type: 3}
+      ItemIcon: {fileID: 21300000, guid: 066708ca828cdb442b786c00a30e70e9, type: 3}
       isCollected: 0
       Quantity: 1
       needToMeasure: 0
@@ -129,6 +129,7 @@ MonoBehaviour:
       Quantity: 0
       needToMeasure: 0
       measuredValue: 0
+    studentRecords: []
   - LessonID: 2
     chapterName: "Gay-Lussac\u2019s Law"
     chapterNumber: 2
@@ -197,6 +198,7 @@ MonoBehaviour:
     SecondExperience: 200
     isItemRewardCollected: 0
     ItemRewards: []
+    studentRecords: []
   - LessonID: 3
     chapterName: 'Everything has changed '
     chapterNumber: 3
@@ -303,6 +305,7 @@ MonoBehaviour:
     SecondExperience: 0
     isItemRewardCollected: 0
     ItemRewards: []
+    studentRecords: []
   - LessonID: 4
     chapterName: Hotdoggy
     chapterNumber: 4
@@ -323,3 +326,4 @@ MonoBehaviour:
     SecondExperience: 0
     isItemRewardCollected: 0
     ItemRewards: []
+    studentRecords: []

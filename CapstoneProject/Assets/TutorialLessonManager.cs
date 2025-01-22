@@ -14,8 +14,9 @@ public class TutorialLessonManager : MonoBehaviour, IData
 
     private int tutorialIndex = 0; // Current tutorial index
     private Transform[] tutorialSteps; // Array to store the tutorial steps
-    public RectTransform panelRectTransform; // RectTransform of PanelTutorial
+    private RectTransform panelRectTransform; // RectTransform of PanelTutorial
     private bool TutorialButtonWasPressed = false;
+    public GameObject GameStartPanel;
 
     private void Start()
     {
@@ -43,6 +44,7 @@ public class TutorialLessonManager : MonoBehaviour, IData
             {
                 tutorialSteps[0].gameObject.SetActive(true);
             }
+
 
             // Update button states
             UpdateButtonStates();
@@ -101,6 +103,16 @@ public class TutorialLessonManager : MonoBehaviour, IData
         tutorialComplete = true;
         TutorialButtonWasPressed = false;
         gameObject.SetActive(false);
+
+        ExperimentManager experimentManager = FindObjectOfType<ExperimentManager>(true);
+        if (experimentManager.isGameStarted)
+        {
+            GameStartPanel.SetActive(false);
+        }
+        else
+        {
+            GameStartPanel.SetActive(true);
+        }
     }
 
     // Smoothly rebuild the layout with DOTween

@@ -117,7 +117,7 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
             itemIcon.sprite = materialEntry.ItemIcon;
             title.text = materialEntry.materialName;
-            quantity.text = materialEntry.Quantity.ToString();
+            quantity.text = "0 / " + materialEntry.Quantity.ToString();
         }
 
         if (lesson.isItemRewardCollected)

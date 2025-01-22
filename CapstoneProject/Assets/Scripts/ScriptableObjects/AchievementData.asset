@@ -13,11 +13,19 @@ MonoBehaviour:
   m_Name: AchievementData
   m_EditorClassIdentifier: 
   achievements:
-  - id: LessonNovice
-    title: The Boy Wonder
-    description: 
-    target: 3
+  - id: NoviceChemist
+    description: Complete your first quest successfully.
+    target: 1
     isUnlocked: 0
-    onUnlock:
-      m_PersistentCalls:
-        m_Calls: []
+    AchivementIcon: {fileID: 631354510, guid: dc397633f6fb1644281a4d76101d1990, type: 3}
+    InGameMessage: 'Congratulations you completed your first quest! '
+    progress: 0
+    QuestIdRequirement: 
+  - id: MaterialCollector
+    description: 'Collect 3 new materials! '
+    target: 1
+    isUnlocked: 0
+    AchivementIcon: {fileID: 21300000, guid: 96436a4b93a5e444fb834655b40483dd, type: 3}
+    InGameMessage: 'Great! You collected 3 items! '
+    progress: 0
+    QuestIdRequirement: 

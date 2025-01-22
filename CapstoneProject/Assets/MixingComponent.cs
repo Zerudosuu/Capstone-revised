@@ -6,26 +6,19 @@ public class MixingComponent : MonoBehaviour, IPointerClickHandler
 {
     public Item item;
 
-    [SerializeField]
-    private Slider Slider; // Reference to the slider
+    [SerializeField] private Slider Slider; // Reference to the slider
 
-    [SerializeField]
-    private RectTransform ParentObject; // Parent containing color zones
+    [SerializeField] private RectTransform ParentObject; // Parent containing color zones
 
-    [SerializeField]
-    private RectTransform RedZone; // Red zone object (Top)
+    [SerializeField] private RectTransform RedZone; // Red zone object (Top)
 
-    [SerializeField]
-    private RectTransform GreenZone; // Green zone object (Middle)
+    [SerializeField] private RectTransform GreenZone; // Green zone object (Middle)
 
-    [SerializeField]
-    private RectTransform YellowZone; // Yellow zone object (Bottom)
+    [SerializeField] private RectTransform YellowZone; // Yellow zone object (Bottom)
 
-    [SerializeField]
-    private float MinSpeed = 10f; // Minimum oscillation speed
+    [SerializeField] private float MinSpeed = 10f; // Minimum oscillation speed
 
-    [SerializeField]
-    private float MaxSpeed = 30f; // Maximum oscillation speed
+    [SerializeField] private float MaxSpeed = 30f; // Maximum oscillation speed
 
     private bool IsMeasuring = false;
     private bool IsMovingUp = true; // Direction of slider movement
@@ -155,7 +148,7 @@ public class MixingComponent : MonoBehaviour, IPointerClickHandler
         }
 
         GetComponentInParent<MeterPanelManager>().ShowMeterResult();
-        experimentManager.UpdateScore(getValue);
+        // experimentManager.UpdateScore(getValue);
         ResetMeasurement(); // Reset slider after checking
     }
 

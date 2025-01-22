@@ -74,6 +74,9 @@ public class Lesson
     [Header("Lesson Item Rewards")] public bool isItemRewardCollected;
     public List<MaterialEntry> ItemRewards = new List<MaterialEntry>();
 
+    [Header("Lesson Student Record")]
+    public List<StudentExperimentRecord> studentRecords = new List<StudentExperimentRecord>();
+
     public Lesson Clone()
     {
         Lesson clonedLesson = new Lesson
@@ -111,6 +114,12 @@ public class Lesson
         {
             clonedLesson.steps.Add(step.Clone());
         }
+
+        foreach (StudentExperimentRecord record in this.studentRecords)
+        {
+            clonedLesson.studentRecords.Add(record.Clone());
+        }
+
 
         return clonedLesson;
     }
@@ -153,5 +162,50 @@ public class LessonSteps
             requiredObjectNames = new List<string>(this.requiredObjectNames), // Properly clone the list
             actionRequired = this.actionRequired,
         };
+    }
+}
+
+[System.Serializable]
+public class StudentExperimentRecord
+{
+    public int attemptId;
+    public string studentName;
+    public string lessonId;
+    public float Grade;
+    public float TimeTaken;
+    public bool experimentCompleted;
+    public List<QuestionAndAnswer> questionsAndAnswers = new List<QuestionAndAnswer>();
+
+
+    [System.Serializable]
+    public class QuestionAndAnswer
+    {
+        public string question;
+        public string answer;
+    }
+
+
+    public StudentExperimentRecord Clone()
+    {
+        StudentExperimentRecord clonedRecord = new StudentExperimentRecord
+        {
+            attemptId = this.attemptId,
+            studentName = this.studentName,
+            lessonId = this.lessonId,
+            Grade = this.Grade,
+            TimeTaken = this.TimeTaken,
+            questionsAndAnswers = new List<QuestionAndAnswer>(),
+        };
+
+        foreach (QuestionAndAnswer qa in this.questionsAndAnswers)
+        {
+            clonedRecord.questionsAndAnswers.Add(new QuestionAndAnswer
+            {
+                question = qa.question,
+                answer = qa.answer,
+            });
+        }
+
+        return clonedRecord;
     }
 }

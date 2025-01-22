@@ -366,6 +366,9 @@ public class LessonManager : MonoBehaviour, IData
         DataManager.Instance.SaveGame();
         Debug.Log("Rewards collected, lesson and items flagged as completed.");
 
+        AchieveManager.Instance.AddAchievementProgress("NoviceChemist", 1);
+
+
         ObtainableManager obtainableManager = FindObjectOfType<ObtainableManager>(true);
         obtainableManager.StartDistributingReward();
     }
@@ -383,31 +386,42 @@ public class LessonManager : MonoBehaviour, IData
 
     public void LoadData(GameData gameData)
     {
+        // Check if the quest data exists
         if (gameData.quest == null)
         {
-            print("No quest data found");
+            Debug.Log("No quest data found");
         }
-
-        if (gameData.quest != null)
+        else
         {
             questAsLesson = gameData.quest;
 
-            if (gameData.quest.isCompleted == true)
+            if (questAsLesson.isCompleted)
             {
                 RewardContainer.SetActive(true);
                 RewardContainer.GetComponent<RewardDistributor>().SetRewards(questAsLesson);
             }
+            else if (!questAsLesson.isCompleted)
+            {
+                questAsLesson.isActive = false;
+                gameData.quest = null;
+                BagManager bagManager = FindObjectOfType<BagManager>(true);
+                bagManager.ClearBag();
+
+                Debug.Log("Quest was active but not completed. Resetting quest.");
+            }
         }
 
+        // Load lessons if available; otherwise, clone from source
         if (gameData.lessons != null && gameData.lessons.Count > 0)
         {
             Clonedlessons = gameData.lessons;
-            Debug.Log("Loaded lessons from GameData: " + Clonedlessons.Count);
+            RefreshLesson();
+            Debug.Log("Loaded lessons from GameData. Lesson count: " + Clonedlessons.Count);
         }
         else
         {
             CloneLessons();
-            Debug.Log("No lessons in GameData. Cloning from source.");
+            Debug.Log("No lessons found in GameData. Creating new lessons from source.");
         }
     }
 

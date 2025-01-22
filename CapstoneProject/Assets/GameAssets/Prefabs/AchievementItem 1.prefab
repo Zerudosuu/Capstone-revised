@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 6603662669632201003}
   - component: {fileID: 6242555530201438453}
   m_Layer: 0
-  m_Name: AchievementItem
+  m_Name: AchievementItem 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -51,8 +51,14 @@ public class RewardDistributor : MonoBehaviour
                 Image itemIcon = rewardItem.GetComponentInChildren<Image>();
                 itemIcon.sprite = material.ItemIcon;
 
-                TextMeshProUGUI itemNameText = rewardItem.GetComponentInChildren<TextMeshProUGUI>();
+                TextMeshProUGUI itemNameText = rewardItem.transform.Find("ItemName").GetComponent<TextMeshProUGUI>();
                 itemNameText.text = material.materialName;
+                itemNameText.color = Color.white;
+
+                // Set item quantity
+                TextMeshProUGUI itemQuantityText =
+                    rewardItem.transform.Find("ItemQuantity").GetComponent<TextMeshProUGUI>();
+                itemQuantityText.text = "";
             }
         }
     }

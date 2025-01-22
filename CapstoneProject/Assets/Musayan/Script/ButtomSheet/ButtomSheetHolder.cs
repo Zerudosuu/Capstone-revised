@@ -12,7 +12,7 @@ public class ButtomSheetHolder : MonoBehaviour
 
 
     [Header("reference")] [SerializeField] private Transform contentHolder;
-    [HideInInspector] public List<string> answers;
+    public List<string> answers;
     private List<GameObject> questionInstiate;
 
     private bool _canSubmit = false;
@@ -56,6 +56,9 @@ public class ButtomSheetHolder : MonoBehaviour
         BottomSheetFunction bottomSheetFunction = FindObjectOfType<BottomSheetFunction>(true);
         bottomSheetFunction.MoveToPosition(bottomSheetFunction.fullscreenY);
         bottomSheetFunction.canDrag = false;
+
+        ExperimentManager experimentManager = FindObjectOfType<ExperimentManager>(true);
+        experimentManager.GetQuestionAndAnswer(questions, answers);
     }
 
 

@@ -1,12 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
-using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
-using UnityEngine.InputSystem.Interactions;
-using UnityEngine.UI;
-using UnityEditor.ShaderGraph.Internal;
-using static Yarn.Compiler.BasicBlock;
 
 public class ObtainableManager : MonoBehaviour
 {
