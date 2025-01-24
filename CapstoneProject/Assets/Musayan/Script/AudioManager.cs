@@ -1,34 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
+    [System.Serializable]
+    public class SFX
+    {
+        public string triggerString;
+        public AudioClip clip;
+    }
+
     public static AudioManager audioInstance { get; private set; }
 
-    [Header("Audio Background Music")] [SerializeField]
-    private List<AudioClip> bgMusics;
+    [Header("Audio Background Music")]
+    [SerializeField] private List<AudioClip> bgMusics;
+    [Header("Audio Source")]
+    [SerializeField] private AudioSource bgAudioSorce;
+    [SerializeField] private AudioSource sfxAudioSorce;
+
+    [Header("Music")]
+    [SerializeField] public string audioTitle;
 
     private int currentClipIndex = 0;
-
-    [Header("Audio Sorce")] [SerializeField]
-    private AudioSource bgAudioSorce;
-
-    [SerializeField] private AudioSource audioClipSorce;
-
-    [Header("Audio Sorce")] [SerializeField]
-    private AudioClip clipBag;
-
-    [SerializeField] private AudioClip clipPickUp;
-    [SerializeField] private AudioClip clipMixGlass;
-    [SerializeField] private AudioClip clipBubble;
-
-    [HideInInspector] public string audioTitle;
-
-
     private bool skipRequested = false;
     private bool showTitle = false;
+
+    [Header("SFX")]
+    [SerializeField] private List<SFX> soundEffects;
+    private Dictionary<string, AudioClip> sfxDictionary;
+
 
     private void Awake()
     {
@@ -44,13 +45,9 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-        if (bgAudioSorce != null)
-            StartCoroutine(PlayAudioLoop());
-        else
-            Debug.Log("No audio source found for background music.");
+        StartCoroutine(PlayAudioLoop());
     }
 
-    //This will loop the audio continousely...
     private IEnumerator PlayAudioLoop()
     {
         while (true)
@@ -70,7 +67,7 @@ public class AudioManager : MonoBehaviour
                     break;
                 }
 
-                yield return null; // Wait for the next frame
+                yield return null;
                 elapsedTime += Time.deltaTime;
             }
 
@@ -79,42 +76,31 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    private IEnumerator audioClipPlay(string audClip)
-    {
-        audioClipSorce.Stop();
-
-        switch (audClip)
-        {
-            case "Bag":
-                audioClipSorce.clip = clipBag;
-                break;
-            case "PickUp":
-                audioClipSorce.clip = clipPickUp;
-                break;
-            case "MixGlass":
-                audioClipSorce.clip = clipMixGlass;
-                break;
-            case "Bubble":
-                audioClipSorce.clip = clipBubble;
-                break;
-            default:
-                Debug.LogError("Invalid clip name: " + audioClipSorce);
-                yield break; // Exit the coroutine if clipAud is invalid
-        }
-
-        audioClipSorce.Play();
-        yield return new WaitForSeconds(audioClipSorce.clip.length);
-    }
-
     public void nextAudio()
     {
         skipRequested = true;
     }
 
-    public IEnumerator ShowMusicTItle(System.Action<string> callback)
+    public void PlaceSFX()
     {
-        yield return new WaitUntil(() => showTitle);
+        foreach (var sfx in soundEffects)
+        {
+            if (!sfxDictionary.ContainsKey(sfx.triggerString))
+            {
+                sfxDictionary.Add(sfx.triggerString, sfx.clip);
+            }
+        }
+    }
 
-        callback?.Invoke(audioTitle);
+    public void PlaySFX(string trigger)
+    {
+        if (sfxDictionary.TryGetValue(trigger, out AudioClip sfx))
+        {
+            sfxAudioSorce.PlayOneShot(sfx);
+        }
+        else
+        {
+            Debug.Log("No Audio SFX");
+        }
     }
 }

@@ -40,7 +40,7 @@ public class VolumeSettings : MonoBehaviour
         }
 
         Checker();
-        ShowAudioTitle();
+        Invoke("ShowAudioTitle", 1f);
     }
     private void Start()
     {
@@ -90,15 +90,13 @@ public class VolumeSettings : MonoBehaviour
     private void NextAudio()
     {
         AudioManager.audioInstance.nextAudio();
-        ShowAudioTitle();
+        Invoke("ShowAudioTitle", 1f);
     }
 
     private void ShowAudioTitle()
     {
-        StartCoroutine(AudioManager.audioInstance.ShowMusicTItle(result =>
-        {
-            musicTitle.text = result;
-        }));
+ 
+        musicTitle.text = AudioManager.audioInstance.audioTitle;
     }
 
     private void Checker()
