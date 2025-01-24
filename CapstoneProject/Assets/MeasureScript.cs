@@ -1,15 +1,16 @@
-using System;
 using TMPro;
 using UnityEngine;
 
 public class MeasureScript : MonoBehaviour
 {
-    [SerializeField] private TextMeshProUGUI temperatureDisplay; // Reference to the TextMeshProUGUI for temperature
+    [SerializeField] private TextMeshProUGUI temperatureDisplay;
     private ItemReaction currentItemReaction;
+    private StepManager stepManager;
 
     private void Start()
     {
         temperatureDisplay.gameObject.SetActive(false);
+        stepManager = FindObjectOfType<StepManager>();
     }
 
     private void DisplayTemperature(float temperature)
@@ -17,7 +18,7 @@ public class MeasureScript : MonoBehaviour
         if (temperatureDisplay != null)
         {
             temperatureDisplay.gameObject.SetActive(true);
-            temperatureDisplay.text = $"{temperature}°C";
+            temperatureDisplay.text = $"{Mathf.RoundToInt(temperature)}°C";
         }
     }
 
@@ -32,22 +33,23 @@ public class MeasureScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        currentItemReaction = other.GetComponent<ItemReaction>();
-        if (currentItemReaction != null && currentItemReaction.item.hasTemperature)
+        if (currentItemReaction == null)
         {
-            currentItemReaction.OnTemperatureChanged += DisplayTemperature;
-            DisplayTemperature(currentItemReaction.item.currentTemperature);
-
-
-            // Step validation
-            StepManager stepManager = FindObjectOfType<StepManager>();
-            if (stepManager != null)
+            ItemReaction itemReaction = other.GetComponent<ItemReaction>();
+            if (itemReaction != null && itemReaction.item.hasTemperature)
             {
-                stepManager.ValidateAndCompleteSubStep(other.gameObject.name);
+                currentItemReaction = itemReaction;
+                currentItemReaction.OnTemperatureChanged += DisplayTemperature;
+                DisplayTemperature(Mathf.RoundToInt(currentItemReaction.item.currentTemperature));
+
+                // Check if this is the correct step
+                if (stepManager != null && stepManager.requiredAction == "drag")
+                {
+                    stepManager.ValidateAndCompleteSubStep(other.gameObject.name);
+                }
             }
         }
     }
-
 
     private void OnTriggerExit2D(Collider2D other)
     {

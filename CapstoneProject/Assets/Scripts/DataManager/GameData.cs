@@ -7,11 +7,12 @@ using UnityEngine;
 public class GameData
 {
     public string playerName; // Player name
+    public string PicturePath; // Path to the player's profile picture
     public string playerLRN;
     public long lastUpdate; // Timestamp of the last save
     public string SceneName; // Current scene name
     public string ChapterTitle; // Current chapter title
-    public string Level; // Current level
+    public int Level; // Current level
     public string timestamp; // Readable timestamp for when the data was created/saved
     public float Percentage; // Progress percentage
     public GameMode LessonMode; // Game mode (Lesson, Creative, etc.)
@@ -31,13 +32,14 @@ public class GameData
     public GameData()
     {
         this.playerName = "Ronald Salvador";
+        this.PicturePath = "";
         this.playerLRN = "123456789";
         this.currentExperience = 0;
         this.currentMaxExperience = 100;
         this.Achievements = new List<Achievement>();
         this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";
-        this.Level = "1";
+        this.Level = 1;
         this.timestamp = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss");
         this.Percentage = 0;
         this.LessonMode = GameMode.None;

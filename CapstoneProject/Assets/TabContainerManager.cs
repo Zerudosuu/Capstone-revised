@@ -11,29 +11,52 @@ public class TabContainerManager : MonoBehaviour
     public GameObject achivementsContainer;
     public List<ProfileAchievement> profileAchievements;
 
-    Achievements achievementData;
+    public List<Achievement> achievementsData;
     public GameObject AchievementPrefab;
 
     public void Start()
     {
-        GetAllProfileAchievements();
-        filterAchievements(0);
-
         AchieveManager achieveManager = FindObjectOfType<AchieveManager>(true);
-        achievementData = achieveManager.achievementData;
+        achievementsData = achieveManager.ClonedAchievements;
+
+        // Subscribe to achievement completion event
+        AchieveManager.OnCompleteAchievement += UpdateAchievements;
 
         PopulateAchievements();
+        filterAchievements(0); // Ensure correct filtering after population
+    }
+
+    private void OnEnable()
+    {
+        AchieveManager achieveManager = FindObjectOfType<AchieveManager>();
+        if (achieveManager != null)
+        {
+            achievementsData = achieveManager.ClonedAchievements;
+        }
+
+        UpdateAchievements(); // Refresh UI on scene reload
+    }
+
+
+    private void OnDestroy()
+    {
+        AchieveManager.OnCompleteAchievement -= UpdateAchievements;
     }
 
     void PopulateAchievements()
     {
-        foreach (Achievement achievement in achievementData.achievements)
+        profileAchievements.Clear(); // Clear list to prevent duplicates
+
+        foreach (Achievement achievement in achievementsData)
         {
             GameObject newAchievement = Instantiate(AchievementPrefab, achivementsContainer.transform);
             ProfileAchievement profileAchievement = newAchievement.GetComponent<ProfileAchievement>();
             profileAchievement.SetAchievement(achievement);
+
+            profileAchievements.Add(profileAchievement); // Add to list after instantiation
         }
     }
+
 
     public void GetValueOnDropDown()
     {
@@ -41,37 +64,36 @@ public class TabContainerManager : MonoBehaviour
         filterAchievements(index);
     }
 
-    private void GetAllProfileAchievements()
-    {
-        // get all profile achievements child in achievements container
-        foreach (Transform child in achivementsContainer.transform)
-        {
-            ProfileAchievement profileAchievement = child.GetComponent<ProfileAchievement>();
-            profileAchievements.Add(profileAchievement);
-        }
-    }
 
     private void filterAchievements(int number)
     {
-        if (number == 0)
+        foreach (ProfileAchievement profileAchievement in profileAchievements)
         {
-            foreach (ProfileAchievement profileAchievement in profileAchievements)
+            bool unlocked = profileAchievement.Achievement.isUnlocked;
+
+            if (number == 0) // Show only locked achievements
             {
-                if (!profileAchievement.Achievement.isUnlocked)
-                    profileAchievement.gameObject.SetActive(true);
-                else
-                    profileAchievement.gameObject.SetActive(false);
+                profileAchievement.gameObject.SetActive(!unlocked);
+            }
+            else if (number == 1) // Show only unlocked achievements
+            {
+                profileAchievement.gameObject.SetActive(unlocked);
             }
         }
-        else if (number == 1)
+    }
+
+
+    private void UpdateAchievements()
+    {
+        // Clear existing UI elements
+        foreach (Transform child in achivementsContainer.transform)
         {
-            foreach (ProfileAchievement profileAchievement in profileAchievements)
-            {
-                if (profileAchievement.Achievement.isUnlocked)
-                    profileAchievement.gameObject.SetActive(true);
-                else
-                    profileAchievement.gameObject.SetActive(false);
-            }
+            Destroy(child.gameObject);
         }
+
+        profileAchievements.Clear();
+
+        PopulateAchievements(); // Re-populate achievements UI
+        filterAchievements(dropdown.value); // Apply the current filter
     }
 }

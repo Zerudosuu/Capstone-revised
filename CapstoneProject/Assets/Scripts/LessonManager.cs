@@ -34,6 +34,8 @@ public class LessonManager : MonoBehaviour, IData
 
     [SerializeField] private GameObject ItemRewardContainer;
     [SerializeField] private GameObject ItemRewardInfo;
+
+
     private bool HasActiveQuest => questAsLesson is { isActive: true };
 
 
@@ -315,6 +317,7 @@ public class LessonManager : MonoBehaviour, IData
         ItemManager itemManager = FindObjectOfType<ItemManager>(true);
 
         // Add experience points to the player
+        playerStats.AddExp(questAsLesson.RewardCoins);
         playerStats.AddExp(questAsLesson.RewardExperience);
 
         foreach (MaterialEntry itemReward in questAsLesson.itemRewards)

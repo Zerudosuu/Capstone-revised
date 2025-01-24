@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,9 +15,6 @@ public class ExperimentCountDown : MonoBehaviour
 
     private void Start()
     {
-        // Starts the timer automatically
-        timerIsRunning = true;
-
         SkipButton.onClick.AddListener(CompleteStep);
     }
 
@@ -58,7 +54,7 @@ public class ExperimentCountDown : MonoBehaviour
         countdownDisplay.text = "00:00";
         gameObject.SetActive(false);
         timerIsRunning = false;
-        Debug.Log("Completing the step...");
-        _stepManager.ValidateAndCompleteSubStep("wait"); // Ensure correct action is passed
+        Debug.Log("Completing the wait step...");
+        _stepManager.ValidateAndCompleteSubStep("wait");
     }
 }

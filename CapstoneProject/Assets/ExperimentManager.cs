@@ -96,6 +96,11 @@ internal class ExperimentManager : MonoBehaviour, IData
         isGameStarted = true;
         OnGameStart?.Invoke();
     }
+    
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)
     {

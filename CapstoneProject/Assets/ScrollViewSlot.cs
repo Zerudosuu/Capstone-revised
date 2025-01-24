@@ -11,11 +11,38 @@ public class ScrollViewSlot : MonoBehaviour, IDropHandler
     {
         GameObject droppedItem = eventData.pointerDrag;
         DragableItem draggable = droppedItem.GetComponent<DragableItem>();
-        draggable.parentAfterDrag = transform;
 
-        // Check if the dropped item is compatible with the slot
+        if (draggable == null)
+            return;
 
-        Debug.Log("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
+        if (transform.childCount > 0)
+        {
+            //Check the first child of the slot if the same as the dropped item
+            DragableItem existingItem = transform.GetChild(0).GetComponent<DragableItem>();
+
+            if (existingItem != null && existingItem.gameObject.name == draggable.gameObject.name)
+            {
+                // Allow placing only if it's the same item name
+                draggable.parentAfterDrag = transform;
+                droppedItem.transform.SetParent(transform);
+                droppedItem.transform.localPosition = Vector3.zero;
+                Debug.Log("Dropped in slot: " + eventData.pointerCurrentRaycast.gameObject.name);
+            }
+            else
+            {
+                Debug.Log("Cannot place different item in this slot!");
+                // Return to original position if it's not the same item
+                draggable.transform.SetParent(draggable.parentAfterDrag);
+                draggable.transform.position = draggable.originalPosition;
+            }
+        }
+        else
+        {
+            draggable.parentAfterDrag = transform;
+            droppedItem.transform.SetParent(transform);
+            droppedItem.transform.localPosition = Vector3.zero;
+            Debug.Log("Dropped in empty slot: " + eventData.pointerCurrentRaycast.gameObject.name);
+        }
     }
 
     public void ResizeChild()

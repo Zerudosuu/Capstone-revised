@@ -153,7 +153,7 @@ MonoBehaviour:
   - needStateName: Lamp with Denatured Alcohol
     reactionName: LittingFire!
     triggers:
-    - Match
+    - MatchStick
     changePrefab: 0
     ReactionSprite: {fileID: 0}
     resultingItemPrefab: {fileID: 0}

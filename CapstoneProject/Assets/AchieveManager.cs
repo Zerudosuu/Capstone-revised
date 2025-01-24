@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -11,6 +12,7 @@ public class AchieveManager : MonoBehaviour
     public List<Achievement> ClonedAchievements = new List<Achievement>();
     public GameObject AchievementPrefab;
 
+    public static event Action OnCompleteAchievement;
 
     private void Awake()
     {
@@ -50,8 +52,12 @@ public class AchieveManager : MonoBehaviour
             {
                 Debug.Log($"Achievement {achievement.id} unlocked!");
 
+                // Instantiate achievement popup
                 GameObject popup = Instantiate(AchievementPrefab, FindObjectOfType<Canvas>().transform);
                 popup.GetComponent<AchievementPopUp>().SetAchievement(achievement);
+
+                // Notify listeners about the achievement update
+                OnCompleteAchievement?.Invoke();
             }
         }
     }

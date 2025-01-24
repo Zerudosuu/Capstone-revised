@@ -4,7 +4,7 @@ using UnityEngine.Events;
 public class HeatReceiver : MonoBehaviour
 {
     public UnityEvent OnBoilingPointReached;
-    private ItemReaction itemReaction;
+    public ItemReaction itemReaction;
 
     [Header("Particle System")] [SerializeField]
     private GameObject boilParticle;
@@ -14,6 +14,8 @@ public class HeatReceiver : MonoBehaviour
     private bool hasStartedBoiling = false;
     private bool hasStartedSteaming = false;
 
+    public bool isReceivingHeat = false;
+
     public void Start()
     {
         itemReaction = GetComponent<ItemReaction>();
@@ -21,11 +23,13 @@ public class HeatReceiver : MonoBehaviour
 
     public void ReceiveHeat(float heatAmount)
     {
-        float oldTemperature = itemReaction.item.currentTemperature;
-        itemReaction.item.currentTemperature = Mathf.Min(
+        float newTemperature = Mathf.Min(
             itemReaction.item.currentTemperature + heatAmount,
             itemReaction.item.maxTemperature
         );
+
+        itemReaction.SetTemperature(newTemperature);
+
 
         // Trigger steam at boiling point if not already triggered
         if (itemReaction.item.currentTemperature >= 100f && !hasStartedSteaming)

@@ -13,28 +13,6 @@ MonoBehaviour:
   m_Name: Items
   m_EditorClassIdentifier: 
   items:
-  - itemPrefab: {fileID: 0}
-    itemName: Thermometer (360 Degrees)
-    itemDescription: A tool used to measure temperature up to 360 Degrees
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 1
-    isCollected: 0
-    tagName: 0
-    compatibleTags: []
-    states:
-    - stateName: 
-      willChangeSprite: 0
-      sprite: {fileID: 0}
-      description: 
-      conditions:
-        itemNameRequirement: 
-      Temperature: 0
-    currentStateIndex: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
   - itemPrefab: {fileID: 331965834459403351, guid: db012a849ac9d794cb3162049efa4202, type: 3}
     itemName: Alcohol Lamp
     itemDescription: A laboratory equipment used for heating, sterilization, and
@@ -103,7 +81,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 4783582525948895554, guid: c91395fc596508142a929bb3c508a9f9, type: 3}
+  - itemPrefab: {fileID: 2549531968262880309, guid: 5ee308213cacd9b44accff74dbdf656e, type: 3}
     itemName: Match
     itemDescription: A slender piece of wood tipped with a chemical substance that
       produces fire.
@@ -424,7 +402,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 6624615194705630374, guid: ef81953465a8d39419f67c069fbe69b3, type: 3}
+  - itemPrefab: {fileID: 6188927877195818141, guid: f4ec15ed32279f64c837062e0a20de4e, type: 3}
     itemName: Water
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: 81dec73997a74af4d91b9d07a6cf6d5d, type: 3}

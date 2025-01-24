@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,34 +6,20 @@ using UnityEngine.UIElements;
 
 public class ItemContainerManager : MonoBehaviour
 {
-    [SerializeField]
-    private Item CurrentSelectedItem;
+    [SerializeField] private Item CurrentSelectedItem;
+    public bool isUnlocked;
+    public int priceToUnlock = 300;
+    public int maxItem = 16;
 
-    [SerializeField]
-    public GameObject PopUpButtons;
+    public GameObject NotUnlockPanel;
 
-    InfoItemManager infoItemManager;
 
-    void Awake()
+    public void Start()
     {
-        PopUpButtons.SetActive(false);
-    }
-
-    void Start()
-    {
-        infoItemManager = FindObjectOfType<InfoItemManager>(true);
-
-        if (infoItemManager == null)
+        if (isUnlocked)
         {
-            Debug.LogError("InfoItemManager is not found in the scene.");
+            NotUnlockPanel.SetActive(false);
         }
-    }
-
-    // Update is called once per frame
-    public void PopUP(Vector3 SelectedPosition)
-    {
-        PopUpButtons.SetActive(true);
-        PopUpButtons.transform.position = SelectedPosition;
     }
 
     public void OnItemClick(Item item)
@@ -41,14 +28,8 @@ public class ItemContainerManager : MonoBehaviour
         Debug.Log(item.itemName + " is selected currently.");
     }
 
-    public void OpenInfoContainer()
+    public bool CanAcceptMoreItems()
     {
-        infoItemManager.gameObject.SetActive(true);
-        infoItemManager.SetDisplayedItem(CurrentSelectedItem);
-    }
-
-    public void CloseInfoContainer()
-    {
-        infoItemManager.gameObject.SetActive(false);
+        return transform.childCount < maxItem;
     }
 }

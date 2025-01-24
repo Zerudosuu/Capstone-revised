@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class StepManager : MonoBehaviour
 {
-    public TextMeshProUGUI lessonStepText; // UI to display current lesson and step
+    public TextMeshProUGUI lessonStepText;
     private ExperimentObjectManager experimentObjectManager;
     public List<LessonSteps> MainLessonSteps;
     private int mainCurrentLessonIndex = 0;
@@ -14,13 +15,11 @@ public class StepManager : MonoBehaviour
     public GameObject Timer;
     public Animator anim;
 
-
     public string requiredAction;
-    public static event Action OnStepBroadcasted; // Event for step broadcast
+    public static event Action OnStepBroadcasted;
 
     private void Start()
     {
-        // Get the experiment object manager and populate lesson steps
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
         MainLessonSteps = experimentObjectManager.currentLesson.steps;
         Timer.SetActive(false);
@@ -33,11 +32,20 @@ public class StepManager : MonoBehaviour
             return;
 
         var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
 
-        // Validate and complete the substep
-        currentLesson.ValidateAndCompleteSubStep(itemName);
+        if (currentSubstep != null)
+        {
+            // Explicitly check for "wait" action and force the correct item name
+            if (currentSubstep.requiredAction == "wait" && itemName != "wait")
+            {
+                Debug.LogWarning("Step requires waiting. Action ignored until timer completes.");
+                return; // Prevent early completion
+            }
 
-        // Check if the current lesson is completed
+            currentLesson.ValidateAndCompleteSubStep(itemName);
+        }
+
         if (currentLesson.IsTaskCompleted())
         {
             Debug.Log($"Lesson {currentLessonIndex + 1} completed!");
@@ -69,10 +77,10 @@ public class StepManager : MonoBehaviour
             var currentLesson = lessonSteps[currentLessonIndex];
             var currentSubstep = currentLesson.GetCurrentSubstep();
 
-
             if (currentSubstep != null)
             {
-                requiredAction = currentSubstep.requiredAction; // Get the required action of the current substep
+                requiredAction = currentSubstep.requiredAction;
+
                 if (requiredAction == "wait")
                 {
                     Timer.SetActive(true);
@@ -99,7 +107,7 @@ public class StepManager : MonoBehaviour
 [System.Serializable]
 public class LessonStepsExample
 {
-    public List<Step> substeps; // Steps for the task
+    public List<Step> substeps;
     private int currentSubstepIndex = 0;
 
     public void ValidateAndCompleteSubStep(string itemName, string targetObject = null)
@@ -108,20 +116,15 @@ public class LessonStepsExample
             return;
 
         Step currentStep = substeps[currentSubstepIndex];
-        string requiredAction = currentStep.requiredAction; // Get the required action for this step
+        string requiredAction = currentStep.requiredAction;
 
         switch (requiredAction)
         {
             case "drop":
                 if (currentStep.requiredItemName == itemName)
                 {
-                    Debug.Log($"Step {currentStep.stepName} completed with drag-and-drop!");
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
-                }
-                else
-                {
-                    Debug.LogWarning("Incorrect item for drag-and-drop.");
                 }
 
                 break;
@@ -129,17 +132,11 @@ public class LessonStepsExample
             case "drag":
                 if (currentStep.requiredItemName == itemName)
                 {
-                    Debug.Log($"Step {currentStep.stepName} completed with drag!");
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
                 }
-                else
-                {
-                    Debug.LogWarning("Incorrect item for drag.");
-                }
 
                 break;
-
             case "assemble":
                 foreach (var substep in currentStep.substeps)
                 {
@@ -161,34 +158,20 @@ public class LessonStepsExample
 
                 Debug.LogWarning("Incorrect assembly action or target object.");
                 break;
-
             case "wait":
-                Debug.Log($"Step {currentStep.stepName} is waiting... Before: {currentStep.isCompleted}");
-
-                if (!currentStep.isCompleted) // Prevent duplicate completion
+                if (itemName == "wait" && !currentStep.isCompleted)
                 {
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
-                    Debug.Log($"Step {currentStep.stepName} marked complete. New index: {currentSubstepIndex}");
-                }
-                else
-                {
-                    Debug.LogWarning("Step was already completed.");
                 }
 
                 break;
+
             default:
                 if (currentStep.requiredItemName == itemName)
                 {
-                    Debug.Log(
-                        $"Step {currentStep.stepName} completed with action {requiredAction}!"
-                    );
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
-                }
-                else
-                {
-                    Debug.LogWarning("Incorrect item or action.");
                 }
 
                 break;

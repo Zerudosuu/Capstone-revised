@@ -8,11 +8,6 @@ using UnityEngine.UI;
 
 public class ItemManager : MonoBehaviour
 {
-    [Header("Item Container")] [SerializeField]
-    private GameObject EquipmentArea;
-
-    [SerializeField] private GameObject ChemicalArea;
-
     [Header("Shop Container")] [SerializeField]
     private GameObject ShopEquipmentArea;
 
@@ -24,6 +19,9 @@ public class ItemManager : MonoBehaviour
 
     [SerializeField] private Items items;
     public List<Item> clonedItems = new List<Item>();
+
+    public GameObject ContainerManagerForEquipments;
+    public GameObject ContainerManagerForChemicals;
 
     // Start is called before the first frame update
     void Start()
@@ -82,15 +80,38 @@ public class ItemManager : MonoBehaviour
             Debug.LogError("DragAndDropUI component is missing on the InventoryPrefabItem.");
         }
 
+        // Determine which container to search in
+        ContainerManager containerManager = null;
+
         if (item.itemType == Item.ItemType.Equipment)
         {
-            itemObject.transform.SetParent(EquipmentArea.transform, false);
+            containerManager = ContainerManagerForEquipments.GetComponent<ContainerManager>();
         }
         else if (item.itemType == Item.ItemType.Chemical)
         {
-            itemObject.transform.SetParent(ChemicalArea.transform, false);
+            containerManager = ContainerManagerForChemicals.GetComponent<ContainerManager>();
+        }
+
+        if (containerManager == null)
+        {
+            Debug.LogError("ContainerManager not found!");
+            return;
+        }
+
+        GameObject targetContainer = containerManager.SearchForAvailableContainer();
+
+        if (targetContainer != null)
+        {
+            itemObject.transform.SetParent(targetContainer.transform, false);
+            Debug.Log($"Item {item.itemName} added to {targetContainer.name}");
+        }
+        else
+        {
+            Debug.LogWarning($"No available container found for item: {item.itemName}");
+            Destroy(itemObject); // Prevent orphaned GameObjects if no container found
         }
     }
+
 
     //if the item in lock it will instantitate in the shop
     public void InstantiateInShop(Item item)

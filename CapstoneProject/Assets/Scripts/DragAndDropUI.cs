@@ -78,7 +78,6 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         canvasGroup.blocksRaycasts = false;
 
         itemContainerManager.OnItemClick(currenItem);
-        itemContainerManager.PopUpButtons.SetActive(false);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -126,33 +125,11 @@ public class DragAndDropUI : MonoBehaviour, IPointerDownHandler, IDragHandler, I
         {
             transform.position = originalPosition; // Return to original position
         }
+
         transform.position = originalPosition;
         isDragging = false;
     }
 
-    private void Update()
-    {
-        // If dragging, increase the pressTime to track how long we've been in the same spot
-        if (isDragging)
-        {
-            pressTime += Time.deltaTime;
-
-            // If the press time exceeds the long press threshold, trigger the long press action
-            if (pressTime >= longPressThreshold && !isLongPressing)
-            {
-                // Long press detected
-                isLongPressing = true;
-                Debug.Log("Long press detected on: " + currenItem.itemName);
-
-                itemContainerManager.PopUP(transform.position);
-                ButtonPopUpContainer buttonPopUpContainer = FindObjectOfType<ButtonPopUpContainer>(
-                    true
-                );
-
-                buttonPopUpContainer.GetTheCurrentItemToDisaplay(currenItem);
-            }
-        }
-    }
 
     public Vector3 GetOriginalPosition()
     {
