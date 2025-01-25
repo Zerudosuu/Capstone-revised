@@ -174,6 +174,10 @@ MonoBehaviour:
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: 
+    - stepDescription: Extract denatured alcohol using liquid dropper
+      isCompleted: 0
+      requiredObjectNames: []
+      actionRequired: 
     - stepDescription: 'Put 5 drops of denatured alcohol in the erlenmeyer flask '
       isCompleted: 0
       requiredObjectNames: []

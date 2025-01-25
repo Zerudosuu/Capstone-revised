@@ -96,7 +96,7 @@ internal class ExperimentManager : MonoBehaviour, IData
         isGameStarted = true;
         OnGameStart?.Invoke();
     }
-    
+
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
@@ -104,8 +104,6 @@ internal class ExperimentManager : MonoBehaviour, IData
 
     public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)
     {
-        Debug.LogWarning(itemReaction.GetInstanceID());
-
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
             bool conditionMet = false;
@@ -125,19 +123,9 @@ internal class ExperimentManager : MonoBehaviour, IData
 
                     Debug.Log($"Item updated to state: {state.stateName}");
 
-                    itemReaction.PlayShake();
+
                     break;
                 }
-            }
-
-            if (!conditionMet)
-            {
-                Debug.LogWarning(
-                    $"Item {ItemInteracted} not compatible with any state conditions."
-                );
-
-
-                itemReaction.PlayPopUp();
             }
         }
         else

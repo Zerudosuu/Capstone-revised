@@ -168,8 +168,16 @@ MonoBehaviour:
     isUnlock: 1
     isCollected: 0
     tagName: 0
-    compatibleTags: []
-    states: []
+    compatibleTags:
+    - Blocker
+    states:
+    - stateName: Thermometer 110 Degrees
+      willChangeSprite: 0
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: 
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
@@ -180,11 +188,19 @@ MonoBehaviour:
     itemDescription: A flask used for containing liquids and various laboratory processes.
     itemIcon: {fileID: 21300000, guid: 4be318f23c4893e4baae904686f8d507, type: 3}
     itemType: 0
-    isUnlock: 0
+    isUnlock: 1
     isCollected: 0
     tagName: 0
-    compatibleTags: []
-    states: []
+    compatibleTags:
+    - Measurement
+    states:
+    - stateName: Erlrnmeyer Flask
+      willChangeSprite: 0
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: 
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
@@ -195,18 +211,18 @@ MonoBehaviour:
     itemDescription: Used to seal openings of glassware.
     itemIcon: {fileID: 21300000, guid: 1c59e8bc9064f564bb4125611f3fc922, type: 3}
     itemType: 0
-    isUnlock: 0
+    isUnlock: 1
     isCollected: 0
     tagName: 0
     compatibleTags:
     - TempMeasurement
     states:
-    - stateName: Cork or Rubber stopper with Thermometer
+    - stateName: Cork or Rubber stopper
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
       conditions:
-        itemNameRequirement: Thermometer 110 Degrees
+        itemNameRequirement: 
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
@@ -218,12 +234,19 @@ MonoBehaviour:
     itemDescription: A tool used to transfer small amounts of liquid.
     itemIcon: {fileID: 21300000, guid: 5446c933a7d625f479158c19edf4e243, type: 3}
     itemType: 0
-    isUnlock: 0
+    isUnlock: 1
     isCollected: 0
     tagName: 0
     compatibleTags:
     - FlammableLiquid
     states:
+    - stateName: Liquid Dropper
+      willChangeSprite: 0
+      sprite: {fileID: 0}
+      description: 
+      conditions:
+        itemNameRequirement: 
+      Temperature: 0
     - stateName: Liquid Dropper with Denatured Alcohol
       willChangeSprite: 0
       sprite: {fileID: 0}

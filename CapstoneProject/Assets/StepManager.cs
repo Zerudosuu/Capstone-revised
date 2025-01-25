@@ -167,6 +167,14 @@ public class LessonStepsExample
 
                 break;
 
+            case "shake":
+                if (itemName == "shake" && !currentStep.isCompleted)
+                {
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                }
+
+                break;
             default:
                 if (currentStep.requiredItemName == itemName)
                 {

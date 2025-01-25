@@ -19,6 +19,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
 
     public event TemperatureChanged OnTemperatureChanged;
 
+
     public void SetTemperature(float newTemp)
     {
         if (Mathf.Abs(item.currentTemperature - newTemp) > 0.01f) // Avoid frequent tiny updates
@@ -31,97 +32,82 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     void Start()
     {
         experimentManager = FindObjectOfType<ExperimentManager>();
-        dragableItem = GetComponent<DragableItem>();
         experimentObjectManagerManager = FindObjectOfType<ExperimentObjectManager>();
-        if (ownDraggableItem != null)
-        {
-            ownDraggableItem = GetComponent<DragableItem>();
-        }
+        ownDraggableItem = GetComponent<DragableItem>();
     }
-
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (eventData.pointerDrag == null)
+        {
+            Debug.LogWarning("Dropped item is null.");
+            return;
+        }
+
         GameObject dropItem = eventData.pointerDrag;
         DragableItem draggable = dropItem.GetComponent<DragableItem>();
         ItemReaction droppedItem = dropItem.GetComponent<ItemReaction>();
 
+
         // Check if the current item is compatible with the dropped item
         if (
             item.compatibleTags.Contains(draggable.TagName) &&
-            gameObject.GetComponent<DragableItem>().placeInSlot
+            gameObject.GetComponent<DragableItem>().placeInSlot && item.states.Count > 0
         )
         {
             Debug.LogWarning(draggable.itemVariantID + " is the drop item itemVariant");
-            // Change the state of the current item
-
             experimentManager.UpdateItemPrefab(this, draggable.name);
-
-            // Trigger reactions for the current item
             CheckReactions(item.CurrentState.stateName, draggable);
 
-            // Validate sub-step
             StepManager stepManager = FindObjectOfType<StepManager>();
             if (stepManager != null)
             {
                 stepManager.ValidateAndCompleteSubStep(draggable.name);
             }
-        }
-        // Check if the dropped item is compatible with the current object
-        else if (droppedItem != null &&
-                 droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName))
-        {
-            // Change the state of the dropped item
-            droppedItem.item.SwitchToState(this.gameObject.name);
-            experimentManager.UpdateItemPrefab(droppedItem, this.gameObject.name);
 
-            // Optional: Trigger reactions for the dropped item
-            CheckReactions(droppedItem.item.CurrentState.stateName, draggable);
+            ownDraggableItem.PopUpOnItemValid();
+        }
+        else if (droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
+                 droppedItem != null)
+
+        {
+            StepManager stepManager = FindObjectOfType<StepManager>();
+            if (stepManager != null)
+            {
+                stepManager.ValidateAndCompleteSubStep(draggable.name);
+            }
+
+            print("Dropped item is compatible with this slot.");
+            experimentManager.UpdateItemPrefab(droppedItem, gameObject.GetComponent<DragableItem>().name);
+            CheckReactions(item.CurrentState.stateName, draggable);
+
+            ownDraggableItem.PopUpOnItemValid();
         }
         else
         {
-            Debug.LogWarning("No valid interaction found for the dropped item.");
+            ownDraggableItem.PopUpOnItemInvalid();
+            Debug.LogWarning("Dropped item is not compatible with this slot.");
+            draggable.transform.position = draggable.originalPosition; // Reset item position
         }
     }
-
 
     private void CheckReactions(string currentStateName, DragableItem draggable)
     {
         foreach (Reaction reaction in reactions) // Assuming `item.reactions` is a list of Reaction objects1
         {
-            // Check if the item's state matches and the trigger is valid
             if (
                 reaction.CheckStateName(currentStateName)
                 && reaction.triggers.Contains(draggable.name)
             )
             {
                 Debug.Log($"Reaction triggered: {reaction.reactionName}");
-
                 TriggerReaction(reaction, draggable);
-                return; // Reaction triggered, exit the loop
+                return;
             }
         }
 
-        Debug.LogWarning(
-            $"No valid reaction found for state: {currentStateName} with dropped item: {draggable.name}"
-        );
+        Debug.LogWarning($"No valid reaction found for state: {currentStateName} with dropped item: {draggable.name}");
     }
-
-    public void PlayPopUp()
-    {
-        if (ownDraggableItem != null)
-        {
-            ownDraggableItem.PopUp.SetActive(true);
-            ownDraggableItem.PopUpAnimator.Play("Pop");
-        }
-    }
-
-    public void PlayShake()
-    {
-        if (ownDraggableItem != null)
-            ownDraggableItem.anim.Play("Shake");
-    }
-
 
     private void TriggerReaction(Reaction reaction, DragableItem draggable)
     {
@@ -145,7 +131,35 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             }
         }
 
-        // Optional: Apply visual effects or animations
+        if (reaction.changePrefab && reaction.resultingItemPrefab != null)
+        {
+            GameObject resultingItem =
+                Instantiate(reaction.resultingItemPrefab, transform.position, Quaternion.identity);
+            resultingItem.name = reaction.resultingItemPrefab.name;
+            // Set parent correctly within UI
+            resultingItem.transform.SetParent(transform.parent, false); // 'false' maintains local scale
+
+            // Ensure it is at the correct hierarchy level
+            resultingItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
+
+            // Get and initialize draggable component
+            DragableItem draggableItem = resultingItem.GetComponent<DragableItem>();
+            if (draggableItem != null)
+            {
+                draggableItem.originalPosition = transform.position;
+                draggableItem.parentAfterDrag = transform.parent;
+                draggableItem.canvas = GetComponentInParent<Canvas>();
+            }
+
+            Destroy(draggable.gameObject);
+            Destroy(gameObject);
+        }
+
+        else if (reaction.ReactionSprite != null)
+        {
+            gameObject.GetComponent<Image>().sprite = reaction.ReactionSprite;
+        }
+
         if (reaction.visualEffectPrefab)
         {
             Instantiate(reaction.visualEffectPrefab, transform.position, Quaternion.identity);
