@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.IO;
 using TMPro;
+using System.Threading.Tasks;
 
 public class ProfileSelection : MonoBehaviour
 {
@@ -15,30 +16,41 @@ public class ProfileSelection : MonoBehaviour
         anim = GetComponent<Animator>();
     }
 
-    public void OpenPickFileImage()
+    public async void OpenPickFileImage()
     {
         if (NativeFilePicker.IsFilePickerBusy())
             return;
 
-        // Pick an image file (PNG or JPG only)
-        string[] imageFileTypes = new string[] { "jpg", "png" };
+        // Request permission to access files
+        NativeFilePicker.Permission permission = await NativeFilePicker.RequestPermissionAsync();
+        Debug.Log("Permission result: " + permission);
 
-        NativeFilePicker.Permission permission = NativeFilePicker.PickFile((path) =>
+        if (permission == NativeFilePicker.Permission.Granted)
         {
-            if (path == null)
-            {
-                Debug.Log("Operation cancelled");
-            }
-            else
-            {
-                Debug.Log("Picked file: " + path);
+            // Pick an image file (PNG or JPG only)
+            string[] imageFileTypes = new string[] { "image/jpeg", "image/png", "image/jpg" };
 
-                // Load the selected image as a Sprite and display it (if needed)
-                LoadImageIntoUI(path);
-                DataManager.Instance.gameData.PicturePath = path;
-                // Save the path to the game data
-            }
-        }, imageFileTypes);
+            NativeFilePicker.PickFile((path) =>
+            {
+                if (path == null)
+                {
+                    Debug.Log("Operation cancelled");
+                }
+                else
+                {
+                    Debug.Log("Picked file: " + path);
+
+                    // Load the selected image as a Sprite and display it (if needed)
+                    LoadImageIntoUI(path);
+                    DataManager.Instance.gameData.PicturePath = path;
+                    // Save the path to the game data
+                }
+            }, imageFileTypes);
+        }
+        else
+        {
+            Debug.LogError("Permission denied. Cannot access files.");
+        }
     }
 
     // Function to load the selected image and set it to a UI Image component

@@ -69,6 +69,17 @@ public class StepManager : MonoBehaviour
         }
     }
 
+    public bool RequiredItemForTheStep(string item)
+    {
+        var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
+
+        if (currentSubstep != null)
+            return currentSubstep.requiredItemName == item;
+        else
+            return false;
+    }
+
     private void DisplayCurrentStep()
     {
         anim.Play("SpawnSteps");

@@ -55,39 +55,62 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             gameObject.GetComponent<DragableItem>().placeInSlot && item.states.Count > 0
         )
         {
-            Debug.LogWarning(draggable.itemVariantID + " is the drop item itemVariant");
-            experimentManager.UpdateItemPrefab(this, draggable.name);
-            CheckReactions(item.CurrentState.stateName, draggable);
-
-            StepManager stepManager = FindObjectOfType<StepManager>();
-            if (stepManager != null)
+            if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
             {
-                stepManager.ValidateAndCompleteSubStep(draggable.name);
+                StepManager stepManager = FindObjectOfType<StepManager>();
+                if (stepManager != null)
+                {
+                    if (stepManager.RequiredItemForTheStep(draggable.name))
+                    {
+                        stepManager.ValidateAndCompleteSubStep(draggable.name);
+                        experimentManager.UpdateItemPrefab(this, draggable.name);
+                        CheckReactions(item.CurrentState.stateName, draggable);
+                    }
+                    else
+                    {
+                        draggable.transform.position = draggable.originalPosition;
+                    }
+                }
             }
-
-            ownDraggableItem.PopUpOnItemValid();
+            else
+            {
+                experimentManager.UpdateItemPrefab(this, draggable.name);
+                CheckReactions(item.CurrentState.stateName, draggable);
+            }
         }
         else if (droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
                  droppedItem != null)
 
         {
-            StepManager stepManager = FindObjectOfType<StepManager>();
-            if (stepManager != null)
+            if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
             {
-                stepManager.ValidateAndCompleteSubStep(draggable.name);
+                StepManager stepManager = FindObjectOfType<StepManager>();
+                if (stepManager != null)
+                {
+                    if (stepManager.RequiredItemForTheStep(draggable.name))
+                    {
+                        stepManager.ValidateAndCompleteSubStep(draggable.name);
+
+                        experimentManager.UpdateItemPrefab(droppedItem, gameObject.GetComponent<DragableItem>().name);
+                        CheckReactions(item.CurrentState.stateName, draggable);
+                    }
+                    else
+                    {
+                        draggable.transform.position = draggable.originalPosition;
+                    }
+                }
             }
-
-            print("Dropped item is compatible with this slot.");
-            experimentManager.UpdateItemPrefab(droppedItem, gameObject.GetComponent<DragableItem>().name);
-            CheckReactions(item.CurrentState.stateName, draggable);
-
-            ownDraggableItem.PopUpOnItemValid();
+            else
+            {
+                experimentManager.UpdateItemPrefab(droppedItem, draggable.name);
+                CheckReactions(item.CurrentState.stateName, draggable);
+            }
         }
         else
         {
             ownDraggableItem.PopUpOnItemInvalid();
+            draggable.transform.position = draggable.originalPosition;
             Debug.LogWarning("Dropped item is not compatible with this slot.");
-            draggable.transform.position = draggable.originalPosition; // Reset item position
         }
     }
 

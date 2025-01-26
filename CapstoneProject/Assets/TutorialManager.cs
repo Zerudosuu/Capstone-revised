@@ -1,43 +1,39 @@
 using System.Collections.Generic;
 using DG.Tweening; // Add DOTween namespace
 using UnityEngine;
+using UnityEngine.Events;
 using Yarn.Unity;
 
 public class TutorialManager : MonoBehaviour, IData
 {
-    [Header("Tutorial Manager")]
-    [SerializeField]
+    [Header("Tutorial Manager")] [SerializeField]
     private GameObject highlightObject; // Highlight object
 
-    [SerializeField]
-    private GameObject dialogueBoxPosition; // Dialogue box object
+    [SerializeField] private GameObject dialogueBoxPosition; // Dialogue box object
 
     public GameObject HighLightParent;
 
     public List<HighlightAndDialoguePosition> highLightPositions =
         new List<HighlightAndDialoguePosition>();
-    private int currentIndex = 0;
 
-    private DialogueRunner dialogueRunner; // Reference to Dialogue Runner
-
+    public int currentIndex = 0;
+    public DialogueRunner dialogueRunner; // Reference to Dialogue Runner
     public bool isTutorialComplete = false; // Flag to check if tutorial is complete
 
     // DOTween settings
-    [Header("Tween Settings")]
-    public float transitionDuration = 0.5f; // Duration of the transition
+    [Header("Tween Settings")] public float transitionDuration = 0.5f; // Duration of the transition
 
     void Start()
     {
         highlightObject.SetActive(false); // Hide the highlight initially
 
-        // Find and reference the Dialogue Runner
-        dialogueRunner = FindObjectOfType<DialogueRunner>();
 
         if (dialogueRunner != null)
         {
             // Register "set_highlight" command manually
             dialogueRunner.AddCommandHandler<string>("set_highlight", SetHighlight);
             dialogueRunner.AddCommandHandler("hide_highlight", HideHighlight);
+            dialogueRunner.AddCommandHandler("complete_tutorial", OnTutorialComplete);
         }
         else
         {
@@ -62,6 +58,9 @@ public class TutorialManager : MonoBehaviour, IData
             currentIndex--;
         }
 
+        highlightObject.SetActive(true);
+
+        highLightPositions[currentIndex].OnHighlightEnter.Invoke();
         // Clamp index within bounds
         currentIndex = Mathf.Clamp(currentIndex, 0, highLightPositions.Count - 1);
 
@@ -92,6 +91,13 @@ public class TutorialManager : MonoBehaviour, IData
             .OnComplete(() => highlightObject.SetActive(false));
     }
 
+    public void OnTutorialComplete()
+    {
+        isTutorialComplete = true;
+        gameObject.SetActive(false);
+        dialogueBoxPosition.SetActive(false);
+    }
+
     public void LoadData(GameData gameData)
     {
         if (gameData.isTutorialCompleted)
@@ -99,6 +105,10 @@ public class TutorialManager : MonoBehaviour, IData
             isTutorialComplete = gameData.isTutorialCompleted;
             gameObject.SetActive(false);
             dialogueBoxPosition.SetActive(false);
+        }
+        else
+        {
+            dialogueRunner.StartDialogue("TutorialDialogue");
         }
     }
 
@@ -112,13 +122,8 @@ public class TutorialManager : MonoBehaviour, IData
 public class HighlightAndDialoguePosition
 {
     public Vector3 highlightPosition;
-
     public Vector3 dialoguePosition;
     public Vector3 highlightScale;
 
-    [Header("Extra Highlight Position")]
-    public GameObject AnotherHighlightObject;
-
-    public Vector3 extraHighlightPosition;
-    public Vector3 extraHighlightScale;
+    public UnityEvent OnHighlightEnter;
 }
