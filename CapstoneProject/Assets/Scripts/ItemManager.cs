@@ -48,7 +48,7 @@ public class ItemManager : MonoBehaviour
     }
 
     // Instantiate cloned items in Inventory or Shop
-    void InstantiateItems()
+    public void InstantiateItems()
     {
         foreach (Item item in clonedItems)
         {
@@ -56,10 +56,10 @@ public class ItemManager : MonoBehaviour
             {
                 InstantiateInInventory(item);
             }
-            // else
-            // {
-            //     InstantiateInShop(item);
-            // }
+            else
+            {
+                 InstantiateInShop(item);
+            }
         }
     }
 
