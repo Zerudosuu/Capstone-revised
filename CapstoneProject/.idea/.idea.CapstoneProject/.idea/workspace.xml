@@ -6,22 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LessonTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LessonTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProfileSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileSelection.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TabContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TabContainerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,6 +16,31 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitToolBoxStore">
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="main" />
+                    <option name="lastUsedInstant" value="1737969657" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="Musayan_Update" />
+                    <option name="lastUsedInstant" value="1737969446" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/779cc116a5954f1c9b92496e62345641175c00/cd/70b1f19d/MonoBehaviour.cs" root0="FORCE_HIGHLIGHTING" />

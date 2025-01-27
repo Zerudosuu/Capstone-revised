@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class ProfileManager : MonoBehaviour
+public class ProfileManager : MonoBehaviour, IData
 {
     [Header("Player Profile")] [SerializeField]
     private Image PlayerProfilePicture;
@@ -14,19 +14,31 @@ public class ProfileManager : MonoBehaviour
     [SerializeField] private TMP_Text playerTitle;
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private TMP_Text playerLrn;
-    [SerializeField] private TMP_Text EXPgain;
-
-    private string ProfilePicturePath;
+    [SerializeField] private TMP_Text ExperienceGain;
     Achievements achievementData;
 
-    public void SetDetails(GameData gameData)
+    //Values
+
+    public string ProfilePicturePath;
+    public int level;
+    public string title = "Noob";
+    public string name;
+    public string lrn;
+    public int exp;
+    public int maxExperience;
+
+
+    private void Start()
     {
-        playerName.text = gameData.playerName;
-        playerLevel.text = gameData.Level.ToString();
-        playerLrn.text = gameData.playerLRN;
-        EXPgain.text = gameData.currentExperience.ToString() + "/" + gameData.currentMaxExperience.ToString();
-        ProfilePicturePath = gameData.PicturePath;
+        playerLevel.text = "Level: " + level.ToString();
+        playerTitle.text = title;
+        playerName.text = name;
+        playerLrn.text = "LRN: " + lrn;
+        ExperienceGain.text = exp.ToString() + " / " + maxExperience.ToString();
+
+        LoadImageIntoUI();
     }
+
 
     private void LoadImageIntoUI()
     {
@@ -43,5 +55,24 @@ public class ProfileManager : MonoBehaviour
         {
             Debug.LogError("Failed to load image from path: " + ProfilePicturePath);
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        level = gameData.Level;
+        name = gameData.playerName;
+        lrn = gameData.playerLRN;
+        exp = gameData.currentExperience;
+        maxExperience = gameData.currentMaxExperience;
+        ProfilePicturePath = gameData.PicturePath;
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        gameData.Level = this.level;
+        gameData.playerName = this.name;
+        gameData.playerLRN = this.lrn;
+        gameData.currentExperience = this.exp;
+        gameData.currentMaxExperience = this.maxExperience;
     }
 }

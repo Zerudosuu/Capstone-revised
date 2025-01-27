@@ -4143,7 +4143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgMusics:
-  - {fileID: 8300000, guid: e204178e5e60d1d4aa196710556336d7, type: 3}
+  - {fileID: 8300000, guid: 87ef3aa5590a44846a90145125a814ad, type: 3}
   - {fileID: 8300000, guid: a1a17789fa120804eb9a2bc649dda2be, type: 3}
   - {fileID: 8300000, guid: 57055e16b60a3314eb656158eec2e738, type: 3}
   bgAudioSorce: {fileID: 5565890504488167372}
