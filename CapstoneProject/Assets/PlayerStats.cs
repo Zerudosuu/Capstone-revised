@@ -1,44 +1,38 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerStats : MonoBehaviour
+public class PlayerStats : MonoBehaviour, IData
 {
-    [Header("Player Stats")]
-    [SerializeField]
+    [Header("Player Stats")] [SerializeField]
     private int playerLvl;
 
-    [SerializeField]
-    private float playerEXP;
+    [SerializeField] private float playerEXP;
 
-    [SerializeField]
-    private string playerTitle;
+    [SerializeField] private string playerTitle;
 
-    [Header("Statistic Base")]
-    [SerializeField]
+    [Header("Statistic Base")] [SerializeField]
     private float expGained;
 
-    [SerializeField]
-    private float maxEXP;
+    [SerializeField] private float maxEXP;
 
-    [Header("Display")]
-    [SerializeField]
-    private TMP_Text lvlTxt;
+    [Header("Display")] [SerializeField] private TMP_Text lvlTxt;
 
-    [SerializeField]
-    private TMP_Text titleTxt;
+    [SerializeField] private TMP_Text titleTxt;
 
-    [SerializeField]
-    private TMP_Text expTxt;
+    [SerializeField] private TMP_Text expTxt;
 
-    [SerializeField]
-    private Slider expSlider;
+    [SerializeField] private Slider expSlider;
+
+
+    // Event to notify UI updates
+    public static event Action<int, string, float, float> OnPlayerStatsUpdated;
 
     private void Start()
     {
         PlayerStatsUpdate(playerLvl);
+        NotifyUIUpdate();
     }
 
     //TO DO - needed to load and save
@@ -57,9 +51,11 @@ public class PlayerStats : MonoBehaviour
         }
 
         playerUpdateUI();
+        NotifyUIUpdate();
     }
 
     #region Update UI
+
     private void PlayerStatsUpdate(int level)
     {
         switch (level)
@@ -101,5 +97,24 @@ public class PlayerStats : MonoBehaviour
         expSlider.maxValue = maxEXP;
     }
 
+    private void NotifyUIUpdate()
+    {
+        OnPlayerStatsUpdated?.Invoke(playerLvl, playerTitle, expGained, maxEXP);
+    }
+
     #endregion
+
+    public void LoadData(GameData gameData)
+    {
+        playerLvl = gameData.Level;
+        expGained = gameData.currentExperience;
+        maxEXP = gameData.currentMaxExperience;
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        gameData.Level = playerLvl;
+        gameData.currentExperience = (int)expGained;
+        gameData.currentMaxExperience = (int)maxEXP;
+    }
 }

@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Unity.VisualScripting;
 
 public class ProfileManager : MonoBehaviour, IData
 {
@@ -28,6 +30,17 @@ public class ProfileManager : MonoBehaviour, IData
     public int maxExperience;
 
 
+    private void OnEnable()
+    {
+        PlayerStats.OnPlayerStatsUpdated += UpdateProfileUI;
+    }
+
+    private void OnDestroy()
+    {
+        PlayerStats.OnPlayerStatsUpdated -= UpdateProfileUI;
+    }
+
+
     private void Start()
     {
         playerLevel.text = "Level: " + level.ToString();
@@ -39,6 +52,17 @@ public class ProfileManager : MonoBehaviour, IData
         LoadImageIntoUI();
     }
 
+    private void UpdateProfileUI(int newLevel, string newTitle, float newExp, float newMaxExp)
+    {
+        level = newLevel;
+        title = newTitle;
+        exp = (int)newExp;
+        maxExperience = (int)newMaxExp;
+
+        playerLevel.text = "Level: " + level.ToString();
+        playerTitle.text = title;
+        ExperienceGain.text = $"{exp} / {maxExperience}";
+    }
 
     private void LoadImageIntoUI()
     {

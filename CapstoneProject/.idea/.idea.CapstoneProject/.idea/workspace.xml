@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerStats.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -167,6 +169,7 @@
       <workItem from="1737948292981" duration="4174000" />
       <workItem from="1737959413622" duration="5800000" />
       <workItem from="1737966180818" duration="755000" />
+      <workItem from="1737981904907" duration="1481000" />
     </task>
     <servers />
   </component>
