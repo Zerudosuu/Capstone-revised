@@ -218,14 +218,6 @@ public class Reaction
     public GameObject resultingItemPrefab; // Resulting item (if applicable)
     public GameObject visualEffectPrefab; // Optional visual effect (e.g., steam, frost)
 
-    [Header("Temperature Change")] public float temperatureChange; // Change in temperature
-    public bool increaseTemperature;
-
-    public bool
-        willGoBackToPreviousTemperature; // If true, the item will go back to its previous temperature after the reaction slowly
-
-    public float ReactionDuration;
-
     [Header("Animation")]
     // Animation
     public Animator Animator; // Optional animation for the reaction

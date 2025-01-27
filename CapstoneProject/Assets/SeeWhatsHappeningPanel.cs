@@ -39,10 +39,12 @@ public class SeeWhatsHappeningPanel : MonoBehaviour
         if (isOpen)
         {
             OnPanelOpened?.Invoke(); // Notify the timer to pause
+            print("Panel opened");
         }
         else
         {
             OnPanelClosed?.Invoke(); // Notify the timer to resume
+            print("Panel closed");
         }
     }
 

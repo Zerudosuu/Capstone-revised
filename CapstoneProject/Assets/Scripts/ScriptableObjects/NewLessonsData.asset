@@ -202,7 +202,14 @@ MonoBehaviour:
     SecondExperience: 200
     isItemRewardCollected: 0
     ItemRewards: []
-    studentRecords: []
+    studentRecords:
+    - attemptId: 0
+      studentName: 
+      lessonId: 
+      Grade: 0
+      TimeTaken: 0
+      experimentCompleted: 0
+      questionsAndAnswers: []
   - LessonID: 3
     chapterName: 'Everything has changed '
     chapterNumber: 3

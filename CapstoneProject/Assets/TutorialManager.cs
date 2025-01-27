@@ -49,38 +49,41 @@ public class TutorialManager : MonoBehaviour, IData
     // Command to move the highlight (smooth transition)
     public void SetHighlight(string direction)
     {
-        if (direction == "next")
+        if (!isTutorialComplete)
         {
-            currentIndex++;
+            if (direction == "next")
+            {
+                currentIndex++;
+            }
+            else if (direction == "back")
+            {
+                currentIndex--;
+            }
+
+            highlightObject.SetActive(true);
+
+            highLightPositions[currentIndex].OnHighlightEnter.Invoke();
+            // Clamp index within bounds
+            currentIndex = Mathf.Clamp(currentIndex, 0, highLightPositions.Count - 1);
+
+            HighlightAndDialoguePosition positionData = highLightPositions[currentIndex];
+
+            // Smoothly move and scale the highlight using DOTween
+            highlightObject.SetActive(true);
+
+            highlightObject
+                .transform.DOLocalMove(positionData.highlightPosition, transitionDuration)
+                .SetEase(Ease.OutQuad);
+
+            highlightObject
+                .transform.DOScale(positionData.highlightScale, transitionDuration)
+                .SetEase(Ease.OutQuad);
+
+            // Smoothly move the dialogue box position
+            dialogueBoxPosition
+                .transform.DOLocalMove(positionData.dialoguePosition, transitionDuration)
+                .SetEase(Ease.OutQuad);
         }
-        else if (direction == "back")
-        {
-            currentIndex--;
-        }
-
-        highlightObject.SetActive(true);
-
-        highLightPositions[currentIndex].OnHighlightEnter.Invoke();
-        // Clamp index within bounds
-        currentIndex = Mathf.Clamp(currentIndex, 0, highLightPositions.Count - 1);
-
-        HighlightAndDialoguePosition positionData = highLightPositions[currentIndex];
-
-        // Smoothly move and scale the highlight using DOTween
-        highlightObject.SetActive(true);
-
-        highlightObject
-            .transform.DOLocalMove(positionData.highlightPosition, transitionDuration)
-            .SetEase(Ease.OutQuad);
-
-        highlightObject
-            .transform.DOScale(positionData.highlightScale, transitionDuration)
-            .SetEase(Ease.OutQuad);
-
-        // Smoothly move the dialogue box position
-        dialogueBoxPosition
-            .transform.DOLocalMove(positionData.dialoguePosition, transitionDuration)
-            .SetEase(Ease.OutQuad);
     }
 
     public void HideHighlight()
@@ -89,6 +92,11 @@ public class TutorialManager : MonoBehaviour, IData
             .transform.DOScale(Vector3.zero, transitionDuration)
             .SetEase(Ease.InQuad)
             .OnComplete(() => highlightObject.SetActive(false));
+    }
+
+    public void Skip()
+    {
+        OnTutorialComplete();
     }
 
     public void OnTutorialComplete()

@@ -612,9 +612,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 4: Assemble the wire gauze, tripod, and alcohol lamp. Replace the
-    contents of the beaker with tap water. Place the beaker with water on the wire
-    gauze.'
+  m_text: 'Step 4:  Cover the Erlenmeyer Flask with the Stopper'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
   m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
@@ -840,7 +838,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &49502942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1408,8 +1406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 2: Measure the initial temperature of the air just above the water
-    level.'
+  m_text: 'Step 2: Extract Denatured Alcohol Using the Liquid Dropper'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
   m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
@@ -1635,7 +1632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: 152.76247}
+  m_AnchoredPosition: {x: 5.882, y: 127}
   m_SizeDelta: {x: 799.7641, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149626353
@@ -1658,8 +1655,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 5: Heat the water until it boils and measure the temperature of the
-    air just above the water level.'
+  m_text: 'Step 5: Wait for 2 Minutes Before Measuring the Temperature'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
   m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
@@ -1814,6 +1810,43 @@ MonoBehaviour:
   m_DeselectOnBackgroundClick: 1
   m_PointerBehavior: 0
   m_CursorLockBehavior: 0
+--- !u!1 &154084242
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 154084243}
+  m_Layer: 5
+  m_Name: StepsContainer (5)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &154084243
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 154084242}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1274131964}
+  - {fileID: 1896984576}
+  m_Father: {fileID: 289110390}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 463.29, y: -3127.9775}
+  m_SizeDelta: {x: 792.424, y: 337.957}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &157809500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2787,14 +2820,16 @@ RectTransform:
   - {fileID: 1298483642}
   - {fileID: 1369870373}
   - {fileID: 425299699}
+  - {fileID: 154084243}
+  - {fileID: 1376676562}
   - {fileID: 329995502}
   - {fileID: 1862358522}
   m_Father: {fileID: 1536360556}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.00012207031}
-  m_SizeDelta: {x: 0, y: 3447.7612}
+  m_AnchoredPosition: {x: 0, y: 2555.4512}
+  m_SizeDelta: {x: 0, y: 4527.151}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &289110391
 MonoBehaviour:
@@ -3273,8 +3308,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -3017.287}
-  m_SizeDelta: {x: 792.4237, y: 416.69}
+  m_AnchoredPosition: {x: 463.29, y: -4035.8674}
+  m_SizeDelta: {x: 792.424, y: 538.309}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &382127014
 GameObject:
@@ -4161,8 +4196,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -2569.343}
-  m_SizeDelta: {x: 792.4237, y: 347.398}
+  m_AnchoredPosition: {x: 463.29, y: -2763.843}
+  m_SizeDelta: {x: 792.424, y: 258.512}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &455376239
 GameObject:
@@ -5152,7 +5187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: -105}
+  m_AnchoredPosition: {x: 5.882, y: -44}
   m_SizeDelta: {x: 799.7641, y: 253.34}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &547353777
@@ -5175,10 +5210,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Crushed ice lowers the temperature of the water surface, cooling the air
-    above it. This step illustrates how thermal energy flows from warmer air to the
-    cooler water surface, causing the air temperature to decrease. It demonstrates
-    how cooling slows molecular motion and contracts gases.
+  m_text: Adding exactly 5 drops of denatured alcohol ensures a controlled amount
+    of liquid for the experiment. This small volume is sufficient to demonstrate
+    the effect without overwhelming the system. Too much alcohol could cause excessive
+    evaporation and pressure changes, while too little might not produce a measurable
+    reaction, making precise measurement crucial.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -5556,8 +5592,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -377.49493}
-  m_SizeDelta: {x: 792.4237, y: 339.0059}
+  m_AnchoredPosition: {x: 463.29, y: -444.0065}
+  m_SizeDelta: {x: 792.424, y: 472.029}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &643363530
 GameObject:
@@ -6128,7 +6164,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -1194.5801}
+  m_AnchoredPosition: {x: 463.29, y: -1433.523}
   m_SizeDelta: {x: 792.4237, y: 347.398}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &701920100
@@ -6213,8 +6249,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1045038088}
   m_HandleRect: {fileID: 1045038087}
   m_Direction: 2
-  m_Value: 0.9999998
-  m_Size: 0.5718783
+  m_Value: -0.00000019107439
+  m_Size: 0.43537012
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8496,6 +8532,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a5c6003f2fe37d44a56e38a46858883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timerText: {fileID: 0}
   timeRemaining: 240
 --- !u!114 &994356368
 MonoBehaviour:
@@ -8693,8 +8730,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -783.93945}
-  m_SizeDelta: {x: 792.4237, y: 342.0832}
+  m_AnchoredPosition: {x: 463.29, y: -969.92236}
+  m_SizeDelta: {x: 792.424, y: 448.003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1033973931
 GameObject:
@@ -9077,8 +9114,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1804801138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.4281216}
-  m_AnchorMax: {x: 1, y: 0.9999999}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0.43537012}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -9973,6 +10010,7 @@ MonoBehaviour:
   itemPrefab: {fileID: 570950269348828227, guid: 88ef190b446f32a49a36911ac9a3dbbf, type: 3}
   ItemContainer: {fileID: 874337425}
   itemSlot: {fileID: 8211378436804619817, guid: b36361c8d85552040a86b1b23a9abc2c, type: 3}
+  gameMode: 0
 --- !u!4 &1154070058
 Transform:
   m_ObjectHideFlags: 0
@@ -10527,6 +10565,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1179706989}
   m_CullTransparentMesh: 1
+--- !u!1 &1199616900
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199616901}
+  - component: {fileID: 1199616903}
+  - component: {fileID: 1199616902}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1199616901
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199616900}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1376676562}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.882, y: 127}
+  m_SizeDelta: {x: 799.7641, y: 48.0945}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1199616902
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199616900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Step 7:  Take the Temperature Reading'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
+  m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30.68
+  m_fontSizeBase: 30.68
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1199616903
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199616900}
+  m_CullTransparentMesh: 1
 --- !u!1 &1257077817
 GameObject:
   m_ObjectHideFlags: 0
@@ -10790,8 +10962,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 3: Fill the beaker with crushed ice up to the water level. After
-    5 minutes, measure the temperature of the air just above the water level.'
+  m_text: 'Step 3: Put 5 Drops of Denatured Alcohol in the Erlenmeyer Flask'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
   m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
@@ -10868,6 +11039,140 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272798192}
   m_CullTransparentMesh: 1
+--- !u!1 &1274131963
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274131964}
+  - component: {fileID: 1274131966}
+  - component: {fileID: 1274131965}
+  m_Layer: 5
+  m_Name: Title
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1274131964
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274131963}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 154084243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.882, y: 127}
+  m_SizeDelta: {x: 799.7641, y: 48.0945}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1274131965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274131963}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Step 6:  Shake the Erlenmeyer Flask for 2 Minutes'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
+  m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 30.68
+  m_fontSizeBase: 30.68
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 1
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1274131966
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274131963}
+  m_CullTransparentMesh: 1
 --- !u!1 &1287100642
 GameObject:
   m_ObjectHideFlags: 0
@@ -10943,7 +11248,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -1628.1052}
+  m_AnchoredPosition: {x: 463.29, y: -1867.0481}
   m_SizeDelta: {x: 792.4237, y: 387.8522}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1307525465
@@ -11116,8 +11421,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: 2.0469}
-  m_SizeDelta: {x: 799.7641, y: 253.34}
+  m_AnchoredPosition: {x: 5.882, y: -138.082}
+  m_SizeDelta: {x: 799.764, y: 507.979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1314940675
 MonoBehaviour:
@@ -11139,15 +11444,11 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: '
-
-    Water serves as a stable medium for observing thermal effects on
-    the air above its surface. Using an appropriate amount ensures enough surface
-    coverage for meaningful temperature measurement, while avoiding excessive evaporation
-    or cooling that could interfere with accurate results.
-
-
-'
+  m_text: The thermometer is inserted into the stopper to ensure accurate temperature
+    measurement of the vapor inside the flask. A tight seal prevents heat loss and
+    external interference, maintaining a closed system essential for applying Gay-Lussac's
+    Law. The thermometer must measure the vapor temperature, as this reflects the
+    pressure-temperature relationship in the fixed-volume system.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -11210,7 +11511,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_margin: {x: 0, y: 0, z: 0, w: 144.34508}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -11662,7 +11963,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: -73}
+  m_AnchoredPosition: {x: 5.882, y: 3}
   m_SizeDelta: {x: 799.7641, y: 225.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1344056586
@@ -11685,10 +11986,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Crushed ice lowers the temperature of the water surface, cooling the air
-    above it. This step illustrates how thermal energy flows from warmer air to the
-    cooler water surface, causing the air temperature to decrease. It demonstrates
-    how cooling slows molecular motion and contracts gases.
+  m_text: 'Covering the flask with a stopper creates a closed system, preventing
+    the escape of alcohol vapors and ensuring accurate temperature and pressure measurements.
+    A tight seal maintains a fixed volume, a key condition for Gay-Lussac''s Law,
+    and prevents external factors from interfering with the pressure-temperature
+    relationship inside the flask.
+
+    
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -12031,9 +12337,184 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -2108.8376}
+  m_AnchoredPosition: {x: 463.29, y: -2347.7805}
   m_SizeDelta: {x: 792.4237, y: 441.8127}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1376676561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1376676562}
+  m_Layer: 5
+  m_Name: StepsContainer (6)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1376676562
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1376676561}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1199616901}
+  - {fileID: 1378688761}
+  m_Father: {fileID: 289110390}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 463.29, y: -3531.8345}
+  m_SizeDelta: {x: 792.424, y: 337.957}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1378688760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1378688761}
+  - component: {fileID: 1378688763}
+  - component: {fileID: 1378688762}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1378688761
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378688760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1376676562}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.882, y: -11}
+  m_SizeDelta: {x: 799.7641, y: 225.01}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1378688762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378688760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Measuring the temperature provides data on how the denatured alcohol responds
+    to the conditions inside the flask. This information is crucial for understanding
+    the relationship between pressure and temperature, as the temperature reading
+    reflects the pressure change caused by evaporation, reinforcing the principles
+    of Gay-Lussac's Law.
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
+  m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 27.7
+  m_fontSizeBase: 27.7
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1378688763
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1378688760}
+  m_CullTransparentMesh: 1
 --- !u!1 &1380415422
 GameObject:
   m_ObjectHideFlags: 0
@@ -12202,7 +12683,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: -41}
+  m_AnchoredPosition: {x: 5.882, y: -66.76242}
   m_SizeDelta: {x: 799.7641, y: 225.01}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1383098852
@@ -12225,11 +12706,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Boiling water transfers heat to the surrounding air, increasing its temperature.
-    As air molecules gain energy, they move faster, expand, and rise. This step demonstrates
-    thermal expansion and how gases respond to heat by increasing in volume and pressure.
-    It also provides a visual example of energy transfer between a liquid and the
-    surrounding gas.
+  m_text: Waiting allows the system to reach thermal equilibrium, ensuring the temperature
+    reading is stable and accurate. During this time, the alcohol vapor and air inside
+    the flask equilibrate, minimizing transient changes and ensuring the temperature
+    reflects the true state of the system.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -12649,7 +13129,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: 152.76247}
+  m_AnchoredPosition: {x: 5.882, y: 183}
   m_SizeDelta: {x: 799.7641, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424787404
@@ -12672,10 +13152,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Step 1: Pour approximately 150 ml of water into the beaker.
-
-
-'
+  m_text: Step 1. Insert the Thermometer into the Stopper
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
   m_sharedMaterial: {fileID: -4476611893376807391, guid: acaf19ce70e64e64a89142d3c640e8e9, type: 2}
@@ -12714,7 +13191,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 16
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -13091,8 +13568,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: -38}
-  m_SizeDelta: {x: 799.7641, y: 214.1022}
+  m_AnchoredPosition: {x: 5.882, y: -52.324}
+  m_SizeDelta: {x: 799.764, y: 242.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1466544106
 MonoBehaviour:
@@ -13114,10 +13591,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Measuring the initial air temperature establishes a baseline, making it
-    easier to observe and quantify how temperature changes in response to cooling
-    or heating. This step provides insights into the thermal energy exchange between
-    water and the surrounding air.
+  m_text: 'The liquid dropper is used to measure and transfer a precise amount of
+    denatured alcohol into the flask. Accurate measurement is critical because denatured
+    alcohol is highly volatile, and even small variations in quantity can lead to
+    excessive evaporation or insufficient reaction, affecting the experiment''s reliability
+    and results.
+
+    
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -14526,12 +15008,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: This experiment demonstrates how thermal energy affects the behavior of
-    gases, emphasizing concepts such as thermal energy transfer, expansion, and contraction.
-    Cooling the water with ice reduces the air temperature, while heating it to boiling
-    increases the air temperature and illustrates thermal expansion. Through these
-    observations, we gain a deeper understanding of the dynamic relationship between
-    temperature and the behavior of gases in response to changes in thermal energy.
+  m_text: The experiment successfully demonstrates Gay-Lussac's Law by showing the
+    direct relationship between pressure and temperature in a closed system. By carefully
+    controlling variables such as the amount of alcohol, the tightness of the flask's
+    seal, and the temperature, we observed how evaporation increases vapor pressure
+    and temperature. This reinforces the importance of precise measurements and a
+    closed system in studying gas laws and provides a practical example of the pressure-temperature
+    relationship in real-world scenarios.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 2c30ff63c779bf747b562a71f3db016b, type: 2}
   m_sharedMaterial: {fileID: 6743174247546254440, guid: 2c30ff63c779bf747b562a71f3db016b, type: 2}
@@ -14565,12 +15048,12 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 11.17
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -14623,7 +15106,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1633737355
 RectTransform:
   m_ObjectHideFlags: 0
@@ -16311,8 +16794,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 5.882, y: 9.7287}
-  m_SizeDelta: {x: 799.7641, y: 334.162}
+  m_AnchoredPosition: {x: 5.882, y: 5}
+  m_SizeDelta: {x: 799.764, y: 396.311}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1806819433
 MonoBehaviour:
@@ -16334,16 +16817,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'This experiment explores the relationship between thermal energy and the
-    behavior of gases. By observing changes in air temperature above water under
-    different conditions (cooling and heating), we can better understand how gases
-    respond to changes in temperature. This experiment highlights key principles
-    such as thermal energy transfer, expansion, and contraction in gases, laying
-    a foundation for understanding gas behavior in various scientific and real-world
-    contexts.
-
-
-'
+  m_text: This experiment demonstrates Gay-Lussac's Law, which states that the pressure
+    of a gas is directly proportional to its temperature (in Kelvin) when the volume
+    is held constant. By using an Erlenmeyer flask, denatured alcohol, and a thermometer,
+    we can observe how changes in temperature and pressure are related in a closed
+    system. The experiment involves carefully measuring and controlling variables
+    such as the amount of alcohol, the tightness of the flask's seal, and the temperature
+    to ensure accurate results. Each step of the procedure is designed to highlight
+    the principles of Gay-Lussac's Law and provide insights into the behavior of
+    gases under controlled conditions.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -16377,7 +16859,7 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 2
+  m_HorizontalAlignment: 8
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
@@ -17048,7 +17530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -3344.6467}
+  m_AnchoredPosition: {x: 463.29, y: -4424.036}
   m_SizeDelta: {x: 341.0277, y: 106.2289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862358523
@@ -17482,6 +17964,143 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1896984575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896984576}
+  - component: {fileID: 1896984578}
+  - component: {fileID: 1896984577}
+  m_Layer: 5
+  m_Name: Text (TMP) (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1896984576
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896984575}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 154084243}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5.882, y: -66.76242}
+  m_SizeDelta: {x: 799.7641, y: 225.01}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1896984577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896984575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: Shaking the flask increases the rate of evaporation of the denatured alcohol,
+    leading to a rise in vapor pressure and temperature inside the flask. This step
+    directly demonstrates Gay-Lussac's Law, as the increased evaporation accelerates
+    the pressure-temperature relationship in the closed system.
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
+  m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 27.7
+  m_fontSizeBase: 27.7
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 1
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1896984578
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896984575}
+  m_CullTransparentMesh: 1
 --- !u!1 &1927174947
 GameObject:
   m_ObjectHideFlags: 0

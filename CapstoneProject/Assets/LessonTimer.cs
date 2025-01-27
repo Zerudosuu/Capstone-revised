@@ -21,11 +21,15 @@ public class LessonTimer : MonoBehaviour
     private void OnEnable()
     {
         ExperimentManager.OnGameStart += StartTimer;
+        SeeWhatsHappeningPanel.OnPanelOpened += PauseTimer;
+        SeeWhatsHappeningPanel.OnPanelClosed += ResumeTimer;
     }
 
     private void OnDisable()
     {
         ExperimentManager.OnGameStart -= StartTimer;
+        SeeWhatsHappeningPanel.OnPanelOpened -= PauseTimer;
+        SeeWhatsHappeningPanel.OnPanelClosed -= ResumeTimer;
     }
 
     public void StartTimer()
@@ -36,11 +40,12 @@ public class LessonTimer : MonoBehaviour
             StartCoroutine(TimerCoroutine());
         }
     }
-    
-    
+
+
     public void PauseTimer()
     {
         isPaused = true;
+        Debug.Log("Timer paused because panel is open.");
     }
 
     public void ResumeTimer()
@@ -48,7 +53,7 @@ public class LessonTimer : MonoBehaviour
         if (isPaused)
         {
             isPaused = false;
-            StartCoroutine(TimerCoroutine());
+            Debug.Log("Timer resumed because panel is closed.");
         }
     }
 
