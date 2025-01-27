@@ -54,6 +54,9 @@ public class CurrentLessonToDisplay : MonoBehaviour
 
     private Dictionary<string, int> tempCollectedItems = new Dictionary<string, int>();
 
+    [Header("Ongoing Quest Window")] [SerializeField]
+    public GameObject OngoingQuestWindow;
+
     #endregion
 
     void Start()
@@ -206,6 +209,12 @@ public class CurrentLessonToDisplay : MonoBehaviour
             {
                 bagManager.itemLimit = 0;
                 bagManager.UpdateItemCount();
+            }
+
+            // Deactivate the OngoingQuestWindow
+            if (OngoingQuestWindow != null)
+            {
+                OngoingQuestWindow.SetActive(false);
             }
 
             UIManager uiManager = FindObjectOfType<UIManager>(true);

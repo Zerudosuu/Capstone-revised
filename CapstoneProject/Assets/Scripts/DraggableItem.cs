@@ -9,7 +9,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     [SerializeField] private GraphicRaycaster raycaster; // Reference to the Canvas's GraphicRaycaster
 
-    [SerializeField] private Canvas canvas;
+    [SerializeField] public Canvas canvas;
     public Transform parentAfterDrag;
     public Vector3 originalPosition;
     public Vector2 originalSize; // Store the original size
@@ -21,8 +21,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public int itemVariantID;
 
     public Animator anim;
-    public Animator PopUpAnimator;
-    public GameObject PopUp;
+    public GameObject Popup;
 
 
     private void Awake()
@@ -45,11 +44,43 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     void Start()
     {
         anim = GetComponent<Animator>();
-
-        if (PopUp != null)
+        if (Popup != null)
         {
-            PopUp.SetActive(false);
-            PopUpAnimator = PopUp.GetComponent<Animator>();
+            Popup.SetActive(false);
+        }
+    }
+
+    public void PopUpOnItemValid()
+    {
+        if (anim != null)
+        {
+            anim.Play("Sucess"); // Ensure the animation name is correct
+        }
+        else
+        {
+            Debug.LogWarning("Animator component is not assigned.");
+        }
+    }
+
+    public void PopUpOnItemInvalid()
+    {
+        if (Popup != null)
+        {
+            Popup.SetActive(true);
+            Animator popupAnimator = Popup.GetComponent<Animator>();
+            if (popupAnimator != null)
+            {
+                anim.Play("Shake");
+                popupAnimator.Play("Pop");
+            }
+            else
+            {
+                Debug.LogWarning("Animator component not found on Popup.");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("Popup GameObject is not assigned.");
         }
     }
 
@@ -116,6 +147,33 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        print("Clicked" + this.name);
+        if (HasAnimationTrigger(anim, "Shake"))
+        {
+            anim.Play("Shake");
+
+            StepManager stepManager = FindObjectOfType<StepManager>();
+            if (stepManager != null)
+            {
+                stepManager.ValidateAndCompleteSubStep(gameObject.name);
+            }
+        }
+    }
+
+
+    // Helper method to check if the trigger exists in the Animator
+    private bool HasAnimationTrigger(Animator animator, string triggerName)
+    {
+        if (animator != null)
+        {
+            foreach (AnimatorControllerParameter param in animator.parameters)
+            {
+                if (param.type == AnimatorControllerParameterType.Trigger && param.name == triggerName)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
     }
 }

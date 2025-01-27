@@ -34,10 +34,9 @@ public class UIManager : MonoBehaviour
     private string previousState = null;
     public float transitionDuration = 0.5f;
 
-    [Header("Navbar Button")]
+    [Header("Navbar Button")] [SerializeField]
+    private GameObject navbar;
 
-    [SerializeField] private GameObject navbar;
-  
     [SerializeField] private Button profileBtn;
 
     [SerializeField] private Button ShopBtn;
@@ -63,6 +62,8 @@ public class UIManager : MonoBehaviour
 
     SceneLoader _loader;
 
+    public TutorialManager tutorialManager;
+
     private void Awake()
     {
         bagBtn.onClick.AddListener(OnBagButtonClick);
@@ -77,7 +78,7 @@ public class UIManager : MonoBehaviour
     public void OnBagButtonClick()
     {
         BagWindow.SetActive(true);
-        navbar.SetActive(false);    
+        navbar.SetActive(false);
         PlayerUI.SetActive(false);
         StoreWindow.SetActive(false);
         LessonWindow.SetActive(false);
@@ -103,6 +104,16 @@ public class UIManager : MonoBehaviour
 
     public void OnHomeButtonClick()
     {
+        if (
+            tutorialManager != null
+            && !tutorialManager.isTutorialComplete && !HomeWindow.activeSelf && tutorialManager.currentIndex == 18
+        )
+        {
+            DialogueRunner dialogueRunner = tutorialManager.dialogueRunner.GetComponent<DialogueRunner>();
+            dialogueRunner.Stop();
+            dialogueRunner.StartDialogue("hotdogExperiment");
+        }
+
         HomeWindow.SetActive(true);
         PlayerUI.SetActive(true);
         ProfileWindow.SetActive(false);
@@ -112,18 +123,6 @@ public class UIManager : MonoBehaviour
         informationWindow.SetActive(false);
         PlayerUI.SetActive(true);
 
-        TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
-
-        if (
-            tutorialManager != null
-            && !tutorialManager.isTutorialComplete
-            && !HomeWindow.activeSelf
-        )
-        {
-            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-            dialogueRunner.Stop();
-            dialogueRunner.StartDialogue("hotdogExperiment");
-        }
 
         StartCoroutine(MoveNavBar(HomeBtn, "isHome"));
     }
@@ -168,13 +167,17 @@ public class UIManager : MonoBehaviour
             LessonState(previousLessonState);
 
         LessonWindow.SetActive(true);
-        TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);
 
-        if (tutorialManager != null && !tutorialManager.isTutorialComplete)
+
+        if (tutorialManager != null && !tutorialManager.isTutorialComplete && tutorialManager.currentIndex == 10)
         {
-            DialogueRunner dialogueRunner = FindObjectOfType<DialogueRunner>(true);
-            dialogueRunner.Stop();
-            dialogueRunner.StartDialogue("TutorialExperimentTab");
+            DialogueRunner dialogueRunner = tutorialManager.dialogueRunner.GetComponent<DialogueRunner>();
+
+            if (dialogueRunner != null)
+            {
+                dialogueRunner.Stop();
+                dialogueRunner.StartDialogue("TutorialExperimentTab");
+            }
         }
 
         StartCoroutine(MoveNavBar(LessonsBtn, previousLessonState));

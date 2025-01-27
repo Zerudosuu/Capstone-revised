@@ -79,9 +79,21 @@ title: hotdogExperiment
 tags:
 position: 44,500
 ---
-<<hide_highlight>>
 Chemistry Fairy: Now you its time for gathering materials to do the experiment.
 <<set_highlight "next">>
 Chemistry Fairy: Its stated on the materials needed on the experiment that you need a water. To get the water, drag and drop it to the bag
 
+
 ===
+
+title: hotdogExperiment2
+tags:
+position: 44,500
+---
+<<set_highlight "next">>
+Chemistry Fairy: Wow! You got the water! This is the bag where you can see all your materials. 
+Chemistry Fairy: Now, collect all the materials needed for the experiment. I'm wishing you luck! 
+<<complete_tutorial>>
+
+===
+
