@@ -6,21 +6,35 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/arm64-v8a/lib_burst_generated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Anton's Laboratory_BurstDebugInformation_DoNotShip/tempburstlibs/armeabi-v7a/lib_burst_generated.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/AchieveManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AchieveManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Beaker/BeakerPreFab.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LessonTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LessonTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ProfileSelection.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileSelection.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Lamp/Lamp.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Thermometer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeatReceiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HeatReceiver.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/HeatSource.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/HeatSource.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeasureScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeasureScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Animation/ItemAnimation/Match/MatchOnFire.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Animation/ItemAnimation/Match/MatchOnFire.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Material/Smoke/New Material.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Material/Smoke/New Material.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/ParticleTestingArea.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/ParticleTestingArea.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonArea/CurrentLessonToDisplay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataManager/GameData.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataManager/GameData.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DragAndDropUI.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DragAndDropUI.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemContainerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/LessonManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SeeWhatsHappeningPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScrollViewSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScrollViewSlot.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TabContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TabContainerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TutorialManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,24 +64,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;rider.code.cleanup.on.save.profile&quot;: &quot;Built-in: Reformat Code&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "rider.code.cleanup.on.save": "true",
+    "rider.code.cleanup.on.save.profile": "Built-in: Reformat Code",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.33f1\Editor\Unity.exe" />
@@ -148,14 +161,6 @@
       <workItem from="1737623670854" duration="18555000" />
       <workItem from="1737649739876" duration="856000" />
       <workItem from="1737677490493" duration="25253000" />
-      <workItem from="1737758773601" duration="27358000" />
-      <workItem from="1737819366065" duration="1820000" />
-      <workItem from="1737846799370" duration="5114000" />
-      <workItem from="1737852323626" duration="5463000" />
-      <workItem from="1737860585022" duration="20697000" />
-      <workItem from="1737948292981" duration="4174000" />
-      <workItem from="1737959413622" duration="5800000" />
-      <workItem from="1737966180818" duration="755000" />
     </task>
     <servers />
   </component>

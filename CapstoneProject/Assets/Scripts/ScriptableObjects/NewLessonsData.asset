@@ -174,10 +174,6 @@ MonoBehaviour:
       isCompleted: 0
       requiredObjectNames: []
       actionRequired: 
-    - stepDescription: Extract denatured alcohol using liquid dropper
-      isCompleted: 0
-      requiredObjectNames: []
-      actionRequired: 
     - stepDescription: 'Put 5 drops of denatured alcohol in the erlenmeyer flask '
       isCompleted: 0
       requiredObjectNames: []
@@ -202,14 +198,7 @@ MonoBehaviour:
     SecondExperience: 200
     isItemRewardCollected: 0
     ItemRewards: []
-    studentRecords:
-    - attemptId: 0
-      studentName: 
-      lessonId: 
-      Grade: 0
-      TimeTaken: 0
-      experimentCompleted: 0
-      questionsAndAnswers: []
+    studentRecords: []
   - LessonID: 3
     chapterName: 'Everything has changed '
     chapterNumber: 3

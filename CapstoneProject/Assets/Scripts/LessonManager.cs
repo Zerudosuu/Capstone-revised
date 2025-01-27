@@ -38,8 +38,6 @@ public class LessonManager : MonoBehaviour, IData
 
     private bool HasActiveQuest => questAsLesson is { isActive: true };
 
-    public GameObject OngoingquestWindow;
-
 
     void Awake()
     {
@@ -52,8 +50,6 @@ public class LessonManager : MonoBehaviour, IData
     {
         Populatebuttons();
         PickFirstAvailableLesson();
-
-        OngoingquestWindow.SetActive(questAsLesson != null && questAsLesson.isActive);
     }
 
     void CloneLessons()
@@ -125,12 +121,6 @@ public class LessonManager : MonoBehaviour, IData
         };
 
         UpdateLessonContainer(lesson);
-
-        // Pass the OngoingQuestWindow reference to the CurrentLessonToDisplay
-        if (currentLessonToDisplay != null)
-        {
-            currentLessonToDisplay.OngoingQuestWindow = OngoingquestWindow;
-        }
     }
 
 
@@ -246,9 +236,6 @@ public class LessonManager : MonoBehaviour, IData
 
         CurrentLessonWindow.SetActive(true);
         questAsLesson.isActive = true;
-
-        // Simplify the activation logic
-        OngoingquestWindow.SetActive(true);
 
         Lesson selectedLesson = FindLessonById(CurrentButtonID);
         if (selectedLesson != null)
@@ -399,7 +386,6 @@ public class LessonManager : MonoBehaviour, IData
             }
         }
     }
-
 
     public void LoadData(GameData gameData)
     {

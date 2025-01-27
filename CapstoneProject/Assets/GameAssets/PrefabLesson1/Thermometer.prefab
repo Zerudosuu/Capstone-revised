@@ -17,7 +17,6 @@ GameObject:
   - component: {fileID: 248072239766588947}
   - component: {fileID: 5654255137656094000}
   - component: {fileID: 5963186456663187404}
-  - component: {fileID: -3087169524127443370}
   m_Layer: 5
   m_Name: Thermometer
   m_TagString: Measurement
@@ -105,6 +104,8 @@ MonoBehaviour:
   TagName: TempMeasurement
   itemVariantID: 0
   anim: {fileID: 0}
+  PopUpAnimator: {fileID: 0}
+  PopUp: {fileID: 0}
 --- !u!225 &8265237916693151548
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -218,56 +219,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
---- !u!114 &-3087169524127443370
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1174782827702463807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item:
-    itemPrefab: {fileID: 0}
-    itemName: 
-    itemDescription: 
-    itemIcon: {fileID: 0}
-    itemType: 0
-    isUnlock: 0
-    isCollected: 0
-    tagName: 
-    compatibleTags: []
-    states:
-    - stateName: Thermometer
-      willChangeSprite: 0
-      sprite: {fileID: 0}
-      description: 
-      conditions:
-        itemNameRequirement: 
-      Temperature: 0
-    currentStateIndex: 0
-    hasTemperature: 1
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
-  reactions:
-  - needStateName: Thermometer 110 Degrees
-    reactionName: CorkRubberStopperWithThermomter
-    triggers:
-    - Cork or Rubber stopper
-    changePrefab: 1
-    ReactionSprite: {fileID: 0}
-    resultingItemPrefab: {fileID: 8061415611128395212, guid: 4db34b1a84ebbf241a083dcfd6a8811f, type: 3}
-    visualEffectPrefab: {fileID: 0}
-    temperatureChange: 0
-    increaseTemperature: 0
-    willGoBackToPreviousTemperature: 0
-    ReactionDuration: 0
-    Animator: {fileID: 0}
-    TriggerAnimationName: 
 --- !u!1 &3495936736450394755
 GameObject:
   m_ObjectHideFlags: 0

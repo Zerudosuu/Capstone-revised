@@ -19,7 +19,6 @@ public class ItemReaction : MonoBehaviour, IDropHandler
 
     public event TemperatureChanged OnTemperatureChanged;
 
-
     public void SetTemperature(float newTemp)
     {
         if (Mathf.Abs(item.currentTemperature - newTemp) > 0.01f) // Avoid frequent tiny updates
@@ -32,105 +31,97 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     void Start()
     {
         experimentManager = FindObjectOfType<ExperimentManager>();
+        dragableItem = GetComponent<DragableItem>();
         experimentObjectManagerManager = FindObjectOfType<ExperimentObjectManager>();
-        ownDraggableItem = GetComponent<DragableItem>();
+        if (ownDraggableItem != null)
+        {
+            ownDraggableItem = GetComponent<DragableItem>();
+        }
     }
+
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (eventData.pointerDrag == null)
-        {
-            Debug.LogWarning("Dropped item is null.");
-            return;
-        }
-
         GameObject dropItem = eventData.pointerDrag;
         DragableItem draggable = dropItem.GetComponent<DragableItem>();
         ItemReaction droppedItem = dropItem.GetComponent<ItemReaction>();
 
-
         // Check if the current item is compatible with the dropped item
         if (
             item.compatibleTags.Contains(draggable.TagName) &&
-            gameObject.GetComponent<DragableItem>().placeInSlot && item.states.Count > 0
+            gameObject.GetComponent<DragableItem>().placeInSlot
         )
         {
-            if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
+            Debug.LogWarning(draggable.itemVariantID + " is the drop item itemVariant");
+            // Change the state of the current item
+
+            experimentManager.UpdateItemPrefab(this, draggable.name);
+
+            // Trigger reactions for the current item
+            CheckReactions(item.CurrentState.stateName, draggable);
+
+            // Validate sub-step
+            StepManager stepManager = FindObjectOfType<StepManager>();
+            if (stepManager != null)
             {
-                StepManager stepManager = FindObjectOfType<StepManager>();
-                if (stepManager != null)
-                {
-                    if (stepManager.RequiredItemForTheStep(draggable.name))
-                    {
-                        stepManager.ValidateAndCompleteSubStep(draggable.name);
-                        experimentManager.UpdateItemPrefab(this, draggable.name);
-                        CheckReactions(item.CurrentState.stateName, draggable);
-                    }
-                    else
-                    {
-                        draggable.transform.position = draggable.originalPosition;
-                    }
-                }
-            }
-            else
-            {
-                experimentManager.UpdateItemPrefab(this, draggable.name);
-                CheckReactions(item.CurrentState.stateName, draggable);
+                stepManager.ValidateAndCompleteSubStep(draggable.name);
             }
         }
-        else if (droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
-                 droppedItem != null)
-
+        // Check if the dropped item is compatible with the current object
+        else if (droppedItem != null &&
+                 droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName))
         {
-            if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
-            {
-                StepManager stepManager = FindObjectOfType<StepManager>();
-                if (stepManager != null)
-                {
-                    if (stepManager.RequiredItemForTheStep(draggable.name))
-                    {
-                        stepManager.ValidateAndCompleteSubStep(draggable.name);
+            // Change the state of the dropped item
+            droppedItem.item.SwitchToState(this.gameObject.name);
+            experimentManager.UpdateItemPrefab(droppedItem, this.gameObject.name);
 
-                        experimentManager.UpdateItemPrefab(droppedItem, gameObject.GetComponent<DragableItem>().name);
-                        CheckReactions(item.CurrentState.stateName, draggable);
-                    }
-                    else
-                    {
-                        draggable.transform.position = draggable.originalPosition;
-                    }
-                }
-            }
-            else
-            {
-                experimentManager.UpdateItemPrefab(droppedItem, draggable.name);
-                CheckReactions(item.CurrentState.stateName, draggable);
-            }
+            // Optional: Trigger reactions for the dropped item
+            CheckReactions(droppedItem.item.CurrentState.stateName, draggable);
         }
         else
         {
-            ownDraggableItem.PopUpOnItemInvalid();
-            draggable.transform.position = draggable.originalPosition;
-            Debug.LogWarning("Dropped item is not compatible with this slot.");
+            Debug.LogWarning("No valid interaction found for the dropped item.");
         }
     }
+
 
     private void CheckReactions(string currentStateName, DragableItem draggable)
     {
         foreach (Reaction reaction in reactions) // Assuming `item.reactions` is a list of Reaction objects1
         {
+            // Check if the item's state matches and the trigger is valid
             if (
                 reaction.CheckStateName(currentStateName)
                 && reaction.triggers.Contains(draggable.name)
             )
             {
                 Debug.Log($"Reaction triggered: {reaction.reactionName}");
+
                 TriggerReaction(reaction, draggable);
-                return;
+                return; // Reaction triggered, exit the loop
             }
         }
 
-        Debug.LogWarning($"No valid reaction found for state: {currentStateName} with dropped item: {draggable.name}");
+        Debug.LogWarning(
+            $"No valid reaction found for state: {currentStateName} with dropped item: {draggable.name}"
+        );
     }
+
+    public void PlayPopUp()
+    {
+        if (ownDraggableItem != null)
+        {
+            ownDraggableItem.PopUp.SetActive(true);
+            ownDraggableItem.PopUpAnimator.Play("Pop");
+        }
+    }
+
+    public void PlayShake()
+    {
+        if (ownDraggableItem != null)
+            ownDraggableItem.anim.Play("Shake");
+    }
+
 
     private void TriggerReaction(Reaction reaction, DragableItem draggable)
     {
@@ -154,35 +145,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             }
         }
 
-        if (reaction.changePrefab && reaction.resultingItemPrefab != null)
-        {
-            GameObject resultingItem =
-                Instantiate(reaction.resultingItemPrefab, transform.position, Quaternion.identity);
-            resultingItem.name = reaction.resultingItemPrefab.name;
-            // Set parent correctly within UI
-            resultingItem.transform.SetParent(transform.parent, false); // 'false' maintains local scale
-
-            // Ensure it is at the correct hierarchy level
-            resultingItem.transform.SetSiblingIndex(transform.GetSiblingIndex());
-
-            // Get and initialize draggable component
-            DragableItem draggableItem = resultingItem.GetComponent<DragableItem>();
-            if (draggableItem != null)
-            {
-                draggableItem.originalPosition = transform.position;
-                draggableItem.parentAfterDrag = transform.parent;
-                draggableItem.canvas = GetComponentInParent<Canvas>();
-            }
-
-            Destroy(draggable.gameObject);
-            Destroy(gameObject);
-        }
-
-        else if (reaction.ReactionSprite != null)
-        {
-            gameObject.GetComponent<Image>().sprite = reaction.ReactionSprite;
-        }
-
+        // Optional: Apply visual effects or animations
         if (reaction.visualEffectPrefab)
         {
             Instantiate(reaction.visualEffectPrefab, transform.position, Quaternion.identity);
@@ -217,6 +180,14 @@ public class Reaction
     public Sprite ReactionSprite;
     public GameObject resultingItemPrefab; // Resulting item (if applicable)
     public GameObject visualEffectPrefab; // Optional visual effect (e.g., steam, frost)
+
+    [Header("Temperature Change")] public float temperatureChange; // Change in temperature
+    public bool increaseTemperature;
+
+    public bool
+        willGoBackToPreviousTemperature; // If true, the item will go back to its previous temperature after the reaction slowly
+
+    public float ReactionDuration;
 
     [Header("Animation")]
     // Animation

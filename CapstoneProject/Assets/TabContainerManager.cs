@@ -47,11 +47,6 @@ public class TabContainerManager : MonoBehaviour
     {
         profileAchievements.Clear(); // Clear list to prevent duplicates
 
-        foreach (Transform child in achivementsContainer.transform)
-        {
-            Destroy(child.gameObject);
-        }
-
         foreach (Achievement achievement in achievementsData)
         {
             GameObject newAchievement = Instantiate(AchievementPrefab, achivementsContainer.transform);

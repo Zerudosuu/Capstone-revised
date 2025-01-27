@@ -101,8 +101,9 @@ MonoBehaviour:
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
   TagName: Blocker
-  itemVariantID: 0
   anim: {fileID: 1311585065551011331}
+  PopUpAnimator: {fileID: 0}
+  PopUp: {fileID: 8845858253502995058}
 --- !u!225 &3886269623181737599
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -143,21 +144,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  reactions:
-  - needStateName: Cork or Rubber stopper
-    reactionName: CorkWithThermometer
-    triggers:
-    - Thermometer 110 Degrees
-    changePrefab: 1
-    ReactionSprite: {fileID: 0}
-    resultingItemPrefab: {fileID: 8061415611128395212, guid: 4db34b1a84ebbf241a083dcfd6a8811f, type: 3}
-    visualEffectPrefab: {fileID: 0}
-    temperatureChange: 0
-    increaseTemperature: 0
-    willGoBackToPreviousTemperature: 0
-    ReactionDuration: 0
-    Animator: {fileID: 0}
-    TriggerAnimationName: 
+  reactions: []
 --- !u!50 &6027433849355681257
 Rigidbody2D:
   serializedVersion: 4
