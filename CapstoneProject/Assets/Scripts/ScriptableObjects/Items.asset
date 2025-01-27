@@ -100,7 +100,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 4994321575584154459, guid: ac38c9e18ca46134e9038097cb6fca22, type: 3}
     itemName: Denatured Alcohol
     itemDescription: A solvent and fuel for alcohol burners.
-    itemIcon: {fileID: 21300000, guid: 47dd22c18e42bd94aab03d3717c60b85, type: 3}
+    itemIcon: {fileID: 21300000, guid: 99688d0dd8aceb6458f9bd1c3b20678f, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
@@ -405,7 +405,7 @@ MonoBehaviour:
   - itemPrefab: {fileID: 6188927877195818141, guid: f4ec15ed32279f64c837062e0a20de4e, type: 3}
     itemName: Water
     itemDescription: 
-    itemIcon: {fileID: 21300000, guid: 81dec73997a74af4d91b9d07a6cf6d5d, type: 3}
+    itemIcon: {fileID: 21300000, guid: 5c3f1d0d914c62f4eadbcaa637dd955d, type: 3}
     itemType: 1
     isUnlock: 1
     isCollected: 0
