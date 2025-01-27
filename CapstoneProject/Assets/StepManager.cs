@@ -69,6 +69,17 @@ public class StepManager : MonoBehaviour
         }
     }
 
+    public bool RequiredItemForTheStep(string item)
+    {
+        var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
+
+        if (currentSubstep != null)
+            return currentSubstep.requiredItemName == item;
+        else
+            return false;
+    }
+
     private void DisplayCurrentStep()
     {
         anim.Play("SpawnSteps");
@@ -167,6 +178,14 @@ public class LessonStepsExample
 
                 break;
 
+            case "shake":
+                if (itemName == "shake" && !currentStep.isCompleted)
+                {
+                    currentStep.isCompleted = true;
+                    currentSubstepIndex++;
+                }
+
+                break;
             default:
                 if (currentStep.requiredItemName == itemName)
                 {

@@ -17,6 +17,8 @@ public class ExperimentObjectManager : MonoBehaviour, IData
 
     [SerializeField] private GameObject itemSlot;
 
+    public GameMode gameMode;
+
     void Start()
     {
         if (DataManager.Instance.gameData.quest != null)
@@ -101,6 +103,7 @@ public class ExperimentObjectManager : MonoBehaviour, IData
 
     public void LoadData(GameData data)
     {
+        gameMode = data.LessonMode;
         if (data.quest != null)
         {
             currentLesson = data.quest;

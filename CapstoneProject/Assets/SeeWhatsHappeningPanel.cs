@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class SeeWhatsHappeningPanel : MonoBehaviour
     public Button buttonOpen;
     public bool isOpen;
     private Animator anim;
+
+    public static event Action OnPanelOpened;
+    public static event Action OnPanelClosed;
 
     private void OnEnable()
     {
@@ -31,6 +35,17 @@ public class SeeWhatsHappeningPanel : MonoBehaviour
     {
         isOpen = !isOpen;
         anim.SetBool("isOpen", isOpen);
+
+        if (isOpen)
+        {
+            OnPanelOpened?.Invoke(); // Notify the timer to pause
+            print("Panel opened");
+        }
+        else
+        {
+            OnPanelClosed?.Invoke(); // Notify the timer to resume
+            print("Panel closed");
+        }
     }
 
 
