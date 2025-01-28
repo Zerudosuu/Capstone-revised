@@ -6,10 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/PlayerStats.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/PlayerStats.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/ButtonIdleState.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/ButtonIdleState.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/ButtonOpenState.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Animation/SeeWhatsHappeningPanel/ButtonOpenState.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson1/Slot2.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/assets/UI/Experiment/Experimentblur.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/assets/UI/Experiment/Experimentblur.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ItemManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/GameModeSelection.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/AchievementData.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Achievements.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Slot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +176,8 @@
       <workItem from="1737948292981" duration="4174000" />
       <workItem from="1737959413622" duration="5800000" />
       <workItem from="1737966180818" duration="755000" />
-      <workItem from="1737981904907" duration="1481000" />
+      <workItem from="1737981904907" duration="1885000" />
+      <workItem from="1738043736265" duration="4439000" />
     </task>
     <servers />
   </component>

@@ -17,6 +17,7 @@ public class ProfileManager : MonoBehaviour, IData
     [SerializeField] private TMP_Text playerName;
     [SerializeField] private TMP_Text playerLrn;
     [SerializeField] private TMP_Text ExperienceGain;
+    [SerializeField] private Slider expSlider;
     Achievements achievementData;
 
     //Values
@@ -49,6 +50,9 @@ public class ProfileManager : MonoBehaviour, IData
         playerLrn.text = "LRN: " + lrn;
         ExperienceGain.text = exp.ToString() + " / " + maxExperience.ToString();
 
+        expSlider.maxValue = maxExperience;
+        expSlider.value = exp;
+
         LoadImageIntoUI();
     }
 
@@ -62,6 +66,9 @@ public class ProfileManager : MonoBehaviour, IData
         playerLevel.text = "Level: " + level.ToString();
         playerTitle.text = title;
         ExperienceGain.text = $"{exp} / {maxExperience}";
+
+        expSlider.maxValue = maxExperience;
+        expSlider.value = exp;
     }
 
     private void LoadImageIntoUI()

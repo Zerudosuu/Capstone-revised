@@ -27,5 +27,5 @@ MonoBehaviour:
     isUnlocked: 0
     AchivementIcon: {fileID: 21300000, guid: 96436a4b93a5e444fb834655b40483dd, type: 3}
     InGameMessage: 'Great! You collected 3 items! '
-    progress: 1
+    progress: 0
     QuestIdRequirement: 

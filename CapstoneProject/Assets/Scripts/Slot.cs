@@ -40,6 +40,13 @@ public class Slot : MonoBehaviour, IDropHandler
 
     public void OnDrop(PointerEventData eventData)
     {
+        if (eventData.pointerDrag == null)
+        {
+            Debug.LogWarning("Dropped item is null.");
+            return;
+        }
+
+
         if (transform.childCount == 0)
         {
             GameObject dropItem = eventData.pointerDrag;
@@ -63,10 +70,6 @@ public class Slot : MonoBehaviour, IDropHandler
                     draggable.transform.position = draggable.originalPosition;
                     Debug.Log("Dropped item is not compatible with this slot.");
                 }
-            }
-            else
-            {
-                draggable.transform.position = draggable.originalPosition;
             }
         }
     }
