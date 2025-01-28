@@ -22,7 +22,9 @@ public class itemShop : MonoBehaviour
 
     private void Start()
     {
-        gameObject.transform.GetChild(0).GetComponent<TMP_Text>().text = itemInContainer.itemName;
+        Image itemSprite = gameObject.GetComponent<Image>();
+
+        itemSprite.sprite = itemInContainer.itemIcon;
     }
 
     private void DisplayInShop()

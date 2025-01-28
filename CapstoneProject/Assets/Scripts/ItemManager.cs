@@ -58,7 +58,7 @@ public class ItemManager : MonoBehaviour
             }
             else
             {
-                 // InstantiateInShop(item);
+                 InstantiateInShop(item);
             }
         }
     }
