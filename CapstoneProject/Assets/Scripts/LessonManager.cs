@@ -1,3 +1,4 @@
+using SimpleFileBrowser;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -328,11 +329,14 @@ public class LessonManager : MonoBehaviour, IData
     {
         PlayerStats playerStats = FindObjectOfType<PlayerStats>(true);
         ItemManager itemManager = FindObjectOfType<ItemManager>(true);
+        RewardItem itemToReward = FindObjectOfType<RewardItem>(true);
 
         // Add experience points to the player
         playerStats.AddExp(questAsLesson.RewardCoins);
         playerStats.AddExp(questAsLesson.RewardExperience);
 
+        List<Item> _itemList = new List<Item>();    
+        
         foreach (MaterialEntry itemReward in questAsLesson.itemRewards)
         {
             // Find the matching item in the clonedItems list
@@ -346,7 +350,8 @@ public class LessonManager : MonoBehaviour, IData
                 if (!matchingItem.isUnlock)
                 {
                     matchingItem.isUnlock = true;
-                    itemManager.InstantiateInInventory(matchingItem);
+                    _itemList.Add(matchingItem);
+                    Debug.Log($"{matchingItem.itemName}");
                 }
                 else
                 {
@@ -356,6 +361,8 @@ public class LessonManager : MonoBehaviour, IData
 
             itemReward.isCollected = true;
         }
+
+        itemToReward.GiveRewardItem(_itemList);
 
         // Flag the current lesson as completed
         questAsLesson.isCompleted = true;
@@ -375,7 +382,6 @@ public class LessonManager : MonoBehaviour, IData
             }
         }
 
-
         questAsLesson = null;
         RefreshLesson();
         RewardContainer.SetActive(false);
@@ -387,6 +393,7 @@ public class LessonManager : MonoBehaviour, IData
 
         ObtainableManager obtainableManager = FindObjectOfType<ObtainableManager>(true);
         obtainableManager.StartDistributingReward();
+  
     }
 
     public void RefreshLesson()

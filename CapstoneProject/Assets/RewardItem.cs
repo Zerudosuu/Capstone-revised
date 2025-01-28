@@ -14,7 +14,7 @@ public class RewardItem : MonoBehaviour
     [Header("Item")]
     [SerializeField] private bool show = true;
     [SerializeField] private Items items;
-    [SerializeField] private List<Item> itemList;
+    [SerializeField] public List<Item> itemList;
 
 
     [Header("Debugging")]
@@ -34,7 +34,6 @@ public class RewardItem : MonoBehaviour
 
     private void Start()
     {
-        itemList.Clear();
 
         if (debugging)
             DebuggingSpawn();
@@ -58,23 +57,28 @@ public class RewardItem : MonoBehaviour
 
     public void GiveRewardItem(List<Item> newItem)
     {
+        itemList.Clear();
+
         foreach (var item in newItem)
         {
-            var _itemReward = item.Clone();
-            _itemReward.isUnlock = true;
-            itemManager.clonedItems.Add(_itemReward);
-
-            itemList.Add(_itemReward);
+            itemList.Add(item);
+            Debug.Log($"{item.itemName}");
         }
+
+        gameObject.SetActive(true);
 
         StartCoroutine(RewardSequence());
     }
 
-    private IEnumerator RewardSequence()
+    public IEnumerator RewardSequence()
     {
+        
         yield return displayFunction();
 
         yield return placeFunction();
+
+        gameObject.SetActive(false);
+
     } // this function will make items to show first before placing
 
     private IEnumerator displayFunction()
@@ -92,7 +96,7 @@ public class RewardItem : MonoBehaviour
 
     private IEnumerator placeFunction()
     {
-        foreach (var item in itemList   )
+        foreach (var item in itemList)
         {
            yield return StartCoroutine(PlaceItem(item));
         }
@@ -102,6 +106,7 @@ public class RewardItem : MonoBehaviour
 
     private IEnumerator ShowItem(Item newItem)
     {
+
         // Set the item's icon and activate panel
         panel.SetActive(true);
         imagePlaceHolder.sprite = newItem.itemIcon;
@@ -126,7 +131,7 @@ public class RewardItem : MonoBehaviour
         Debug.Log($"Showing item: {newItem.itemName}");
 
         // Wait for the user to observe the item
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
     }  // this function will be the animation showing item;
 
     private IEnumerator PlaceItem(Item newItem)
