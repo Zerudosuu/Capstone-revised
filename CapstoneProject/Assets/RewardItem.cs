@@ -10,6 +10,7 @@ public class RewardItem : MonoBehaviour
     [SerializeField] private GameObject sunRay;
     [SerializeField] private Image imagePlaceHolder;
     [SerializeField] private GameObject panel;
+    
 
     [Header("Item")]
     [SerializeField] private bool show = true;
@@ -24,12 +25,15 @@ public class RewardItem : MonoBehaviour
     private UIManager uiManage;
     private SnaptoItem snapItem;
     private ItemManager itemManager;
+    private GameObject shineSpawn;
 
     private void Awake()
     {
         uiManage = FindAnyObjectByType<UIManager>();
         snapItem = FindAnyObjectByType<SnaptoItem>();
         itemManager = FindAnyObjectByType<ItemManager>();
+           
+
     }
 
     private void Start()
@@ -83,6 +87,8 @@ public class RewardItem : MonoBehaviour
 
     private IEnumerator displayFunction()
     {
+        sunRay.SetActive(true);
+
         foreach (var item in itemList)
         {
             imagePlaceHolder.gameObject.SetActive(true);
@@ -96,6 +102,13 @@ public class RewardItem : MonoBehaviour
 
     private IEnumerator placeFunction()
     {
+        panel.SetActive(false);
+
+        Animator sunAnim = sunRay.GetComponent<Animator>();
+        sunAnim.SetTrigger("Hide");
+        yield return new WaitForSeconds(0.35f);
+        sunRay.SetActive(false);
+
         foreach (var item in itemList)
         {
            yield return StartCoroutine(PlaceItem(item));
@@ -111,10 +124,6 @@ public class RewardItem : MonoBehaviour
         panel.SetActive(true);
         imagePlaceHolder.sprite = newItem.itemIcon;
         imagePlaceHolder.transform.localScale = Vector3.zero;
-
-        // Instantiate and destroy the sunray effect
-        GameObject sunShine = Instantiate(sunRay, gameObject.transform);
-        Destroy(sunShine, 5f);
 
         // Animate the scale of the placeholder
         float duration = 1f;
@@ -136,12 +145,10 @@ public class RewardItem : MonoBehaviour
 
     private IEnumerator PlaceItem(Item newItem)
     {
-        // Deactivate panel after showing the item
-        panel.SetActive(false);
-
+        
         // Simulate navigation to holder
         uiManage.OnHomeButtonClick();
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         // Move item to the correct side based on type
         if (newItem.itemType == Item.ItemType.Equipment)
@@ -153,7 +160,7 @@ public class RewardItem : MonoBehaviour
             snapItem.MoveToLeft();
         }
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
 
         // Instantiate the item in the inventory
         itemManager.InstantiateInInventory(newItem);
