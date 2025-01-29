@@ -332,11 +332,11 @@ public class LessonManager : MonoBehaviour, IData
         RewardItem itemToReward = FindObjectOfType<RewardItem>(true);
 
         // Add experience points to the player
-        playerStats.AddExp(questAsLesson.RewardCoins);
+        playerStats.AddCoins(questAsLesson.RewardCoins);
         playerStats.AddExp(questAsLesson.RewardExperience);
 
-        List<Item> _itemList = new List<Item>();    
-        
+        List<Item> _itemList = new List<Item>();
+
         foreach (MaterialEntry itemReward in questAsLesson.itemRewards)
         {
             // Find the matching item in the clonedItems list
@@ -393,7 +393,6 @@ public class LessonManager : MonoBehaviour, IData
 
         ObtainableManager obtainableManager = FindObjectOfType<ObtainableManager>(true);
         obtainableManager.StartDistributingReward();
-  
     }
 
     public void RefreshLesson()

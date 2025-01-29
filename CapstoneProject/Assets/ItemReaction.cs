@@ -79,7 +79,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             }
         }
         else if (droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
-                 droppedItem != null)
+                 droppedItem != null && droppedItem.item.states.Count > 0)
 
         {
             if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)

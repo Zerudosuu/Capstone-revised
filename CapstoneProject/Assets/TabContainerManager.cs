@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 
-public class TabContainerManager : MonoBehaviour
+public class TabContainerManager : MonoBehaviour, IData
 {
     [SerializeField] private TMP_Dropdown dropdown;
     public GameObject achivementsContainer;
@@ -14,34 +14,28 @@ public class TabContainerManager : MonoBehaviour
     public List<Achievement> achievementsData;
     public GameObject AchievementPrefab;
 
-    public void Start()
-    {
-        AchieveManager achieveManager = FindObjectOfType<AchieveManager>(true);
-        achievementsData = achieveManager.ClonedAchievements;
+    private AchieveManager achieveManager;
 
-        // Subscribe to achievement completion event
-        AchieveManager.OnCompleteAchievement += UpdateAchievements;
-
-        PopulateAchievements();
-        filterAchievements(0); // Ensure correct filtering after population
-    }
 
     private void OnEnable()
     {
-        AchieveManager achieveManager = FindObjectOfType<AchieveManager>();
-        if (achieveManager != null)
+        if (AchieveManager.Instance != null)
         {
-            achievementsData = achieveManager.ClonedAchievements;
+            achievementsData = AchieveManager.Instance.ClonedAchievements;
+            AchieveManager.OnCompleteAchievement += UpdateAchievements;
         }
 
-        UpdateAchievements(); // Refresh UI on scene reload
+        UpdateAchievements(); // Refresh UI on enable
     }
 
-
-    private void OnDestroy()
+    private void OnDisable()
     {
-        AchieveManager.OnCompleteAchievement -= UpdateAchievements;
+        if (AchieveManager.Instance != null)
+        {
+            AchieveManager.OnCompleteAchievement -= UpdateAchievements;
+        }
     }
+
 
     void PopulateAchievements()
     {
@@ -62,13 +56,11 @@ public class TabContainerManager : MonoBehaviour
         }
     }
 
-
     public void GetValueOnDropDown()
     {
         int index = dropdown.value;
         filterAchievements(index);
     }
-
 
     private void filterAchievements(int number)
     {
@@ -87,7 +79,6 @@ public class TabContainerManager : MonoBehaviour
         }
     }
 
-
     private void UpdateAchievements()
     {
         // Clear existing UI elements
@@ -98,7 +89,21 @@ public class TabContainerManager : MonoBehaviour
 
         profileAchievements.Clear();
 
-        PopulateAchievements(); // Re-populate achievements UI
+        // Re-populate achievements UI
+        PopulateAchievements();
         filterAchievements(dropdown.value); // Apply the current filter
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData.Achievements != null && gameData.Achievements.Count > 0)
+        {
+            achievementsData = gameData.Achievements;
+        }
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        gameData.Achievements = this.achievementsData;
     }
 }

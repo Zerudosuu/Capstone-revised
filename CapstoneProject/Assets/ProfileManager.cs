@@ -36,11 +36,11 @@ public class ProfileManager : MonoBehaviour, IData
         PlayerStats.OnPlayerStatsUpdated += UpdateProfileUI;
     }
 
+
     private void OnDestroy()
     {
         PlayerStats.OnPlayerStatsUpdated -= UpdateProfileUI;
     }
-
 
     private void Start()
     {
@@ -58,6 +58,13 @@ public class ProfileManager : MonoBehaviour, IData
 
     private void UpdateProfileUI(int newLevel, string newTitle, float newExp, float newMaxExp)
     {
+        if (!gameObject.activeInHierarchy)
+        {
+            gameObject.SetActive(true); // Activate the GameObject if it's inactive
+        }
+
+        print("Updating Profile UI" + newLevel + " " + newTitle + " " + newExp + " " + newMaxExp);
+
         level = newLevel;
         title = newTitle;
         exp = (int)newExp;
@@ -93,8 +100,6 @@ public class ProfileManager : MonoBehaviour, IData
         level = gameData.Level;
         name = gameData.playerName;
         lrn = gameData.playerLRN;
-        exp = gameData.currentExperience;
-        maxExperience = gameData.currentMaxExperience;
         ProfilePicturePath = gameData.PicturePath;
     }
 

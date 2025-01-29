@@ -8,107 +8,95 @@ public class PlayerStats : MonoBehaviour, IData
     [Header("Player Stats")] [SerializeField]
     private int playerLvl;
 
-    [SerializeField] private float playerEXP;
-
+    [SerializeField] private float expGained;
+    [SerializeField] public int coins;
     [SerializeField] private string playerTitle;
 
     [Header("Statistic Base")] [SerializeField]
-    private float expGained;
+    private float maxEXP;
 
-    [SerializeField] private float maxEXP;
+    [Header("UI Elements")] [SerializeField]
+    private TMP_Text coinText;
 
-    [Header("Display")] [SerializeField] private TMP_Text lvlTxt;
-
+    [SerializeField] private TMP_Text lvlTxt;
     [SerializeField] private TMP_Text titleTxt;
-
     [SerializeField] private TMP_Text expTxt;
-
     [SerializeField] private Slider expSlider;
-
 
     // Event to notify UI updates
     public static event Action<int, string, float, float> OnPlayerStatsUpdated;
 
+    private readonly (string Title, float MaxExp)[] levelData =
+    {
+        ("Noob", 100),
+        ("Newbie", 210),
+        ("Scientist", 400)
+    };
+
     private void Start()
     {
-        PlayerStatsUpdate(playerLvl);
-        NotifyUIUpdate();
+        UpdatePlayerStats();
+        UpdateUI();
     }
-
-    //TO DO - needed to load and save
-    //              * playerLvl
-    //              * expGained
-
 
     public void AddExp(int exp)
     {
         expGained += exp;
 
-        if (expGained >= maxEXP)
+        while (expGained >= maxEXP && playerLvl < levelData.Length)
         {
+            expGained -= maxEXP; // Carry over extra EXP
             playerLvl++;
-            PlayerStatsUpdate(playerLvl);
+            UpdatePlayerStats();
         }
 
-        playerUpdateUI();
+        UpdateUI();
         NotifyUIUpdate();
     }
 
-    #region Update UI
-
-    private void PlayerStatsUpdate(int level)
+    public void AddCoins(int amount)
     {
-        switch (level)
+        coins += amount;
+        UpdateUI();
+    }
+
+    private void UpdatePlayerStats()
+    {
+        if (playerLvl >= 1 && playerLvl <= levelData.Length)
         {
-            case 1:
-                playerTitle = "Noob";
-                maxEXP = 100;
-                LevelUpUI();
-                return;
-            case 2:
-                playerTitle = "Newbie";
-                maxEXP = 210;
-                expGained = 0;
-                LevelUpUI();
-                return;
-            case 3:
-                playerTitle = "Scientist";
-                maxEXP = 400;
-                expGained = 0;
-                LevelUpUI();
-                return;
+            playerTitle = levelData[playerLvl - 1].Title;
+            maxEXP = levelData[playerLvl - 1].MaxExp;
         }
+
+        NotifyUIUpdate();
     }
 
-    private void playerUpdateUI()
+    private void UpdateUI()
     {
-        //update UI Slider
-        expSlider.value = expGained;
-        expTxt.text = $"{expGained.ToString()} / {maxEXP.ToString()}";
-    }
-
-    private void LevelUpUI()
-    {
+        coinText.text = $"{coins}";
         lvlTxt.text = playerLvl.ToString();
         titleTxt.text = playerTitle;
-        expTxt.text = $"{expGained.ToString()} / {maxEXP.ToString()}";
+        expTxt.text = $"{expGained} / {maxEXP}";
 
-        expSlider.value = expGained;
         expSlider.maxValue = maxEXP;
+        expSlider.value = expGained;
     }
 
     private void NotifyUIUpdate()
     {
+        Debug.Log("Notifying UI Update");
         OnPlayerStatsUpdated?.Invoke(playerLvl, playerTitle, expGained, maxEXP);
     }
-
-    #endregion
 
     public void LoadData(GameData gameData)
     {
         playerLvl = gameData.Level;
         expGained = gameData.currentExperience;
         maxEXP = gameData.currentMaxExperience;
+        coins = gameData.playerCoins;
+
+        UpdatePlayerStats();
+        UpdateUI();
     }
 
     public void SavedData(GameData gameData)
@@ -116,5 +104,6 @@ public class PlayerStats : MonoBehaviour, IData
         gameData.Level = playerLvl;
         gameData.currentExperience = (int)expGained;
         gameData.currentMaxExperience = (int)maxEXP;
+        gameData.playerCoins = coins;
     }
 }

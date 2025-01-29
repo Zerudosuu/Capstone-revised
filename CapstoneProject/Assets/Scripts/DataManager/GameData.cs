@@ -27,6 +27,8 @@ public class GameData
 
     public int currentExperience;
     public int currentMaxExperience;
+    public int playerCoins; // Player's currency
+
 
     // Default constructor initializes some default values
     public GameData()
@@ -36,6 +38,7 @@ public class GameData
         this.playerLRN = "123456789";
         this.currentExperience = 0;
         this.currentMaxExperience = 100;
+        this.playerCoins = 0;
         this.Achievements = new List<Achievement>();
         this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";

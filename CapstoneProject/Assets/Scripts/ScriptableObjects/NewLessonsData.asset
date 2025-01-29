@@ -106,7 +106,7 @@ MonoBehaviour:
       actionRequired: Measure
     isCompleted: 0
     Coins: 200
-    Experience: 100
+    Experience: 150
     SecondCoins: 100
     SecondExperience: 80
     isItemRewardCollected: 0

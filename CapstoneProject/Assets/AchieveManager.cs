@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class AchieveManager : MonoBehaviour
+public class AchieveManager : MonoBehaviour, IData
 {
     public static AchieveManager Instance { get; private set; }
     public Achievements achievementData;
@@ -25,12 +25,10 @@ public class AchieveManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
+
+        CloneAchievements(); // Ensure achievements are cloned on initialization
     }
 
-    private void Start()
-    {
-        CloneAchievements();
-    }
 
     void CloneAchievements()
     {
@@ -60,5 +58,28 @@ public class AchieveManager : MonoBehaviour
                 OnCompleteAchievement?.Invoke();
             }
         }
+    }
+
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData.Achievements != null && gameData.Achievements.Count > 0)
+        {
+            ClonedAchievements = gameData.Achievements;
+        }
+        else
+        {
+            CloneAchievements();
+        }
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        if (gameData.Achievements != null && gameData.Achievements.Count == 0)
+        {
+            gameData.Achievements = ClonedAchievements;
+        }
+
+        gameData.Achievements = ClonedAchievements;
     }
 }
