@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -19,10 +20,10 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public bool placeInSlot = false;
     public string TagName;
     public int itemVariantID;
-
     public Animator anim;
     public GameObject Popup;
 
+    public static event Action OnItemDragged;
 
     private void Awake()
     {
@@ -87,6 +88,9 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     //! DRAG EVENTS
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (OnItemDragged != null)
+            OnItemDragged.Invoke();
+
         originalPosition = transform.position;
         parentAfterDrag = transform.parent;
         transform.SetParent(transform.root); // Move item to root canvas while dragging
@@ -120,13 +124,11 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             Transform newSlot = eventData.pointerCurrentRaycast.gameObject.transform;
             transform.SetParent(newSlot);
-
             print("Dropped in slot" + eventData.pointerCurrentRaycast.gameObject.name);
         }
         else
         {
             // Return to original parent or slot if not dropped into a slot
-
             transform.SetParent(parentAfterDrag);
             transform.position = originalPosition;
         }

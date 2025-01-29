@@ -17,6 +17,7 @@ public class StepManager : MonoBehaviour
 
     public string requiredAction;
     public static event Action OnStepBroadcasted;
+    public static event Action OnStepBroadCastAnotherActionPanel;
 
     private void Start()
     {
@@ -80,6 +81,14 @@ public class StepManager : MonoBehaviour
             return false;
     }
 
+    public bool IsStepForTheDroppedObject()
+    {
+        var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
+
+        return currentSubstep.theDroppedObject;
+    }
+
     private void DisplayCurrentStep()
     {
         anim.Play("SpawnSteps");
@@ -110,6 +119,11 @@ public class StepManager : MonoBehaviour
             {
                 OnStepBroadcasted?.Invoke();
                 print("Broadcasted");
+            }
+
+            if (currentSubstep != null && currentSubstep.willNeedAnotherAction)
+            {
+                OnStepBroadCastAnotherActionPanel?.Invoke();
             }
         }
     }
