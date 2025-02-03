@@ -7,32 +7,23 @@ using UnityEngine.UI;
 
 public class Saveslot : MonoBehaviour
 {
-    [Header("Profile")]
-    [SerializeField]
-    private string profileId = "";
+    [Header("Profile")] [SerializeField] private string profileId = "";
 
-    [Header("UI Elements")]
-    [SerializeField]
+    [Header("UI Elements")] [SerializeField]
     private GameObject noDataContent;
 
-    [SerializeField]
-    private GameObject hasDataContent;
+    [SerializeField] private GameObject hasDataContent;
 
-    [SerializeField]
-    private TextMeshProUGUI ChapterTitle;
+    [SerializeField] private TextMeshProUGUI ChapterTitle;
 
-    [SerializeField]
-    private TextMeshProUGUI Level;
+    [SerializeField] private TextMeshProUGUI Level;
 
-    [SerializeField]
-    private TextMeshProUGUI PlayTime;
+    [SerializeField] private TextMeshProUGUI PlayTime;
 
-    [SerializeField]
-    private TextMeshProUGUI Percentage;
+    [SerializeField] private TextMeshProUGUI Percentage;
     private Button saveSlotButton;
 
-    [Header("Clear Data Button")]
-    [SerializeField]
+    [Header("Clear Data Button")] [SerializeField]
     private Button clearDataButton;
 
     public bool hasData { get; private set; } = false;
@@ -51,17 +42,27 @@ public class Saveslot : MonoBehaviour
             hasDataContent.SetActive(false);
             clearDataButton.gameObject.SetActive(false);
         }
+        else if (data.LessonMode == GameMode.Lesson)
+        {
+            hasData = true;
+            noDataContent.SetActive(false);
+            hasDataContent.SetActive(true);
+            clearDataButton.gameObject.SetActive(true);
+            ChapterTitle.text = data.ChapterTitle;
+            Level.text = "Level: " + data.Level;
+            PlayTime.text = "Play Time: " + data.timestamp;
+            Percentage.text = data.Percentage + "%";
+        }
         else
         {
             hasData = true;
             noDataContent.SetActive(false);
             hasDataContent.SetActive(true);
             clearDataButton.gameObject.SetActive(true);
-
-            ChapterTitle.text = data.ChapterTitle;
-            Level.text = "Level: " + data.Level;
+            ChapterTitle.text = "Creative Mode";
+            Level.text = "";
+            Percentage.text = "";
             PlayTime.text = "Play Time: " + data.timestamp;
-            Percentage.text = data.Percentage + "%";
         }
     }
 

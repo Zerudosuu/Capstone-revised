@@ -23,6 +23,11 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     public Animator anim;
     public GameObject Popup;
 
+
+    private bool isClone = false; // Track if this object is a clone
+
+    public GameObject originalItemPrefab; // The prefab reference
+
     public static event Action OnItemDragged;
 
     private void Awake()
@@ -49,6 +54,8 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
         {
             Popup.SetActive(false);
         }
+
+        originalItemPrefab = gameObject;
     }
 
     public void PopUpOnItemValid()
@@ -88,8 +95,7 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
     //! DRAG EVENTS
     public void OnBeginDrag(PointerEventData eventData)
     {
-        if (OnItemDragged != null)
-            OnItemDragged.Invoke();
+        OnItemDragged?.Invoke();
 
         originalPosition = transform.position;
         parentAfterDrag = transform.parent;
@@ -132,6 +138,30 @@ public class DragableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
             transform.SetParent(parentAfterDrag);
             transform.position = originalPosition;
         }
+    }
+
+    public void CloneItemAfter()
+    {
+        CreateNewClone();
+    }
+
+    /// <summary>
+    /// Creates a new clone in the original container slot.
+    /// </summary>
+    private void CreateNewClone()
+    {
+        GameObject newItem = Instantiate(originalItemPrefab, parentAfterDrag);
+        newItem.name = originalItemPrefab.name;
+
+        // Mark the new item as a clone
+        DragableItem newDragItem = newItem.GetComponent<DragableItem>();
+        if (newDragItem != null)
+        {
+            newDragItem.isClone = true;
+            newDragItem.originalItemPrefab = originalItemPrefab;
+        }
+
+        Debug.Log($"New clone of {newItem.name} created in {parentAfterDrag.name}");
     }
 
 

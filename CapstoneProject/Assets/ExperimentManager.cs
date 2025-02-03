@@ -101,38 +101,55 @@ internal class ExperimentManager : MonoBehaviour, IData
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-
     public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)
     {
         if (itemReaction != null && itemReaction.item.CurrentState != null)
         {
-            bool conditionMet = false;
+            bool stateChanged = false;
 
-            // Iterate through all states of the item
+            // Iterate through all possible states
             foreach (var state in itemReaction.item.states)
             {
-                if (state.conditions.itemNameRequirement == ItemInteracted)
+                if (state.conditions != null && state.conditions.Count > 0)
                 {
-                    // Condition met, switch to this state
-                    itemReaction.item.currentStateIndex = itemReaction.item.states.IndexOf(state);
-                    itemReaction.GetComponent<Image>().sprite = state.sprite;
-                    itemReaction.transform.name = state.stateName;
-                    conditionMet = true;
-                    itemReaction.item.currentTemperature = state.Temperature;
+                    bool allConditionsMet = true;
 
+                    // Check if all conditions are met
+                    foreach (var condition in state.conditions)
+                    {
+                        if (condition.itemNameRequirement != ItemInteracted)
+                        {
+                            allConditionsMet = false;
+                            break; // Exit early if any condition fails
+                        }
+                    }
 
-                    Debug.Log($"Item updated to state: {state.stateName}");
+                    if (allConditionsMet)
+                    {
+                        // Update item to new state
+                        itemReaction.item.currentStateIndex = itemReaction.item.states.IndexOf(state);
+                        itemReaction.GetComponent<Image>().sprite = state.sprite;
+                        itemReaction.transform.name = state.stateName;
+                        itemReaction.item.currentTemperature = state.Temperature;
+                        stateChanged = true;
 
-
-                    break;
+                        Debug.Log($"✅ Item updated to state: {state.stateName}");
+                        break; // Stop checking further states once changed
+                    }
                 }
+            }
+
+            if (!stateChanged)
+            {
+                Debug.LogWarning($"⚠️ No matching state found for item: {itemReaction.item.itemName} with interaction: {ItemInteracted}");
             }
         }
         else
         {
-            Debug.Log("ItemReaction or CurrentState is null. Cannot update prefab.");
+            Debug.LogError("❌ ItemReaction or CurrentState is null. Cannot update prefab.");
         }
     }
+
 
     public ScrollViewSlot FindEmptySlot()
     {

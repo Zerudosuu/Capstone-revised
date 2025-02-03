@@ -32,34 +32,16 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     - stateName: Lamp with Denatured Alcohol
       willChangeSprite: 0
       sprite: {fileID: 21300000, guid: 8414a1cd3b607424c9773ac5502bef49, type: 3}
       description: 
       conditions:
-        itemNameRequirement: Denatured Alcohol
+      - itemNameRequirement: Denatured Alcohol
+        isMet: 0
       Temperature: 0
-    currentStateIndex: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
-  - itemPrefab: {fileID: 4047271636717327193, guid: 6cdff08c187c10443934dcbac48432dd, type: 3}
-    itemName: Tripod
-    itemDescription: A three-legged platform used to support flasks and beakers.
-    itemIcon: {fileID: 21300000, guid: ec90c7bd68847da43a3dd9809132765a, type: 3}
-    itemType: 0
-    isUnlock: 1
-    isCollected: 0
-    tagName: Support
-    compatibleTags:
-    - HeatConductor
-    - Container
-    - Placement
-    states: []
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
@@ -145,15 +127,15 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     - stateName: BeakerWithWater
       willChangeSprite: 1
       sprite: {fileID: 21300000, guid: 6e1398d7136ebd4409cb501ba7c2b83c, type: 3}
       description: 
       conditions:
-        itemNameRequirement: Water
+      - itemNameRequirement: Water
+        isMet: 0
       Temperature: 25
     currentStateIndex: 0
     hasTemperature: 1
@@ -175,8 +157,7 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
@@ -198,8 +179,7 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
@@ -221,8 +201,7 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
@@ -244,15 +223,13 @@ MonoBehaviour:
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: 
+      conditions: []
       Temperature: 0
     - stateName: Liquid Dropper with Denatured Alcohol
       willChangeSprite: 0
       sprite: {fileID: 0}
       description: 
-      conditions:
-        itemNameRequirement: Denatured Alcohol
+      conditions: []
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
@@ -435,6 +412,52 @@ MonoBehaviour:
     tagName: Liquid
     compatibleTags: []
     states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 9065926371101314686, guid: f6a2447316a69664da5d738ba327597a, type: 3}
+    itemName: Empty Soda Bottle
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: ee42160a05ab0604d9512c3c5194e3a3, type: 3}
+    itemType: 1
+    isUnlock: 1
+    isCollected: 0
+    tagName: Container
+    compatibleTags:
+    - Liquid
+    states:
+    - stateName: Soda Bottle with food color
+      willChangeSprite: 0
+      sprite: {fileID: 21300000, guid: 2102775921305d0438f4e84d816060c8, type: 3}
+      description: 
+      conditions:
+      - itemNameRequirement: Food Color
+        isMet: 0
+      Temperature: 0
+    - stateName: Soda Bottle with food color and Water
+      willChangeSprite: 0
+      sprite: {fileID: 21300000, guid: 5f01cf024707b6d49865a1e5ec35752f, type: 3}
+      description: 
+      conditions:
+      - itemNameRequirement: Food Color
+        isMet: 0
+      - itemNameRequirement: Water
+        isMet: 0
+      Temperature: 0
+    - stateName: Soda Bottle with Food Color Dish Washing and Water
+      willChangeSprite: 0
+      sprite: {fileID: 21300000, guid: 3b6f14f2f85c21e4c92206c2acfddf44, type: 3}
+      description: 
+      conditions:
+      - itemNameRequirement: Food Color
+        isMet: 0
+      - itemNameRequirement: Water
+        isMet: 0
+      - itemNameRequirement: Dishwashing Liquid
+        isMet: 0
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0

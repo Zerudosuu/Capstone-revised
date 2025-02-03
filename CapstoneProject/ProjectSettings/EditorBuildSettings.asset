@@ -15,9 +15,12 @@ EditorBuildSettings:
     path: Assets/Scenes/GameScenes/LessonMode.unity
     guid: c2e6b6b5989ecfb42acc7432d72a8597
   - enabled: 1
+    path: Assets/Scenes/GameScenes/CreativeMode.unity
+    guid: 0b1a4b393177ce948b8beeb3d1ae5ca4
+  - enabled: 1
     path: Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity
     guid: dc372bcf491d92240b7772928cff97d5
   - enabled: 1
     path: Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity
-    guid: 58ea34c1525a6cc46b9b101952fd5bc5
+    guid: 1e41826deb6dad643bed3a62d3e36e1e
   m_configObjects: {}

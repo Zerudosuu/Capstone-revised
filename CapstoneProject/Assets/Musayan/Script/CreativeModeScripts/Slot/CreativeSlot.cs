@@ -1,25 +1,35 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class CreativeSlot : MonoBehaviour, IDropHandler
+public class CreativeSlot : MonoBehaviour, IDropHandler, IBeginDragHandler, IDragHandler, IEndDragHandler,
+    IPointerClickHandler
 {
     private GridLayoutGroup gridLayout;
     private Image image;
+    private RectTransform rectTransform;
+    private Canvas canvas;
+    private CanvasGroup canvasGroup;
+    private Vector3 originalPosition;
+    private Transform originalParent;
+
     public bool FixChildSize = false;
     public string RequireName;
     public string ItemAddedName;
     public bool isOccupied = false;
 
-
     private void Awake()
     {
         gridLayout = GetComponent<GridLayoutGroup>();
         image = GetComponent<Image>();
-    }
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
 
+        if (canvas == null)
+        {
+            canvas = GetComponentInParent<Canvas>();
+        }
+    }
 
     private void OnEnable()
     {
@@ -69,5 +79,51 @@ public class CreativeSlot : MonoBehaviour, IDropHandler
                 childRect.anchoredPosition = Vector2.zero;
             }
         }
+    }
+
+    //! DRAG EVENTS FOR MOVING THE SLOT ITSELF
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        originalPosition = transform.position;
+        originalParent = transform.parent;
+
+        // Disable layout group updates to prevent reordering
+        if (originalParent.TryGetComponent(out LayoutGroup layoutGroup))
+        {
+            layoutGroup.enabled = false;
+        }
+
+        transform.SetAsLastSibling(); // Bring to front
+        canvasGroup.blocksRaycasts = false; // Allow raycasts to pass through while dragging
+    }
+
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (canvas == null) return;
+
+        RectTransformUtility.ScreenPointToWorldPointInRectangle(
+            canvas.transform as RectTransform,
+            eventData.position,
+            canvas.worldCamera,
+            out var globalMousePos
+        );
+        rectTransform.position = globalMousePos; // Update slot position to follow mouse
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        canvasGroup.blocksRaycasts = true; // Restore raycasts when dropped
+
+        // Restore layout group updates
+        if (originalParent.TryGetComponent(out LayoutGroup layoutGroup))
+        {
+            layoutGroup.enabled = true;
+        }
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        // Add any behavior when clicking a slot (if needed)
     }
 }

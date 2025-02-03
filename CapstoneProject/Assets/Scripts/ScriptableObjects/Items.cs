@@ -43,22 +43,36 @@ public class Item
 
     public void SwitchToState(string itemRequirement)
     {
-        for (int i = 0; i < states.Count; i++)
+        if (states == null || states.Count == 0)
         {
-            if (states[i].conditions.itemNameRequirement == itemRequirement)
-            {
-                currentStateIndex = i;
-                Debug.Log("Condition met! Transitioning to the next state.");
-                return;
-            }
-
-            Debug.LogWarning("Condition not met." + states[i].conditions.itemNameRequirement);
+            Debug.LogWarning($"{itemName}: No states available for switching.");
+            return;
         }
 
-        Debug.LogWarning(
-            $"{this.itemName}: No matching state found for item requirement: {itemRequirement}"
-        );
+        for (int i = 0; i < states.Count; i++)
+        {
+            bool allConditionsMet = true;
+
+            foreach (var condition in states[i].conditions)
+            {
+                if (condition.itemNameRequirement != itemRequirement)
+                {
+                    allConditionsMet = false;
+                    break; // Exit early if any condition is not met
+                }
+            }
+
+            if (allConditionsMet)
+            {
+                currentStateIndex = i;
+                Debug.Log($"{itemName}: Condition met! Transitioning to state '{states[i].stateName}'.");
+                return;
+            }
+        }
+
+        Debug.LogWarning($"{itemName}: No matching state found for item requirement: {itemRequirement}");
     }
+
 
     public Item Clone()
     {
@@ -90,18 +104,28 @@ public class Item
                 willChangeSprite = state.willChangeSprite,
                 sprite = state.sprite,
                 description = state.description,
-                conditions = new Conditions
-                {
-                    itemNameRequirement = state.conditions.itemNameRequirement
-                },
-                Temperature = state.Temperature
+                Temperature = state.Temperature,
+                conditions = new List<Conditions>() // Properly create a new list for conditions
             };
+
+            // Deep clone the conditions list
+            foreach (var condition in state.conditions)
+            {
+                Conditions clonedCondition = new Conditions
+                {
+                    itemNameRequirement = condition.itemNameRequirement,
+                    isMet = condition.isMet
+                };
+                clonedState.conditions.Add(clonedCondition);
+            }
+
             clonedItem.states.Add(clonedState);
         }
 
         return clonedItem;
     }
 }
+
 
 [System.Serializable]
 public class ItemState
@@ -110,7 +134,7 @@ public class ItemState
     public bool willChangeSprite;
     public Sprite sprite;
     public string description;
-    public Conditions conditions;
+    public List<Conditions> conditions;
     public float Temperature;
 }
 
@@ -118,4 +142,5 @@ public class ItemState
 public class Conditions
 {
     public string itemNameRequirement; // Item required to trigger this condition
+    public bool isMet; // Flag to check if the condition is met
 }

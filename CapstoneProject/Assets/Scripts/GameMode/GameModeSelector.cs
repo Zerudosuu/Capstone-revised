@@ -7,8 +7,7 @@ using UnityEngine.UIElements;
 
 public class GameModeSelector : MonoBehaviour, IData
 {
-    [Header("Game Mode Selector")]
-    VisualElement GameModeContainer;
+    [Header("Game Mode Selector")] VisualElement GameModeContainer;
     VisualElement GameModeLessonContainer;
     VisualElement GameModeCreativeContainer; // Corrected variable name
 
@@ -21,10 +20,12 @@ public class GameModeSelector : MonoBehaviour, IData
 
     SceneLoader _loader;
     public GameModeSelected gameModeSelected;
+
     private void Awake()
     {
         _loader = FindAnyObjectByType<SceneLoader>();
     }
+
     void OnEnable()
     {
         var root = GameObject.FindObjectOfType<UIDocument>().rootVisualElement;
@@ -47,7 +48,7 @@ public class GameModeSelector : MonoBehaviour, IData
     {
         print("Creative Play started");
         gameModeSelected = GameModeSelected.Creative;
-        DataManager.Instance.gameData.SceneName = "LessonMode";
+        DataManager.Instance.gameData.SceneName = "CreativeMode";
         DataManager.Instance.SaveGame();
         DataManager.Instance.LoadGame();
         StartCoroutine(_loader.loadingNextScene(DataManager.Instance.gameData.SceneName));

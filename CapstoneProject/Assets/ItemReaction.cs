@@ -74,7 +74,11 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             }
             else
             {
-                experimentManager.UpdateItemPrefab(this, draggable.name);
+                experimentManager?.UpdateItemPrefab(this, draggable.name);
+
+                CreativeObjectManager creativeObjectManager = FindObjectOfType<CreativeObjectManager>(true);
+                creativeObjectManager?.UpdateItemPrefab(this, draggable.name);
+
                 CheckReactions(item.CurrentState.stateName, draggable);
             }
         }
@@ -102,7 +106,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             }
             else
             {
-                experimentManager.UpdateItemPrefab(droppedItem, draggable.name);
+                experimentManager?.UpdateItemPrefab(droppedItem, draggable.name);
                 CheckReactions(item.CurrentState.stateName, draggable);
             }
         }
@@ -120,8 +124,10 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         {
             if (
                 reaction.CheckStateName(currentStateName)
-                && reaction.triggers.Contains(draggable.name)
+                && reaction.triggers.Contains(draggable.name) || reaction.triggers.Contains("stir") ||
+                reaction.triggers.Contains("shake")
             )
+
             {
                 Debug.Log($"Reaction triggered: {reaction.reactionName}");
                 TriggerReaction(reaction, draggable);
