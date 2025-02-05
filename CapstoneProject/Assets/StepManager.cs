@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -14,8 +15,11 @@ public class StepManager : MonoBehaviour
     public List<LessonStepsExample> lessonSteps;
     public GameObject Timer;
     public Animator anim;
-
     public string requiredAction;
+
+
+    [SerializeField] [NotNull] private ParticleSystem confett1;
+    [SerializeField] [NotNull] private ParticleSystem confett2;
 
     [SerializeField] BottomSheetFunction bottomSheetFunction;
     public static event Action OnStepBroadcasted;
@@ -71,6 +75,9 @@ public class StepManager : MonoBehaviour
                 lessonStepText.text =
                     "All tasks completed! Congratulations! Please proceed to the questions below.";
 
+
+                confett1.Play();
+                confett2.Play();
                 bottomSheetFunction.MoveToPosition(bottomSheetFunction.middleY);
                 OnLessonsComplete?.Invoke();
                 experimentObjectManager.currentLesson.isCompleted = true;

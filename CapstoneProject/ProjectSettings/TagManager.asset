@@ -35,7 +35,7 @@ TagManager:
   - Button
   - Water
   - UI
-  - 
+  - BottomSheet
   - 
   - 
   - 
@@ -64,4 +64,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: BottomSheet
+    uniqueID: 2001019119
     locked: 0
