@@ -266,7 +266,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 1697868708}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
@@ -289,6 +289,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+
   - {fileID: 1959956945}
   - {fileID: 8496085816511399033}
   - {fileID: 650919560}
@@ -299,6 +300,7 @@ RectTransform:
   - {fileID: 1217831540}
   - {fileID: 1292255245}
   - {fileID: 1674599585}
+
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1592,6 +1594,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
+
   m_SourcePrefab: {fileID: 100100000, guid: 6bee8c65908f3b743827db417e57b6f7, type: 3}
 --- !u!224 &8496085816511399033 stripped
 RectTransform:
