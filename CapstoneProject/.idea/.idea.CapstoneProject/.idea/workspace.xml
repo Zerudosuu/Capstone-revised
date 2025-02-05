@@ -6,18 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/AddedActionContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedActionContainerManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Erlrnmeyer Flask.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Erlrnmeyer Flask.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/LessonTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LessonTimer.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/MeasureScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeasureScript.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/BagDropArea.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/BagDropArea.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Cork or Rubber Stopper with Thermometer.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Cork or Rubber Stopper with Thermometer.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/ErinmeyerFlaskAnimation/Erlrnmeyer Flask.controller" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/ErinmeyerFlaskAnimation/Erlrnmeyer Flask.controller" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ProfileManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ProfileManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/CreativeMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/CreativeMode.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/LessonMode.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
@@ -40,7 +36,11 @@
                 <list>
                   <RecentBranch>
                     <option name="branchName" value="main" />
-                    <option name="lastUsedInstant" value="1737969657" />
+                    <option name="lastUsedInstant" value="1738744933" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="Musayan_branch" />
+                    <option name="lastUsedInstant" value="1738744916" />
                   </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="Musayan_Update" />

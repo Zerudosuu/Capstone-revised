@@ -8,6 +8,7 @@ public class BagDropArea : MonoBehaviour
     CurrentLessonToDisplay _currentLessonToDisplay;
     UIManager _UIManager;
     public GameObject lessonContainer;
+    [SerializeField] private Animator anim;
 
     void Start()
     {
@@ -15,6 +16,7 @@ public class BagDropArea : MonoBehaviour
         _lessonManager = FindObjectOfType<LessonManager>(true);
         _bagManager = FindObjectOfType<BagManager>(true);
         _UIManager = FindObjectOfType<UIManager>(true);
+
 
         if (_bagManager == null)
             print("bagManager is null");
@@ -27,6 +29,11 @@ public class BagDropArea : MonoBehaviour
             print("Added to inventory: " + item);
             _bagManager.AddItemInBag(item);
             _currentLessonToDisplay.CheckItem(item);
+
+            if (anim != null)
+            {
+                anim.Play("BagDropSucessAnimation");
+            }
 
 
             TutorialManager tutorialManager = FindObjectOfType<TutorialManager>(true);

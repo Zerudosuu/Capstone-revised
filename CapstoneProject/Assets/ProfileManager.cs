@@ -42,7 +42,7 @@ public class ProfileManager : MonoBehaviour, IData
         PlayerStats.OnPlayerStatsUpdated -= UpdateProfileUI;
     }
 
-    private void Start()
+    private void Awake()
     {
         playerLevel.text = "Level: " + level.ToString();
         playerTitle.text = title;
@@ -52,7 +52,6 @@ public class ProfileManager : MonoBehaviour, IData
 
         expSlider.maxValue = maxExperience;
         expSlider.value = exp;
-
         LoadImageIntoUI();
     }
 
@@ -100,6 +99,8 @@ public class ProfileManager : MonoBehaviour, IData
         level = gameData.Level;
         name = gameData.playerName;
         lrn = gameData.playerLRN;
+        exp = gameData.currentExperience;
+        maxExperience = gameData.currentMaxExperience;
         ProfilePicturePath = gameData.PicturePath;
     }
 

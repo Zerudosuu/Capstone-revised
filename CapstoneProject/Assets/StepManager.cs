@@ -43,8 +43,10 @@ public class StepManager : MonoBehaviour
             // Check if the action type matches and if the correct item is being used
             if (currentSubstep.requiredAction == actionType && currentSubstep.requiredItemName == itemName)
             {
-                Debug.Log($"Action '{actionType}' completed with correct item '{itemName}'. Step validated!");
-
+                currentLesson.ValidateAndCompleteSubStep(itemName);
+            }
+            else if (currentSubstep.requiredAction == "assemble")
+            {
                 currentLesson.ValidateAndCompleteSubStep(itemName);
             }
             else

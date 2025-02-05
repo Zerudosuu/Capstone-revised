@@ -8821,7 +8821,7 @@ MonoBehaviour:
   Timer: {fileID: 621930669}
   anim: {fileID: 934085975}
   requiredAction: 
-  bottomSheetFunction: {fileID: 0}
+  bottomSheetFunction: {fileID: 1679528583}
 --- !u!95 &934085975
 Animator:
   serializedVersion: 5
