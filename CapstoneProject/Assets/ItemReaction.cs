@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,10 +15,11 @@ public class ItemReaction : MonoBehaviour, IDropHandler
     private DragableItem ownDraggableItem;
     public List<Reaction> reactions; // List of reactions for the item
 
-
     public delegate void TemperatureChanged(float newTemperature);
 
     public event TemperatureChanged OnTemperatureChanged;
+
+    public static event Action onitemNotCompatible;
 
 
     public void SetTemperature(float newTemp)
@@ -69,6 +71,8 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                     else
                     {
                         draggable.transform.position = draggable.originalPosition;
+                        onitemNotCompatible?.Invoke();
+                        print("not the step that we are looking for");
                     }
                 }
             }
@@ -82,9 +86,10 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                 CheckReactions(item.CurrentState.stateName, draggable);
             }
         }
-        else if (droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
-                 droppedItem != null && droppedItem.item.states.Count > 0)
-
+        else if (droppedItem != null &&
+                 droppedItem.item != null &&
+                 droppedItem.item.compatibleTags.Contains(gameObject.GetComponent<DragableItem>().TagName) &&
+                 droppedItem.item.states.Count != 0)
         {
             if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
             {
@@ -101,6 +106,8 @@ public class ItemReaction : MonoBehaviour, IDropHandler
                     else
                     {
                         draggable.transform.position = draggable.originalPosition;
+                        onitemNotCompatible?.Invoke();
+                        print("not the step that we are looking for");
                     }
                 }
             }
@@ -115,6 +122,14 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             ownDraggableItem.PopUpOnItemInvalid();
             draggable.transform.position = draggable.originalPosition;
             Debug.LogWarning("Dropped item is not compatible with this slot.");
+
+            if (experimentObjectManagerManager != null && experimentObjectManagerManager.gameMode == GameMode.Lesson)
+            {
+                if (draggable != null && draggable.TagName != "TempMeasurement")
+                {
+                    onitemNotCompatible?.Invoke();
+                }
+            }
         }
     }
 
@@ -229,6 +244,8 @@ public class Reaction
     public Animator Animator; // Optional animation for the reaction
 
     public string TriggerAnimationName;
+
+    [Header("Self Condition")] public bool modifyselfTemperature;
 
 
     public bool CheckStateName(string stateName)

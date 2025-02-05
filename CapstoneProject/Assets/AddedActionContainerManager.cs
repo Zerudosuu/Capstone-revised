@@ -1,13 +1,20 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using DG.Tweening; // DOTween for animations
+using DG.Tweening;
+using TMPro; // DOTween for animations
 
 public class AddedActionContainerManager : MonoBehaviour
 {
     [SerializeField] private RectTransform otherActionRectTransform;
     [SerializeField] private GameObject objectToGetAction;
     [SerializeField] private StepManager stepManager;
+
+    [SerializeField] private GameObject inputContainer;
+    [SerializeField] private TMP_InputField inputFieldMinutes;
+    [SerializeField] private TMP_InputField inputFieldSeconds;
+    [SerializeField] private ExperimentCountDown experimentCountDown;
+
 
     private float offscreenPosition;
     private bool isVisible = false; // Track visibility state
@@ -32,6 +39,15 @@ public class AddedActionContainerManager : MonoBehaviour
 
         // Set initial position offscreen while keeping the Y position unchanged
         otherActionRectTransform.anchoredPosition = new Vector2(offscreenPosition, initialYPosition);
+        inputContainer.SetActive(true);
+    }
+
+    // Get total time in seconds from input fields
+    private float GetTotalTimeInSeconds()
+    {
+        int minutes = int.TryParse(inputFieldMinutes.text, out int min) ? min : 0;
+        int seconds = int.TryParse(inputFieldSeconds.text, out int sec) ? sec : 0;
+        return (minutes * 60) + seconds;
     }
 
     public void ToggleVisibility()
@@ -41,25 +57,48 @@ public class AddedActionContainerManager : MonoBehaviour
             .SetEase(Ease.InOutQuad);
     }
 
-    // Shake function with optional delay
-    public void Shake(float duration = 2.0f)
+    // Shake function using inputted time
+    public void Shake()
     {
+        float duration = GetTotalTimeInSeconds();
+        string itemName = GetItemOnSlot()?.name; // Get the item being shaken
+
+        if (experimentCountDown != null)
+        {
+            experimentCountDown.gameObject.SetActive(true);
+            experimentCountDown.SetTime(duration, itemName, "shake"); // Pass item name
+        }
+
+        inputContainer.SetActive(false);
+
         StartCoroutine(ActionTimer(duration, () =>
         {
-            Debug.Log("Shake action completed!");
-            Debug.Log(GetItemOnSlot().name);
-            stepManager?.ValidateAndCompleteSubStep(GetItemOnSlot()?.name);
+            Debug.Log($"Shake action completed with item: {itemName}");
+            experimentCountDown.gameObject.SetActive(false);
+            inputContainer.SetActive(true);
+            stepManager?.ValidateAndCompleteSubStep(itemName, "shake"); // Pass item name
         }));
     }
 
-    // Stir function with optional delay
-    public void Stir(float duration = 2.0f)
+    public void Stir()
     {
+        float duration = GetTotalTimeInSeconds();
+        string itemName = GetItemOnSlot()?.name; // Get the item being stirred
+
+        if (experimentCountDown != null)
+        {
+            experimentCountDown.gameObject.SetActive(true);
+            experimentCountDown.SetTime(duration, itemName, "stir"); // Pass item name
+        }
+
+        inputContainer.SetActive(false);
+
         StartCoroutine(ActionTimer(duration, () =>
         {
-            Debug.Log("Stir action completed!");
-            Debug.Log(GetItemOnSlot().name);
-            stepManager?.ValidateAndCompleteSubStep(GetItemOnSlot()?.name);
+            Debug.Log($"Stir action completed with item: {itemName}");
+            experimentCountDown.gameObject.SetActive(false);
+            inputContainer.SetActive(true);
+            stepManager?.ValidateAndCompleteSubStep(itemName, "stir"); // Pass item name
         }));
     }
 

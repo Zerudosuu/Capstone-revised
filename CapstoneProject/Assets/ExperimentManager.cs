@@ -101,6 +101,7 @@ internal class ExperimentManager : MonoBehaviour, IData
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void UpdateItemPrefab(ItemReaction itemReaction, string ItemInteracted)
     {
         if (itemReaction != null && itemReaction.item.CurrentState != null)
@@ -141,7 +142,8 @@ internal class ExperimentManager : MonoBehaviour, IData
 
             if (!stateChanged)
             {
-                Debug.LogWarning($"⚠️ No matching state found for item: {itemReaction.item.itemName} with interaction: {ItemInteracted}");
+                Debug.LogWarning(
+                    $"⚠️ No matching state found for item: {itemReaction.item.itemName} with interaction: {ItemInteracted}");
             }
         }
         else
@@ -199,30 +201,45 @@ internal class ExperimentManager : MonoBehaviour, IData
 
     public void LoadDataFromGameData(GameData data)
     {
-        // Check if there are existing student experiment records
-        if (data.lessons[data.currentQuestIndex].studentRecords != null &&
-            data.lessons[data.currentQuestIndex].studentRecords.Count > 0)
+        // Ensure lessons list is not null
+        if (data.lessons == null || data.lessons.Count == 0)
         {
-            // Find the highest existing attemptId and assign a new unique one
-            int maxAttemptId = 0;
-            foreach (var record in data.lessons[data.currentQuestIndex].studentRecords)
+            Debug.LogError("❌ Error: Lessons list is null or empty.");
+            return;
+        }
+
+        // Ensure currentQuestIndex is within valid range
+        if (data.currentQuestIndex < 0 || data.currentQuestIndex >= data.lessons.Count)
+        {
+            Debug.LogError(
+                $"❌ Error: currentQuestIndex ({data.currentQuestIndex}) is out of range. Lessons count: {data.lessons.Count}");
+            return;
+        }
+
+        Lesson currentLesson = data.lessons[data.currentQuestIndex];
+
+        // Ensure studentRecords is not null
+        if (currentLesson.studentRecords == null)
+        {
+            Debug.LogWarning("⚠️ studentRecords list is null. Initializing a new list.");
+            currentLesson.studentRecords = new List<StudentExperimentRecord>();
+        }
+
+        // Find the highest existing attemptId and assign a new unique one
+        int maxAttemptId = 0;
+        foreach (var record in currentLesson.studentRecords)
+        {
+            if (record.attemptId > maxAttemptId)
             {
-                if (record.attemptId > maxAttemptId)
-                {
-                    maxAttemptId = record.attemptId;
-                }
+                maxAttemptId = record.attemptId;
             }
-
-            // Assign a new unique attempt ID
-            studentExperimentRecord.attemptId = maxAttemptId + 1;
-        }
-        else
-        {
-            // No records exist, start with attempt ID 1
-            studentExperimentRecord.attemptId = 1;
         }
 
+        // Assign a new unique attempt ID
+        studentExperimentRecord.attemptId = maxAttemptId + 1;
         studentExperimentRecord.studentName = data.playerName;
-        studentExperimentRecord.lessonId = data.lessons[data.currentQuestIndex].LessonID;
+        studentExperimentRecord.lessonId = currentLesson.LessonID;
+
+        Debug.Log($"✅ Data loaded successfully. New attempt ID: {studentExperimentRecord.attemptId}");
     }
 }

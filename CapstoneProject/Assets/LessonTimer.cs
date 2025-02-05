@@ -21,15 +21,19 @@ public class LessonTimer : MonoBehaviour
     private void OnEnable()
     {
         ExperimentManager.OnGameStart += StartTimer;
+        StepManager.OnLessonsComplete += OnExperimentSucess;
         SeeWhatsHappeningPanel.OnPanelOpened += PauseTimer;
         SeeWhatsHappeningPanel.OnPanelClosed += ResumeTimer;
+        ItemReaction.onitemNotCompatible += ReduceTime;
     }
 
     private void OnDisable()
     {
         ExperimentManager.OnGameStart -= StartTimer;
+        StepManager.OnLessonsComplete -= OnExperimentSucess;
         SeeWhatsHappeningPanel.OnPanelOpened -= PauseTimer;
         SeeWhatsHappeningPanel.OnPanelClosed -= ResumeTimer;
+        ItemReaction.onitemNotCompatible -= ReduceTime;
     }
 
     public void StartTimer()
@@ -55,6 +59,12 @@ public class LessonTimer : MonoBehaviour
             isPaused = false;
             Debug.Log("Timer resumed because panel is closed.");
         }
+    }
+
+    public void ReduceTime()
+    {
+        timeRemaining -= 10;
+        UpdateTimerText();
     }
 
     private IEnumerator TimerCoroutine()
@@ -88,5 +98,11 @@ public class LessonTimer : MonoBehaviour
     {
         Debug.Log("Timer has ended!");
         OnTimerEndAction?.Invoke();
+    }
+
+
+    private void OnExperimentSucess()
+    {
+        PauseTimer();
     }
 }
