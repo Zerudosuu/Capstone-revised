@@ -7,7 +7,7 @@ public class Step
     public string requiredItemName; // For drag-and-drop
     public string requiredAction; // For other actions (e.g., "click", "stir")
     public bool isCompleted;
-    public bool theDroppedObject;
+    public float targetTemperature;
     public bool WillBroadCastChange;
     public bool willNeedAnotherAction;
 

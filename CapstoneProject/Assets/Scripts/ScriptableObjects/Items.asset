@@ -393,7 +393,7 @@ MonoBehaviour:
     itemName: Empty Soda Bottle
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: ee42160a05ab0604d9512c3c5194e3a3, type: 3}
-    itemType: 1
+    itemType: 0
     isUnlock: 1
     isCollected: 0
     tagName: Container
@@ -429,6 +429,28 @@ MonoBehaviour:
         isMet: 0
       - itemNameRequirement: Dishwashing Liquid
         isMet: 0
+      Temperature: 0
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 6319436868574764685, guid: 52414b28fefe0f346971100ca18828b7, type: 3}
+    itemName: Cup
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: 5ab717a3861578948b463d60dfa21b1e, type: 3}
+    itemType: 0
+    isUnlock: 1
+    isCollected: 0
+    tagName: Container
+    compatibleTags:
+    - Liquid
+    states:
+    - stateName: Cup
+      willChangeSprite: 0
+      sprite: {fileID: 0}
+      description: 
+      conditions: []
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0

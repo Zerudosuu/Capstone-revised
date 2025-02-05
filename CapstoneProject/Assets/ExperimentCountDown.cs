@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -15,18 +16,29 @@ public class ExperimentCountDown : MonoBehaviour
 
     public string currentActionType = "wait"; // Default to wait
     public string currentItemName = ""; // The item used for the action
+    [SerializeField] private GameObject SlotToGetItem;
+
+    public float TargetTemperature = 0;
+    public static event Action onTimerisRunning;
 
     private void Start()
     {
         SkipButton.onClick.AddListener(() => CompleteStep());
     }
 
-    public void SetTime(float time, string itemName, string actionType)
+    public void SetTime(float time, string itemName, string actionType, float targetTemperature = 0)
     {
         timeRemaining = time;
         currentActionType = actionType; // Set the action type (shake, stir, wait)
-        currentItemName = itemName; // Set the item being used
+        currentItemName = itemName; // Set the item being 
+        TargetTemperature = targetTemperature;
+        onTimerisRunning?.Invoke();
         StartCountdown();
+    }
+
+    public GameObject GetSlotToGetItem()
+    {
+        return SlotToGetItem.transform.GetChild(0).gameObject;
     }
 
     private void StartCountdown()
@@ -56,10 +68,19 @@ public class ExperimentCountDown : MonoBehaviour
 
     private void CompleteStep()
     {
+        onTimerisRunning?.Invoke();
         countdownDisplay.text = "00:00";
         gameObject.SetActive(false);
         timerIsRunning = false;
         Debug.Log($"Completing the {currentActionType} step with item {currentItemName}...");
         _stepManager.ValidateAndCompleteSubStep(currentItemName, currentActionType); // Pass item name for validation
+
+
+        ItemReaction objectItemReaction = GetSlotToGetItem()?.GetComponent<ItemReaction>();
+
+        if (objectItemReaction != null && objectItemReaction.item.hasTemperature)
+        {
+            objectItemReaction.item.currentTemperature = TargetTemperature;
+        }
     }
 }

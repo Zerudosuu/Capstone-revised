@@ -100,13 +100,6 @@ public class StepManager : MonoBehaviour
             return false;
     }
 
-    public bool IsStepForTheDroppedObject()
-    {
-        var currentLesson = lessonSteps[currentLessonIndex];
-        var currentSubstep = currentLesson.GetCurrentSubstep();
-
-        return currentSubstep.theDroppedObject;
-    }
 
     private void DisplayCurrentStep()
     {
@@ -124,7 +117,8 @@ public class StepManager : MonoBehaviour
                 {
                     Timer.SetActive(true);
                     ExperimentCountDown countdown = Timer.GetComponent<ExperimentCountDown>();
-                    countdown.SetTime(currentSubstep.waitTime, currentSubstep.requiredItemName, requiredAction);
+                    countdown.SetTime(currentSubstep.waitTime, currentSubstep.requiredItemName, requiredAction,
+                        currentSubstep.targetTemperature);
                 }
                 else
                 {

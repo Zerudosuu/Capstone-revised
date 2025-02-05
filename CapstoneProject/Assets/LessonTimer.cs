@@ -25,6 +25,7 @@ public class LessonTimer : MonoBehaviour
         SeeWhatsHappeningPanel.OnPanelOpened += PauseTimer;
         SeeWhatsHappeningPanel.OnPanelClosed += ResumeTimer;
         ItemReaction.onitemNotCompatible += ReduceTime;
+        ExperimentCountDown.onTimerisRunning += PauseTimer;
     }
 
     private void OnDisable()
@@ -34,6 +35,7 @@ public class LessonTimer : MonoBehaviour
         SeeWhatsHappeningPanel.OnPanelOpened -= PauseTimer;
         SeeWhatsHappeningPanel.OnPanelClosed -= ResumeTimer;
         ItemReaction.onitemNotCompatible -= ReduceTime;
+        ExperimentCountDown.onTimerisRunning -= PauseTimer;
     }
 
     public void StartTimer()
@@ -48,8 +50,8 @@ public class LessonTimer : MonoBehaviour
 
     public void PauseTimer()
     {
-        isPaused = true;
-        Debug.Log("Timer paused because panel is open.");
+        if (!isPaused) isPaused = true;
+        else ResumeTimer();
     }
 
     public void ResumeTimer()

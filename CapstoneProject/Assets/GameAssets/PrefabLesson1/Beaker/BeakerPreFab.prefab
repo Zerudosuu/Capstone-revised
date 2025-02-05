@@ -25,17 +25,17 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1538396649732160648}
-  m_LocalRotation: {x: -0.7108375, y: -0, z: -0, w: 0.7033563}
-  m_LocalPosition: {x: 0, y: 0, z: 0.3}
-  m_LocalScale: {x: 1, y: 1, z: 0.31247}
+  m_LocalRotation: {x: -0.71083635, y: 0, z: 0, w: 0.7033575}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.3459, y: 0.3459, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5950072141373055121}
   m_LocalEulerAnglesHint: {x: -90.606, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 2.9, y: -37.1}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 16.7}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &9115059655980079821
 ParticleSystem:
@@ -674,9 +674,9 @@ ParticleSystem:
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
     donutRadius: 0.2
-    m_Position: {x: 0, y: 468.71, z: 0}
+    m_Position: {x: 0, y: 0, z: 0}
     m_Rotation: {x: 0, y: 0, z: 0}
-    m_Scale: {x: 214.6, y: 0, z: 142}
+    m_Scale: {x: 214.6, y: 0, z: 144.1}
     placementMode: 0
     m_MeshMaterialIndex: 0
     m_MeshNormalOffset: 0
@@ -4801,10 +4801,10 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 100
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
-  m_SortMode: 1
+  m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 300
   m_CameraVelocityScale: 0
@@ -5260,6 +5260,7 @@ MonoBehaviour:
   itemVariantID: 0
   anim: {fileID: 7567641553352058004}
   Popup: {fileID: 9128689180027092903}
+  originalItemPrefab: {fileID: 0}
 --- !u!114 &7913196925316324896
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5299,6 +5300,7 @@ MonoBehaviour:
     visualEffectPrefab: {fileID: 0}
     Animator: {fileID: 407258002825509505}
     TriggerAnimationName: AddIce
+    modifyselfTemperature: 0
   - needStateName: 500ml beaker
     reactionName: Beaker with Ice
     triggers:
@@ -5309,6 +5311,7 @@ MonoBehaviour:
     visualEffectPrefab: {fileID: 0}
     Animator: {fileID: 407258002825509505}
     TriggerAnimationName: AddIce
+    modifyselfTemperature: 0
 --- !u!114 &6889693856321019479
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5355,15 +5358,15 @@ RectTransform:
   m_GameObject: {fileID: 5588715884019872563}
   m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6556927, y: 0.6556928, z: 0.65569293}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.32, y: 0.32, z: 0.32}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5950072141373055121}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0, y: 12.435007}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -31.5}
+  m_SizeDelta: {x: 0, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!198 &5922234199753223742
 ParticleSystem:
@@ -5374,7 +5377,7 @@ ParticleSystem:
   m_GameObject: {fileID: 5588715884019872563}
   serializedVersion: 8
   lengthInSec: 5
-  simulationSpeed: 1
+  simulationSpeed: 6.84
   stopAction: 0
   cullingMode: 0
   ringBufferMode: 0
@@ -10129,7 +10132,7 @@ ParticleSystemRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_RenderMode: 0
   m_MeshDistribution: 0
   m_SortMode: 1

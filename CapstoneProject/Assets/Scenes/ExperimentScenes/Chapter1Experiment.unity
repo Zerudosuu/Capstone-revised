@@ -4375,6 +4375,8 @@ GameObject:
   - component: {fileID: 414263666}
   - component: {fileID: 414263665}
   - component: {fileID: 414263667}
+  - component: {fileID: 414263669}
+  - component: {fileID: 414263668}
   m_Layer: 5
   m_Name: TutorialContainer
   m_TagString: Untagged
@@ -4458,6 +4460,46 @@ MonoBehaviour:
   prevButton: {fileID: 1058712706}
   closeButton: {fileID: 910385035}
   GameStartPanel: {fileID: 1786060730}
+--- !u!114 &414263668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414263663}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &414263669
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414263663}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 3
+  m_TargetDisplay: 0
 --- !u!1 &425299698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6052,6 +6094,8 @@ MonoBehaviour:
   _stepManager: {fileID: 934085974}
   currentActionType: wait
   currentItemName: 
+  SlotToGetItem: {fileID: 1746290280}
+  TargetTemperature: 0
 --- !u!114 &621930672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8560,7 +8604,7 @@ MonoBehaviour:
       requiredItemName: 500ml beaker
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8569,7 +8613,7 @@ MonoBehaviour:
       requiredItemName: Water
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8579,7 +8623,7 @@ MonoBehaviour:
       requiredItemName: BeakerWithWater
       requiredAction: drag
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8589,7 +8633,7 @@ MonoBehaviour:
       requiredItemName: Ice
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 1
       willNeedAnotherAction: 0
       substeps: []
@@ -8598,7 +8642,7 @@ MonoBehaviour:
       requiredItemName: Ice
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8607,7 +8651,7 @@ MonoBehaviour:
       requiredItemName: Ice
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8616,7 +8660,7 @@ MonoBehaviour:
       requiredItemName: Ice
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8625,7 +8669,7 @@ MonoBehaviour:
       requiredItemName: Ice
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8635,7 +8679,7 @@ MonoBehaviour:
       requiredItemName: 
       requiredAction: wait
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 1
       willNeedAnotherAction: 0
       substeps: []
@@ -8644,7 +8688,7 @@ MonoBehaviour:
       requiredItemName: BeakerWithWater
       requiredAction: drag
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8654,7 +8698,7 @@ MonoBehaviour:
       requiredItemName: 
       requiredAction: assemble
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps:
@@ -8672,7 +8716,7 @@ MonoBehaviour:
       requiredItemName: Water
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps:
@@ -8691,7 +8735,7 @@ MonoBehaviour:
       requiredItemName: Denatured Alcohol
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps:
@@ -8709,7 +8753,7 @@ MonoBehaviour:
       requiredItemName: MatchStick
       requiredAction: drop
       isCompleted: 0
-      theDroppedObject: 0
+      targetTemperature: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps:
@@ -8723,13 +8767,22 @@ MonoBehaviour:
         action: 
         isCompleted: 0
       waitTime: 0
+    - stepName: 
+      requiredItemName: 
+      requiredAction: wait
+      isCompleted: 0
+      targetTemperature: 100
+      WillBroadCastChange: 0
+      willNeedAnotherAction: 0
+      substeps: []
+      waitTime: 300
   - substeps:
     - stepName: 
       requiredItemName: BeakerWithWater
       requiredAction: drag
       isCompleted: 0
-      theDroppedObject: 0
-      WillBroadCastChange: 0
+      targetTemperature: 0
+      WillBroadCastChange: 1
       willNeedAnotherAction: 0
       substeps:
       - targetObject: 500ml beaker
@@ -13968,6 +14021,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1425875438}
   - component: {fileID: 1425875439}
+  - component: {fileID: 1425875441}
+  - component: {fileID: 1425875440}
   m_Layer: 5
   m_Name: Buttom Sheet
   m_TagString: Untagged
@@ -13992,7 +14047,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 8}
+  m_AnchoredPosition: {x: 0, y: 12}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1425875439
@@ -14016,6 +14071,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1425875440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425875437}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1425875441
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425875437}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 1
+  m_TargetDisplay: 0
 --- !u!1 &1450875346
 GameObject:
   m_ObjectHideFlags: 0
@@ -17858,6 +17953,8 @@ GameObject:
   - component: {fileID: 1786060731}
   - component: {fileID: 1786060734}
   - component: {fileID: 1786060733}
+  - component: {fileID: 1786060736}
+  - component: {fileID: 1786060735}
   m_Layer: 5
   m_Name: GameStartPanel
   m_TagString: Untagged
@@ -17923,6 +18020,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786060730}
   m_CullTransparentMesh: 1
+--- !u!114 &1786060735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786060730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &1786060736
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1786060730}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 2
+  m_TargetDisplay: 0
 --- !u!1 &1797422083
 GameObject:
   m_ObjectHideFlags: 0
@@ -20295,6 +20432,8 @@ GameObject:
   - component: {fileID: 2062295272}
   - component: {fileID: 2062295274}
   - component: {fileID: 2062295273}
+  - component: {fileID: 2062295276}
+  - component: {fileID: 2062295275}
   m_Layer: 5
   m_Name: GameOverPanel
   m_TagString: Untagged
@@ -20360,6 +20499,46 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2062295271}
   m_CullTransparentMesh: 1
+--- !u!114 &2062295275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062295271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &2062295276
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2062295271}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 4
+  m_TargetDisplay: 0
 --- !u!1 &2064844157
 GameObject:
   m_ObjectHideFlags: 0
