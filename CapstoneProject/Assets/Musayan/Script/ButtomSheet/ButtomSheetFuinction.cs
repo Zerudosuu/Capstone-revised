@@ -13,12 +13,13 @@ public class BottomSheetFunction : MonoBehaviour, IBeginDragHandler, IDragHandle
     [SerializeField] private Button submitBtn;
 
     private float initialY; // Bottom edge of the screen
-    private float middleY; // Middle position
+    public float middleY; // Middle position
     public float fullscreenY = 0f; // Fully visible position
     private Vector2 dragStartPosition;
     private Vector2 sheetStartPosition;
     private ButtomSheetHolder bottomSheet;
     public bool canDrag = true;
+
 
     private void Start()
     {

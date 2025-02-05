@@ -45,7 +45,7 @@ public class MeasureScript : MonoBehaviour
                 // Check if this is the correct step
                 if (stepManager != null && stepManager.requiredAction == "drag")
                 {
-                    stepManager.ValidateAndCompleteSubStep(other.gameObject.name);
+                    stepManager.ValidateAndCompleteSubStep(other.gameObject.name, "drag");
                 }
             }
         }

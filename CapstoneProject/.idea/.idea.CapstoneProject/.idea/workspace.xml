@@ -7,21 +7,20 @@
     <list default="true" id="425113d6-ebd4-4487-92b1-7e8c68edc511" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.CapstoneProject/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/AddedActionContainerManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/AddedActionContainerManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentCountDown.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ExperimentManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ExperimentManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/SaveSlot.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/Prefabs/SaveSlot.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Erlrnmeyer Flask.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GameAssets/PrefabLesson2/Erlrnmeyer Flask.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ItemReaction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ItemReaction.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/CreativeModeScripts/Slot/CreativeSlot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/CreativeModeScripts/Slot/CreativeSlot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/NativeFilePicker/close.anim" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/NativeFilePicker/close.anim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/LessonTimer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/LessonTimer.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/MeasureScript.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/MeasureScript.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Musayan/Script/ButtomSheet/ButtomSheetFuinction.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Debugging Scene/Animation.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter1Experiment.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GameScenes/CreativeMode.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GameScenes/CreativeMode.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DataManager/SaveSlot/Saveslot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DataManager/SaveSlot/Saveslot.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/DraggableItem.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GameMode/GameModeSelector.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GameMode/GameModeSelector.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/ExperimentScenes/Chapter2Experiment.unity.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/Items.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/ScriptableObjects/NewLessonsData.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/StepManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/StepManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,6 +187,8 @@
       <workItem from="1738318394768" duration="5132000" />
       <workItem from="1738375555550" duration="2438000" />
       <workItem from="1738453237353" duration="26895000" />
+      <workItem from="1738669936600" duration="10282000" />
+      <workItem from="1738713567555" duration="18399000" />
     </task>
     <servers />
   </component>

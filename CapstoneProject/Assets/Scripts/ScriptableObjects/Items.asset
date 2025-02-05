@@ -227,20 +227,22 @@ MonoBehaviour:
       Temperature: 0
     - stateName: Liquid Dropper with Denatured Alcohol
       willChangeSprite: 0
-      sprite: {fileID: 0}
+      sprite: {fileID: 21300000, guid: 87be9f05624ea594a9a3dd3547763ba8, type: 3}
       description: 
-      conditions: []
+      conditions:
+      - itemNameRequirement: Denatured Alcohol
+        isMet: 0
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 1136545155493950429, guid: 0c30258abf681374ab29cc8650515b0e, type: 3}
     itemName: Iron Nail
     itemDescription: A silver-white metal.
     itemIcon: {fileID: 21300000, guid: 41db7d396ce29d24f91b584990ad3abf, type: 3}
-    itemType: 1
+    itemType: 0
     isUnlock: 0
     isCollected: 0
     tagName: 0
@@ -251,22 +253,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
-    itemName: Agua oxigenada
-    itemDescription: An antiseptic liquid.
-    itemIcon: {fileID: 21300000, guid: 41c22dc1f15c6a643807a6d6410c14db, type: 3}
-    itemType: 1
-    isUnlock: 0
-    isCollected: 0
-    tagName: 0
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 1932849973259863632, guid: f3944f8fc80113b488c7e46f0567d91b, type: 3}
     itemName: Hydrogen peroxide (H2O2)
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 21300000, guid: 7ad7de367d5e866449ea5b31be9d1fa9, type: 3}
@@ -281,7 +268,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 619254702085685003, guid: 6bee8c65908f3b743827db417e57b6f7, type: 3}
     itemName: Manganese dioxide (MnO2)
     itemDescription: An oxide of manganese used in batteries.
     itemIcon: {fileID: 21300000, guid: fbf7b9a603982954e8e62fff19a6c263, type: 3}
@@ -296,7 +283,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 8584216471167376982, guid: f27c179dd2e07dc4c8ea6f961f776d0f, type: 3}
     itemName: Copper Sulfate (CuSO4) solution
     itemDescription: An inorganic compound used as a fungicide, algaecide, and root
       killer.
@@ -312,7 +299,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 2348692426596852952, guid: ce25d5f334345624aa46e966471f122e, type: 3}
     itemName: Sodium Hydroxide (NaOH) solution
     itemDescription: Used in manufacturing various products.
     itemIcon: {fileID: 21300000, guid: 47a1dc65840a54642bbfd2963b371943, type: 3}
@@ -327,7 +314,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 9048356647442671889, guid: dcd0f52a9c45da349800b1806c08107c, type: 3}
     itemName: Vinegar
     itemDescription: n aqueous solution of acetic acid.
     itemIcon: {fileID: 21300000, guid: 458e10a479fe9fc4b80acdf9973d44b2, type: 3}
@@ -342,7 +329,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 4008975313783038323, guid: a611dd73a0d8ad4478d32294d5ab927b, type: 3}
     itemName: Baking Soda
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 21300000, guid: 869f18d60a064744cb2b7419ba6ae71d, type: 3}
@@ -357,11 +344,11 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 5374288174256987328, guid: 99ae85a4076bca040aca26e2a8b2f64a, type: 3}
     itemName: Mg Ribbon (mg)
     itemDescription: A crystalline salt.
     itemIcon: {fileID: 21300000, guid: 58c54ecc18defa6459569347841115f7, type: 3}
-    itemType: 1
+    itemType: 0
     isUnlock: 0
     isCollected: 0
     tagName: 0
@@ -372,22 +359,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
-    itemName: 30 Volumes Agua Oxigenada
-    itemDescription: 
-    itemIcon: {fileID: 21300000, guid: 41c22dc1f15c6a643807a6d6410c14db, type: 3}
-    itemType: 1
-    isUnlock: 0
-    isCollected: 0
-    tagName: 0
-    compatibleTags: []
-    states: []
-    currentStateIndex: 0
-    hasTemperature: 0
-    currentTemperature: 0
-    minTemperature: 0
-    maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 4832635122230469160, guid: ad33d64b7ccc1fa43b7999b226236053, type: 3}
     itemName: Crucible Tong
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: 60778b93ebb234f448e6473b244abed8, type: 3}

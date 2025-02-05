@@ -16,8 +16,11 @@ public class StepManager : MonoBehaviour
     public Animator anim;
 
     public string requiredAction;
+
+    [SerializeField] BottomSheetFunction bottomSheetFunction;
     public static event Action OnStepBroadcasted;
     public static event Action OnStepBroadCastAnotherActionPanel;
+    public static event Action OnLessonsComplete;
 
     private void Start()
     {
@@ -27,7 +30,7 @@ public class StepManager : MonoBehaviour
         DisplayCurrentStep();
     }
 
-    public void ValidateAndCompleteSubStep(string itemName)
+    public void ValidateAndCompleteSubStep(string itemName, string actionType = "drop")
     {
         if (currentLessonIndex >= lessonSteps.Count)
             return;
@@ -37,14 +40,17 @@ public class StepManager : MonoBehaviour
 
         if (currentSubstep != null)
         {
-            // Explicitly check for "wait" action and force the correct item name
-            if (currentSubstep.requiredAction == "wait" && itemName != "wait")
+            // Check if the action type matches and if the correct item is being used
+            if (currentSubstep.requiredAction == actionType && currentSubstep.requiredItemName == itemName)
             {
-                Debug.LogWarning("Step requires waiting. Action ignored until timer completes.");
-                return; // Prevent early completion
-            }
+                Debug.Log($"Action '{actionType}' completed with correct item '{itemName}'. Step validated!");
 
-            currentLesson.ValidateAndCompleteSubStep(itemName);
+                currentLesson.ValidateAndCompleteSubStep(itemName);
+            }
+            else
+            {
+                Debug.LogWarning($"Incorrect item '{itemName}' for action '{actionType}'. Step NOT validated.");
+            }
         }
 
         if (currentLesson.IsTaskCompleted())
@@ -60,7 +66,11 @@ public class StepManager : MonoBehaviour
             else
             {
                 Debug.Log("All lessons completed!");
-                lessonStepText.text = "All tasks completed!";
+                lessonStepText.text =
+                    "All tasks completed! Congratulations! Please proceed to the questions below.";
+
+                bottomSheetFunction.MoveToPosition(bottomSheetFunction.middleY);
+                OnLessonsComplete?.Invoke();
                 experimentObjectManager.currentLesson.isCompleted = true;
             }
         }
@@ -105,7 +115,7 @@ public class StepManager : MonoBehaviour
                 {
                     Timer.SetActive(true);
                     ExperimentCountDown countdown = Timer.GetComponent<ExperimentCountDown>();
-                    countdown.SetTime(currentSubstep.waitTime);
+                    countdown.SetTime(currentSubstep.waitTime, currentSubstep.requiredItemName, requiredAction);
                 }
                 else
                 {
@@ -184,7 +194,7 @@ public class LessonStepsExample
                 Debug.LogWarning("Incorrect assembly action or target object.");
                 break;
             case "wait":
-                if (itemName == "wait" && !currentStep.isCompleted)
+                if (currentStep.requiredItemName == itemName && !currentStep.isCompleted)
                 {
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
@@ -193,7 +203,7 @@ public class LessonStepsExample
                 break;
 
             case "shake":
-                if (currentStep.requiredItemName == itemName)
+                if (currentStep.requiredItemName == itemName && !currentStep.isCompleted)
                 {
                     currentStep.isCompleted = true;
                     currentSubstepIndex++;
