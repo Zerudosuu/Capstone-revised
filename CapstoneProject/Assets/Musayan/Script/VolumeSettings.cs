@@ -10,6 +10,7 @@ public class VolumeSettings : MonoBehaviour
 {
     [Header("Main Menu Navigation")]
     [SerializeField] private MainMenu menu;
+    [SerializeField] private bool showBtn;
 
     [Header("Audio Mixer")]
     [SerializeField] private AudioMixer audioMix;
@@ -29,16 +30,8 @@ public class VolumeSettings : MonoBehaviour
 
     private void Awake()
     {
-        nextMusic.onClick.AddListener(NextAudio);
-        if (menu != null)
-        {
-            backButton.onClick.AddListener(() => DisplaySetting(false));
-        }
-        else
-        {
-            backButton.gameObject.SetActive(false);
-        }
-
+        backButton.onClick.AddListener(() => DisplaySetting(false));
+       
         Checker();
         Invoke("ShowAudioTitle", 1f);
     }

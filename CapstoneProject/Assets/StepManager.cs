@@ -16,6 +16,7 @@ public class StepManager : MonoBehaviour
     public GameObject Timer;
     public Animator anim;
     public string requiredAction;
+    private AudioManager _audioManage;
 
 
     [SerializeField] [NotNull] private ParticleSystem confett1;
@@ -28,6 +29,7 @@ public class StepManager : MonoBehaviour
 
     private void Start()
     {
+        _audioManage = FindObjectOfType<AudioManager>(true);
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>(true);
         MainLessonSteps = experimentObjectManager.currentLesson.steps;
         Timer.SetActive(false);
@@ -75,7 +77,7 @@ public class StepManager : MonoBehaviour
                 lessonStepText.text =
                     "All tasks completed! Congratulations! Please proceed to the questions below.";
 
-
+                _audioManage.PlaySFX("Experiment Success");
                 confett1.Play();
                 confett2.Play();
                 bottomSheetFunction.MoveToPosition(bottomSheetFunction.middleY);
