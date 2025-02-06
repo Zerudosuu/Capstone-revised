@@ -71,7 +71,7 @@ public class StoreSystem : MonoBehaviour
     {
         if (playerStats != null && playerStats.coins >= selectedItem.itemPrice)
         {
-            playerStats.coins -= selectedItem.itemPrice;
+            playerStats.AddCoins(-selectedItem.itemPrice);
             coinsText.text = playerStats.coins.ToString();
             selectedItem.isUnlock = true;
 
