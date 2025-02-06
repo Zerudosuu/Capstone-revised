@@ -19,6 +19,7 @@ public class AddedActionContainerManager : MonoBehaviour
     private float offscreenPosition;
     private bool isVisible = false; // Track visibility state
     private float initialYPosition; // Store Y position from inspector
+    private AudioManager audioManage;
 
     private void OnEnable()
     {
@@ -32,6 +33,7 @@ public class AddedActionContainerManager : MonoBehaviour
 
     void Start()
     {
+        audioManage = FindObjectOfType<AudioManager>(); 
         float screenWidth = Screen.width;
         offscreenPosition = -screenWidth + 130f; // Start offscreen
 
@@ -72,6 +74,7 @@ public class AddedActionContainerManager : MonoBehaviour
             Animator animator = GetItemOnSlot()?.GetComponent<Animator>();
             if (animator != null)
             {
+                audioManage.PlaySFX("Shake");
                 animator.Play("Shake");
             }
 
@@ -95,6 +98,7 @@ public class AddedActionContainerManager : MonoBehaviour
                 if (animator != null)
                 {
                     animator.Play("Idle");
+                    audioManage.StopSFX();
                 }
             }));
         }

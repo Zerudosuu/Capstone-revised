@@ -26,9 +26,12 @@ public class RewardItem : MonoBehaviour
     private SnaptoItem snapItem;
     private ItemManager itemManager;
     private GameObject shineSpawn;
+    private LessonManager lessonManage;
+    private ObtainableManager obtainableManager;
 
     private void Awake()
     {
+        obtainableManager = FindObjectOfType<ObtainableManager>(true);
         uiManage = FindAnyObjectByType<UIManager>();
         snapItem = FindAnyObjectByType<SnaptoItem>();
         itemManager = FindAnyObjectByType<ItemManager>();
@@ -80,6 +83,8 @@ public class RewardItem : MonoBehaviour
         yield return displayFunction();
 
         yield return placeFunction();
+
+        obtainableManager.StartDistributingReward();
 
         gameObject.SetActive(false);
 
