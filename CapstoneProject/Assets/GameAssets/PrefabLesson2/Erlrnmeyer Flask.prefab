@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7474366858779066699}
   - component: {fileID: 7953850728148800700}
   m_Layer: 5
-  m_Name: LiquidDropperLiquid
+  m_Name: LiquidDropperComponent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -529,6 +529,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 
     compatibleTags: []
     states: []
@@ -548,7 +550,8 @@ MonoBehaviour:
     visualEffectPrefab: {fileID: 0}
     Animator: {fileID: 7953850728148800700}
     TriggerAnimationName: AddAlcohol
-    modifyselfTemperature: 0
+    modifyselfTemperature: 1
+    desiredTemperature: 25
 --- !u!114 &2845510028689144011
 MonoBehaviour:
   m_ObjectHideFlags: 0

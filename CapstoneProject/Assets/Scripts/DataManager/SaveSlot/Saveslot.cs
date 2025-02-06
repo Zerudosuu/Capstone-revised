@@ -48,7 +48,7 @@ public class Saveslot : MonoBehaviour
             noDataContent.SetActive(false);
             hasDataContent.SetActive(true);
             clearDataButton.gameObject.SetActive(true);
-            ChapterTitle.text = data.ChapterTitle;
+            ChapterTitle.text = data.GetLessonTitle();
             Level.text = "Level: " + data.Level;
             PlayTime.text = "Play Time: " + data.timestamp;
             Percentage.text = data.GetCompletedLessonPercentage().ToString() + "%";

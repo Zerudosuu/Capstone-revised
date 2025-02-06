@@ -8,6 +8,7 @@ public class Step
     public string requiredAction; // For other actions (e.g., "click", "stir")
     public bool isCompleted;
     public float targetTemperature;
+    public float temperatureRate;
     public bool WillBroadCastChange;
     public bool willNeedAnotherAction;
 

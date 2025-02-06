@@ -21,6 +21,14 @@ public class ExperimentCountDown : MonoBehaviour
     public float TargetTemperature = 0;
     public static event Action onTimerisRunning;
 
+    private ItemReaction objectItemReaction;
+
+
+    private void Awake()
+    {
+        objectItemReaction = GetSlotToGetItem()?.GetComponent<ItemReaction>();
+    }
+
     private void Start()
     {
         SkipButton.onClick.AddListener(() => CompleteStep());
@@ -38,7 +46,12 @@ public class ExperimentCountDown : MonoBehaviour
 
     public GameObject GetSlotToGetItem()
     {
-        return SlotToGetItem.transform.GetChild(0).gameObject;
+        if (SlotToGetItem != null && SlotToGetItem.transform.childCount > 0)
+        {
+            return SlotToGetItem.transform.GetChild(0).gameObject;
+        }
+
+        return null;
     }
 
     private void StartCountdown()
@@ -76,11 +89,14 @@ public class ExperimentCountDown : MonoBehaviour
         _stepManager.ValidateAndCompleteSubStep(currentItemName, currentActionType); // Pass item name for validation
 
 
-        ItemReaction objectItemReaction = GetSlotToGetItem()?.GetComponent<ItemReaction>();
-
         if (objectItemReaction != null && objectItemReaction.item.hasTemperature)
         {
             objectItemReaction.item.currentTemperature = TargetTemperature;
+
+            Animator anim = objectItemReaction.gameObject.GetComponent<Animator>();
+
+            if (anim != null)
+                anim.Play("Idle");
         }
     }
 }

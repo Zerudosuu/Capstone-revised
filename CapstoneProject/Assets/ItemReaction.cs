@@ -199,6 +199,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             Destroy(gameObject);
         }
 
+
         else if (reaction.ReactionSprite != null)
         {
             gameObject.GetComponent<Image>().sprite = reaction.ReactionSprite;
@@ -214,6 +215,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
             reaction.Animator?.SetTrigger(reaction.TriggerAnimationName);
         }
     }
+
 
     public void SetItem(Item item)
     {

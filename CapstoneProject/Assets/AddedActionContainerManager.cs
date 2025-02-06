@@ -63,6 +63,12 @@ public class AddedActionContainerManager : MonoBehaviour
         float duration = GetTotalTimeInSeconds();
         string itemName = GetItemOnSlot()?.name; // Get the item being shaken
 
+        Animator animator = GetItemOnSlot()?.GetComponent<Animator>();
+        if (animator != null)
+        {
+            animator.Play("Shake");
+        }
+
         if (experimentCountDown != null)
         {
             experimentCountDown.gameObject.SetActive(true);
@@ -76,7 +82,13 @@ public class AddedActionContainerManager : MonoBehaviour
             Debug.Log($"Shake action completed with item: {itemName}");
             experimentCountDown.gameObject.SetActive(false);
             inputContainer.SetActive(true);
+
             stepManager?.ValidateAndCompleteSubStep(itemName, "shake"); // Pass item name
+
+            if (animator != null)
+            {
+                animator.Play("Idle");
+            }
         }));
     }
 

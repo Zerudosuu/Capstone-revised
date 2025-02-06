@@ -70,6 +70,20 @@ public class GameData
 
         return (float)completedCount / lessons.Count * 100f;
     }
+
+
+    public string GetLessonTitle()
+    {
+        foreach (Lesson lesson in lessons)
+        {
+            if (lesson.isCompleted == false)
+            {
+                return lesson.chapterName;
+            }
+        }
+
+        return "Finished";
+    }
 }
 
 [System.Serializable]

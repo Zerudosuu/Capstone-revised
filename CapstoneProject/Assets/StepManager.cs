@@ -100,6 +100,28 @@ public class StepManager : MonoBehaviour
             return false;
     }
 
+    public float GetTargetTemperature()
+    {
+        var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
+
+        if (currentSubstep != null)
+            return currentSubstep.targetTemperature;
+        else
+            return 0;
+    }
+
+    public float GetTemperatureRate()
+    {
+        var currentLesson = lessonSteps[currentLessonIndex];
+        var currentSubstep = currentLesson.GetCurrentSubstep();
+
+        if (currentSubstep != null)
+            return currentSubstep.temperatureRate;
+        else
+            return 0;
+    }
+
 
     private void DisplayCurrentStep()
     {

@@ -1525,10 +1525,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 888904017}
     m_Modifications:
-    - target: {fileID: 1660556811240587898, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
-      propertyPath: m_Name
-      value: LiquidDropperComponent
-      objectReference: {fileID: 0}
     - target: {fileID: 5027413360577950862, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1613,10 +1609,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Erlrnmeyer Flask
       objectReference: {fileID: 0}
-    - target: {fileID: 7953850728148800700, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7fd085b4820f68943953318181d8c84c, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

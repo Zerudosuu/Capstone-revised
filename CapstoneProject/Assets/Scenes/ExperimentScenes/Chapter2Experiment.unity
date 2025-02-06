@@ -327,7 +327,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 502, y: 402}
+  m_AnchoredPosition: {x: 502, y: 359}
   m_SizeDelta: {x: 887.685, y: 508.80603}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &27804208
@@ -388,8 +388,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -587,7 +587,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &49502942
 RectTransform:
   m_ObjectHideFlags: 0
@@ -642,7 +642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55069230
@@ -1365,6 +1365,8 @@ GameObject:
   - component: {fileID: 136153408}
   - component: {fileID: 136153410}
   - component: {fileID: 136153409}
+  - component: {fileID: 136153412}
+  - component: {fileID: 136153411}
   m_Layer: 5
   m_Name: SeeWhatsHappeningPanel
   m_TagString: Untagged
@@ -1410,7 +1412,7 @@ MonoBehaviour:
   containerPanel: {fileID: 1654380758}
   seeWhatsHappeningChildren: []
   currentIndex: 0
-  buttonOpen: {fileID: 0}
+  buttonOpen: {fileID: 2049351204}
   isOpen: 0
 --- !u!95 &136153410
 Animator:
@@ -1433,6 +1435,46 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &136153411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136153407}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+--- !u!223 &136153412
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136153407}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 0}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 1
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 25
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 4
+  m_TargetDisplay: 0
 --- !u!1 &139581027
 GameObject:
   m_ObjectHideFlags: 0
@@ -1506,7 +1548,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -6941.9985}
+  m_AnchoredPosition: {x: 463.29, y: -6612.4717}
   m_SizeDelta: {x: 792.424, y: 874.7185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &149341522
@@ -2345,7 +2387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &194788787
@@ -2911,7 +2953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248301602
@@ -3286,8 +3328,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 8285.009}
+  m_AnchoredPosition: {x: 0, y: 5983.7827}
+  m_SizeDelta: {x: 0, y: 7955.483}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &289110391
 MonoBehaviour:
@@ -3826,7 +3868,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -7754.0693}
+  m_AnchoredPosition: {x: 463.29, y: -7424.5425}
   m_SizeDelta: {x: 792.4237, y: 617.623}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &329995503
@@ -3906,7 +3948,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -6001.38}
+  m_AnchoredPosition: {x: 463.29, y: -5671.853}
   m_SizeDelta: {x: 792.424, y: 874.7185}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &363149749
@@ -3964,7 +4006,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &369648047
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4773,7 +4815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427818863
@@ -4907,7 +4949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &440631476
@@ -5234,7 +5276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476341698
@@ -6477,7 +6519,7 @@ RectTransform:
   m_GameObject: {fileID: 603322956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 149341521}
@@ -6500,16 +6542,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 57bdd6de4a382124c8c2cc1601325019, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -6559,7 +6601,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 509.005, y: 420}
+  m_AnchoredPosition: {x: 509.005, y: 364}
   m_SizeDelta: {x: 901.316, y: 508.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &623077537
@@ -6615,8 +6657,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7314,8 +7356,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1045038088}
   m_HandleRect: {fileID: 1045038087}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.23798405
+  m_Value: 0.00000002040019
+  m_Size: 0.2478299
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7633,6 +7675,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 
     compatibleTags: []
     states: []
@@ -8074,7 +8118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -5086.468}
+  m_AnchoredPosition: {x: 463.29, y: -4756.941}
   m_SizeDelta: {x: 792.424, y: 823.30554}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840437997
@@ -8608,16 +8652,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 02bcc4b91cd17f04d91d70755445cc90, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -8774,6 +8818,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8783,6 +8828,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8793,6 +8839,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8802,6 +8849,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8812,6 +8860,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8821,6 +8870,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8830,6 +8880,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8839,6 +8890,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8848,7 +8900,8 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
-      WillBroadCastChange: 0
+      temperatureRate: 0
+      WillBroadCastChange: 1
       willNeedAnotherAction: 0
       substeps: []
       waitTime: 0
@@ -8857,6 +8910,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8867,6 +8921,7 @@ MonoBehaviour:
       requiredAction: drop
       isCompleted: 0
       targetTemperature: 0
+      temperatureRate: 0
       WillBroadCastChange: 0
       willNeedAnotherAction: 0
       substeps: []
@@ -8877,7 +8932,8 @@ MonoBehaviour:
       requiredAction: wait
       isCompleted: 0
       targetTemperature: 0
-      WillBroadCastChange: 0
+      temperatureRate: 0
+      WillBroadCastChange: 1
       willNeedAnotherAction: 0
       substeps: []
       waitTime: 120
@@ -8886,8 +8942,9 @@ MonoBehaviour:
       requiredItemName: Erlrnmeyer Flask
       requiredAction: shake
       isCompleted: 0
-      targetTemperature: 0
-      WillBroadCastChange: 0
+      targetTemperature: 100
+      temperatureRate: 0
+      WillBroadCastChange: 1
       willNeedAnotherAction: 1
       substeps: []
       waitTime: 0
@@ -9052,8 +9109,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 34.9
+  m_fontSizeBase: 34.9
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -9088,7 +9145,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 238.09218}
+  m_margin: {x: 0, y: 0, z: 0, w: 164.54234}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -9522,13 +9579,12 @@ RectTransform:
   m_Children:
   - {fileID: 1424787403}
   - {fileID: 1314940674}
-  - {fileID: 2089905247}
   m_Father: {fileID: 289110390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -1473.7628}
-  m_SizeDelta: {x: 792.424, y: 1136.7736}
+  m_AnchoredPosition: {x: 463.29, y: -1308.9993}
+  m_SizeDelta: {x: 792.424, y: 807.2465}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007790916
 MonoBehaviour:
@@ -9680,8 +9736,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1804801138}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.76201594}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.000000015344414}
+  m_AnchorMax: {x: 1, y: 0.2478299}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10507,7 +10563,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -3228.7532}
+  m_AnchoredPosition: {x: 463.29, y: -2899.2263}
   m_SizeDelta: {x: 792.424, y: 876.1745}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1147702027
@@ -11656,7 +11712,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.511, y: 666}
+  m_AnchoredPosition: {x: -4.511, y: 712}
   m_SizeDelta: {x: 887.685, y: 305.698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1266915556
@@ -11709,8 +11765,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -13022,7 +13078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
+  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424787404
@@ -14006,16 +14062,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 6de2cc00a42916240b8d7bfe4b052d45, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -14531,7 +14587,7 @@ RectTransform:
   m_GameObject: {fileID: 1577809581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.221, y: 1.221, z: 1.221}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 840437996}
@@ -14554,16 +14610,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: ec9b165db580dc746a099a459810d391, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -15212,7 +15268,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.511, y: 666}
+  m_AnchoredPosition: {x: -4.511, y: 743}
   m_SizeDelta: {x: 887.685, y: 305.698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1625745975
@@ -15265,8 +15321,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15372,7 +15428,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "The experiment successfully demonstrated Gay-Lussac\u2019s Law, showing
+  m_text: "The experiment successfully demonstrated Gay-Isaac\u2019s Law, showing
     that an increase in temperature within a fixed volume leads to a proportional
     increase in pressure. Initially, the air and evaporated alcohol inside the flask
     exhibited low kinetic energy and moderate pressure.\n\n As the flask was shaken,
@@ -15691,8 +15747,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15809,7 +15865,7 @@ RectTransform:
   m_GameObject: {fileID: 1654990866}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.3005, y: 1.3005, z: 1.3005}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 363149748}
@@ -15832,16 +15888,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 89023904e19a1ec4db9c6756548ddf5c, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -16485,7 +16541,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -4.511, y: 666}
+  m_AnchoredPosition: {x: -4.511, y: 709}
   m_SizeDelta: {x: 887.685, y: 305.698}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1713156496
@@ -16508,8 +16564,13 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: During this period, the trapped air and alcohol vapor inside the flask
+  m_text: 'During this period, the trapped air and alcohol vapor inside the flask
     begin to reach thermal equilibrium with their surroundings.
+
+
+    Heat Distribution:
+    The temperature inside the flask stabilizes as the air molecules transfer energy
+    between one another.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -16536,8 +16597,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -16754,7 +16815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 509.005, y: 387}
+  m_AnchoredPosition: {x: 509.005, y: 341}
   m_SizeDelta: {x: 901.316, y: 508.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1739871898
@@ -16779,9 +16840,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Thermometer Readings and Pressure Effects: If the temperature has risen
     significantly, the trapped gas exerts greater force against the flask walls,
-    confirming the law\u2019s prediction.\n\nMolecular Explanation: Higher temperature
+    confirming the law\u2019s prediction. \n\nMolecular Explanation: Higher temperature
     means higher kinetic energy, causing gas molecules to move faster and collide
-    more forcefully, thus increasing pressure.\n\nThis final step solidifies the
+    more forcefully, thus increasing pressure.\n\n This final step solidifies the
     core takeaway: temperature and pressure are directly proportional in a confined
     space, as observed through the controlled conditions of the experiment."
   m_isRightToLeft: 0
@@ -16810,8 +16871,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 32
+  m_fontSizeBase: 32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17233,7 +17294,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 133}
+  m_AnchoredPosition: {x: 0, y: 60}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1774087708
@@ -17300,7 +17361,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 8799c4d24d716e345a914ba0a5275cb6, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -18561,7 +18622,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -8181.895}
+  m_AnchoredPosition: {x: 463.29, y: -7852.368}
   m_SizeDelta: {x: 341.0277, y: 106.2289}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1862358523
@@ -19032,7 +19093,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -4170.8276}
+  m_AnchoredPosition: {x: 463.29, y: -3841.3008}
   m_SizeDelta: {x: 792.424, y: 876.1745}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1898290664
@@ -20106,7 +20167,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -102.773926, y: 830}
+  m_AnchoredPosition: {x: -102.773926, y: 1400}
   m_SizeDelta: {x: 250, y: 250}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &2049351202
@@ -20186,7 +20247,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 136153409}
         m_TargetAssemblyTypeName: SeeWhatsHappeningPanel, Assembly-CSharp
         m_MethodName: OpenPanel
         m_Mode: 1
@@ -20346,7 +20407,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 509.005, y: 420}
+  m_AnchoredPosition: {x: 509.005, y: 349}
   m_SizeDelta: {x: 901.316, y: 508.806}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2064844159
@@ -20369,19 +20430,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Heat Distribution: The temperature inside the flask stabilizes as the
-    air molecules transfer energy between one another.
+  m_text: 'Alcohol Vapor Expansion: As some of the alcohol continues to evaporate,
+    more molecules transition into the gaseous phase, slightly increasing the internal
+    pressure.
 
 
-    Alcohol Vapor Expansion:
-    As some of the alcohol continues to evaporate, more molecules transition into
-    the gaseous phase, slightly increasing the internal pressure.
-
-
-    At this stage,
-    although changes may not be immediately visible, molecular interactions inside
-    the flask are preparing the system for more noticeable shifts once agitation
-    begins.'
+    At this stage, although changes may not be immediately visible,
+    molecular interactions inside the flask are preparing the system for more noticeable
+    shifts once agitation begins.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
   m_sharedMaterial: {fileID: -8598175873583779163, guid: 181f916516a290e40b927b76d7b79b1c, type: 2}
@@ -20408,8 +20464,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -20779,81 +20835,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084154613}
   m_CullTransparentMesh: 1
---- !u!1 &2089905246
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2089905247}
-  - component: {fileID: 2089905249}
-  - component: {fileID: 2089905248}
-  m_Layer: 5
-  m_Name: Image
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2089905247
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089905246}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1007790915}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 395.105, y: -994.31}
-  m_SizeDelta: {x: 790.21, y: 284.927}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2089905248
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089905246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.30962977, b: 0.30962977, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &2089905249
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2089905246}
-  m_CullTransparentMesh: 1
 --- !u!1 &2090962944
 GameObject:
   m_ObjectHideFlags: 0
@@ -20890,7 +20871,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 463.29, y: -2416.4077}
+  m_AnchoredPosition: {x: 463.29, y: -2086.8809}
   m_SizeDelta: {x: 792.424, y: 616.7165}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2090962946
