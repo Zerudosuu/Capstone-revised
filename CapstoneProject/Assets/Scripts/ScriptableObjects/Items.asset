@@ -21,6 +21,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: HeatSource
     compatibleTags:
     - Ignition
@@ -55,6 +57,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -71,6 +75,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Ignition
     compatibleTags: []
     states: []
@@ -86,6 +92,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -101,6 +109,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -116,6 +126,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Container
     compatibleTags:
     - Liquid
@@ -149,6 +161,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags:
     - Blocker
@@ -171,6 +185,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags:
     - Measurement
@@ -193,6 +209,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags:
     - TempMeasurement
@@ -215,6 +233,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags:
     - FlammableLiquid
@@ -245,6 +265,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -260,6 +282,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -275,6 +299,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -291,6 +317,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -306,6 +334,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -321,6 +351,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -336,6 +368,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -351,6 +385,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -366,6 +402,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 0
     compatibleTags: []
     states: []
@@ -381,6 +419,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Liquid
     compatibleTags: []
     states: []
@@ -396,6 +436,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Container
     compatibleTags:
     - Liquid
@@ -442,6 +484,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Container
     compatibleTags:
     - Liquid
@@ -464,6 +508,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Container
     compatibleTags: []
     states: []
@@ -479,6 +525,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Powder
     compatibleTags: []
     states: []
@@ -494,6 +542,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Liquid
     compatibleTags: []
     states: []
@@ -509,6 +559,8 @@ MonoBehaviour:
     itemType: 1
     isUnlock: 1
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: Liquid
     compatibleTags: []
     states: []
@@ -519,11 +571,13 @@ MonoBehaviour:
     maxTemperature: 100
   - itemPrefab: {fileID: 2769496515516511814, guid: c20e0d419d34bf346ac9437496add080, type: 3}
     itemName: Spoon
-    itemDescription: 
+    itemDescription: 'Spoon is for scooping! '
     itemIcon: {fileID: 21300000, guid: 3c9a6ce7157ee1245bb104654591e8ab, type: 3}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
+    isForShop: 1
+    itemPrice: 100
     tagName: Measurement
     compatibleTags: []
     states: []
@@ -534,11 +588,13 @@ MonoBehaviour:
     maxTemperature: 100
   - itemPrefab: {fileID: 3644135361032368877, guid: d551b26e1eeead743ae35c92f28dacaf, type: 3}
     itemName: Measuring Cup
-    itemDescription: 
+    itemDescription: This object helps you to measure liquids
     itemIcon: {fileID: 21300000, guid: eedc35702e95f4a439c85fc926f2b57c, type: 3}
     itemType: 0
-    isUnlock: 1
+    isUnlock: 0
     isCollected: 0
+    isForShop: 1
+    itemPrice: 50
     tagName: Measurement
     compatibleTags: []
     states: []

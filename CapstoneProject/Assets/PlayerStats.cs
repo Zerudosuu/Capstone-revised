@@ -5,15 +5,12 @@ using UnityEngine.UI;
 
 public class PlayerStats : MonoBehaviour, IData
 {
-    [Header("Player Stats")] [SerializeField]
-    private int playerLvl;
+    [Header("Player Stats")] public int playerLvl;
+    public float expGained;
+    public int coins;
+    public string playerTitle;
 
-    [SerializeField] private float expGained;
-    [SerializeField] public int coins;
-    [SerializeField] private string playerTitle;
-
-    [Header("Statistic Base")] [SerializeField]
-    private float maxEXP;
+    [Header("Statistic Base")] public float maxEXP;
 
     [Header("UI Elements")] [SerializeField]
     private TMP_Text coinText;
@@ -25,6 +22,7 @@ public class PlayerStats : MonoBehaviour, IData
 
     // Event to notify UI updates
     public static event Action<int, string, float, float> OnPlayerStatsUpdated;
+
 
     private readonly (string Title, float MaxExp)[] levelData =
     {
@@ -51,7 +49,6 @@ public class PlayerStats : MonoBehaviour, IData
         }
 
         UpdateUI();
-        NotifyUIUpdate();
     }
 
     public void AddCoins(int amount)
@@ -80,6 +77,8 @@ public class PlayerStats : MonoBehaviour, IData
 
         expSlider.maxValue = maxEXP;
         expSlider.value = expGained;
+
+        NotifyUIUpdate();
     }
 
     private void NotifyUIUpdate()

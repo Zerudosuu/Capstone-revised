@@ -51,7 +51,7 @@ public class Saveslot : MonoBehaviour
             ChapterTitle.text = data.ChapterTitle;
             Level.text = "Level: " + data.Level;
             PlayTime.text = "Play Time: " + data.timestamp;
-            Percentage.text = data.Percentage + "%";
+            Percentage.text = data.GetCompletedLessonPercentage().ToString() + "%";
         }
         else
         {

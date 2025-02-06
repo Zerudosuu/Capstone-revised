@@ -4,35 +4,41 @@ using UnityEngine.UI;
 
 public class StoreSystem : MonoBehaviour
 {
-    [Header("Display")]
-    [SerializeField] private TMP_Text itemName;
+    [Header("Display")] [SerializeField] private TMP_Text itemName;
     [SerializeField] private TMP_Text itemDescription;
     [SerializeField] private TMP_Text itemPrice;
     [SerializeField] private Image itemImage;
 
-    [Header("Windows")]
-    [SerializeField] private GameObject itemPurchaseWindow;
+    [Header("Windows")] [SerializeField] private GameObject itemPurchaseWindow;
     [SerializeField] private GameObject containers;
 
-    [Header("Button")]
-    [SerializeField] private Button purchaseBtn;
+    [Header("Button")] [SerializeField] private Button purchaseBtn;
     [SerializeField] private Button cancelBtn;
     private GameObject selectedBtn;
-    
 
-    [Header("Selected Item")]
-    [SerializeField]private Item selectedItem;
 
-    [Header("Prefab")]
-    [SerializeField]private GameObject invetoryPrefab;
+    [Header("Selected Item")] [SerializeField]
+    private Item selectedItem;
+
+    [Header("Prefab")] [SerializeField] private GameObject invetoryPrefab;
 
     private ItemManager itemManage;
+
+    [Header("Coins")] [SerializeField] private int coins;
+    [SerializeField] private TMP_Text coinsText;
+
+    [SerializeField] TMP_Text itemPriceText;
+
+    [SerializeField] private PlayerStats playerStats;
+
+    [SerializeField] private Animator animforBuy;
 
     private void Awake()
     {
         purchaseBtn.onClick.AddListener(() => OnPurchaseBtnClicked());
         cancelBtn.onClick.AddListener(hideSelected);
         itemManage = FindAnyObjectByType<ItemManager>();
+        coinsText.text = playerStats.coins.ToString();
     }
 
     private void Start()
@@ -50,20 +56,32 @@ public class StoreSystem : MonoBehaviour
         itemName.text = selectedItem.itemName;
         itemDescription.text = selectedItem.itemDescription;
         itemImage.sprite = selectedItem.itemIcon;
-        //ItemPrice.text = selectedItem.itemPrice;
+        itemPriceText.text = selectedItem.itemPrice.ToString();
 
         showSelected();
     }
 
     public void OnPurchaseBtnClicked()
     {
-        selectedItem.isUnlock = true;
+        if (playerStats != null && playerStats.coins >= selectedItem.itemPrice)
+        {
+            playerStats.coins -= selectedItem.itemPrice;
+            coinsText.text = playerStats.coins.ToString();
+            selectedItem.isUnlock = true;
 
-        itemManage.InstantiateInInventory(selectedItem);
-        Destroy(selectedBtn);
+            itemManage.InstantiateInInventory(selectedItem);
+            Destroy(selectedBtn);
 
-        clearSelection();
-        hideSelected();
+            clearSelection();
+            hideSelected();
+        }
+        else
+        {
+            if (animforBuy != null)
+                animforBuy.Play("boughtSucess");
+            Debug.Log("Not enough coins");
+            return;
+        }
     }
 
     private void clearSelection()
@@ -84,6 +102,5 @@ public class StoreSystem : MonoBehaviour
     {
         itemPurchaseWindow.SetActive(false);
         containers.SetActive(true);
-
     }
 }

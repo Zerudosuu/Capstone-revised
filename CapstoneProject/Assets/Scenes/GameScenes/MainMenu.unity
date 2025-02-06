@@ -547,17 +547,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 7406134548631116433, guid: 74735e3bff9754a4d8b13d2b79145782, type: 3}
   m_PrefabInstance: {fileID: 289031279}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &292197252 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 779738971795580543, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
-  m_PrefabInstance: {fileID: 1061234342265610964}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &294796879 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9008144166761880833, guid: 74735e3bff9754a4d8b13d2b79145782, type: 3}
@@ -2519,7 +2508,7 @@ RectTransform:
   m_GameObject: {fileID: 1618329558}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.2031, y: 1.2031, z: 1.2031}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 615744139}
@@ -3783,10 +3772,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 398539107}
     m_Modifications:
-    - target: {fileID: 779738971795580543, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 1466845702050277104, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
       propertyPath: m_AnchorMax.x
       value: 1
@@ -3843,14 +3828,6 @@ PrefabInstance:
       propertyPath: menu
       value: 
       objectReference: {fileID: 1388042897}
-    - target: {fileID: 4851984447902245405, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
-      propertyPath: musicTitle
-      value: 
-      objectReference: {fileID: 292197252}
-    - target: {fileID: 7102925458623456904, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
-      propertyPath: m_Name
-      value: Music Title Text
-      objectReference: {fileID: 0}
     - target: {fileID: 7449493469445066157, guid: 1c0e110ad008a4b479a82d99de87f9ad, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

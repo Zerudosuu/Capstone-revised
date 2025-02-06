@@ -56,9 +56,9 @@ public class ItemManager : MonoBehaviour
             {
                 InstantiateInInventory(item);
             }
-            else
+            else if (item.isForShop && !item.isUnlock)
             {
-                 InstantiateInShop(item);
+                InstantiateInShop(item);
             }
         }
     }

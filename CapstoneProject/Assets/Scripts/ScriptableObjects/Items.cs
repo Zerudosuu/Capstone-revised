@@ -20,6 +20,8 @@ public class Item
     public ItemType itemType;
     public bool isUnlock;
     public bool isCollected;
+    public bool isForShop;
+    public int itemPrice;
 
     [Header("Compatibility and Conditions")]
     public string tagName;
@@ -84,6 +86,8 @@ public class Item
             itemIcon = this.itemIcon,
             itemType = this.itemType,
             isUnlock = this.isUnlock,
+            isForShop = this.isForShop,
+            itemPrice = this.itemPrice,
             isCollected = this.isCollected,
             hasTemperature = this.hasTemperature,
             currentTemperature = this.currentTemperature,

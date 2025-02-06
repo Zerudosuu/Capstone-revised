@@ -53,6 +53,23 @@ public class GameData
         this.isTutorialCompleted = false;
         this.isLessonTutorialCompleted = false;
     }
+
+
+    public float GetCompletedLessonPercentage()
+    {
+        if (lessons == null || lessons.Count == 0)
+            return 0f;
+
+        int completedCount = 0;
+        foreach (Lesson lesson in lessons)
+        {
+            // Replace "IsCompleted" with your actual completion property name
+            if (lesson.isCompleted)
+                completedCount++;
+        }
+
+        return (float)completedCount / lessons.Count * 100f;
+    }
 }
 
 [System.Serializable]
