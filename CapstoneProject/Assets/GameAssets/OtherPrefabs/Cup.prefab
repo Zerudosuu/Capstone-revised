@@ -658,15 +658,51 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 
     compatibleTags: []
-    states: []
+    states:
+    - stateName: Cup
+      willChangeSprite: 0
+      sprite: {fileID: 0}
+      description: 
+      conditions: []
+      Temperature: 0
+    - stateName: Cup with Water
+      willChangeSprite: 1
+      sprite: {fileID: 0}
+      description: 
+      conditions: []
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  reactions: []
+  reactions:
+  - needStateName: Cup
+    reactionName: 
+    triggers:
+    - Poweder With Yeast
+    changePrefab: 0
+    ReactionSprite: {fileID: 0}
+    resultingItemPrefab: {fileID: 0}
+    visualEffectPrefab: {fileID: 0}
+    Animator: {fileID: 6375424422402023825}
+    TriggerAnimationName: addYeast
+    modifyselfTemperature: 0
+  - needStateName: Cup with Water
+    reactionName: StiringYeast
+    triggers:
+    - stir
+    changePrefab: 0
+    ReactionSprite: {fileID: 21300000, guid: 2433cb2e39be87440a78df5ca8b5c70f, type: 3}
+    resultingItemPrefab: {fileID: 0}
+    visualEffectPrefab: {fileID: 0}
+    Animator: {fileID: 6375424422402023825}
+    TriggerAnimationName: addYeast
+    modifyselfTemperature: 0
 --- !u!1 &6586378644290305610
 GameObject:
   m_ObjectHideFlags: 0

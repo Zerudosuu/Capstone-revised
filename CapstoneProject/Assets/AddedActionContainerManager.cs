@@ -64,17 +64,17 @@ public class AddedActionContainerManager : MonoBehaviour
     // Shake function using inputted time
     public void Shake()
     {
-        float duration = GetTotalTimeInSeconds();
-        string itemName = GetItemOnSlot()?.name; // Get the item being shaken
-
-        Animator animator = GetItemOnSlot()?.GetComponent<Animator>();
-        if (animator != null)
-        {
-            animator.Play("Shake");
-        }
-
         if (DataManager.Instance.gameData.LessonMode == GameMode.Lesson)
         {
+            float duration = GetTotalTimeInSeconds();
+            string itemName = GetItemOnSlot()?.name; // Get the item being shaken
+
+            Animator animator = GetItemOnSlot()?.GetComponent<Animator>();
+            if (animator != null)
+            {
+                animator.Play("Shake");
+            }
+
             if (experimentCountDown != null)
             {
                 experimentCountDown.gameObject.SetActive(true);
@@ -106,31 +106,45 @@ public class AddedActionContainerManager : MonoBehaviour
                 itemReaction.CheckReactions(itemReaction.item.states[itemReaction.item.currentStateIndex].stateName,
                     itemReaction.gameObject.GetComponent<DragableItem>());
             }
-            print("Shake action completed with item: " + itemName);
+
+            print("Shake action completed with item:");
         }
     }
 
     public void Stir()
     {
-        float duration = GetTotalTimeInSeconds();
-        string itemName = GetItemOnSlot()?.name; // Get the item being stirred
-
-        if (experimentCountDown != null)
+        if (DataManager.Instance.gameData.LessonMode == GameMode.Lesson)
         {
-            experimentCountDown.gameObject.SetActive(true);
-            experimentCountDown.SetTime(duration, itemName, "stir",
-                stepManager.GetTargetTemperature()); // Pass item name
+            float duration = GetTotalTimeInSeconds();
+            string itemName = GetItemOnSlot()?.name; // Get the item being stirred
+            if (experimentCountDown != null)
+            {
+                experimentCountDown.gameObject.SetActive(true);
+                experimentCountDown.SetTime(duration, itemName, "stir",
+                    stepManager.GetTargetTemperature()); // Pass item name
+            }
+
+            inputContainer.SetActive(false);
+
+            StartCoroutine(ActionTimer(duration, () =>
+            {
+                Debug.Log($"Stir action completed with item: {itemName}");
+                experimentCountDown.gameObject.SetActive(false);
+                inputContainer.SetActive(true);
+                stepManager?.ValidateAndCompleteSubStep(itemName, "stir"); // Pass item name
+            }));
         }
-
-        inputContainer.SetActive(false);
-
-        StartCoroutine(ActionTimer(duration, () =>
+        else
         {
-            Debug.Log($"Stir action completed with item: {itemName}");
-            experimentCountDown.gameObject.SetActive(false);
-            inputContainer.SetActive(true);
-            stepManager?.ValidateAndCompleteSubStep(itemName, "stir"); // Pass item name
-        }));
+            ItemReaction itemReaction = GetItemOnSlot().gameObject.GetComponent<ItemReaction>();
+            if (itemReaction != null)
+            {
+                itemReaction.CheckReactions(itemReaction.item.states[itemReaction.item.currentStateIndex].stateName,
+                    itemReaction.gameObject.GetComponent<DragableItem>(), "stir");
+            }
+
+            print("Stir action completed with item: ");
+        }
     }
 
     // Timer function for actions

@@ -59,7 +59,6 @@ public class ProfileManager : MonoBehaviour, IData
 
         expSlider.maxValue = maxExperience;
         expSlider.value = exp;
-        LoadImageIntoUI();
     }
 
     private void UpdateProfileUI(int newLevel, string newTitle, float newExp, float newMaxExp)
@@ -101,6 +100,8 @@ public class ProfileManager : MonoBehaviour, IData
         name = gameData.playerName;
         lrn = gameData.playerLRN;
         ProfilePicturePath = gameData.PicturePath;
+
+        LoadImageIntoUI();
     }
 
     public void SavedData(GameData gameData)

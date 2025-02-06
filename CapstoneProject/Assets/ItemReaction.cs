@@ -133,16 +133,21 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         }
     }
 
-    public void CheckReactions(string currentStateName, DragableItem draggable)
+    public void CheckReactions(string currentStateName, DragableItem draggable, string action = "")
     {
         foreach (Reaction reaction in reactions) // Assuming `item.reactions` is a list of Reaction objects1
         {
             if (
                 reaction.CheckStateName(currentStateName)
-                && reaction.triggers.Contains(draggable.name) || reaction.triggers.Contains("stir") ||
-                reaction.triggers.Contains("shake")
+                && reaction.triggers.Contains(draggable.name)
             )
 
+            {
+                Debug.Log($"Reaction triggered: {reaction.reactionName}");
+                TriggerReaction(reaction, draggable);
+                return;
+            }
+            else if (reaction.CheckStateName(currentStateName) && reaction.triggers.Contains(action))
             {
                 Debug.Log($"Reaction triggered: {reaction.reactionName}");
                 TriggerReaction(reaction, draggable);

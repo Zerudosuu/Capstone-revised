@@ -113,6 +113,7 @@ MonoBehaviour:
   itemVariantID: 0
   anim: {fileID: 0}
   Popup: {fileID: 0}
+  originalItemPrefab: {fileID: 0}
 --- !u!114 &8610780026376181064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -133,6 +134,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 
     compatibleTags: []
     states: []
@@ -145,10 +148,11 @@ MonoBehaviour:
   - needStateName: Soda Bottle with Food Color Dish Washing and Water
     reactionName: Mixed DishWashing and Food Color
     triggers:
-    - Stir
-    changePrefab: 0
+    - stir
+    changePrefab: 1
     ReactionSprite: {fileID: 21300000, guid: ae3fd81ec6cc7fc4ea3e2c25b144f432, type: 3}
     resultingItemPrefab: {fileID: 0}
     visualEffectPrefab: {fileID: 0}
     Animator: {fileID: 0}
     TriggerAnimationName: 
+    modifyselfTemperature: 0

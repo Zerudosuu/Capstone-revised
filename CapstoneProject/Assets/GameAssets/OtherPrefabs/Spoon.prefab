@@ -148,6 +148,7 @@ GameObject:
   - component: {fileID: 7566277158268729001}
   - component: {fileID: 5466037923735323263}
   - component: {fileID: 7702972935707832793}
+  - component: {fileID: 3995176111574446477}
   m_Layer: 5
   m_Name: Spoon
   m_TagString: Untagged
@@ -270,6 +271,37 @@ MonoBehaviour:
   anim: {fileID: 5466037923735323263}
   Popup: {fileID: 4197037365661859645}
   originalItemPrefab: {fileID: 0}
+--- !u!114 &3995176111574446477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2769496515516511814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90cf587c10b274f499d2690e9da137fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemPrefab: {fileID: 0}
+    itemName: 
+    itemDescription: 
+    itemIcon: {fileID: 0}
+    itemType: 0
+    isUnlock: 0
+    isCollected: 0
+    isForShop: 0
+    itemPrice: 0
+    tagName: 
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  reactions: []
 --- !u!1 &4197037365661859645
 GameObject:
   m_ObjectHideFlags: 0

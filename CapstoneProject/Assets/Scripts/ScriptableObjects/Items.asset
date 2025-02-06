@@ -441,6 +441,7 @@ MonoBehaviour:
     tagName: Container
     compatibleTags:
     - Liquid
+    - Container
     states:
     - stateName: Soda Bottle with food color
       willChangeSprite: 0
@@ -455,8 +456,6 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 5f01cf024707b6d49865a1e5ec35752f, type: 3}
       description: 
       conditions:
-      - itemNameRequirement: Food Color
-        isMet: 1
       - itemNameRequirement: Measuring Cup with Hydrogen Peroxide
         isMet: 0
       Temperature: 0
@@ -465,10 +464,6 @@ MonoBehaviour:
       sprite: {fileID: 21300000, guid: 3b6f14f2f85c21e4c92206c2acfddf44, type: 3}
       description: 
       conditions:
-      - itemNameRequirement: Food Color
-        isMet: 1
-      - itemNameRequirement: Measuring Cup with Hydrogen Peroxide
-        isMet: 1
       - itemNameRequirement: Dishwashing Liquid
         isMet: 0
       Temperature: 0
@@ -493,6 +488,12 @@ MonoBehaviour:
     - stateName: Cup
       willChangeSprite: 0
       sprite: {fileID: 0}
+      description: 
+      conditions: []
+      Temperature: 0
+    - stateName: Cup with Water
+      willChangeSprite: 1
+      sprite: {fileID: 21300000, guid: 2893d4d76329bf64cabcfb4a562b3e26, type: 3}
       description: 
       conditions: []
       Temperature: 0
@@ -579,8 +580,17 @@ MonoBehaviour:
     isForShop: 1
     itemPrice: 100
     tagName: Measurement
-    compatibleTags: []
-    states: []
+    compatibleTags:
+    - Powder
+    states:
+    - stateName: Poweder With Yeast
+      willChangeSprite: 0
+      sprite: {fileID: 21300000, guid: 8d23446c4926ee043a7181b432ff9b5e, type: 3}
+      description: 
+      conditions:
+      - itemNameRequirement: Yeast
+        isMet: 0
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0
@@ -596,7 +606,8 @@ MonoBehaviour:
     isForShop: 1
     itemPrice: 50
     tagName: Measurement
-    compatibleTags: []
+    compatibleTags:
+    - Liquid
     states:
     - stateName: Measuring Cup with Hydrogen Peroxide
       willChangeSprite: 1
