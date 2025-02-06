@@ -457,7 +457,7 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
-  - itemPrefab: {fileID: 0}
+  - itemPrefab: {fileID: 1919811111067506556, guid: 401ba429f74a2ec45a6b4ca3d0b42ac7, type: 3}
     itemName: Test tube
     itemDescription: 
     itemIcon: {fileID: 21300000, guid: d2884b604169fe54985d8ba0bf8014a3, type: 3}
@@ -465,6 +465,81 @@ MonoBehaviour:
     isUnlock: 0
     isCollected: 0
     tagName: Container
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 4505680493845895625, guid: 23afb1de7b0a62e4f948648d3fb75930, type: 3}
+    itemName: Yeast
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: e2fcfc4028833b84b90345febbb3b0eb, type: 3}
+    itemType: 1
+    isUnlock: 0
+    isCollected: 0
+    tagName: Powder
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 6862121626154194336, guid: b34c00169ba44184e9087f32a68e9ab3, type: 3}
+    itemName: Dishwashing Liquid
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: 76d6b159c34f76940b49c71dc05dec44, type: 3}
+    itemType: 1
+    isUnlock: 1
+    isCollected: 0
+    tagName: Liquid
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 4675291413672411771, guid: 3bd35da5e5e49784ab8174fb88c26c7c, type: 3}
+    itemName: Food Color
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: 69af1cfb37e63f947bb1aa9b26fb1cb2, type: 3}
+    itemType: 1
+    isUnlock: 1
+    isCollected: 0
+    tagName: Liquid
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 2769496515516511814, guid: c20e0d419d34bf346ac9437496add080, type: 3}
+    itemName: Spoon
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: 3c9a6ce7157ee1245bb104654591e8ab, type: 3}
+    itemType: 0
+    isUnlock: 1
+    isCollected: 0
+    tagName: Measurement
+    compatibleTags: []
+    states: []
+    currentStateIndex: 0
+    hasTemperature: 0
+    currentTemperature: 0
+    minTemperature: 0
+    maxTemperature: 100
+  - itemPrefab: {fileID: 3644135361032368877, guid: d551b26e1eeead743ae35c92f28dacaf, type: 3}
+    itemName: Measuring Cup
+    itemDescription: 
+    itemIcon: {fileID: 21300000, guid: eedc35702e95f4a439c85fc926f2b57c, type: 3}
+    itemType: 0
+    isUnlock: 1
+    isCollected: 0
+    tagName: Measurement
     compatibleTags: []
     states: []
     currentStateIndex: 0
