@@ -19,6 +19,7 @@ public class BagManager : MonoBehaviour, IData
     public TextMeshProUGUI itemLimitText;
 
 
+
     private List<string> sceneList = new List<string>()
     {
         "Chapter1Experiment",
@@ -27,6 +28,10 @@ public class BagManager : MonoBehaviour, IData
     };
 
 
+    private void Awake()
+    {
+        
+    }
     void Start()
     {
         ItemCountContainer.gameObject.SetActive(false);
@@ -36,6 +41,8 @@ public class BagManager : MonoBehaviour, IData
     public void AddItemInBag(Item item)
     {
         BagItem existingBagItem = bagItems.Find(b => b.item.itemName == item.itemName);
+
+      
 
         if (existingBagItem != null)
         {
