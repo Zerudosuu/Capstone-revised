@@ -209,7 +209,7 @@ MonoBehaviour:
       needToMeasure: 0
       measuredValue: 0
     - materialName: Test Tube
-      ItemIcon: {fileID: 21300000, guid: 4be318f23c4893e4baae904686f8d507, type: 3}
+      ItemIcon: {fileID: 21300000, guid: d2884b604169fe54985d8ba0bf8014a3, type: 3}
       isCollected: 0
       Quantity: 0
       needToMeasure: 0

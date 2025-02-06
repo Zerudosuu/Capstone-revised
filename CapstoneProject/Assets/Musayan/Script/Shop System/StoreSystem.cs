@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -38,6 +39,11 @@ public class StoreSystem : MonoBehaviour
         purchaseBtn.onClick.AddListener(() => OnPurchaseBtnClicked());
         cancelBtn.onClick.AddListener(hideSelected);
         itemManage = FindAnyObjectByType<ItemManager>();
+        coinsText.text = playerStats.coins.ToString();
+    }
+
+    private void OnEnable()
+    {
         coinsText.text = playerStats.coins.ToString();
     }
 

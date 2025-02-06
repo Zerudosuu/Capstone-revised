@@ -72,7 +72,8 @@ public class AddedActionContainerManager : MonoBehaviour
         if (experimentCountDown != null)
         {
             experimentCountDown.gameObject.SetActive(true);
-            experimentCountDown.SetTime(duration, itemName, "shake"); // Pass item name
+            experimentCountDown.SetTime(duration, itemName, "shake",
+                stepManager.GetTargetTemperature()); // Pass item name
         }
 
         inputContainer.SetActive(false);
@@ -100,7 +101,8 @@ public class AddedActionContainerManager : MonoBehaviour
         if (experimentCountDown != null)
         {
             experimentCountDown.gameObject.SetActive(true);
-            experimentCountDown.SetTime(duration, itemName, "stir"); // Pass item name
+            experimentCountDown.SetTime(duration, itemName, "stir",
+                stepManager.GetTargetTemperature()); // Pass item name
         }
 
         inputContainer.SetActive(false);

@@ -16,18 +16,12 @@ public class ExperimentCountDown : MonoBehaviour
 
     public string currentActionType = "wait"; // Default to wait
     public string currentItemName = ""; // The item used for the action
-    [SerializeField] private GameObject SlotToGetItem;
+    public GameObject SlotToGetItem;
+    public GameObject SlotChild;
 
     public float TargetTemperature = 0;
     public static event Action onTimerisRunning;
-
-    private ItemReaction objectItemReaction;
-
-
-    private void Awake()
-    {
-        objectItemReaction = GetSlotToGetItem()?.GetComponent<ItemReaction>();
-    }
+    private ItemReaction itemReaction;
 
     private void Start()
     {
@@ -46,12 +40,8 @@ public class ExperimentCountDown : MonoBehaviour
 
     public GameObject GetSlotToGetItem()
     {
-        if (SlotToGetItem != null && SlotToGetItem.transform.childCount > 0)
-        {
-            return SlotToGetItem.transform.GetChild(0).gameObject;
-        }
-
-        return null;
+        SlotChild = SlotToGetItem.transform.GetChild(0).gameObject;
+        return SlotChild;
     }
 
     private void StartCountdown()
@@ -61,6 +51,7 @@ public class ExperimentCountDown : MonoBehaviour
             StopCoroutine(countdownCoroutine);
         }
 
+        itemReaction = GetSlotToGetItem()?.GetComponent<ItemReaction>();
         countdownCoroutine = StartCoroutine(CountdownCoroutine());
     }
 
@@ -88,12 +79,11 @@ public class ExperimentCountDown : MonoBehaviour
         Debug.Log($"Completing the {currentActionType} step with item {currentItemName}...");
         _stepManager.ValidateAndCompleteSubStep(currentItemName, currentActionType); // Pass item name for validation
 
-
-        if (objectItemReaction != null && objectItemReaction.item.hasTemperature)
+        if (itemReaction != null && itemReaction.item.hasTemperature)
         {
-            objectItemReaction.item.currentTemperature = TargetTemperature;
+            itemReaction.item.currentTemperature = TargetTemperature;
 
-            Animator anim = objectItemReaction.gameObject.GetComponent<Animator>();
+            Animator anim = itemReaction.gameObject.GetComponent<Animator>();
 
             if (anim != null)
                 anim.Play("Idle");

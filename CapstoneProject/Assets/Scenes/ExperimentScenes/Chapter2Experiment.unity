@@ -642,7 +642,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &55069230
@@ -2387,7 +2387,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &194788787
@@ -2953,7 +2953,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &248301602
@@ -4815,7 +4815,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &427818863
@@ -4949,7 +4949,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &440631476
@@ -5276,7 +5276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &476341698
@@ -8931,7 +8931,7 @@ MonoBehaviour:
       requiredItemName: 
       requiredAction: wait
       isCompleted: 0
-      targetTemperature: 0
+      targetTemperature: 25
       temperatureRate: 0
       WillBroadCastChange: 1
       willNeedAnotherAction: 0
@@ -13078,7 +13078,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 399.88208, y: -24.04725}
+  m_AnchoredPosition: {x: 399.88208, y: -24.047241}
   m_SizeDelta: {x: 799.76416, y: 48.0945}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1424787404
