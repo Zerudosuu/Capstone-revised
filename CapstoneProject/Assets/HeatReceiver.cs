@@ -11,18 +11,14 @@ public class HeatReceiver : MonoBehaviour
 
     [SerializeField] private GameObject steamParticle;
 
-
     private bool hasStartedBoiling = false;
     private bool hasStartedSteaming = false;
 
     public bool isReceivingHeat = false;
 
-    private AudioManager audioManage;
-
     public void Start()
     {
         itemReaction = GetComponent<ItemReaction>();
-        audioManage = FindObjectOfType<AudioManager>(true);
     }
 
     public void ReceiveHeat(float heatAmount)
@@ -48,9 +44,7 @@ public class HeatReceiver : MonoBehaviour
         else if (itemReaction.item.currentTemperature >= 60f && !hasStartedBoiling)
         {
             hasStartedBoiling = true;
-            audioManage.PlaySFX("Boil");
             boilParticle.GetComponent<ParticleSystem>().Play();
         }
     }
-
 }

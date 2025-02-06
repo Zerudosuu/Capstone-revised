@@ -10,11 +10,8 @@ public class BagDropArea : MonoBehaviour
     public GameObject lessonContainer;
     [SerializeField] private Animator anim;
 
-    private AudioManager _audioManage;
-
     void Start()
     {
-        _audioManage = FindObjectOfType<AudioManager>(true);
         _currentLessonToDisplay = FindObjectOfType<CurrentLessonToDisplay>(true);
         _lessonManager = FindObjectOfType<LessonManager>(true);
         _bagManager = FindObjectOfType<BagManager>(true);
@@ -29,7 +26,6 @@ public class BagDropArea : MonoBehaviour
     {
         if (item != null && _lessonManager != null && _lessonManager.questAsLesson.isActive == true)
         {
-            _audioManage.PlaySFX("Bag");
             print("Added to inventory: " + item);
             _bagManager.AddItemInBag(item);
             _currentLessonToDisplay.CheckItem(item);

@@ -29,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] private List<SFX> soundEffects;
-    private Dictionary<string, SFX> sfxDictionary = new Dictionary<string, SFX>();
+    private Dictionary<string, SFX> sfxDictionary;
 
 
     private void Awake()
@@ -47,7 +47,6 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         StartCoroutine(PlayAudioLoop());
-        PlaceSFX();
     }
 
     private IEnumerator PlayAudioLoop()
