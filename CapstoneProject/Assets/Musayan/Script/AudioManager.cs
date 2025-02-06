@@ -9,6 +9,7 @@ public class AudioManager : MonoBehaviour
     {
         public string triggerString;
         public AudioClip clip;
+        public bool isLoop;
     }
 
     public static AudioManager audioInstance { get; private set; }
@@ -17,7 +18,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private List<AudioClip> bgMusics;
     [Header("Audio Source")]
     [SerializeField] private AudioSource bgAudioSorce;
-    [SerializeField] private AudioSource sfxAudioSorce;
+    [SerializeField] private AudioSource sfxAudioSource;
 
     [Header("Music")]
     [SerializeField] public string audioTitle;
@@ -28,7 +29,7 @@ public class AudioManager : MonoBehaviour
 
     [Header("SFX")]
     [SerializeField] private List<SFX> soundEffects;
-    private Dictionary<string, AudioClip> sfxDictionary;
+    private Dictionary<string, SFX> sfxDictionary;
 
 
     private void Awake()
@@ -81,26 +82,42 @@ public class AudioManager : MonoBehaviour
         skipRequested = true;
     }
 
-    public void PlaceSFX()
+    private void PlaceSFX()
     {
         foreach (var sfx in soundEffects)
         {
             if (!sfxDictionary.ContainsKey(sfx.triggerString))
             {
-                sfxDictionary.Add(sfx.triggerString, sfx.clip);
+                sfxDictionary.Add(sfx.triggerString, sfx);
             }
         }
     }
 
     public void PlaySFX(string trigger)
     {
-        if (sfxDictionary.TryGetValue(trigger, out AudioClip sfx))
+        if (sfxDictionary.TryGetValue(trigger, out SFX sfx))
         {
-            sfxAudioSorce.PlayOneShot(sfx);
+            if (sfx.isLoop)
+            {
+                sfxAudioSource.clip = sfx.clip;
+                sfxAudioSource.loop = true;
+                sfxAudioSource.Play();
+            }
+            else
+            {
+                sfxAudioSource.loop = false;
+                sfxAudioSource.PlayOneShot(sfx.clip);
+            }
         }
         else
         {
-            Debug.Log("No Audio SFX");
+            return;
         }
+    }
+
+    public void StopSFX()
+    {
+        sfxAudioSource.Stop();
+        sfxAudioSource.loop = false;
     }
 }
