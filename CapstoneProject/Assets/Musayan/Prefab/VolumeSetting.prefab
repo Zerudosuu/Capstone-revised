@@ -908,8 +908,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 68.8
-  m_fontSizeBase: 68.8
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1195,8 +1195,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 39, y: 53}
-  m_SizeDelta: {x: 250.78632, y: 132.57397}
+  m_AnchoredPosition: {x: 42, y: 165}
+  m_SizeDelta: {x: 176.9, y: 82.7}
   m_Pivot: {x: 0, y: 0}
 --- !u!222 &8678175299361007068
 CanvasRenderer:
@@ -1279,7 +1279,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7304018543038065176}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 9141161890601176309}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &6528266216768400357
 GameObject:
   m_ObjectHideFlags: 0
@@ -2624,6 +2636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menu: {fileID: 0}
+  showBtn: 0
   audioMix: {fileID: 24100000, guid: 24b31ded1a769b346980615d7c0b5703, type: 2}
   masterVolSlider: {fileID: 2010287027379768390}
   musicVolSlider: {fileID: 6359832112380548543}

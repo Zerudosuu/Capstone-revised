@@ -79,12 +79,11 @@ public class RewardItem : MonoBehaviour
 
     public IEnumerator RewardSequence()
     {
+        yield return obtainableManager.StartDistributingReward(); 
         
         yield return displayFunction();
-
+        
         yield return placeFunction();
-
-        obtainableManager.StartDistributingReward();
 
         gameObject.SetActive(false);
 

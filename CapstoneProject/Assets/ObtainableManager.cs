@@ -26,9 +26,10 @@ public class ObtainableManager : MonoBehaviour
     private int expDestroy;
 
 
-    public void StartDistributingReward()
+    public IEnumerator StartDistributingReward()
     {
-        StartCoroutine(GiveReward(300, 100));
+        yield return StartCoroutine(GiveReward(300, 100));
+
     }
 
     //This function will handle the sequence of giving Reward

@@ -13,6 +13,7 @@ public class CreativeObjectManager : MonoBehaviour, IData
 
     void Start()
     {
+        
         CloneItems();
         UnlockAllItems();
         PopulateCreativeItems();
@@ -168,4 +169,6 @@ public class CreativeObjectManager : MonoBehaviour, IData
     {
         Debug.LogWarning("SaveData not implemented.");
     }
+
+   
 }
