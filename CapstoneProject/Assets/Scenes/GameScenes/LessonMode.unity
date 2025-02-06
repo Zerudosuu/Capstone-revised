@@ -6528,12 +6528,15 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
+  containerNameId: 
   isUnlocked: 0
   priceToUnlock: 300
   maxItem: 16
   NotUnlockPanel: {fileID: 0}
+  priceText: {fileID: 0}
   purchaseButton: {fileID: 0}
   playerStats: {fileID: 0}
+  containerManager: {fileID: 0}
 --- !u!114 &380678537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7305,7 +7308,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 11.406296}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &429244260
 MonoBehaviour:
@@ -7412,7 +7415,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &437471073
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12186,7 +12189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &712131161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15592,6 +15595,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 1042678520}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerNameId
+      value: Chemical-Container-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16308,11 +16319,6 @@ RectTransform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
   m_PrefabInstance: {fileID: 978076297}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1044078704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-  m_PrefabInstance: {fileID: 1613712365}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062909205
 GameObject:
@@ -17591,10 +17597,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 429244259}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 378.69266, y: -106.16}
+  m_SizeDelta: {x: 717.3853, y: 43.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &1177380364 stripped
 RectTransform:
@@ -18774,6 +18780,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6b326093bb21348a66ac7353580427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContainerName: Equipment
   itemContainers: []
   currentContainer: {fileID: 0}
   NextButton: {fileID: 1223486381}
@@ -21973,7 +21980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323935187928403879, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 80.78
       objectReference: {fileID: 0}
     - target: {fileID: 6323935187928403879, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_LocalPosition.x
@@ -22025,27 +22032,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 717.3853
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 40.78
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 378.69266
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132820, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -40.39
       objectReference: {fileID: 0}
     - target: {fileID: 6323935188436132823, guid: 638e885a48f1a46c29aaa1b64688b208, type: 3}
       propertyPath: m_fontSize
@@ -23255,22 +23262,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChemicalContainer (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2492714232444805182, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: NotUnlockPanel
+      propertyPath: containerManager
       value: 
-      objectReference: {fileID: 1044078704}
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -24354,7 +24353,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1701299132
 RectTransform:
   m_ObjectHideFlags: 0
@@ -25071,6 +25070,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1266419293}
     m_Modifications:
     - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: isUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
@@ -25078,6 +25081,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 812523979}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerNameId
+      value: Equipment-Container-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer (1)
@@ -26378,6 +26389,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6b326093bb21348a66ac7353580427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContainerName: Chemical
   itemContainers: []
   currentContainer: {fileID: 0}
   NextButton: {fileID: 891206772}
@@ -27942,12 +27954,15 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
+  containerNameId: 
   isUnlocked: 0
   priceToUnlock: 300
   maxItem: 16
   NotUnlockPanel: {fileID: 0}
+  priceText: {fileID: 0}
   purchaseButton: {fileID: 0}
   playerStats: {fileID: 0}
+  containerManager: {fileID: 0}
 --- !u!114 &1948825856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29477,6 +29492,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 1872221751}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerNameId
+      value: Equipment-Container-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer (2)
@@ -29763,7 +29786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2088319101
 RectTransform:
   m_ObjectHideFlags: 0
@@ -30882,7 +30905,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_AnchorMin.x
@@ -30890,15 +30913,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 717.3853
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 39.21
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -30930,11 +30953,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 378.69266
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: -49.605
       objectReference: {fileID: 0}
     - target: {fileID: 7313754345503396404, guid: 950005993e2e6474eb1f8f87c320b18a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -31009,10 +31032,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChemicalContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 2492714232444805182, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -31341,12 +31380,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 340912190}
     - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
-      propertyPath: priceToUnlock
-      value: 150
-      objectReference: {fileID: 0}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755699015527571203, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7098557354767028434, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Pivot.x

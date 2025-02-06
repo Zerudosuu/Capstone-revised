@@ -350,6 +350,8 @@ MonoBehaviour:
     itemType: 0
     isUnlock: 0
     isCollected: 0
+    isForShop: 0
+    itemPrice: 0
     tagName: 
     compatibleTags: []
     states: []
@@ -358,11 +360,15 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
+  containerNameId: Equipment-Container-1
   isUnlocked: 1
-  priceToUnlock: 300
+  priceToUnlock: 150
   maxItem: 16
   NotUnlockPanel: {fileID: 4755699015527571203}
+  priceText: {fileID: 4043606454361842629}
   purchaseButton: {fileID: 8420223869646090181}
+  playerStats: {fileID: 0}
+  containerManager: {fileID: 0}
 --- !u!1 &4755699015527571203
 GameObject:
   m_ObjectHideFlags: 0
