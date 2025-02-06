@@ -101,6 +101,8 @@ public class ProfileManager : MonoBehaviour, IData
         lrn = gameData.playerLRN;
         ProfilePicturePath = gameData.PicturePath;
 
+        playerName.text = name;
+        playerLrn.text = lrn;
         LoadImageIntoUI();
     }
 

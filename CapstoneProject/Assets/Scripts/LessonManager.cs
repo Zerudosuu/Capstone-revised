@@ -390,9 +390,6 @@ public class LessonManager : MonoBehaviour, IData
 
         AchieveManager.Instance.AddAchievementProgress("NoviceChemist", 1);
 
-
-        ObtainableManager obtainableManager = FindObjectOfType<ObtainableManager>(true);
-        obtainableManager.StartDistributingReward();
     }
 
     public void RefreshLesson()

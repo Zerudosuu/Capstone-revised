@@ -21,6 +21,8 @@ internal class ExperimentManager : MonoBehaviour, IData
 
     ExperimentObjectManager experimentObjectManager;
 
+    private AudioManager _audioManage;
+
     ScrollViewSlot[] slots;
 
     public bool isGameStarted = false;
@@ -52,7 +54,7 @@ internal class ExperimentManager : MonoBehaviour, IData
         // currentScore.minValue = 0;
         // currentScore.maxValue = 100;
         // currentScore.value = score; // Initialize slider value
-
+        _audioManage = FindObjectOfType<AudioManager>(true);    
         experimentObjectManager = FindObjectOfType<ExperimentObjectManager>();
         GameOverPanel.SetActive(false);
         // Get all slots as children of the item container
@@ -183,6 +185,7 @@ internal class ExperimentManager : MonoBehaviour, IData
 
     public void GameOver()
     {
+        _audioManage.PlaySFX("Experiment Fail");
         GameOverPanel.SetActive(true);
     }
 
