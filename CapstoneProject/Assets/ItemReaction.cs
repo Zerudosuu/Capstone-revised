@@ -133,7 +133,7 @@ public class ItemReaction : MonoBehaviour, IDropHandler
         }
     }
 
-    private void CheckReactions(string currentStateName, DragableItem draggable)
+    public void CheckReactions(string currentStateName, DragableItem draggable)
     {
         foreach (Reaction reaction in reactions) // Assuming `item.reactions` is a list of Reaction objects1
         {

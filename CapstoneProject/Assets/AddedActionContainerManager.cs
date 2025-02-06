@@ -38,7 +38,11 @@ public class AddedActionContainerManager : MonoBehaviour
         initialYPosition = otherActionRectTransform.anchoredPosition.y; // Preserve Y from Inspector
 
         // Set initial position offscreen while keeping the Y position unchanged
-        otherActionRectTransform.anchoredPosition = new Vector2(offscreenPosition, initialYPosition);
+        if (DataManager.Instance.gameData.LessonMode == GameMode.Lesson)
+        {
+            otherActionRectTransform.anchoredPosition = new Vector2(offscreenPosition, initialYPosition);
+        }
+
         inputContainer.SetActive(true);
     }
 
@@ -69,28 +73,41 @@ public class AddedActionContainerManager : MonoBehaviour
             animator.Play("Shake");
         }
 
-        if (experimentCountDown != null)
+        if (DataManager.Instance.gameData.LessonMode == GameMode.Lesson)
         {
-            experimentCountDown.gameObject.SetActive(true);
-            experimentCountDown.SetTime(duration, itemName, "shake",
-                stepManager.GetTargetTemperature()); // Pass item name
-        }
-
-        inputContainer.SetActive(false);
-
-        StartCoroutine(ActionTimer(duration, () =>
-        {
-            Debug.Log($"Shake action completed with item: {itemName}");
-            experimentCountDown.gameObject.SetActive(false);
-            inputContainer.SetActive(true);
-
-            stepManager?.ValidateAndCompleteSubStep(itemName, "shake"); // Pass item name
-
-            if (animator != null)
+            if (experimentCountDown != null)
             {
-                animator.Play("Idle");
+                experimentCountDown.gameObject.SetActive(true);
+                experimentCountDown.SetTime(duration, itemName, "shake",
+                    stepManager.GetTargetTemperature()); // Pass item name
             }
-        }));
+
+            inputContainer.SetActive(false);
+
+            StartCoroutine(ActionTimer(duration, () =>
+            {
+                Debug.Log($"Shake action completed with item: {itemName}");
+                experimentCountDown.gameObject.SetActive(false);
+                inputContainer.SetActive(true);
+
+                stepManager?.ValidateAndCompleteSubStep(itemName, "shake"); // Pass item name
+
+                if (animator != null)
+                {
+                    animator.Play("Idle");
+                }
+            }));
+        }
+        else
+        {
+            ItemReaction itemReaction = GetItemOnSlot().gameObject.GetComponent<ItemReaction>();
+            if (itemReaction != null)
+            {
+                itemReaction.CheckReactions(itemReaction.item.states[itemReaction.item.currentStateIndex].stateName,
+                    itemReaction.gameObject.GetComponent<DragableItem>());
+            }
+            print("Shake action completed with item: " + itemName);
+        }
     }
 
     public void Stir()

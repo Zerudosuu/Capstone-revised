@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class ContainerManager : MonoBehaviour
 {
+    public string ContainerName;
     public List<ItemContainerManager> itemContainers;
     public ItemContainerManager currentContainer;
 

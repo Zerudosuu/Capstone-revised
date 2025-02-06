@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemManager : MonoBehaviour
+public class ItemManager : MonoBehaviour, IData
 {
     [Header("Shop Container")] [SerializeField]
     private GameObject ShopEquipmentArea;
@@ -26,7 +26,6 @@ public class ItemManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        CloneItems();
         UncheckMaterials();
         InstantiateItems();
     }
@@ -133,5 +132,41 @@ public class ItemManager : MonoBehaviour
             // Place the object in the ChemicalArea
             itemObject.transform.SetParent(ShopChemicalArea.transform, false);
         }
+    }
+
+    public void LoadData(GameData gameData)
+    {
+        if (gameData == null)
+        {
+            Debug.LogError("GameData is null!");
+            return;
+        }
+
+        if (gameData.clonedItems != null && gameData.clonedItems.Count > 0)
+        {
+            clonedItems = gameData.clonedItems;
+        }
+        else
+        {
+            CloneItems();
+            Debug.Log("Cloned items were null or empty, cloning new items.");
+        }
+    }
+
+    public void SavedData(GameData gameData)
+    {
+        if (gameData == null)
+        {
+            Debug.LogError("GameData is null, cannot save.");
+            return;
+        }
+
+        if (gameData.clonedItems == null)
+        {
+            gameData.clonedItems = new List<Item>();
+        }
+
+        gameData.clonedItems = clonedItems;
+        Debug.Log("Saved Items.");
     }
 }

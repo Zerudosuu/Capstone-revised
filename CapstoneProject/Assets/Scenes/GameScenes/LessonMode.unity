@@ -6662,12 +6662,15 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
+  containerNameId: 
   isUnlocked: 0
   priceToUnlock: 300
   maxItem: 16
   NotUnlockPanel: {fileID: 0}
+  priceText: {fileID: 0}
   purchaseButton: {fileID: 0}
   playerStats: {fileID: 0}
+  containerManager: {fileID: 0}
 --- !u!114 &380678537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12399,7 +12402,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &712131161
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15805,6 +15808,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 1042678520}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerNameId
+      value: Chemical-Container-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -16521,11 +16532,6 @@ RectTransform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
   m_PrefabInstance: {fileID: 978076297}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &1044078704 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-  m_PrefabInstance: {fileID: 1613712365}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1062909205
 GameObject:
@@ -19197,6 +19203,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6b326093bb21348a66ac7353580427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContainerName: Equipment
   itemContainers: []
   currentContainer: {fileID: 0}
   NextButton: {fileID: 1223486381}
@@ -23814,22 +23821,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChemicalContainer (2)
       objectReference: {fileID: 0}
-    - target: {fileID: 2492714232444805182, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: isUnlocked
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
-      propertyPath: NotUnlockPanel
+      propertyPath: containerManager
       value: 
-      objectReference: {fileID: 1044078704}
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -25630,6 +25629,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 1266419293}
     m_Modifications:
     - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: isUnlocked
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
@@ -25637,6 +25640,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 812523979}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerNameId
+      value: Equipment-Container-2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer (1)
@@ -26937,6 +26948,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c6b326093bb21348a66ac7353580427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ContainerName: Chemical
   itemContainers: []
   currentContainer: {fileID: 0}
   NextButton: {fileID: 891206772}
@@ -28501,12 +28513,15 @@ MonoBehaviour:
     currentTemperature: 0
     minTemperature: 0
     maxTemperature: 100
+  containerNameId: 
   isUnlocked: 0
   priceToUnlock: 300
   maxItem: 16
   NotUnlockPanel: {fileID: 0}
+  priceText: {fileID: 0}
   purchaseButton: {fileID: 0}
   playerStats: {fileID: 0}
+  containerManager: {fileID: 0}
 --- !u!114 &1948825856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30036,6 +30051,14 @@ PrefabInstance:
       propertyPath: NotUnlockPanel
       value: 
       objectReference: {fileID: 1872221751}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerNameId
+      value: Equipment-Container-3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer (2)
@@ -31568,10 +31591,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: ChemicalContainer
       objectReference: {fileID: 0}
+    - target: {fileID: 2492714232444805182, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4510750797556499133, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: isUnlocked
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: playerStats
       value: 
       objectReference: {fileID: 340912190}
+    - target: {fileID: 7612278794637621264, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1843493416}
     - target: {fileID: 7852288877606758328, guid: f328ee7b22e7e874fb211eff7f498224, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -31900,12 +31939,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 340912190}
     - target: {fileID: 2010644836602711037, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
-      propertyPath: priceToUnlock
-      value: 150
-      objectReference: {fileID: 0}
+      propertyPath: containerManager
+      value: 
+      objectReference: {fileID: 1266419294}
     - target: {fileID: 3115440798873043852, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Name
       value: EquipmentContainer
+      objectReference: {fileID: 0}
+    - target: {fileID: 4755699015527571203, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7098557354767028434, guid: 428fcabac4d02554a9e2746d8434d55b, type: 3}
       propertyPath: m_Pivot.x

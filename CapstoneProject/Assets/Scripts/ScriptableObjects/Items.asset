@@ -276,7 +276,7 @@ MonoBehaviour:
     minTemperature: 0
     maxTemperature: 100
   - itemPrefab: {fileID: 1932849973259863632, guid: f3944f8fc80113b488c7e46f0567d91b, type: 3}
-    itemName: Hydrogen peroxide (H2O2)
+    itemName: 'Hydrogen peroxide '
     itemDescription: A strong oxidizing agent.
     itemIcon: {fileID: 21300000, guid: 7ad7de367d5e866449ea5b31be9d1fa9, type: 3}
     itemType: 1
@@ -450,14 +450,14 @@ MonoBehaviour:
       - itemNameRequirement: Food Color
         isMet: 0
       Temperature: 0
-    - stateName: Soda Bottle with food color and Water
+    - stateName: Soda Bottle with food color and Hydrogen Peroxide
       willChangeSprite: 0
       sprite: {fileID: 21300000, guid: 5f01cf024707b6d49865a1e5ec35752f, type: 3}
       description: 
       conditions:
       - itemNameRequirement: Food Color
-        isMet: 0
-      - itemNameRequirement: Water
+        isMet: 1
+      - itemNameRequirement: Measuring Cup with Hydrogen Peroxide
         isMet: 0
       Temperature: 0
     - stateName: Soda Bottle with Food Color Dish Washing and Water
@@ -466,9 +466,9 @@ MonoBehaviour:
       description: 
       conditions:
       - itemNameRequirement: Food Color
-        isMet: 0
-      - itemNameRequirement: Water
-        isMet: 0
+        isMet: 1
+      - itemNameRequirement: Measuring Cup with Hydrogen Peroxide
+        isMet: 1
       - itemNameRequirement: Dishwashing Liquid
         isMet: 0
       Temperature: 0
@@ -597,7 +597,15 @@ MonoBehaviour:
     itemPrice: 50
     tagName: Measurement
     compatibleTags: []
-    states: []
+    states:
+    - stateName: Measuring Cup with Hydrogen Peroxide
+      willChangeSprite: 1
+      sprite: {fileID: 21300000, guid: 2fcd7a294d8a55941b91019d9ac942f3, type: 3}
+      description: 
+      conditions:
+      - itemNameRequirement: 'Hydrogen peroxide '
+        isMet: 0
+      Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0
     currentTemperature: 0

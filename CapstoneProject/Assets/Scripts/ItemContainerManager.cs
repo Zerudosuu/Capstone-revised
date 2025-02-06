@@ -9,18 +9,27 @@ using Button = UnityEngine.UI.Button;
 public class ItemContainerManager : MonoBehaviour
 {
     [SerializeField] private Item CurrentSelectedItem;
+    public string containerNameId;
     public bool isUnlocked;
     public int priceToUnlock = 300;
     public int maxItem = 16;
 
     public GameObject NotUnlockPanel;
-
+    public TMPro.TextMeshProUGUI priceText;
     public Button purchaseButton;
-
     [SerializeField] private PlayerStats playerStats;
+    [SerializeField] private ContainerManager containerManager;
+
+
+    public void Awake()
+    {
+        containerManager = gameObject.GetComponentInParent<ContainerManager>();
+    }
+
 
     public void Start()
     {
+        priceText.text = priceToUnlock.ToString();
         // Initialize the purchase button's click event
         if (purchaseButton != null)
         {

@@ -24,10 +24,10 @@ public class GameData
     public bool isTutorialCompleted = false;
     public bool isLessonTutorialCompleted = false;
 
-
     public int currentExperience;
     public int currentMaxExperience;
     public int playerCoins; // Player's currency
+    public List<Item> clonedItems;
 
 
     // Default constructor initializes some default values
@@ -38,7 +38,7 @@ public class GameData
         this.playerLRN = "123456789";
         this.currentExperience = 0;
         this.currentMaxExperience = 100;
-        this.playerCoins = 0;
+        this.playerCoins = 600;
         this.Achievements = new List<Achievement>();
         this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";
@@ -52,6 +52,7 @@ public class GameData
         this.currentQuestIndex = 0; // Default to the first quest in the list
         this.isTutorialCompleted = false;
         this.isLessonTutorialCompleted = false;
+        this.clonedItems = new List<Item>();
     }
 
 
@@ -99,6 +100,7 @@ public class SerializableBagItem
         count = quantity;
     }
 }
+
 
 public enum GameMode
 {

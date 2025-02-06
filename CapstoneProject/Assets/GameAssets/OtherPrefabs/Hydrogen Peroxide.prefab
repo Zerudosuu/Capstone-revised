@@ -265,7 +265,7 @@ MonoBehaviour:
   originalPosition: {x: 0, y: 0, z: 0}
   originalSize: {x: 0, y: 0}
   placeInSlot: 0
-  TagName: Container
+  TagName: Liquid
   itemVariantID: 0
   anim: {fileID: 5157664548615112886}
   Popup: {fileID: 7774645649807270708}
