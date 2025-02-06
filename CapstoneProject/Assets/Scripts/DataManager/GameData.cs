@@ -23,7 +23,7 @@ public class GameData
     public int currentQuestIndex;
     public bool isTutorialCompleted = false;
     public bool isLessonTutorialCompleted = false;
-
+    public string playerTitle;
     public int currentExperience;
     public int currentMaxExperience;
     public int playerCoins; // Player's currency
@@ -38,7 +38,8 @@ public class GameData
         this.playerLRN = "123456789";
         this.currentExperience = 0;
         this.currentMaxExperience = 100;
-        this.playerCoins = 600;
+        this.playerCoins = 0;
+        this.playerTitle = "Noob";
         this.Achievements = new List<Achievement>();
         this.SceneName = "GameModeSelection";
         this.ChapterTitle = "Chapter 1";

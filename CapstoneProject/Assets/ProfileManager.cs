@@ -108,7 +108,6 @@ public class ProfileManager : MonoBehaviour, IData
 
     public void SavedData(GameData gameData)
     {
-        gameData.Level = this.level;
         gameData.playerName = this.name;
         gameData.playerLRN = this.lrn;
     }

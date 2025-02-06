@@ -22,6 +22,6 @@ public class SceneLoader : MonoBehaviour
 
         // Load the next scene
         SceneManager.LoadSceneAsync(scene);
+        DataManager.Instance.SaveGame();
     }
-
 }

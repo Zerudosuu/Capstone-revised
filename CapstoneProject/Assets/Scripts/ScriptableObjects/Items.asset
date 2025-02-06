@@ -484,6 +484,7 @@ MonoBehaviour:
     tagName: Container
     compatibleTags:
     - Liquid
+    - Container
     states:
     - stateName: Cup
       willChangeSprite: 0
@@ -495,7 +496,9 @@ MonoBehaviour:
       willChangeSprite: 1
       sprite: {fileID: 21300000, guid: 2893d4d76329bf64cabcfb4a562b3e26, type: 3}
       description: 
-      conditions: []
+      conditions:
+      - itemNameRequirement: Water
+        isMet: 0
       Temperature: 0
     currentStateIndex: 0
     hasTemperature: 0

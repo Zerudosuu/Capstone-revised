@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7852288877606758328
 RectTransform:
   m_ObjectHideFlags: 0
@@ -93,11 +93,11 @@ MonoBehaviour:
     minTemperature: 0
     maxTemperature: 100
   containerNameId: Chemical-Container-3
-  isUnlocked: 0
+  isUnlocked: 1
   priceToUnlock: 300
   maxItem: 16
   NotUnlockPanel: {fileID: 4510750797556499133}
-  priceText: {fileID: 6079133473347808361}
+  priceText: {fileID: 4784465179667076381}
   purchaseButton: {fileID: 3142097100861388846}
   playerStats: {fileID: 0}
   containerManager: {fileID: 0}
@@ -328,7 +328,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5062021468760966363
 RectTransform:
   m_ObjectHideFlags: 0

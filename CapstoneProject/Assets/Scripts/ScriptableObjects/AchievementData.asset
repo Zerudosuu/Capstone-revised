@@ -22,10 +22,10 @@ MonoBehaviour:
     progress: 0
     QuestIdRequirement: 
   - id: MaterialCollector
-    description: 'Collect 3 new materials! '
-    target: 1
+    description: 'Collect 4 new materials! '
+    target: 4
     isUnlocked: 0
     AchivementIcon: {fileID: 21300000, guid: 96436a4b93a5e444fb834655b40483dd, type: 3}
-    InGameMessage: 'Great! You collected 3 items! '
+    InGameMessage: 'Great! You collected 4 items! '
     progress: 0
     QuestIdRequirement: 

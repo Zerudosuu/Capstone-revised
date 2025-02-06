@@ -81,7 +81,7 @@ public class ExperimentCountDown : MonoBehaviour
 
         if (itemReaction != null && itemReaction.item.hasTemperature)
         {
-            itemReaction.item.currentTemperature = TargetTemperature;
+            itemReaction.SetTemperature(TargetTemperature);
 
             Animator anim = itemReaction.gameObject.GetComponent<Animator>();
 

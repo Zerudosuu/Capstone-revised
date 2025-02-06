@@ -93,6 +93,8 @@ public class PlayerStats : MonoBehaviour, IData
         expGained = gameData.currentExperience;
         maxEXP = gameData.currentMaxExperience;
         coins = gameData.playerCoins;
+        playerTitle = gameData.playerTitle;
+
 
         UpdatePlayerStats();
         UpdateUI();
@@ -100,7 +102,8 @@ public class PlayerStats : MonoBehaviour, IData
 
     public void SavedData(GameData gameData)
     {
-        gameData.Level = playerLvl;
+        gameData.playerTitle = playerTitle;
+        gameData.Level = Mathf.Max(1, playerLvl);
         gameData.currentExperience = (int)expGained;
         gameData.currentMaxExperience = (int)maxEXP;
         gameData.playerCoins = coins;
