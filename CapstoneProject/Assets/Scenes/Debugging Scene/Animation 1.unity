@@ -141,7 +141,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5172749339908944933, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5950072141373055121, guid: e845c3322c3acaf46a3421be8fd21ac0, type: 3}
       propertyPath: m_Pivot.x
@@ -497,6 +497,10 @@ PrefabInstance:
     - target: {fileID: 6717997691732066227, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
       propertyPath: m_Name
       value: Erlrnmeyer Flask
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717997691732066227, guid: fee1d6b92451a494abdddb1acd782c41, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
